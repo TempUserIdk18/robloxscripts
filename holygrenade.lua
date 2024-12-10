@@ -2,7 +2,7 @@ local Players = game:GetService("Players")
 local player = Players.LocalPlayer
 
 -- Load the tool
-local tool = game:GetObjects("rbxassetid://71491376209812")[1]
+local tool = game:GetObjects("rbxassetid://113995202107435")[1]
 tool.Parent = player.Backpack
 
 -- References to player's character and humanoid
