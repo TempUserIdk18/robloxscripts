@@ -31,6 +31,7 @@ local No = Instance.new("TextButton")
 RibaExec.Name = "RibaExec"
 RibaExec.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 RibaExec.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+RibaExec.ResetOnSpawn = false
 
 MainFrame.Name = "MainFrame"
 MainFrame.Parent = RibaExec
