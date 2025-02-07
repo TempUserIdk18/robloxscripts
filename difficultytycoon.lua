@@ -52,6 +52,7 @@ TabMisc:AddToggle({
 						local purchase = tycoon.Purchases.db1
 						local collector = tycoon.MainItems.CashCollector.Button
 						if purchase:FindFirstChild("Click") then
+						    root.CFrame = root.CFrame + Vector3.new(0, 1.2, 0)
 							fireclickdetector(purchase.Click)
 							firetouchinterest(root, collector, 0)
 							firetouchinterest(root, collector, 1)
