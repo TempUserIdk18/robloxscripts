@@ -34,9 +34,7 @@ titleBar.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
 titleBar.BorderSizePixel = 0
 titleBar.Parent = container
 
-local titleBarCorner = Instance.new("UICorner")
-titleBarCorner.CornerRadius = UDim.new(0, 10)
-titleBarCorner.Parent = titleBar
+
 
 local titleLabel = Instance.new("TextLabel")
 titleLabel.Size = UDim2.new(1, -30, 1, 0)
@@ -59,11 +57,7 @@ closeButton.TextColor3 = Color3.fromRGB(255, 255, 255)
 closeButton.Font = Enum.Font.GothamBold
 closeButton.TextSize = 14
 closeButton.Parent = titleBar
-
-local closeButtonCorner = Instance.new("UICorner")
-closeButtonCorner.CornerRadius = UDim.new(0, 6)
-closeButtonCorner.Parent = closeButton
-
+closeButton.BorderSizePixel = 0
 -- Main Frame
 local frame = Instance.new("Frame")
 frame.Name = "TeleportFrame"
@@ -73,9 +67,7 @@ frame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
 frame.BorderSizePixel = 0
 frame.Parent = container
 
-local frameCorner = Instance.new("UICorner")
-frameCorner.CornerRadius = UDim.new(0, 10)
-frameCorner.Parent = frame
+
 
 local frameGradient = Instance.new("UIGradient")
 frameGradient.Color = ColorSequence.new{
@@ -120,40 +112,34 @@ toggleButtonCorner.Parent = toggleButton
 -- TELEPORTATION & ANIMATION FUNCTIONALITY
 ------------------------------
 local teleportLoopRunning = false
-local currentAnimations = {}
 local dragging = false
 local dragStart, startPos
 local isToggled = false
 local animationPlaying = false
-local lrr = false
-game.Players.LocalPlayer.CharacterAdded:Connect(function()
-   local anim = Instance.new("Animation")
-   local anim2 = Instance.new("Animation")
-   anim.AnimationId = "rbxassetid://259438880"
-   anim2.AnimationId = "rbxassetid://148840371"
-   local track = localPlayer.Character.Humanoid:LoadAnimation(anim)
-   local track2 = localPlayer.Character.Humanoid:LoadAnimation(anim2)
-   track:AdjustSpeed(100)
-   track2:AdjustSpeed(3)
-   lrr = true
-end)
-if not lrr then
-	local anim = Instance.new("Animation")
-   local anim2 = Instance.new("Animation")
-   anim.AnimationId = "rbxassetid://259438880"
-   anim2.AnimationId = "rbxassetid://148840371"
-   local track = localPlayer.Character.Humanoid:LoadAnimation(anim)
-   local track2 = localPlayer.Character.Humanoid:LoadAnimation(anim2)
-   track:AdjustSpeed(100)
-   track2:AdjustSpeed(3)
-end
-local function playAnimation(animationId, speed)
+local track, track2
 
-    anim.AnimationId = "rbxassetid://" .. animationId
-    local track = localPlayer.Character.Humanoid:LoadAnimation(anim)
-    track:Play()
-    track:AdjustSpeed(speed)
-    table.insert(currentAnimations, track)
+-- Load animations when the character is added
+game.Players.LocalPlayer.CharacterAdded:Connect(function()
+    local anim = Instance.new("Animation")
+    local anim2 = Instance.new("Animation")
+    anim.AnimationId = "rbxassetid://259438880"
+    anim2.AnimationId = "rbxassetid://148840371"
+    track = localPlayer.Character.Humanoid:LoadAnimation(anim)
+    track2 = localPlayer.Character.Humanoid:LoadAnimation(anim2)
+    track:AdjustSpeed(100)
+    track2:AdjustSpeed(3)
+end)
+
+-- Load animations if the character already exists
+if localPlayer.Character then
+    local anim = Instance.new("Animation")
+    local anim2 = Instance.new("Animation")
+    anim.AnimationId = "rbxassetid://259438880"
+    anim2.AnimationId = "rbxassetid://148840371"
+    track = localPlayer.Character.Humanoid:LoadAnimation(anim)
+    track2 = localPlayer.Character.Humanoid:LoadAnimation(anim2)
+    track:AdjustSpeed(100)
+    track2:AdjustSpeed(3)
 end
 
 local function teleportBehindPlayer(targetPlayer)
@@ -161,44 +147,15 @@ local function teleportBehindPlayer(targetPlayer)
         return
     end
 
-    local character = localPlayer.Character
-    if not character or not character:FindFirstChild("HumanoidRootPart") then return end
-
-    local rootPart = character.HumanoidRootPart
     local targetRootPart = targetPlayer.Character.HumanoidRootPart
-    local humanoid = character:FindFirstChild("Humanoid")
+    local targetCFrame = targetRootPart.CFrame
 
-    -- Disable movement using Physics state
-    if humanoid then
-        humanoid:ChangeState(Enum.HumanoidStateType.Physics)
-    end
+    -- Calculate the position 1.3 studs behind the target player
+    local offset = targetCFrame.LookVector * -1.3 -- 1.3 studs behind the player
+    local newPosition = targetCFrame.Position + offset
 
-    -- Move 1.3 studs behind
-    local newCFrame1 = targetRootPart.CFrame * CFrame.new(0, 0, 1.3)
-    local tweenInfo1 = TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.Out)
-    local tween1 = TweenService:Create(rootPart, tweenInfo1, {CFrame = newCFrame1})
-
-    tween1:Play()
-    task.wait(0.15) -- Give buffer time before second move
-    -- After first move, wait and then move 2 more studs back
-    tween1.Completed:Connect(function()
-        task.wait(0.15) -- Give buffer time before second move
-
-        if rootPart and rootPart.Parent then
-            local newCFrame2 = rootPart.CFrame * CFrame.new(0, 0, 2)
-            local tweenInfo2 = TweenInfo.new(0.5, Enum.EasingStyle.Linear, Enum.EasingDirection.Out)
-            local tween2 = TweenService:Create(rootPart, tweenInfo2, {CFrame = newCFrame2})
-
-            tween2:Play()
-
-            -- Restore movement after teleporting
-            tween2.Completed:Connect(function()
-                if humanoid then
-                    humanoid:ChangeState(Enum.HumanoidStateType.GettingUp) -- Allow normal movement again
-                end
-            end)
-        end
-    end)
+    -- Teleport the local player
+    localPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(newPosition, targetCFrame.Position)
 end
 
 local function startTeleportLoop(targetName)
@@ -208,7 +165,7 @@ local function startTeleportLoop(targetName)
         if targetPlayer then
             teleportBehindPlayer(targetPlayer)
         end
-        wait(0.01) -- Adjust the delay as needed
+        wait(0.001) -- Adjust the delay as needed
     end
 end
 
@@ -231,7 +188,8 @@ toggleButton.MouseButton1Click:Connect(function()
         end)
     else
         stopTeleportLoop()
-		animationPlaying = false
+        animationPlaying = false
+        
     end
 end)
 
