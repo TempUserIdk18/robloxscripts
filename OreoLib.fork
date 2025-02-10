@@ -737,6 +737,19 @@ function OrionLib:MakeWindow(WindowConfig)
 	end	
 
 	local TabFunction = {}
+        function TabFunction:SetTheme(theme)
+	        if OrionLib.Themes[theme] then
+		     OrionLib.SelectedTheme = theme
+		     for Name, Type in pairs(OrionLib.ThemeObjects) do
+			     for _, Object in pairs(Type) do
+				Object[ReturnProperty(Object)] = OrionLib.Themes[theme][Name]
+			     end    
+		     end    
+	else
+		warn("Invalid theme: " .. theme)
+	end
+end
+
 	function TabFunction:MakeTab(TabConfig)
 		TabConfig = TabConfig or {}
 		TabConfig.Name = TabConfig.Name or "Tab"
