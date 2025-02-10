@@ -11,13 +11,11 @@ end
 -- Function to make the title bar draggable
 local function MakeDraggable(frame, titleBar)
     local dragging, dragInput, dragStart, startPos
-
     titleBar.InputBegan:Connect(function(input)
         if input.UserInputType == Enum.UserInputType.MouseButton1 then
             dragging = true
             dragStart = input.Position
             startPos = frame.Position
-
             input.Changed:Connect(function()
                 if input.UserInputState == Enum.UserInputState.End then
                     dragging = false
@@ -25,13 +23,11 @@ local function MakeDraggable(frame, titleBar)
             end)
         end
     end)
-
     titleBar.InputChanged:Connect(function(input)
         if input.UserInputType == Enum.UserInputType.MouseMovement then
             dragInput = input
         end
     end)
-
     UserInputService.InputChanged:Connect(function(input)
         if input == dragInput and dragging then
             local delta = input.Position - dragStart
@@ -48,7 +44,7 @@ function GPTLib:CreateWindow(title)
     screenGui.Name = "ModernUI"
     screenGui.Parent = game.CoreGui
 
-    local window = {} -- Table to hold creation functions
+    local window = {}  -- Table to hold creation functions
 
     local frame = Instance.new("Frame")
     frame.Size = UDim2.new(0.4, 0, 0.5, 0)
@@ -89,7 +85,6 @@ function GPTLib:CreateWindow(title)
     closeButton.TextColor3 = Color3.fromRGB(255, 255, 255)
     closeButton.Font = Enum.Font.GothamBold
     closeButton.Parent = titleBar
-
     closeButton.MouseButton1Click:Connect(function()
         Tween(frame, "Size", UDim2.new(0.4, 0, 0, 0), 0.3)
         wait(0.3)
@@ -104,7 +99,6 @@ function GPTLib:CreateWindow(title)
     minimizeButton.TextColor3 = Color3.fromRGB(255, 255, 255)
     minimizeButton.Font = Enum.Font.GothamBold
     minimizeButton.Parent = titleBar
-
     minimizeButton.MouseButton1Click:Connect(function()
         frame.Visible = not frame.Visible
     end)
@@ -115,18 +109,18 @@ function GPTLib:CreateWindow(title)
     contentFrame.BackgroundTransparency = 1
     contentFrame.Parent = frame
 
-    -- Helper function to calculate next Y position (each element takes ~12% height)
-    local function getNextY()
-        return #contentFrame:GetChildren() * 0.12
-    end
+    -- Use UIListLayout for automatic vertical layout
+    local listLayout = Instance.new("UIListLayout")
+    listLayout.Padding = UDim.new(0, 8)
+    listLayout.SortOrder = Enum.SortOrder.LayoutOrder
+    listLayout.Parent = contentFrame
 
     -- Create Button
     function window:CreateButton(text, callback)
         local button = Instance.new("TextButton")
-        button.Size = UDim2.new(0.9, 0, 0.1, 0)
-        button.Position = UDim2.new(0.05, 0, getNextY(), 0)
+        button.Size = UDim2.new(1, -16, 0, 40)
         button.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
-        button.TextColor3 = Color3.fromRGB(255, 255, 255)
+        button.TextColor3 = Color3.new(1, 1, 1)
         button.Font = Enum.Font.GothamBold
         button.Text = text
         button.Parent = contentFrame
@@ -142,10 +136,9 @@ function GPTLib:CreateWindow(title)
     -- Create Toggle
     function window:CreateToggle(text, callback)
         local toggle = Instance.new("TextButton")
-        toggle.Size = UDim2.new(0.9, 0, 0.1, 0)
-        toggle.Position = UDim2.new(0.05, 0, getNextY(), 0)
+        toggle.Size = UDim2.new(1, -16, 0, 40)
         toggle.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
-        toggle.TextColor3 = Color3.fromRGB(255, 255, 255)
+        toggle.TextColor3 = Color3.new(1, 1, 1)
         toggle.Font = Enum.Font.GothamBold
         local state = false
         toggle.Text = text .. " [OFF]"
@@ -166,8 +159,7 @@ function GPTLib:CreateWindow(title)
     -- Create Slider
     function window:CreateSlider(text, min, max, default, callback)
         local sliderFrame = Instance.new("Frame")
-        sliderFrame.Size = UDim2.new(0.9, 0, 0.1, 0)
-        sliderFrame.Position = UDim2.new(0.05, 0, getNextY(), 0)
+        sliderFrame.Size = UDim2.new(1, -16, 0, 60)
         sliderFrame.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
         sliderFrame.Parent = contentFrame
 
@@ -177,20 +169,20 @@ function GPTLib:CreateWindow(title)
 
         local label = Instance.new("TextLabel")
         label.Text = text .. ": " .. default
-        label.Size = UDim2.new(1, 0, 0.5, 0)
+        label.Size = UDim2.new(1, -16, 0, 30)
         label.BackgroundTransparency = 1
         label.TextColor3 = Color3.new(1, 1, 1)
         label.Font = Enum.Font.GothamBold
         label.Parent = sliderFrame
 
         local sliderBar = Instance.new("Frame")
-        sliderBar.Size = UDim2.new(0.9, 0, 0.3, 0)
-        sliderBar.Position = UDim2.new(0.05, 0, 0.6, 0)
+        sliderBar.Size = UDim2.new(0.9, 0, 0, 10)
+        sliderBar.Position = UDim2.new(0.05, 0, 0.7, 0)
         sliderBar.BackgroundColor3 = Color3.fromRGB(70, 70, 70)
         sliderBar.Parent = sliderFrame
 
         local knob = Instance.new("Frame")
-        knob.Size = UDim2.new(0, 10, 1, 0)
+        knob.Size = UDim2.new(0, 14, 1, 0)
         local initialScale = (default - min) / (max - min)
         knob.Position = UDim2.new(initialScale * 0.9, 0, 0, 0)
         knob.BackgroundColor3 = Color3.fromRGB(100, 100, 100)
@@ -224,8 +216,7 @@ function GPTLib:CreateWindow(title)
     -- Create Dropdown
     function window:CreateDropdown(text, options, callback)
         local dropdownFrame = Instance.new("Frame")
-        dropdownFrame.Size = UDim2.new(0.9, 0, 0.1, 0)
-        dropdownFrame.Position = UDim2.new(0.05, 0, getNextY(), 0)
+        dropdownFrame.Size = UDim2.new(1, -16, 0, 40)
         dropdownFrame.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
         dropdownFrame.Parent = contentFrame
 
@@ -235,15 +226,15 @@ function GPTLib:CreateWindow(title)
 
         local label = Instance.new("TextLabel")
         label.Text = text .. " ▼"
-        label.Size = UDim2.new(1, 0, 1, 0)
+        label.Size = UDim2.new(1, -16, 1, 0)
         label.BackgroundTransparency = 1
         label.TextColor3 = Color3.new(1, 1, 1)
         label.Font = Enum.Font.GothamBold
         label.Parent = dropdownFrame
 
         local listFrame = Instance.new("Frame")
-        listFrame.Size = UDim2.new(1, 0, 0, #options * 25)
-        listFrame.Position = UDim2.new(0, 0, 1, 0)
+        listFrame.Size = UDim2.new(1, -16, 0, #options * 30)
+        listFrame.Position = UDim2.new(0, 8, 1, 0)
         listFrame.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
         listFrame.Visible = false
         listFrame.Parent = dropdownFrame
@@ -264,8 +255,8 @@ function GPTLib:CreateWindow(title)
 
         for i, option in ipairs(options) do
             local optionButton = Instance.new("TextButton")
-            optionButton.Size = UDim2.new(1, 0, 0, 25)
-            optionButton.Position = UDim2.new(0, 0, 0, (i - 1) * 25)
+            optionButton.Size = UDim2.new(1, 0, 0, 30)
+            optionButton.Position = UDim2.new(0, 0, 0, (i - 1) * 30)
             optionButton.Text = option
             optionButton.BackgroundColor3 = Color3.fromRGB(70, 70, 70)
             optionButton.TextColor3 = Color3.new(1, 1, 1)
@@ -284,8 +275,7 @@ function GPTLib:CreateWindow(title)
     -- Create ColorPicker
     function window:CreateColorPicker(text, defaultColor, callback)
         local cpFrame = Instance.new("Frame")
-        cpFrame.Size = UDim2.new(0.9, 0, 0.1, 0)
-        cpFrame.Position = UDim2.new(0.05, 0, getNextY(), 0)
+        cpFrame.Size = UDim2.new(1, -16, 0, 40)
         cpFrame.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
         cpFrame.Parent = contentFrame
 
@@ -324,8 +314,7 @@ function GPTLib:CreateWindow(title)
     -- Create Input Field
     function window:CreateInput(placeholder, callback)
         local inputFrame = Instance.new("Frame")
-        inputFrame.Size = UDim2.new(0.9, 0, 0.1, 0)
-        inputFrame.Position = UDim2.new(0.05, 0, getNextY(), 0)
+        inputFrame.Size = UDim2.new(1, -16, 0, 40)
         inputFrame.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
         inputFrame.Parent = contentFrame
 
@@ -334,7 +323,7 @@ function GPTLib:CreateWindow(title)
         inCorner.Parent = inputFrame
 
         local textBox = Instance.new("TextBox")
-        textBox.Size = UDim2.new(1, 0, 1, 0)
+        textBox.Size = UDim2.new(1, -16, 1, 0)
         textBox.PlaceholderText = placeholder
         textBox.TextColor3 = Color3.new(1, 1, 1)
         textBox.Font = Enum.Font.GothamBold
@@ -353,8 +342,7 @@ function GPTLib:CreateWindow(title)
     -- Create Checkbox
     function window:CreateCheckbox(text, callback)
         local checkboxFrame = Instance.new("Frame")
-        checkboxFrame.Size = UDim2.new(0.9, 0, 0.1, 0)
-        checkboxFrame.Position = UDim2.new(0.05, 0, getNextY(), 0)
+        checkboxFrame.Size = UDim2.new(1, -16, 0, 40)
         checkboxFrame.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
         checkboxFrame.Parent = contentFrame
 
