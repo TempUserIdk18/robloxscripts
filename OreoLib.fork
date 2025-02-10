@@ -21,7 +21,15 @@ local OrionLib = {
 			Divider = Color3.fromRGB(60, 60, 60),
 			Text = Color3.fromRGB(240, 240, 240),
 			TextDark = Color3.fromRGB(150, 150, 150)
-		}
+		},
+                Neon = {
+	                Main = Color3.fromRGB(10, 10, 30),      -- Deep blue background  
+	                Second = Color3.fromRGB(15, 15, 45),   -- Slightly lighter blue  
+	                Stroke = Color3.fromRGB(0, 255, 255),  -- Neon cyan outline  
+	                Divider = Color3.fromRGB(0, 180, 255), -- Bright blue dividers  
+	                Text = Color3.fromRGB(255, 255, 255),  -- Pure white text  
+	                TextDark = Color3.fromRGB(0, 200, 200) -- Soft cyan text for contrast  
+                }
 	},
 	SelectedTheme = "Default",
 	Folder = nil,
