@@ -45,15 +45,15 @@ end
 
 function GPTLib:CreateWindow(title)
     local screenGui = Instance.new("ScreenGui")
-    screenGui.Name = "GPTModernUI"
+    screenGui.Name = "ModernUI"
     screenGui.Parent = game.CoreGui
 
-    local window = {} -- This table will hold our creation functions
+    local window = {} -- Table to hold creation functions
 
     local frame = Instance.new("Frame")
-    frame.Size = UDim2.new(0.35, 0, 0.45, 0)
-    frame.Position = UDim2.new(0.325, 0, 0.275, 0)
-    frame.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+    frame.Size = UDim2.new(0.4, 0, 0.5, 0)
+    frame.Position = UDim2.new(0.3, 0, 0.25, 0)
+    frame.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
     frame.BorderSizePixel = 0
     frame.Parent = screenGui
 
@@ -61,9 +61,14 @@ function GPTLib:CreateWindow(title)
     corner.CornerRadius = UDim.new(0, 12)
     corner.Parent = frame
 
+    local stroke = Instance.new("UIStroke")
+    stroke.Thickness = 2
+    stroke.Color = Color3.fromRGB(70, 70, 70)
+    stroke.Parent = frame
+
     local titleBar = Instance.new("Frame")
-    titleBar.Size = UDim2.new(1, 0, 0.1, 0)
-    titleBar.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+    titleBar.Size = UDim2.new(1, 0, 0.12, 0)
+    titleBar.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
     titleBar.Parent = frame
 
     local titleText = Instance.new("TextLabel")
@@ -86,7 +91,7 @@ function GPTLib:CreateWindow(title)
     closeButton.Parent = titleBar
 
     closeButton.MouseButton1Click:Connect(function()
-        Tween(frame, "Size", UDim2.new(0.35, 0, 0, 0), 0.3)
+        Tween(frame, "Size", UDim2.new(0.4, 0, 0, 0), 0.3)
         wait(0.3)
         screenGui:Destroy()
     end)
@@ -105,14 +110,13 @@ function GPTLib:CreateWindow(title)
     end)
 
     local contentFrame = Instance.new("Frame")
-    contentFrame.Size = UDim2.new(1, 0, 0.9, 0)
-    contentFrame.Position = UDim2.new(0, 0, 0.1, 0)
+    contentFrame.Size = UDim2.new(1, 0, 0.88, 0)
+    contentFrame.Position = UDim2.new(0, 0, 0.12, 0)
     contentFrame.BackgroundTransparency = 1
     contentFrame.Parent = frame
 
-    -- Helper function to calculate Y position based on number of children
+    -- Helper function to calculate next Y position (each element takes ~12% height)
     local function getNextY()
-        -- Assumes each element takes ~12% of the height (0.12)
         return #contentFrame:GetChildren() * 0.12
     end
 
@@ -121,11 +125,16 @@ function GPTLib:CreateWindow(title)
         local button = Instance.new("TextButton")
         button.Size = UDim2.new(0.9, 0, 0.1, 0)
         button.Position = UDim2.new(0.05, 0, getNextY(), 0)
-        button.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+        button.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
         button.TextColor3 = Color3.fromRGB(255, 255, 255)
         button.Font = Enum.Font.GothamBold
         button.Text = text
         button.Parent = contentFrame
+
+        local btnCorner = Instance.new("UICorner")
+        btnCorner.CornerRadius = UDim.new(0, 6)
+        btnCorner.Parent = button
+
         button.MouseButton1Click:Connect(callback)
         return button
     end
@@ -135,19 +144,22 @@ function GPTLib:CreateWindow(title)
         local toggle = Instance.new("TextButton")
         toggle.Size = UDim2.new(0.9, 0, 0.1, 0)
         toggle.Position = UDim2.new(0.05, 0, getNextY(), 0)
-        toggle.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+        toggle.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
         toggle.TextColor3 = Color3.fromRGB(255, 255, 255)
         toggle.Font = Enum.Font.GothamBold
+        local state = false
         toggle.Text = text .. " [OFF]"
         toggle.Parent = contentFrame
-        local state = false
+
+        local togCorner = Instance.new("UICorner")
+        togCorner.CornerRadius = UDim.new(0, 6)
+        togCorner.Parent = toggle
 
         toggle.MouseButton1Click:Connect(function()
             state = not state
             toggle.Text = text .. (state and " [ON]" or " [OFF]")
             callback(state)
         end)
-
         return toggle
     end
 
@@ -156,8 +168,12 @@ function GPTLib:CreateWindow(title)
         local sliderFrame = Instance.new("Frame")
         sliderFrame.Size = UDim2.new(0.9, 0, 0.1, 0)
         sliderFrame.Position = UDim2.new(0.05, 0, getNextY(), 0)
-        sliderFrame.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+        sliderFrame.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
         sliderFrame.Parent = contentFrame
+
+        local slCorner = Instance.new("UICorner")
+        slCorner.CornerRadius = UDim.new(0, 6)
+        slCorner.Parent = sliderFrame
 
         local label = Instance.new("TextLabel")
         label.Text = text .. ": " .. default
@@ -210,8 +226,12 @@ function GPTLib:CreateWindow(title)
         local dropdownFrame = Instance.new("Frame")
         dropdownFrame.Size = UDim2.new(0.9, 0, 0.1, 0)
         dropdownFrame.Position = UDim2.new(0.05, 0, getNextY(), 0)
-        dropdownFrame.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+        dropdownFrame.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
         dropdownFrame.Parent = contentFrame
+
+        local ddCorner = Instance.new("UICorner")
+        ddCorner.CornerRadius = UDim.new(0, 6)
+        ddCorner.Parent = dropdownFrame
 
         local label = Instance.new("TextLabel")
         label.Text = text .. " ▼"
@@ -224,9 +244,13 @@ function GPTLib:CreateWindow(title)
         local listFrame = Instance.new("Frame")
         listFrame.Size = UDim2.new(1, 0, 0, #options * 25)
         listFrame.Position = UDim2.new(0, 0, 1, 0)
-        listFrame.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+        listFrame.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
         listFrame.Visible = false
         listFrame.Parent = dropdownFrame
+
+        local listCorner = Instance.new("UICorner")
+        listCorner.CornerRadius = UDim.new(0, 6)
+        listCorner.Parent = listFrame
 
         local function toggleList()
             listFrame.Visible = not listFrame.Visible
@@ -243,7 +267,7 @@ function GPTLib:CreateWindow(title)
             optionButton.Size = UDim2.new(1, 0, 0, 25)
             optionButton.Position = UDim2.new(0, 0, 0, (i - 1) * 25)
             optionButton.Text = option
-            optionButton.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
+            optionButton.BackgroundColor3 = Color3.fromRGB(70, 70, 70)
             optionButton.TextColor3 = Color3.new(1, 1, 1)
             optionButton.Font = Enum.Font.GothamBold
             optionButton.Parent = listFrame
@@ -262,8 +286,12 @@ function GPTLib:CreateWindow(title)
         local cpFrame = Instance.new("Frame")
         cpFrame.Size = UDim2.new(0.9, 0, 0.1, 0)
         cpFrame.Position = UDim2.new(0.05, 0, getNextY(), 0)
-        cpFrame.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+        cpFrame.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
         cpFrame.Parent = contentFrame
+
+        local cpCorner = Instance.new("UICorner")
+        cpCorner.CornerRadius = UDim.new(0, 6)
+        cpCorner.Parent = cpFrame
 
         local label = Instance.new("TextLabel")
         label.Text = text .. " - " .. tostring(defaultColor)
@@ -281,7 +309,7 @@ function GPTLib:CreateWindow(title)
         colorButton.Parent = cpFrame
 
         colorButton.MouseButton1Click:Connect(function()
-            -- For simplicity, toggle between two colors (red and blue)
+            -- Toggle between red and blue for demonstration
             if colorButton.BackgroundColor3 == Color3.new(1, 0, 0) then
                 colorButton.BackgroundColor3 = Color3.new(0, 0, 1)
             else
@@ -298,8 +326,12 @@ function GPTLib:CreateWindow(title)
         local inputFrame = Instance.new("Frame")
         inputFrame.Size = UDim2.new(0.9, 0, 0.1, 0)
         inputFrame.Position = UDim2.new(0.05, 0, getNextY(), 0)
-        inputFrame.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+        inputFrame.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
         inputFrame.Parent = contentFrame
+
+        local inCorner = Instance.new("UICorner")
+        inCorner.CornerRadius = UDim.new(0, 6)
+        inCorner.Parent = inputFrame
 
         local textBox = Instance.new("TextBox")
         textBox.Size = UDim2.new(1, 0, 1, 0)
@@ -323,8 +355,12 @@ function GPTLib:CreateWindow(title)
         local checkboxFrame = Instance.new("Frame")
         checkboxFrame.Size = UDim2.new(0.9, 0, 0.1, 0)
         checkboxFrame.Position = UDim2.new(0.05, 0, getNextY(), 0)
-        checkboxFrame.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+        checkboxFrame.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
         checkboxFrame.Parent = contentFrame
+
+        local cbCorner = Instance.new("UICorner")
+        cbCorner.CornerRadius = UDim.new(0, 6)
+        cbCorner.Parent = checkboxFrame
 
         local checkBox = Instance.new("TextButton")
         checkBox.Size = UDim2.new(0.2, 0, 1, 0)
