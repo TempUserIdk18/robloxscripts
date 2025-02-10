@@ -29,7 +29,44 @@ local OrionLib = {
 	                Divider = Color3.fromRGB(0, 180, 255), -- Bright blue dividers  
 	                Text = Color3.fromRGB(255, 255, 255),  -- Pure white text  
 	                TextDark = Color3.fromRGB(0, 200, 200) -- Soft cyan text for contrast  
-                }
+                },
+                Cyberpunk = {
+	Main = Color3.fromRGB(10, 10, 20),       -- Dark blueish background  
+	Second = Color3.fromRGB(20, 20, 40),     -- Slightly lighter blue  
+	Stroke = Color3.fromRGB(0, 255, 180),    -- Neon cyan stroke  
+	Divider = Color3.fromRGB(0, 180, 150),   -- Bright teal divider  
+	Text = Color3.fromRGB(255, 255, 255),    -- White text  
+	TextDark = Color3.fromRGB(180, 255, 255) -- Light cyan text  
+},
+
+Midnight = {
+	Main = Color3.fromRGB(18, 18, 18),       -- Deep black-gray background  
+	Second = Color3.fromRGB(28, 28, 28),     -- Dark gray  
+	Stroke = Color3.fromRGB(80, 80, 80),     -- Soft gray strokes  
+	Divider = Color3.fromRGB(90, 90, 90),    -- Slightly lighter gray divider  
+	Text = Color3.fromRGB(235, 235, 235),    -- Almost white text  
+	TextDark = Color3.fromRGB(150, 150, 150) -- Medium gray text  
+},
+
+Sunset = {
+	Main = Color3.fromRGB(50, 15, 25),       -- Dark red-brown background  
+	Second = Color3.fromRGB(70, 25, 40),     -- Warmer dark red  
+	Stroke = Color3.fromRGB(200, 80, 80),    -- Warm red strokes  
+	Divider = Color3.fromRGB(180, 70, 70),   -- Soft red divider  
+	Text = Color3.fromRGB(255, 220, 200),    -- Light peachy text  
+	TextDark = Color3.fromRGB(200, 150, 150) -- Muted pink text  
+},
+
+Ocean = {
+	Main = Color3.fromRGB(15, 30, 40),       -- Deep ocean blue  
+	Second = Color3.fromRGB(20, 40, 55),     -- Slightly brighter blue  
+	Stroke = Color3.fromRGB(0, 120, 200),    -- Oceanic blue stroke  
+	Divider = Color3.fromRGB(0, 100, 180),   -- Deep blue divider  
+	Text = Color3.fromRGB(220, 240, 255),    -- Very light blue text  
+	TextDark = Color3.fromRGB(150, 180, 200) -- Softer blue-gray text  
+}
+
+
 	},
 	SelectedTheme = "Default",
 	Folder = nil,
