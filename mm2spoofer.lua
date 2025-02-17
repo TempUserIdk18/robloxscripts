@@ -13,7 +13,7 @@ local Tab = Window:MakeTab({
     Icon = "rbxassetid://4483345998",
     PremiumOnly = false
 })
-Window:SetTheme("Ocean")
+Window:SetTheme("Ocean")                
 local Tab2 = Window:MakeTab({
     Name = "Info",
     Icon = "rbxassetid://4483345998",
@@ -22,8 +22,9 @@ local Tab2 = Window:MakeTab({
 Tab2:AddLabel("spoofs when round starts")
 Tab2:AddLabel("btw it works with MM2 copies!!!")
 Tab2:AddLabel("  ")
-Tab2:AddLabel("0.1 updatelog:")
-Tab2:AddLabel("added floating ui")
+Tab2:AddLabel("0.2 updatelog:")
+Tab2:AddLabel("esp now shows the gun as green")
+Tab2:AddLabel("made floating ui round")
 
 local MurdererLabel = Tab:AddLabel("murderer: None")
 local GunHolderLabel = Tab:AddLabel("sheriff: None")
@@ -96,6 +97,9 @@ local function createFloatingUI()
     UIStroke.Color = Color3.fromRGB(255, 255, 255)
     UIStroke.Thickness = 2
     UIStroke.Transparency = 0.5
+
+    -- UICorner
+    UICorner.Parent = Frame
 
     -- TitleBar
     TitleBar.Parent = Frame
