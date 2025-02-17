@@ -1,30 +1,27 @@
 local OreoLib = loadstring(game:HttpGet("https://raw.githubusercontent.com/TempUserIdk18/OreoLib/refs/heads/main/OreoLibSource.lua"))()
 
 local Window = OreoLib:MakeWindow({
-    Name = "Murder Mystery ROLE SPOOFER",
+    Name = "v3rmu's MM2",
     HidePremium = false,
     SaveConfig = false,
-    ConfigFolder = "mm2spoof",
+    ConfigFolder = "v3rmumm2",
     IntroEnabled = false,
     Icon = "rbxassetid://4483345998"
 })
 local Tab = Window:MakeTab({
-    Name = "Main",
+    Name = "M@in",
     Icon = "rbxassetid://4483345998",
     PremiumOnly = false
 })
-Window:SetTheme("Ocean")                
+Window:SetTheme("CoolKid")
+Window:SetWatermark(false)              
 local Tab2 = Window:MakeTab({
-    Name = "Info",
+    Name = "Inf0",
     Icon = "rbxassetid://4483345998",
     PremiumOnly = false
 })
-Tab2:AddLabel("spoofs when round starts")
-Tab2:AddLabel("btw it works with MM2 copies!!!")
-Tab2:AddLabel("  ")
-Tab2:AddLabel("0.2 updatelog:")
-Tab2:AddLabel("esp now shows the gun as green")
-Tab2:AddLabel("made floating ui round")
+Tab2:AddLabel("by v3rmu")
+Tab2:AddLabel("w0rks w/ mm2 c0pies")
 
 local MurdererLabel = Tab:AddLabel("murderer: None")
 local GunHolderLabel = Tab:AddLabel("sheriff: None")
@@ -87,26 +84,23 @@ local function createFloatingUI()
 
     -- Frame
     Frame.Parent = FloatingUIFrame
-    Frame.BackgroundColor3 = Color3.fromRGB(30,30,30)
+    Frame.BackgroundColor3 = Color3.fromRGB(45,45,45)
     Frame.Size = UDim2.new(0, 300, 0, 150)
     Frame.Position = UDim2.new(0.5, -150, 0.1, 0)
     Frame.BorderSizePixel = 0
 
     -- UIStroke
     UIStroke.Parent = Frame
-    UIStroke.Color = Color3.fromRGB(255, 255, 255)
+    UIStroke.Color = Color3.fromRGB(255,0,0)
     UIStroke.Thickness = 2
-    UIStroke.Transparency = 0.5
-
-    -- UICorner
-    UICorner.Parent = Frame
+    UIStroke.Transparency = 0
 
     -- TitleBar
     TitleBar.Parent = Frame
     TitleBar.Size = UDim2.new(1, 0, 0, 30)
-    TitleBar.BackgroundColor3 = Color3.fromRGB(32, 53, 245)
-    TitleBar.Text = "Info"
-    TitleBar.TextColor3 = Color3.new(1, 1, 1)
+    TitleBar.BackgroundColor3 = Color3.fromRGB(30,30,30)
+    TitleBar.Text = "v3rmu's mm2"
+    TitleBar.TextColor3 = Color3.new(255,255,255)
     TitleBar.Font = Enum.Font.GothamBold
     TitleBar.TextSize = 18
     TitleBar.BorderSizePixel = 0
@@ -189,7 +183,7 @@ local function updateFloatingUI(MurdererText, SheriffText)
 end
 
 Tab:AddToggle({
-    Name = "Floating UI",
+    Name = "mini UI",
     Default = false,
     Callback = function(value)
         FloatingUIEnabled = value
@@ -230,7 +224,7 @@ Tab:AddButton({
 })
 local highlightEnabled = false
 Tab:AddToggle({
-    Name = "ESP",
+    Name = "v3rmu ESP",
     Default = false,
     Callback = function(value)
         highlightEnabled = value
