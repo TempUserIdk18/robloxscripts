@@ -6,7 +6,9 @@ local UserInputService = game:GetService("UserInputService")
 local letterReplacements = {
     ["u"] = {"น"},
     ["s"] = {"ร"},
-    ["i"] = {"ί", "Ϊ"}
+    ["i"] = {"ί", "Ϊ"},
+    ["I"] = {"l"},
+    ["U"] = {"U"}
 }
 local screenGui = Instance.new("ScreenGui")
 screenGui.Parent = game.CoreGui
@@ -58,27 +60,12 @@ local function createNotification(title, content, duration)
 end
 local function replaceLetters(message)
     for original, replacements in pairs(letterReplacements) do
-        -- Replace lowercase
+        -- Replace only lowercase letters
         message = message:gsub(original, function()
             if #replacements == 1 then
                 return replacements[1]
             else
                 return replacements[math.random(#replacements)]
-            end
-        end)
-
-        -- Replace uppercase
-        local upperOriginal = original:upper()
-        message = message:gsub(upperOriginal, function()
-            local upperReplacements = {}
-            for _, rep in ipairs(replacements) do
-                table.insert(upperReplacements, rep:upper()) -- Convert replacements to uppercase
-            end
-
-            if #upperReplacements == 1 then
-                return upperReplacements[1]
-            else
-                return upperReplacements[math.random(#upperReplacements)]
             end
         end)
     end
