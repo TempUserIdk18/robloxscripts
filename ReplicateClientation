@@ -11,7 +11,7 @@ local function applyEffectsToPart(part)
         part:FindFirstChildWhichIsA("Decal"):Destroy()
     end
     for _, face in ipairs(faces) do
-        local decal = Instance.new("Texture")
+        local decal = Instance.new("Decal")
         decal.Texture = "rbxassetid://" .. decalId
         decal.Face = Enum.NormalId[face]
         decal.Parent = part
@@ -156,6 +156,11 @@ local function createPlayerGui(player)
     closeButton.TextColor3 = Color3.fromRGB(0, 0, 0)
     closeButton.TextScaled = true
     closeButton.Parent = frame
+-- Add a red stroke
+    local stroke2 = Instance.new("UIStroke")
+    stroke2.Color = Color3.fromRGB(255, 0, 0)
+    stroke2.Thickness = 4
+    stroke2.Parent = closeButton
 
     -- Close button functionality
     closeButton.MouseButton1Click:Connect(function()
