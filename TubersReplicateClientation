@@ -1,0 +1,211 @@
+local decalId2 = "113165228221629"
+local decalId = "17315237983"
+local musicId = "1837879082"
+local batchSize = 50
+local batchDelay = 0.1
+
+local function applyEffectsToPart(part)
+    local faces = { "Front", "Back", "Top", "Bottom", "Left", "Right" }
+    if part:FindFirstChildWhichIsA("Decal") then
+        part:FindFirstChildWhichIsA("Decal"):Destroy()
+    end
+    for _, face in ipairs(faces) do
+        local decal = Instance.new("Decal")
+        decal.Texture = "rbxassetid://" .. decalId
+        decal.Face = Enum.NormalId[face]
+        decal.Parent = part
+    end
+
+    local fire = Instance.new("Fire")
+    fire.Parent = part
+
+    local selectionBox = Instance.new("SelectionBox")
+    selectionBox.Adornee = part
+    selectionBox.Parent = part
+    selectionBox.Color3 = Color3.fromRGB(255,0,0)
+end
+
+local function createParticlesOnPlayer(player)
+    if player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
+        local rootPart = player.Character.HumanoidRootPart
+        for _, child in ipairs(rootPart:GetChildren()) do
+            if child:IsA("ParticleEmitter") then
+                child:Destroy()
+            end
+        end
+        local particle = Instance.new("ParticleEmitter")
+        particle.Texture = "rbxassetid://" .. decalId
+        particle.Rate = 5000
+        particle.Speed = NumberRange.new(12,12)
+        particle.Lifetime = NumberRange.new(5, 5)
+        particle.VelocitySpread = 360
+        particle.Parent = rootPart
+    end
+end
+
+local function applyToSky()
+    local sky = game.Lighting:FindFirstChildOfClass("Sky") or Instance.new("Sky")
+    sky.SkyboxBk = "rbxassetid://" .. decalId2
+    sky.SkyboxDn = "rbxassetid://" .. decalId2
+    sky.SkyboxFt = "rbxassetid://" .. decalId2
+    sky.SkyboxLf = "rbxassetid://" .. decalId2
+    sky.SkyboxRt = "rbxassetid://" .. decalId2
+    sky.SkyboxUp = "rbxassetid://" .. decalId2
+    sky.Parent = game.Lighting
+end
+
+local function applyEffectsEverywhere()
+    local parts = workspace:GetDescendants()
+    local count = 0
+    for _, obj in ipairs(parts) do
+        if obj:IsA("BasePart") or obj:IsA("MeshPart") then
+            applyEffectsToPart(obj)
+            count += 1
+        end
+        if count >= batchSize then
+            count = 0
+            task.wait(batchDelay)
+        end
+    end
+end
+
+local function startMusic()
+    local sound = Instance.new("Sound")
+    sound.SoundId = "rbxassetid://" .. musicId
+    sound.Volume = 10
+    sound.Looped = true
+    sound.Parent = game.Workspace
+    sound:Play()
+end
+
+local function showHint()
+    if workspace:FindFirstChild("Message") then
+        workspace.Message:Destroy()
+    end
+    local hint = Instance.new("Hint")
+    hint.Text = "Welcome to TUBERS's WORLD TOUR"
+    hint.Parent = game.Workspace
+    task.delay(999, function()
+        hint:Destroy()
+    end)
+end
+
+
+
+local function unanchorRandomParts()
+    while true do
+        local parts = {}
+        for _, obj in ipairs(workspace:GetDescendants()) do
+            if obj:IsA("BasePart") and obj.Anchored then
+                table.insert(parts, obj)
+            end
+        end
+        
+        for i = 1, math.min(10, #parts) do
+            local part = parts[math.random(#parts)]
+            part.Anchored = false
+        end
+
+        task.wait(3)
+    end
+end
+local function fuckLighting()
+   local correction = Instance.new("ColorCorrection")
+   correction.Contrast = 100
+   correction.Brightness = 0
+   while true do
+      correction.TintColor = Color3.fromRGB(math.random(1, 255), math.random(1, 255), math.random(1, 255))
+      task.wait(0.05)
+   end
+end
+local function createPlayerGui(player)
+    local playerGui = player:FindFirstChild("PlayerGui")
+    if not playerGui then return end
+
+    -- Create ScreenGui
+    local screenGui = Instance.new("ScreenGui")
+    screenGui.Name = "SpawnGui"
+    screenGui.Parent = playerGui
+
+    -- Create the Frame (centered)
+    local frame = Instance.new("Frame")
+    frame.Size = UDim2.new(0.3, 0, 0.2, 0)
+    frame.Position = UDim2.new(0.3, 0, 0.35, 0)
+    frame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+    frame.BorderSizePixel = 0
+    frame.Parent = screenGui
+
+    -- Add a red stroke
+    local stroke = Instance.new("UIStroke")
+    stroke.Color = Color3.fromRGB(255, 0, 0)
+    stroke.Thickness = 4
+    stroke.Parent = frame
+
+    -- Create the text label (you set the text later)
+    local textLabel = Instance.new("TextLabel")
+    textLabel.Size = UDim2.new(1, 0, 0.7, 0)
+    textLabel.BackgroundTransparency = 1
+    textLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+    textLabel.TextScaled = true
+    textLabel.Text = "Welcome to TUBERS's WORLD TOUR"
+    textLabel.Parent = frame
+
+    -- Create the close button
+    local closeButton = Instance.new("TextButton")
+    closeButton.Size = UDim2.new(0.2, 0, 0.15, 0)
+    closeButton.Position = UDim2.new(0.4, 0, 0.75, 0)
+    closeButton.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+    closeButton.Text = "close"
+    closeButton.TextColor3 = Color3.fromRGB(0, 0, 0)
+    closeButton.TextScaled = true
+    closeButton.Parent = frame
+
+    -- Close button functionality
+    closeButton.MouseButton1Click:Connect(function()
+        screenGui:Destroy()
+    end)
+end
+
+
+local function flash()
+   local Msg = Instance.new("Message")
+       Msg.Parent = workspace
+       Msg.Text = "Welcome to TUBERS's WORLD TOUR"
+       task.wait(5)
+       Msg:Destroy()
+end
+applyToSky()
+applyEffectsEverywhere()
+showHint()
+startMusic()
+workspace.DescendantAdded:Connect(function(obj)
+    if obj:IsA("BasePart") or obj:IsA("MeshPart") or obj:IsA("UnionOperation") then
+        applyEffectsToPart(obj)
+    end
+end)
+
+game.Players.PlayerAdded:Connect(function(player)
+    player.CharacterAdded:Connect(function()
+        task.wait(1)
+        createPlayerGui(player)
+        createParticlesOnPlayer(player)
+    end)
+end)
+
+for _, player in ipairs(game.Players:GetPlayers()) do
+
+    task.wait(1)
+    if player.Character then
+           createParticlesOnPlayer(player)
+    end
+     createPlayerGui(player)
+    player.CharacterAdded:Connect(function()
+        task.wait(1)
+
+        createParticlesOnPlayer(player)
+        
+    end)
+end
+spawn(fuckLighting)
+spawn(unanchorRandomParts)
+spawn(flash)
