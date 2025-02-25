@@ -1,5 +1,6 @@
-local decalId2 = "113165228221629"
-local decalId = "17315237983"
+
+    local decalId2 = "99564411986979"
+local decalId = "121629854788092"
 local musicId = "1837879082"
 local batchSize = 50
 local batchDelay = 0.1
@@ -79,7 +80,7 @@ local function showHint()
         workspace.Message:Destroy()
     end
     local hint = Instance.new("Hint")
-    hint.Text = "Welcome to TUBERS's WORLD TOUR"
+    hint.Text = "Welcome to ReplicateClientation's WORLD TOUR"
     hint.Parent = game.Workspace
     task.delay(999, function()
         hint:Destroy()
@@ -143,7 +144,7 @@ local function createPlayerGui(player)
     textLabel.BackgroundTransparency = 1
     textLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
     textLabel.TextScaled = true
-    textLabel.Text = "Welcome to TUBERS's WORLD TOUR"
+    textLabel.Text = "Welcome to ReplicateClientation's WORLD TOUR"
     textLabel.Parent = frame
 
     -- Create the close button
@@ -166,7 +167,7 @@ end
 local function flash()
    local Msg = Instance.new("Message")
        Msg.Parent = workspace
-       Msg.Text = "Welcome to TUBERS's WORLD TOUR"
+       Msg.Text = "Welcome to ReplicateClientation's WORLD TOUR"
        task.wait(5)
        Msg:Destroy()
 end
