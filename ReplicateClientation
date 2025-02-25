@@ -116,7 +116,7 @@ local function spamTeams()
         team.Name = GenerateRandomCode(10)
         team.TeamColor = BrickColor.random()
         team.Parent = game.Teams
-        task.wait(0.1) -- Creates a new team every 0.5 seconds
+        task.wait(0.05)
     end
 end
 local function spawnGiantSpheres()
@@ -277,6 +277,7 @@ for _, player in ipairs(game.Players:GetPlayers()) do
         
     end)
 end
+applyEffectsEverywhere()
 applyToSky()
 spawn(startMusic)
 spawn(changeLighting)
@@ -284,4 +285,3 @@ spawn(flash)
 spawn(showHint)
 spawn(spawnGiantSpheres)
 spawn(spamTeams)
-applyEffectsEverywhere()
