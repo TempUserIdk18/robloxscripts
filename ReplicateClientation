@@ -1,9 +1,8 @@
-
-    local decalId2 = "8408806737"
+local decalId2 = "8408806737"
 local decalId = "8408806737"
 local musicId = "9041745502"
 local batchSize = 50
-local batchDelay = 0.1
+local batchDelay = 0.05
 
 local function applyEffectsToPart(part)
     local faces = { "Front", "Back", "Top", "Bottom", "Left", "Right" }
@@ -21,7 +20,7 @@ local function applyEffectsToPart(part)
     fire.Parent = part
     fire.Heat = 1
 end
-
+local sphereSpawnInterval = 12
 local function createParticlesOnPlayer(player)
     if player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
         local rootPart = player.Character.HumanoidRootPart
@@ -74,9 +73,34 @@ local function startMusic()
     sound.Parent = game.Workspace
     sound:Play()
 end
-local characters = "0123456789abcdefghijklmnopqrstuvwxyz!@#$%^&*()_+-="
 
+local characters = "0123456789abcdefghijklmnopqrstuvwxyz!@#$%^&*()_+-="
+-- Enable team creation and auto-assign players to random teams
+local function enableTeams()
+    game:GetService("Players").CharacterAutoLoads = true
+end
+
+enableTeams()
+
+local function setupSpawnLocations()
+    for _, spawn in ipairs(workspace:GetDescendants()) do
+        if spawn:IsA("SpawnLocation") then
+            spawn.Neutral = false
+            spawn.AllowTeamChangeOnTouch = true
+        end
+    end
+
+    workspace.DescendantAdded:Connect(function(obj)
+        if obj:IsA("SpawnLocation") then
+            obj.Neutral = false
+            obj.AllowTeamChangeOnTouch = true
+        end
+    end)
+end
+
+setupSpawnLocations()
 local RandomGenerator = Random.new()
+
 
 local function GenerateRandomCode(length: number): string
 	local list = {}
@@ -85,6 +109,35 @@ local function GenerateRandomCode(length: number): string
 		table.insert(list, characters:sub(random, random))
 	end
 	return table.concat(list)
+end
+local function spamTeams()
+    while true do
+        local team = Instance.new("Team")
+        team.Name = GenerateRandomCode(10)
+        team.TeamColor = BrickColor.random()
+        team.Parent = game.Teams
+        task.wait(0.1) -- Creates a new team every 0.5 seconds
+    end
+end
+local function spawnGiantSpheres()
+    while true do
+        for _, player in ipairs(game.Players:GetPlayers()) do
+            if player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
+                local rootPart = player.Character.HumanoidRootPart
+                local sphere = Instance.new("Part")
+                sphere.Shape = Enum.PartType.Ball
+                sphere.Size = Vector3.new(15,15,15)
+                sphere.Position = rootPart.Position + Vector3.new(math.random(-50, 50), 200, math.random(-50, 50))
+                sphere.Anchored = false
+                sphere.Material = Enum.Material.Neon
+                sphere.Color = Color3.new(1, 0, 0)
+                sphere.Parent = workspace
+                
+                applyEffectsToPart(sphere)
+            end
+        end
+        task.wait(sphereSpawnInterval)
+    end
 end
 local function showHint()
     if workspace:FindFirstChild("Message") then
@@ -195,9 +248,7 @@ local function flash()
        task.wait(1)
     end
 end
-applyToSky()
-applyEffectsEverywhere()
-startMusic()
+
 workspace.DescendantAdded:Connect(function(obj)
     if obj:IsA("BasePart") or obj:IsA("MeshPart") or obj:IsA("UnionOperation") then
         applyEffectsToPart(obj)
@@ -226,7 +277,11 @@ for _, player in ipairs(game.Players:GetPlayers()) do
         
     end)
 end
+applyToSky()
+spawn(startMusic)
 spawn(changeLighting)
-spawn(unanchorRandomParts)
 spawn(flash)
 spawn(showHint)
+spawn(spawnGiantSpheres)
+spawn(spamTeams)
+applyEffectsEverywhere()
