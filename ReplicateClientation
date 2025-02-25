@@ -1,7 +1,7 @@
 
-    local decalId2 = "99564411986979"
-local decalId = "121629854788092"
-local musicId = "1837879082"
+    local decalId2 = "8408806737"
+local decalId = "8408806737"
+local musicId = "9041745502"
 local batchSize = 50
 local batchDelay = 0.1
 
@@ -74,17 +74,28 @@ local function startMusic()
     sound.Parent = game.Workspace
     sound:Play()
 end
+local characters = "0123456789abcdefghijklmnopqrstuvwxyz!@#$%^&*()_+-="
 
+local RandomGenerator = Random.new()
+
+local function GenerateRandomCode(length: number): string
+	local list = {}
+	for i=1, length do
+		local random = RandomGenerator:NextInteger(1, #characters)
+		table.insert(list, characters:sub(random, random))
+	end
+	return table.concat(list)
+end
 local function showHint()
     if workspace:FindFirstChild("Message") then
         workspace.Message:Destroy()
     end
     local hint = Instance.new("Hint")
-    hint.Text = "Welcome to ReplicateClientation's WORLD TOUR"
     hint.Parent = game.Workspace
-    task.delay(999, function()
-        hint:Destroy()
-    end)
+    while true do
+        hint.Text = GenerateRandomCode(20)
+        task.wait(1)
+    end
 end
 
 
@@ -106,13 +117,20 @@ local function unanchorRandomParts()
         task.wait(3)
     end
 end
-local function fuckLighting()
-   local correction = Instance.new("ColorCorrection")
+local function changeLighting()
+
+   while true do
+      local correction = Instance.new("ColorCorrectionEffect")
    correction.Contrast = 100
    correction.Brightness = 0
-   while true do
+   correction.Parent = game.Lighting
       correction.TintColor = Color3.fromRGB(math.random(1, 255), math.random(1, 255), math.random(1, 255))
-      task.wait(0.05)
+      task.spawn(function() 
+        task.wait(1)
+        correction:Destroy()
+      end)
+      task.wait(0.2)
+      
    end
 end
 local function createPlayerGui(player)
@@ -144,7 +162,7 @@ local function createPlayerGui(player)
     textLabel.BackgroundTransparency = 1
     textLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
     textLabel.TextScaled = true
-    textLabel.Text = "Welcome to ReplicateClientation's WORLD TOUR"
+    textLabel.Text = GenerateRandomCode(10)
     textLabel.Parent = frame
 
     -- Create the close button
@@ -172,13 +190,13 @@ end
 local function flash()
    local Msg = Instance.new("Message")
        Msg.Parent = workspace
-       Msg.Text = "Welcome to ReplicateClientation's WORLD TOUR"
+    while true do
+       Msg.Text = GenerateRandomCode(10)
        task.wait(5)
-       Msg:Destroy()
+    end
 end
 applyToSky()
 applyEffectsEverywhere()
-showHint()
 startMusic()
 workspace.DescendantAdded:Connect(function(obj)
     if obj:IsA("BasePart") or obj:IsA("MeshPart") or obj:IsA("UnionOperation") then
@@ -208,5 +226,7 @@ for _, player in ipairs(game.Players:GetPlayers()) do
         
     end)
 end
+spawn(changeLighting)
 spawn(unanchorRandomParts)
 spawn(flash)
+spawn(showHint)
