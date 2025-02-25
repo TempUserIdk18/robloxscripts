@@ -114,7 +114,7 @@ local function unanchorRandomParts()
             part.Anchored = false
         end
 
-        task.wait(3)
+        task.wait(1)
     end
 end
 local function changeLighting()
@@ -192,7 +192,7 @@ local function flash()
        Msg.Parent = workspace
     while true do
        Msg.Text = GenerateRandomCode(10)
-       task.wait(5)
+       task.wait(1)
     end
 end
 applyToSky()
