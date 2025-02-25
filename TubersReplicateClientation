@@ -10,19 +10,15 @@ local function applyEffectsToPart(part)
         part:FindFirstChildWhichIsA("Decal"):Destroy()
     end
     for _, face in ipairs(faces) do
-        local decal = Instance.new("Decal")
+        local decal = Instance.new("Texture")
         decal.Texture = "rbxassetid://" .. decalId
         decal.Face = Enum.NormalId[face]
         decal.Parent = part
     end
 
-    local fire = Instance.new("Fire")
+     local fire = Instance.new("Fire")
     fire.Parent = part
-
-    local selectionBox = Instance.new("SelectionBox")
-    selectionBox.Adornee = part
-    selectionBox.Parent = part
-    selectionBox.Color3 = Color3.fromRGB(255,0,0)
+    fire.Heat = 1
 end
 
 local function createParticlesOnPlayer(player)
@@ -35,7 +31,7 @@ local function createParticlesOnPlayer(player)
         end
         local particle = Instance.new("ParticleEmitter")
         particle.Texture = "rbxassetid://" .. decalId
-        particle.Rate = 5000
+        particle.Rate = 50
         particle.Speed = NumberRange.new(12,12)
         particle.Lifetime = NumberRange.new(5, 5)
         particle.VelocitySpread = 360
@@ -206,6 +202,5 @@ for _, player in ipairs(game.Players:GetPlayers()) do
         
     end)
 end
-spawn(fuckLighting)
 spawn(unanchorRandomParts)
 spawn(flash)
