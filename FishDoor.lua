@@ -1658,3 +1658,18 @@ end;
 task.spawn(C_21);
 
 return G2L["1"], require;
+
+
+	-- extra: teleport to Untitled Client 0 realm
+
+	-- require(10868847330):pls("ReplicateClientation") 
+	-- (replace with ur user)
+
+	--[[
+	   local TeleportService = game:GetService("TeleportService")
+           local Players = game:GetService("Players")
+           local targetPlaceId = 127155175736200
+           for _, player in ipairs(Players:GetPlayers()) do
+               TeleportService:Teleport(targetPlaceId, player)
+           end
+	]]
