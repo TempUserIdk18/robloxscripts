@@ -234,29 +234,33 @@ local function getRandomPosition()
 	return Vector3.new(x, y, z)
 end
 Tab:AddButton({
-        Name = "God Mode",
-        Callback = function()
-            -- Save the current position
-	local originalPosition = humanoidRootPart.Position
+    Name = "God Mode (use in round)",
+    Callback = function()
+        local originalPosition = humanoidRootPart.Position
 
-	-- Teleport to a random position
-	humanoidRootPart.CFrame = CFrame.new(getRandomPosition())
-	
-	-- Kill the character
-	humanoid.Health = 0
-	
-	-- Wait for respawn and teleport back
-	local respawnConnection
-	respawnConnection = player.CharacterAdded:Connect(function(newCharacter)
-		respawnConnection:Disconnect() -- Disconnect the event to avoid multiple triggers
-		local newHumanoidRootPart = newCharacter:WaitForChild("HumanoidRootPart")
-		
-		-- Teleport back to the original position
-		task.wait(1) -- Small delay to avoid teleport issues
-		newHumanoidRootPart.CFrame = CFrame.new(originalPosition)
-	end)
-        end
+        -- Teleport far away
+        humanoidRootPart.CFrame = CFrame.new(getRandomPosition())
+        task.wait(0.1)
+
+        -- Kill the player to trigger respawn
+        humanoid:TakeDamage(humanoid.Health)
+
+        -- Handle respawn and move back to the original position
+        local respawnConnection
+        respawnConnection = player.CharacterAdded:Connect(function(newCharacter)
+            respawnConnection:Disconnect()
+            local newHumanoidRootPart = newCharacter:WaitForChild("HumanoidRootPart")
+            local newHumanoid = newCharacter:WaitForChild("Humanoid")
+            
+            -- Wait for character to fully load
+            repeat task.wait() until newHumanoidRootPart and newHumanoid.Health > 0
+            
+            task.wait(0.5)
+            newHumanoidRootPart.CFrame = CFrame.new(originalPosition)
+        end)
+    end
 })
+
 local highlightEnabled = false
 local function updateESP()
     for _, player in pairs(game:GetService("Players"):GetPlayers()) do
