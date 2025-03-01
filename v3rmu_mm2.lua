@@ -222,41 +222,112 @@ Tab:AddButton({
         OreoLib:Destroy()
     end    
 })
+local player = game.Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+local humanoid = character:WaitForChild("Humanoid")
+
+local function getRandomPosition()
+	local x = math.random(-500, 500)
+	local y = math.random(10, 100)
+	local z = math.random(-500, 500)
+	return Vector3.new(x, y, z)
+end
+Tab:AddButton({
+        Name = "God Mode",
+        Callback = function()
+            -- Save the current position
+	local originalPosition = humanoidRootPart.Position
+
+	-- Teleport to a random position
+	humanoidRootPart.CFrame = CFrame.new(getRandomPosition())
+	
+	-- Kill the character
+	humanoid.Health = 0
+	
+	-- Wait for respawn and teleport back
+	local respawnConnection
+	respawnConnection = player.CharacterAdded:Connect(function(newCharacter)
+		respawnConnection:Disconnect() -- Disconnect the event to avoid multiple triggers
+		local newHumanoidRootPart = newCharacter:WaitForChild("HumanoidRootPart")
+		
+		-- Teleport back to the original position
+		task.wait(1) -- Small delay to avoid teleport issues
+		newHumanoidRootPart.CFrame = CFrame.new(originalPosition)
+	end)
+        end
+})
 local highlightEnabled = false
+local function updateESP()
+    for _, player in pairs(game:GetService("Players"):GetPlayers()) do
+        if player.Character then
+            local highlight = player.Character:FindFirstChildOfClass("Highlight")
+            if not highlight then
+                highlight = Instance.new("Highlight")
+                highlight.Parent = player.Character
+                highlight.FillTransparency = 0.5
+                highlight.OutlineTransparency = 0
+                highlight.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
+            end
+
+            local hasKnife = false
+            local hasGun = false
+
+            -- Check backpack and character for items
+            local function checkItems(container)
+                for _, item in pairs(container:GetChildren()) do
+                    if item:IsA("Tool") then
+                        if item.Name == "Knife" then
+                            hasKnife = true
+                        elseif item.Name == "Gun" then
+                            hasGun = true
+                        end
+                    end
+                end
+            end
+
+            if player:FindFirstChild("Backpack") then
+                checkItems(player.Backpack)
+            end
+            
+            if player.Character then
+                checkItems(player.Character)
+            end
+
+            -- Set highlight color based on item possession
+            if hasKnife then
+                highlight.FillColor = Color3.fromRGB(255, 0, 0) -- Red for knife
+            elseif hasGun then
+                highlight.FillColor = Color3.fromRGB(0, 0, 255) -- Blue for gun
+            else
+                highlight.FillColor = Color3.fromRGB(0, 255, 0) -- Green for nothing
+            end
+        end
+    end
+end
 Tab:AddToggle({
-    Name = "v3rmu ESP",
+        Name = "v3rmu ESP",
     Default = false,
     Callback = function(value)
         highlightEnabled = value
+        
+        if not value then
+            -- Clean up highlights when toggling off
+            for _, player in pairs(game:GetService("Players"):GetPlayers()) do
+                if player.Character then
+                    local highlight = player.Character:FindFirstChildOfClass("Highlight")
+                    if highlight then
+                        highlight:Destroy()
+                    end
+                end
+            end
+        end
     end    
 })
 while true do
     updateLabels()
-    
     if highlightEnabled then
-        for _, player in pairs(game:GetService("Players"):GetPlayers()) do
-            if player.Character then
-                local highlight = player.Character:FindFirstChildOfClass("Highlight")
-                if not highlight then
-                    highlight = Instance.new("Highlight")
-                    highlight.Parent = player.Character
-                    highlight.FillTransparency = 1
-                    highlight.OutlineColor = Color3.fromRGB(255, 255, 255)
-                    highlight.OutlineTransparency = 0
-                    highlight.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
-                end
-            end
-        end
-    else
-        for _, player in pairs(game:GetService("Players"):GetPlayers()) do
-            if player.Character then
-                local highlight = player.Character:FindFirstChildOfClass("Highlight")
-                if highlight then
-                    highlight:Destroy()
-                end
-            end
-        end
+        updateESP()
     end
-    
     wait(1)
 end
