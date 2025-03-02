@@ -333,5 +333,5 @@ while true do
     if highlightEnabled then
         updateESP()
     end
-    wait(1)
+    wait(0.1)
 end
