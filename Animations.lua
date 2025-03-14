@@ -8,190 +8,190 @@ local Window = Library.CreateLib("Animation Player", "Ocean")
 local CustomTab = Window:NewTab("Custom Anims")
 local BuiltInTab = Window:NewTab("Built-in Anims")
 local RigsTab = Window:NewTab("Change Rig Type")
+
 -- Create Sections
 local CustomSection = CustomTab:NewSection("Custom Animation")
 local BuiltInSection = BuiltInTab:NewSection("Built-in Animations")
 local RigSection = RigsTab:NewSection("Rig Type")
--- Variables
-local AnimationId = ""
-local track
-local AnimationActive = false
 
--- Animation ID Input
-CustomSection:NewTextBox("Animation ID", "Enter animation asset ID", function(Value)
-    AnimationId = Value
-end)
-local function playAnimation(Value)
+-- Variables
+local tracks = {} -- Dictionary to store animation tracks
+local AnimationActive = {} -- Dictionary to track animation states
+
+-- Play Animation Function
+local function playAnimation(AnimationId, Value)
     local player = game.Players.LocalPlayer
     local char = player.Character or player.CharacterAdded:Wait()
     local humanoid = char:WaitForChild("Humanoid")
     
     if AnimationId ~= "" then
-        if not track then
+        if not tracks[AnimationId] then
             local Anim = Instance.new("Animation")
             Anim.AnimationId = "rbxassetid://" .. AnimationId
 
             local success, err = pcall(function()
-                track = humanoid:LoadAnimation(Anim)
+                tracks[AnimationId] = humanoid:LoadAnimation(Anim)
             end)
             
             if not success then
                 return
             end
-            track.Priority = Enum.AnimationPriority.Action
-            track.Looped = true
-        
+            tracks[AnimationId].Priority = Enum.AnimationPriority.Action
+            tracks[AnimationId].Looped = true
         end
 
-        AnimationActive = Value
+        AnimationActive[AnimationId] = Value
         
-        if AnimationActive then
+        if AnimationActive[AnimationId] then
             if AnimationId == "27432691" then
-                track:Play(0.1, 1, 5000)
-                return
-            end
-            if AnimationId == "259438880" then
-                track.Looped = false
-                while AnimationActive do
-                    track:Stop()
-                    track:Play(0.1, 1, 500)
-                    track.TimePosition = 0.3
-                    task.wait(0.0000001)
-                end
-                return
-            end
-            if AnimationId == "313762630" then
-                track.Looped = false
-                while AnimationActive do
-                    track:Stop()
-                    track:Play(0.1, 1, 1)
-                    track.TimePosition = 2
-                    task.wait(0.0000001)
-                end
-                return
-            end
-            if AnimationId == "184574340" then
-                track:Play(0.1, 1, 5000) 
-                return
-            end
-            if AnimationId == "33796059" then
-                track:Play(0.1, 1, 5000) 
-                return
-            end
-            
-            if AnimationId == "35154961" then
-                track.Looped = false
-                while AnimationActive do
-                    track:Stop()
-                    track:Play(0.1, 1, 500)
-                    track.TimePosition = 3.7
-                    task.wait(0.0000001)
-                end
-                return
-            end
-            if AnimationId == "215384594" then
-                track:Play(0.1, 1, 500000) 
-                return
-            end
+    tracks[AnimationId]:Play(0.1, 1, 5000)
+    return
+end
+if AnimationId == "259438880" then
+    tracks[AnimationId].Looped = false
+    while AnimationActive[AnimationId] do
+        tracks[AnimationId]:Stop()
+        tracks[AnimationId]:Play(0.1, 1, 500)
+        tracks[AnimationId].TimePosition = 0.3
+        task.wait(0.0000001)
+    end
+    return
+end
+if AnimationId == "313762630" then
+    tracks[AnimationId].Looped = false
+    while AnimationActive[AnimationId] do
+        tracks[AnimationId]:Stop()
+        tracks[AnimationId]:Play(0.1, 1, 1)
+        tracks[AnimationId].TimePosition = 2
+        task.wait(0.0000001)
+    end
+    return
+end
+if AnimationId == "184574340" then
+    tracks[AnimationId]:Play(0.1, 1, 5000)
+    return
+end
+if AnimationId == "33796059" then
+    tracks[AnimationId]:Play(0.1, 1, 5000)
+    return
+end
+if AnimationId == "35154961" then
+    tracks[AnimationId].Looped = false
+    while AnimationActive[AnimationId] do
+        tracks[AnimationId]:Stop()
+        tracks[AnimationId]:Play(0.1, 1, 500)
+        tracks[AnimationId].TimePosition = 3.7
+        task.wait(0.0000001)
+    end
+    return
+end
+if AnimationId == "215384594" then
+    tracks[AnimationId]:Play(0.1, 1, 500000)
+    return
+end
+if AnimationId == "181525546" then
+    tracks[AnimationId]:Play(0.1, 1, 5000)
+    return
+end
+if AnimationId == "754656200" then
+    tracks[AnimationId]:Play(0.1, 1, 5000)
+    return
+end
+if AnimationId == "136801964" then
+    tracks[AnimationId].Looped = false
+    while AnimationActive[AnimationId] do
+        tracks[AnimationId]:Stop()
+        tracks[AnimationId]:Play(0.1, 1, 1)
+        tracks[AnimationId].TimePosition = 2
+        task.wait(0.0000001)
+    end
+    return
+end
+if AnimationId == "136801964X" then
+    tracks[AnimationId].Looped = false
+    local modifiedId = "136801964" -- Use a separate variable to avoid overwriting AnimationId
+    while AnimationActive[AnimationId] do
+        tracks[AnimationId]:Stop()
+        tracks[AnimationId]:Play(0.1, 1, 1)
+        tracks[AnimationId].TimePosition = 0.5
+        task.wait(0.0000001)
+    end
+    return
+end
+if AnimationId == "507771019X" then
+    local modifiedId = "507771019" -- Use a separate variable to avoid overwriting AnimationId
+    tracks[AnimationId]:Play(0.1, 1, 999999)
+    return
+end
+if AnimationId == "522635514X" then
+    local modifiedId = "522635514" -- Use a separate variable to avoid overwriting AnimationId
+    tracks[AnimationId]:Play(0.1, 1, 999999)
+    return
+end
+if AnimationId == "182436935X" then
+    local modifiedId = "182436935" -- Use a separate variable to avoid overwriting AnimationId
+    tracks[AnimationId]:Play(0.1, 1, 999999)
+    return
+end
+if AnimationId == "204295235X" then
+    local modifiedId = "204295235" -- Use a separate variable to avoid overwriting AnimationId
+    tracks[AnimationId]:Play(0.1, 1, 500)
+    return
+end
+if AnimationId == "72042024" then
+    tracks[AnimationId].Looped = false
+    while AnimationActive[AnimationId] do
+        tracks[AnimationId]:Stop()
+        tracks[AnimationId]:Play(0.1, 1, 0.8)
+        tracks[AnimationId].TimePosition = 0.6
+        task.wait(0.3)
+    end
+    return
+end
+if AnimationId == "72042024X" then
+    local modifiedId = "72042024" -- Use a separate variable to avoid overwriting AnimationId
+    tracks[AnimationId].Looped = false
+    while AnimationActive[AnimationId] do
+        tracks[AnimationId]:Stop()
+        tracks[AnimationId]:Play(0.1, 1, 5)
+        tracks[AnimationId].TimePosition = 0.6
+        task.wait(0.1)
+    end
+    return
+end
+if AnimationId == "698251653" then -- Circle Arm animation
+    tracks[AnimationId].Looped = false
+    while AnimationActive[AnimationId] do
+        tracks[AnimationId]:Stop()
+        tracks[AnimationId]:Play(0.1, 1, 0.8)
+        tracks[AnimationId].TimePosition = 0.53
+        task.wait(0.35)
+    end
+    return
+end
 
-            if AnimationId == "181525546" then
-                track:Play(0.1, 1, 5000) 
-                return
-            end
-            if AnimationId == "754656200" then
-                track:Play(0.1, 1, 5000) 
-                return
-            end
-            if AnimationId == "136801964" then
-                track.Looped = false
-                while AnimationActive do
-                    track:Stop()
-                    track:Play(0.1, 1, 1)
-                    track.TimePosition = 2
-                    task.wait(0.0000001)
-                end
-                return
-            end
-            if AnimationId == "136801964X" then
-                track.Looped = false
-                AnimationId = "136801964"
-                while AnimationActive do
-                 
-                    track:Stop()
-                    track:Play(0.1, 1, 1)
-                    track.TimePosition = 0.5
-                    task.wait(0.0000001)
-                end
-                return
-            end
-            if AnimationId == "507771019X" then
-               AnimationId = "507771019"
-               track:Play(0.1, 1, 999999) 
-               return
-            end
-            if AnimationId == "522635514X" then
-               AnimationId = "522635514X"
-               track:Play(0.1, 1, 999999) 
-               return
-            end
-            if AnimationId == "182436935X" then
-               AnimationId = "182436935"
-               track:Play(0.1, 1, 999999) 
-               return
-            end
-            if AnimationId == "204295235X" then
-               AnimationId = "204295235"
-               track:Play(0.1, 1, 500) 
-               return
-            end
-            if AnimationId == "72042024" then
-                track.Looped = false
-                while AnimationActive do
-                    track:Stop()
-                    track:Play(0.1, 1, 0.8)
-                    track.TimePosition = 0.6
-                    task.wait(0.3)
-                end
-                return
-            end
-            if AnimationId == "72042024X" then
-                AnimationId = "72042024"
-                track.Looped = false
-                while AnimationActive do
-                    track:Stop()
-                    track:Play(0.1, 1, 5)
-                    track.TimePosition = 0.6
-                    task.wait(0.1)
-                end
-                return
-            end
-             if AnimationId == "698251653" then -- Circle Arm animation
-                track.Looped = false
-                while AnimationActive do
-                    track:Stop()
-                    track:Play(0.1, 1, 0.8)
-                    track.TimePosition = 0.53
-                    task.wait(0.35)
-                end
-                return
-            end
-            
-            track:Play(0.1, 1, 1)
+            tracks[AnimationId]:Play(0.1, 1, 1)
         else
-            track:Stop()
-            track = nil
+            if tracks[AnimationId] then
+                tracks[AnimationId]:Stop()
+                tracks[AnimationId] = nil
+                AnimationActive[AnimationId] = nil
+            end
         end
-    else
-        
     end
 end
 
--- Play Animation Toggle
-CustomSection:NewToggle("Play Animation", "Toggle to play the entered animation", function(state)
-    playAnimation(state)
+-- Custom Animation ID Input
+local AnimationId = ""
+CustomSection:NewTextBox("Animation ID", "Enter animation asset ID", function(Value)
+    AnimationId = Value
 end)
 
--- Built-in Animations
+-- Play Custom Animation Toggle
+CustomSection:NewToggle("Play Animation", "Toggle to play the entered animation", function(state)
+    playAnimation(AnimationId, state)
+end)
+
 local builtInAnimations = {
     { Name = "R15 - Idle 1", Id = "507766666" },
     { Name = "R15 - Idle 2", Id = "507766951" },
@@ -273,13 +273,13 @@ local builtInAnimations = {
     { Name = "R6 - Jerk", Id = "72042024" },
     { Name = "R6 - Jerk Crazy", Id = "72042024X" }
 }
-
 for _, anim in pairs(builtInAnimations) do
     BuiltInSection:NewToggle(anim.Name, "Toggle to play " .. anim.Name, function(state)
-        AnimationId = anim.Id
-        playAnimation(state)
+        playAnimation(anim.Id, state)
     end)
 end
+
+-- Rig Type Switching
 local AvatarEditorService = game:GetService("AvatarEditorService")
 
 RigSection:NewButton("Set R15", "Switch to R15 rig", function()
@@ -289,7 +289,6 @@ RigSection:NewButton("Set R15", "Switch to R15 rig", function()
     
     if humanoid and humanoid.RigType ~= Enum.HumanoidRigType.R15 then
         local rigType = Enum.HumanoidRigType.R15
-        
         AvatarEditorService:PromptSaveAvatar(humanoid.HumanoidDescription, rigType)
         local result = AvatarEditorService.PromptSaveAvatarCompleted:Wait()
         
@@ -310,7 +309,6 @@ RigSection:NewButton("Set R6", "Switch to R6 rig", function()
     
     if humanoid and humanoid.RigType ~= Enum.HumanoidRigType.R6 then
         local rigType = Enum.HumanoidRigType.R6
-        
         AvatarEditorService:PromptSaveAvatar(humanoid.HumanoidDescription, rigType)
         local result = AvatarEditorService.PromptSaveAvatarCompleted:Wait()
         
@@ -323,4 +321,3 @@ RigSection:NewButton("Set R6", "Switch to R6 rig", function()
         warn("Humanoid not found or already R6.")
     end
 end)
-
