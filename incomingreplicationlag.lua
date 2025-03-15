@@ -3,116 +3,71 @@ screenGui.Parent = game.CoreGui
 screenGui.ResetOnSpawn = false
 local frame = Instance.new("Frame")
 frame.Parent = screenGui
-frame.Size = UDim2.new(0, 320, 0, 75)
+frame.Size = UDim2.new(0, 340, 0, 90)
 frame.Position = UDim2.new(0, 20, 0, 20)
-frame.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+frame.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
 frame.BorderSizePixel = 0
 frame.Active = true
 frame.Draggable = true
-frame.BackgroundTransparency = 0.2
+frame.BackgroundTransparency = 0.15
 local uiCorner = Instance.new("UICorner")
-uiCorner.CornerRadius = UDim.new(0, 10)
+uiCorner.CornerRadius = UDim.new(0, 12)
 uiCorner.Parent = frame
 local titleBar = Instance.new("TextLabel")
 titleBar.Parent = frame
-titleBar.Size = UDim2.new(1, 0, 0, 20)
-titleBar.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+titleBar.Size = UDim2.new(1, 0, 0, 25)
+titleBar.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
 titleBar.Text = "IncomingReplicationLag"
 titleBar.TextColor3 = Color3.fromRGB(255, 255, 255)
-titleBar.Font = Enum.Font.SourceSansBold
-titleBar.TextSize = 18
-titleBar.BackgroundTransparency = 0.2
-local titleCorner = Instance.new("UICorner")
-titleCorner.CornerRadius = UDim.new(0, 10)
-titleCorner.Parent = titleBar
+titleBar.Font = Enum.Font.GothamBold
+titleBar.TextSize = 16
+titleBar.BackgroundTransparency = 0.15
+local uiCorner2 = Instance.new("UICorner")
+uiCorner2.CornerRadius = UDim.new(0, 12)
+uiCorner2.Parent = titleBar
 local closeButton = Instance.new("TextButton")
 closeButton.Parent = frame
-closeButton.Size = UDim2.new(0, 20, 0, 20)
-closeButton.Position = UDim2.new(1, -25, 0, 0)
-closeButton.BackgroundColor3 = Color3.fromRGB(200, 50, 50)
+closeButton.Size = UDim2.new(0, 22, 0, 22)
+closeButton.Position = UDim2.new(1, -30, 0, 2)
+closeButton.BackgroundColor3 = Color3.fromRGB(220, 60, 60)
 closeButton.Text = "X"
 closeButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-closeButton.Font = Enum.Font.SourceSansBold
+closeButton.Font = Enum.Font.GothamBold
 closeButton.TextSize = 14
 local closeCorner = Instance.new("UICorner")
-closeCorner.CornerRadius = UDim.new(0, 10)
+closeCorner.CornerRadius = UDim.new(0, 6)
 closeCorner.Parent = closeButton
 closeButton.MouseEnter:Connect(function()
     closeButton.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
 end)
 closeButton.MouseLeave:Connect(function()
-    closeButton.BackgroundColor3 = Color3.fromRGB(200, 50, 50)
+    closeButton.BackgroundColor3 = Color3.fromRGB(220, 60, 60)
 end)
 closeButton.MouseButton1Click:Connect(function()
     screenGui:Destroy()
 end)
 local spawnButton = Instance.new("TextButton")
 spawnButton.Parent = frame
-spawnButton.Size = UDim2.new(1, -10, 0, 35)
-spawnButton.Position = UDim2.new(0, 5, 0, 30)
+spawnButton.Size = UDim2.new(1, -20, 0, 40)
+spawnButton.Position = UDim2.new(0, 10, 0, 35)
 spawnButton.Text = "IncomingReplicationLag:FireClient('start')"
 spawnButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-spawnButton.BackgroundColor3 = Color3.fromRGB(200, 50, 50)
-spawnButton.Font = Enum.Font.SourceSansBold
-spawnButton.TextSize = 18
-spawnButton.AutoButtonColor = false
+spawnButton.BackgroundColor3 = Color3.fromRGB(0, 122, 255)
+spawnButton.Font = Enum.Font.GothamBold
+spawnButton.TextSize = 16
 local buttonCorner = Instance.new("UICorner")
-buttonCorner.CornerRadius = UDim.new(0, 8)
+buttonCorner.CornerRadius = UDim.new(0, 10)
 buttonCorner.Parent = spawnButton
-spawnButton.MouseEnter:Connect(function()
-    spawnButton.BackgroundColor3 = Color3.fromRGB(50, 50, 200)
-end)
-spawnButton.MouseLeave:Connect(function()
-    if not lagRunning then
-        spawnButton.BackgroundColor3 = Color3.fromRGB(200, 50, 50)
-    end
-end)
-local lagParts = {}
 local lagRunning = false
-local function createLagLoop()
-    lagRunning = true
-    spawnButton.Text = "IncomingReplicationLag:FireClient('stop')"
-    spawnButton.BackgroundColor3 = Color3.fromRGB(50, 50, 200)
-    while lagRunning do
-        for i = 1, 50000 do
-            if not lagRunning then break end
-            local part = Instance.new("Part")
-            part.Parent = game.Workspace
-            part.Size = Vector3.new(0.01, 0.01, 0.01)
-            part.Name = "LAGPARTTT"
-            part.Position = Vector3.new(
-                math.random(-500, 500),
-                math.random(200, 300),
-                math.random(-500, 500)
-            )
-            part.Anchored = false
-            part.CanCollide = true
-            table.insert(lagParts, part)
-            if i % 100 == 0 then
-                wait(0.05)
-            end
-        end
-        for _, part in pairs(lagParts) do
-            if part and part.Parent then
-                part:Destroy()
-            end
-        end
-        lagParts = {}
-        wait(0.05)
-    end
-end
 spawnButton.MouseButton1Click:Connect(function()
+    lagRunning = not lagRunning
     if lagRunning then
-        lagRunning = false
-        for _, part in pairs(lagParts) do
-            if part and part.Parent then
-                part:Destroy()
-            end
-        end
-        lagParts = {}
-        spawnButton.Text = "IncomingReplicationLag:FireClient('start')"
-        spawnButton.BackgroundColor3 = Color3.fromRGB(200, 50, 50)
+        settings():GetService("NetworkSettings").IncomingReplicationLag = 999
+        spawnButton.Text = "IncomingReplicationLag:FireClient('stop')"
+        spawnButton.BackgroundColor3 = Color3.fromRGB(220, 60, 60)
     else
-        createLagLoop()
+        settings():GetService("NetworkSettings").IncomingReplicationLag = 0
+        spawnButton.Text = "IncomingReplicationLag:FireClient('start')"
+        spawnButton.BackgroundColor3 = Color3.fromRGB(0, 122, 255)
     end
 end)
