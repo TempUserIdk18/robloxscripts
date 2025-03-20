@@ -1,5 +1,5 @@
 -- Pog's Backdoor
--- 0.0.1
+-- 0.0.2
 
 
 
@@ -76,6 +76,67 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-- Instances:
 local Pog = Instance.new("ScreenGui")
 local Frame_1 = Instance.new("Frame")
 local UICorner_1 = Instance.new("UICorner")
@@ -111,21 +172,30 @@ local UIStroke_11 = Instance.new("UIStroke")
 local UICorner_8 = Instance.new("UICorner")
 local UIStroke_12 = Instance.new("UIStroke")
 local Title_1 = Instance.new("TextLabel")
+local Btn3_1 = Instance.new("TextButton")
+local UIStroke_13 = Instance.new("UIStroke")
+local UICorner_9 = Instance.new("UICorner")
+local UIStroke_14 = Instance.new("UIStroke")
 local Title_2 = Instance.new("TextLabel")
+local Minimizer_1 = Instance.new("TextButton")
+local UIStroke_15 = Instance.new("UIStroke")
+local UIGradient_4 = Instance.new("UIGradient")
+local UICorner_10 = Instance.new("UICorner")
 
 -- Properties:
 Pog.Name = "Pog"
 Pog.Parent = game.CoreGui
-Pog.ResetOnSpawn = false
 Pog.DisplayOrder = 99999
+Pog.ResetOnSpawn = false
+Pog.ZIndexBehavior = Enum.ZIndexBehavior.Global
 
 Frame_1.Parent = Pog
 Frame_1.BackgroundColor3 = Color3.fromRGB(32,32,32)
 Frame_1.BackgroundTransparency = 0.20000000298023224
 Frame_1.BorderColor3 = Color3.fromRGB(0,0,0)
 Frame_1.BorderSizePixel = 0
-Frame_1.Position = UDim2.new(0.0583468527, 0,0.336272031, 0)
-Frame_1.Size = UDim2.new(0, 477,0, 266)
+Frame_1.Position = UDim2.new(0.301925987, 116,0.290932, 16)
+Frame_1.Size = UDim2.new(0, 520,0, 266)
 
 UICorner_1.Parent = Frame_1
 
@@ -143,9 +213,8 @@ Check_1.BackgroundColor3 = Color3.fromRGB(255,255,255)
 Check_1.BackgroundTransparency = 1
 Check_1.BorderColor3 = Color3.fromRGB(0,0,0)
 Check_1.BorderSizePixel = 0
-Check_1.Position = UDim2.new(0, 0,0.293233097, 0)
-Check_1.Size = UDim2.new(0, 477,0, 104)
-Check_1.Visible = false
+Check_1.Position = UDim2.new(0.00192307692, 0,0.304511279, 0)
+Check_1.Size = UDim2.new(0, 519,0, 104)
 Check_1.Font = Enum.Font.SourceSans
 Check_1.Text = "Checking for backdoor... (might take some time)"
 Check_1.TextColor3 = Color3.fromRGB(255,255,255)
@@ -160,7 +229,8 @@ FrameExec_1.BackgroundColor3 = Color3.fromRGB(255,255,255)
 FrameExec_1.BackgroundTransparency = 1
 FrameExec_1.BorderColor3 = Color3.fromRGB(0,0,0)
 FrameExec_1.BorderSizePixel = 0
-FrameExec_1.Size = UDim2.new(0, 477,0, 266)
+FrameExec_1.Size = UDim2.new(0, 519,0, 266)
+FrameExec_1.Visible = false
 
 BtnExecute_1.Name = "BtnExecute"
 BtnExecute_1.Parent = FrameExec_1
@@ -169,7 +239,7 @@ BtnExecute_1.BackgroundColor3 = Color3.fromRGB(52,52,52)
 BtnExecute_1.BackgroundTransparency = 1
 BtnExecute_1.BorderColor3 = Color3.fromRGB(0,0,0)
 BtnExecute_1.BorderSizePixel = 0
-BtnExecute_1.Position = UDim2.new(0.0494969524, 0,0.75939852, 0)
+BtnExecute_1.Position = UDim2.new(0.0783986598, 0,0.755639076, 0)
 BtnExecute_1.Size = UDim2.new(0, 200,0, 50)
 BtnExecute_1.Font = Enum.Font.SourceSans
 BtnExecute_1.Text = "Execute"
@@ -196,7 +266,7 @@ BtnClear_1.BackgroundColor3 = Color3.fromRGB(52,52,52)
 BtnClear_1.BackgroundTransparency = 1
 BtnClear_1.BorderColor3 = Color3.fromRGB(0,0,0)
 BtnClear_1.BorderSizePixel = 0
-BtnClear_1.Position = UDim2.new(0.505754828, 0,0.75939852, 0)
+BtnClear_1.Position = UDim2.new(0.534656584, 0,0.755639076, 0)
 BtnClear_1.Size = UDim2.new(0, 200,0, 50)
 BtnClear_1.Font = Enum.Font.SourceSans
 BtnClear_1.Text = "Clear"
@@ -224,12 +294,10 @@ Txt_1.BackgroundTransparency = 1
 Txt_1.BorderColor3 = Color3.fromRGB(0,0,0)
 Txt_1.BorderSizePixel = 0
 Txt_1.ClearTextOnFocus = false
-Txt_1.CursorPosition = -1
 Txt_1.MultiLine = true
-Txt_1.Position = UDim2.new(0.0494969524, 0,0.176691726, 0)
-Txt_1.Size = UDim2.new(0, 417,0, 140)
-Txt_1.Font = Enum.Font.Arcade
-Txt_1.PlaceholderColor3 = Color3.fromRGB(178,178,178)
+Txt_1.Position = UDim2.new(0.0494969226, 0,0.176691726, 0)
+Txt_1.Size = UDim2.new(0, 468,0, 140)
+Txt_1.Font = Enum.Font.Code
 Txt_1.PlaceholderText = "Code here..."
 Txt_1.Text = ""
 Txt_1.TextColor3 = Color3.fromRGB(255,255,255)
@@ -253,11 +321,12 @@ BtnScripts_1.BackgroundColor3 = Color3.fromRGB(32,32,32)
 BtnScripts_1.BackgroundTransparency = 0.20000000298023224
 BtnScripts_1.BorderColor3 = Color3.fromRGB(0,0,0)
 BtnScripts_1.BorderSizePixel = 0
-BtnScripts_1.Position = UDim2.new(1.03272545, 0,0, 0)
-BtnScripts_1.Size = UDim2.new(0, 37,0, 266)
+BtnScripts_1.Position = UDim2.new(0, 0,1.02631581, 0)
+BtnScripts_1.Size = UDim2.new(0, 519,0, 37)
 BtnScripts_1.Font = Enum.Font.SourceSans
-BtnScripts_1.Text = ">"
+BtnScripts_1.Text = "↓Scripts↓"
 BtnScripts_1.TextColor3 = Color3.fromRGB(255,255,255)
+BtnScripts_1.TextScaled = true
 BtnScripts_1.TextSize = 50
 BtnScripts_1.TextWrapped = true
 
@@ -277,8 +346,8 @@ FrameScripts_1.BackgroundColor3 = Color3.fromRGB(32,32,32)
 FrameScripts_1.BackgroundTransparency = 0.20000000298023224
 FrameScripts_1.BorderColor3 = Color3.fromRGB(0,0,0)
 FrameScripts_1.BorderSizePixel = 0
-FrameScripts_1.Position = UDim2.new(1.14255762, 0,0, 0)
-FrameScripts_1.Size = UDim2.new(0, 350,0, 266)
+FrameScripts_1.Position = UDim2.new(0, 0,1.19548869, 0)
+FrameScripts_1.Size = UDim2.new(0, 520,0, 217)
 FrameScripts_1.Visible = false
 
 UIStroke_8.Parent = FrameScripts_1
@@ -325,7 +394,7 @@ Btn2_1.BackgroundColor3 = Color3.fromRGB(52,52,52)
 Btn2_1.BackgroundTransparency = 1
 Btn2_1.BorderColor3 = Color3.fromRGB(0,0,0)
 Btn2_1.BorderSizePixel = 0
-Btn2_1.Position = UDim2.new(0.0314690284, 0,0.2781955, 0)
+Btn2_1.Position = UDim2.new(0.396853626, 0,0.0428087078, 0)
 Btn2_1.Size = UDim2.new(0, 173,0, 50)
 Btn2_1.Font = Enum.Font.SourceSans
 Btn2_1.Text = "ExSer"
@@ -351,8 +420,8 @@ Title_1.BackgroundColor3 = Color3.fromRGB(255,255,255)
 Title_1.BackgroundTransparency = 1
 Title_1.BorderColor3 = Color3.fromRGB(0,0,0)
 Title_1.BorderSizePixel = 0
-Title_1.Position = UDim2.new(0, 0,0.808270693, 0)
-Title_1.Size = UDim2.new(0, 350,0, 37)
+Title_1.Position = UDim2.new(0.0307692308, 0,0.660805404, 0)
+Title_1.Size = UDim2.new(0, 490,0, 37)
 Title_1.Font = Enum.Font.SourceSans
 Title_1.Text = "More Scripts Soon!"
 Title_1.TextColor3 = Color3.fromRGB(255,255,255)
@@ -361,13 +430,40 @@ Title_1.TextSize = 14
 Title_1.TextStrokeTransparency = 0
 Title_1.TextWrapped = true
 
+Btn3_1.Name = "Btn3"
+Btn3_1.Parent = FrameScripts_1
+Btn3_1.Active = true
+Btn3_1.BackgroundColor3 = Color3.fromRGB(52,52,52)
+Btn3_1.BackgroundTransparency = 1
+Btn3_1.BorderColor3 = Color3.fromRGB(0,0,0)
+Btn3_1.BorderSizePixel = 0
+Btn3_1.Position = UDim2.new(0.031469021, 0,0.330827147, 0)
+Btn3_1.Size = UDim2.new(0, 173,0, 50)
+Btn3_1.Font = Enum.Font.SourceSans
+Btn3_1.Text = "KJ"
+Btn3_1.TextColor3 = Color3.fromRGB(255,255,255)
+Btn3_1.TextScaled = true
+Btn3_1.TextSize = 14
+Btn3_1.TextWrapped = true
+
+UIStroke_13.Parent = Btn3_1
+UIStroke_13.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+UIStroke_13.Color = Color3.fromRGB(57,57,57)
+UIStroke_13.Thickness = 2
+
+UICorner_9.Parent = Btn3_1
+
+UIStroke_14.Parent = Btn3_1
+UIStroke_14.Color = Color3.fromRGB(57,57,57)
+UIStroke_14.Thickness = 2
+
 Title_2.Name = "Title"
 Title_2.Parent = Frame_1
 Title_2.BackgroundColor3 = Color3.fromRGB(255,255,255)
 Title_2.BackgroundTransparency = 1
 Title_2.BorderColor3 = Color3.fromRGB(0,0,0)
 Title_2.BorderSizePixel = 0
-Title_2.Size = UDim2.new(0, 477,0, 37)
+Title_2.Size = UDim2.new(0, 520,0, 37)
 Title_2.Font = Enum.Font.SourceSans
 Title_2.Text = "Pog's Backdoor"
 Title_2.TextColor3 = Color3.fromRGB(255,255,255)
@@ -376,13 +472,125 @@ Title_2.TextSize = 14
 Title_2.TextStrokeTransparency = 0
 Title_2.TextWrapped = true
 
-local function VmOxpzIbZcaZFtQf()
+Minimizer_1.Name = "Minimizer"
+Minimizer_1.Parent = Pog
+Minimizer_1.Active = true
+Minimizer_1.BackgroundColor3 = Color3.fromRGB(32,32,32)
+Minimizer_1.BackgroundTransparency = 0.20000000298023224
+Minimizer_1.BorderColor3 = Color3.fromRGB(0,0,0)
+Minimizer_1.BorderSizePixel = 0
+Minimizer_1.Position = UDim2.new(0.12958996, 0,0.801007569, 0)
+Minimizer_1.Size = UDim2.new(0, 50,0, 45)
+Minimizer_1.Font = Enum.Font.SourceSans
+Minimizer_1.Text = "-"
+Minimizer_1.TextColor3 = Color3.fromRGB(255,255,255)
+Minimizer_1.TextSize = 90
+Minimizer_1.TextWrapped = true
+
+UIStroke_15.Parent = Minimizer_1
+UIStroke_15.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+UIStroke_15.Color = Color3.fromRGB(255,255,255)
+UIStroke_15.Thickness = 2
+
+UIGradient_4.Parent = UIStroke_15
+UIGradient_4.Color = ColorSequence.new{ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 0, 0)), ColorSequenceKeypoint.new(0.116, Color3.fromRGB(255, 170, 0)), ColorSequenceKeypoint.new(0.212, Color3.fromRGB(255, 255, 0)), ColorSequenceKeypoint.new(0.334, Color3.fromRGB(170, 255, 127)), ColorSequenceKeypoint.new(0.436, Color3.fromRGB(0, 255, 127)), ColorSequenceKeypoint.new(0.536, Color3.fromRGB(0, 0, 255)), ColorSequenceKeypoint.new(0.629, Color3.fromRGB(170, 0, 255)), ColorSequenceKeypoint.new(0.727, Color3.fromRGB(255, 0, 255)), ColorSequenceKeypoint.new(0.844, Color3.fromRGB(255, 170, 255)), ColorSequenceKeypoint.new(0.99481, Color3.fromRGB(255, 233, 255)), ColorSequenceKeypoint.new(1, Color3.fromRGB(234, 220, 235))}
+
+UICorner_10.Parent = Minimizer_1
+
+local function rAdKcxXshhbytUjT()
+local script = Instance.new("LocalScript",FrameExec_1)
+
+local UserInputService = game:GetService("UserInputService")
+
+local gui = script.Parent
+
+local dragging
+local dragInput
+local dragStart
+local startPos
+
+local function update(input)
+	local delta = input.Position - dragStart
+	gui.Parent.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+end
+
+gui.InputBegan:Connect(function(input)
+	if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+		dragging = true
+		dragStart = input.Position
+		startPos = gui.Parent.Position
+
+		input.Changed:Connect(function()
+			if input.UserInputState == Enum.UserInputState.End then
+				dragging = false
+			end
+		end)
+	end
+end)
+
+gui.InputChanged:Connect(function(input)
+	if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+		dragInput = input
+	end
+end)
+
+UserInputService.InputChanged:Connect(function(input)
+	if input == dragInput and dragging then
+		update(input)
+	end
+end)
+end
+coroutine.wrap(rAdKcxXshhbytUjT)()
+
+
+local function PsGxzsgLMXexCQYx()
 local script = Instance.new("LocalScript",Frame_1)
 local gradient = script.Parent.UIStroke.UIGradient
 game:GetService("RunService").RenderStepped:Connect(function()
 	gradient.Rotation = (gradient.Rotation + 1) % 360
+	
+	script.Parent.FrameExec.BtnScripts.UIStroke.UIGradient.Rotation = (script.Parent.FrameExec.BtnScripts.UIStroke.UIGradient.Rotation + 1) % 360
+	script.Parent.FrameExec.FrameScripts.UIStroke.UIGradient.Rotation = (script.Parent.FrameExec.FrameScripts.UIStroke.UIGradient.Rotation + 1) % 360
+end)
+local UserInputService = game:GetService("UserInputService")
+
+local gui = script.Parent
+
+local dragging
+local dragInput
+local dragStart
+local startPos
+
+local function update(input)
+	local delta = input.Position - dragStart
+	gui.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+end
+
+gui.InputBegan:Connect(function(input)
+	if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+		dragging = true
+		dragStart = input.Position
+		startPos = gui.Position
+
+		input.Changed:Connect(function()
+			if input.UserInputState == Enum.UserInputState.End then
+				dragging = false
+			end
+		end)
+	end
 end)
 
+gui.InputChanged:Connect(function(input)
+	if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+		dragInput = input
+	end
+end)
+
+UserInputService.InputChanged:Connect(function(input)
+	if input == dragInput and dragging then
+		update(input)
+	end
+end)
 local RunService = game:GetService("RunService")
 local foundEvent = false
 local FinishedFound = false
@@ -469,24 +677,54 @@ end
 
 local f = script.Parent.FrameExec
 f.BtnScripts.MouseButton1Click:Connect(function()
-	f.FrameScripts.Visible = not f.FrameScripts.Visible
+	if f.FrameScripts.Visible == false then
+		f.FrameScripts.Visible = true
+		f.BtnScripts.Text = "↑Scripts↑"
+	else
+		f.FrameScripts.Visible = false
+		f.BtnScripts.Text = "↓Scripts↓"
+	end
+end)
+script.Parent.Parent.Minimizer.MouseButton1Click:Connect(function()
+	if script.Parent.Visible == false then
+		script.Parent.Visible = true
+		script.Parent.Parent.Minimizer.Text = "-"
+	else
+		script.Parent.Visible = false
+		script.Parent.Parent.Minimizer.Text = "+"
+	end
 end)
 local fs = f.FrameScripts
 fs.Btn1.MouseButton1Click:Connect(function()
-	f.Txt.Text = 'require(123255432303221):Pload("user")'
+	f.Txt.Text = 'require(123255432303221):Pload("' .. game.Players.LocalPlayer.Name .. '")'
 end)
 fs.Btn2.MouseButton1Click:Connect(function()
-	f.Txt.Text = 'require(10868847330):pls("user")'
+	f.Txt.Text = 'require(10868847330):pls("' .. game.Players.LocalPlayer.Name .. '")'
 end)
+
 f.BtnClear.MouseButton1Click:Connect(function()
 	f.Txt.Text = ""
 end)
 f.BtnExecute.MouseButton1Click:Connect(function()
 	fireRemoteEvent(f.Txt.Text)
 end)
+fs.Btn3.MouseButton1Click:Connect(function()
+	f.Txt.Text = 'require(17776365113).kj("' .. game.Players.LocalPlayer.Name .. '")'
+end)
+
+end
+coroutine.wrap(PsGxzsgLMXexCQYx)()
+
+
+local function udNFTUCfWJTVptqQ()
+local script = Instance.new("LocalScript",Minimizer_1)
+
 local UserInputService = game:GetService("UserInputService")
 
 local gui = script.Parent
+game:GetService("RunService").RenderStepped:Connect(function()
+	script.Parent.UIStroke.UIGradient.Rotation = (script.Parent.UIStroke.UIGradient.Rotation + 1) % 360
+end)
 
 local dragging
 local dragInput
@@ -524,50 +762,5 @@ UserInputService.InputChanged:Connect(function(input)
 	end
 end)
 end
-coroutine.wrap(VmOxpzIbZcaZFtQf)()
-
-
-local function SSPzsmBBnGSSIJUz()
-local script = Instance.new("LocalScript",FrameExec_1)
-local UserInputService = game:GetService("UserInputService")
-
-local gui = script.Parent
-
-local dragging
-local dragInput
-local dragStart
-local startPos
-
-local function update(input)
-	local delta = input.Position - dragStart
-	gui.Parent.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
-end
-
-gui.InputBegan:Connect(function(input)
-	if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
-		dragging = true
-		dragStart = input.Position
-		startPos = gui.Parent.Position
-
-		input.Changed:Connect(function()
-			if input.UserInputState == Enum.UserInputState.End then
-				dragging = false
-			end
-		end)
-	end
-end)
-
-gui.InputChanged:Connect(function(input)
-	if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
-		dragInput = input
-	end
-end)
-
-UserInputService.InputChanged:Connect(function(input)
-	if input == dragInput and dragging then
-		update(input)
-	end
-end)
-end
-coroutine.wrap(SSPzsmBBnGSSIJUz)()
+coroutine.wrap(udNFTUCfWJTVptqQ)()
 
