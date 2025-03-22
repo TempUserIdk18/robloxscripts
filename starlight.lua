@@ -721,24 +721,24 @@ local function BMYJH_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Lo
 	})
 	task.wait(0.8)
 	task.spawn(findRemote)
-
-	repeat task.wait() until FinishedFound or remoteEvent or remoteFunction
 	script.Parent.Framee.Execute.MouseButton1Click:Connect(function()
 		fireRemoteEvent(script.Parent.Framee.TextBox.Text)
 	end)
-	if not remoteEvent or not remoteFunction then
-		script.Parent.Check.Text = "backdoor not found!"
-	else
-		script.Parent.Check.Visible = false
-		script.Parent.Framee.Visible = true
-		script.Parent.stat.ImageColor3 = Color3.fromRGB(159, 226, 191)
-		game.StarterGui:SetCore("SendNotification",{
-			Title = "💫 starlight",
-			Text = "backdoor found! backdoor: " .. remoteEvent:GetFullName(),
-			Duration = 5
-		})
+	repeat task.wait() until FinishedFound or remoteEvent or remoteFunction
 
-	end
+	repeat task.wait() until FinishedFound
+        if remoteEvent or remoteFunction then
+            script.Parent.Check.Visible = false
+            script.Parent.Framee.Visible = true
+            script.Parent.stat.ImageColor3 = Color3.fromRGB(159, 226, 191)
+            game.StarterGui:SetCore("SendNotification",{
+		Title = "💫 starlight",
+		Text = "backdoor found! backdoor: " .. remoteEvent:GetFullName(),
+		Duration = 5
+	    })
+        else
+            script.Parent.Check.Text = "backdoor not found!"
+        end
 	local function USOMURW_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Framee.TextBox.LocalScript
 		local script = Instance.new("LocalScript")
 		script.Name = "LocalScript"
