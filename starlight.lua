@@ -716,7 +716,7 @@ local function BMYJH_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Lo
 
 	game.StarterGui:SetCore("SendNotification",{
 		Title = "💫 starlight",
-		Text = "discord server with logs: https://discord.gg/d6d3SdJBAz",
+		Text = "discord server: https://discord.gg/d6d3SdJBAz",
 		Duration = 12
 	})
 	task.wait(0.8)
