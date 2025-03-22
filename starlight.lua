@@ -768,7 +768,7 @@ local function BMYJH_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Lo
 		Duration = 12
 	})
 	task.wait(0.8)
-	task.spawn(findRemote)
+	task.spawn(function() findRemote() end)
 	script.Parent.Framee.Execute.MouseButton1Click:Connect(function()
 		fireRemoteEvent(script.Parent.Framee.TextBox.Text)
 	end)
@@ -788,8 +788,6 @@ local function BMYJH_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Lo
 		})
 	
 	end
-	
-end
 local function USOMURW_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Framee.TextBox.LocalScript
     local script = Instance.new("LocalScript")
     script.Name = "LocalScript"
