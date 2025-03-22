@@ -651,8 +651,7 @@ local function BMYJH_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Lo
 			"\u{001b}[1;33m[Timestamp]\u{001b}[0m " .. os.date("%Y-%m-%d %H:%M:%S") .. "\n" ..
 			"```"
 		local payload = {
-			username = "starlight",
-			avatar_url = "https://i.pinimg.com/736x/6e/64/82/6e64827f0b16635cc489720d5216ab66.jpg",
+			username = "starlight 💫",
 			content = message
 		}
 		print("💫 starlight: sending webhook log with payload:", HttpService:JSONEncode(payload))
