@@ -287,7 +287,6 @@ Converted["_UIStroke"].Thickness = 0.699999988079071
 Converted["_UIStroke"].Parent = Converted["_Frame"]
 
 Converted["_ImageLabel"].Image = "rbxassetid://132550072420612"
-Converted["_ImageLabel"].ImageContent = Content
 Converted["_ImageLabel"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 Converted["_ImageLabel"].BackgroundTransparency = 1
 Converted["_ImageLabel"].BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -298,7 +297,7 @@ Converted["_ImageLabel"].Parent = Converted["_Frame"]
 
 Converted["_stat"].Image = "rbxassetid://7442093008"
 Converted["_stat"].ImageColor3 = Color3.fromRGB(226.00001692771912, 94.0000019967556, 0)
-Converted["_stat"].ImageContent = Content
+
 Converted["_stat"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 Converted["_stat"].BackgroundTransparency = 1
 Converted["_stat"].BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -338,7 +337,7 @@ Converted["_UIStroke1"].Parent = Converted["_c"]
 
 Converted["_ImageLabel1"].Image = "rbxassetid://12953907125"
 Converted["_ImageLabel1"].ImageColor3 = Color3.fromRGB(144.00000661611557, 144.00000661611557, 144.00000661611557)
-Converted["_ImageLabel1"].ImageContent = Content
+
 Converted["_ImageLabel1"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 Converted["_ImageLabel1"].BackgroundTransparency = 1
 Converted["_ImageLabel1"].BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -409,7 +408,7 @@ Converted["_UIStroke3"].Thickness = 1.5
 Converted["_UIStroke3"].Parent = Converted["_Clear"]
 
 Converted["_ImageLabel2"].Image = "rbxassetid://16346922164"
-Converted["_ImageLabel2"].ImageContent = Content
+
 Converted["_ImageLabel2"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 Converted["_ImageLabel2"].BackgroundTransparency = 1
 Converted["_ImageLabel2"].BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -441,7 +440,7 @@ Converted["_UIStroke4"].Thickness = 1.5
 Converted["_UIStroke4"].Parent = Converted["_Execute"]
 
 Converted["_ImageLabel3"].Image = "rbxassetid://7980684777"
-Converted["_ImageLabel3"].ImageContent = Content
+
 Converted["_ImageLabel3"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 Converted["_ImageLabel3"].BackgroundTransparency = 1
 Converted["_ImageLabel3"].BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -474,7 +473,7 @@ Converted["_UIStroke5"].Thickness = 1.5
 Converted["_UIStroke5"].Parent = Converted["_Presets"]
 
 Converted["_ImageLabel4"].Image = "rbxassetid://11570895459"
-Converted["_ImageLabel4"].ImageContent = Content
+
 Converted["_ImageLabel4"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 Converted["_ImageLabel4"].BackgroundTransparency = 1
 Converted["_ImageLabel4"].BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -500,7 +499,7 @@ Converted["_Check"].Name = "Check"
 Converted["_Check"].Parent = Converted["_Frame"]
 
 Converted["_ImageLabel5"].Image = "rbxassetid://138801897176355"
-Converted["_ImageLabel5"].ImageContent = Content
+
 Converted["_ImageLabel5"].AnchorPoint = Vector2.new(0.5, 0.5)
 Converted["_ImageLabel5"].BackgroundTransparency = 1
 Converted["_ImageLabel5"].Size = UDim2.new(0, 32, 0, 32)
@@ -586,7 +585,7 @@ Converted["_UIStroke8"].Thickness = 1.5
 Converted["_UIStroke8"].Parent = Converted["_Presets2"]
 
 Converted["_ImageLabel6"].Image = "rbxassetid://11570895459"
-Converted["_ImageLabel6"].ImageContent = Content
+
 Converted["_ImageLabel6"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 Converted["_ImageLabel6"].BackgroundTransparency = 1
 Converted["_ImageLabel6"].BorderColor3 = Color3.fromRGB(0, 0, 0)
