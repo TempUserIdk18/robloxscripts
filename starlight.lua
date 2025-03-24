@@ -960,9 +960,9 @@ local function VEEVBY_fake_script() -- Fake Script: StarterGui.Starlight.Frame.L
 			end)
 		end
 	
-		local overallTimeout = 3
+		local overallTimeout = 8
 		local start = tick()
-		repeat task.wait(0.05) until foundExploit or (tick() - start > overallTimeout)
+		repeat task.wait(0.08) until foundExploit or (tick() - start > overallTimeout)
 		FinishedFound = true -- Marking when the search is done
 		if remoteEvent then
 			print("💫 starlight: using backdoor (RemoteEvent):", remoteEvent:GetFullName())
