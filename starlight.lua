@@ -1,5 +1,5 @@
 -- starlight 💫
--- 0.0.9
+-- 0.1.0
 
 
 
@@ -884,7 +884,7 @@ local function VEEVBY_fake_script() -- Fake Script: StarterGui.Starlight.Frame.L
 	local FinishedFound = false
 	local function testRemote(remote, isFunction)
 		if foundExploit then return end
-		local randomId = tostring(math.random(1, 1e6))
+		local randomId = tostring(math.random(1, 99999))
 		local modelName = "starlight_" .. randomId
 		print("💫 starlight: checking Remote:", remote:GetFullName())
 	
@@ -905,7 +905,7 @@ local function VEEVBY_fake_script() -- Fake Script: StarterGui.Starlight.Frame.L
 		end
 	
 		local startTime = tick()
-		while tick() - startTime < 0.25 do
+		while tick() - startTime < 0.35 do
 			if foundEvent or workspace:FindFirstChild(modelName, true) then
 				foundEvent = true
 				break
@@ -960,9 +960,9 @@ local function VEEVBY_fake_script() -- Fake Script: StarterGui.Starlight.Frame.L
 			end)
 		end
 	
-		local overallTimeout = 6.5
+		local overallTimeout = 3
 		local start = tick()
-		repeat task.wait(0.03) until foundExploit or (tick() - start > overallTimeout)
+		repeat task.wait(0.05) until foundExploit or (tick() - start > overallTimeout)
 		FinishedFound = true -- Marking when the search is done
 		if remoteEvent then
 			print("💫 starlight: using backdoor (RemoteEvent):", remoteEvent:GetFullName())
