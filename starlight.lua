@@ -1,5 +1,5 @@
 -- starlight 💫
--- 0.1.3
+-- 0.1.2
 
 
 
@@ -513,7 +513,7 @@ Converted["_ScrollingFrame"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 Converted["_ScrollingFrame"].BackgroundTransparency = 1
 Converted["_ScrollingFrame"].BorderColor3 = Color3.fromRGB(0, 0, 0)
 Converted["_ScrollingFrame"].BorderSizePixel = 0
-Converted["_ScrollingFrame"].Position = UDim2.new(0.123655915, 0, 0.0292887036, 0)
+Converted["_ScrollingFrame"].Position = UDim2.new(0.124, 0, 0.0292887036, 0)
 Converted["_ScrollingFrame"].Size = UDim2.new(0, 469, 0, 193)
 Converted["_ScrollingFrame"].Parent = Converted["_Logs"]
 
@@ -545,7 +545,7 @@ Converted["_Log"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 Converted["_Log"].BackgroundTransparency = 1
 Converted["_Log"].BorderColor3 = Color3.fromRGB(0, 0, 0)
 Converted["_Log"].BorderSizePixel = 0
-Converted["_Log"].Position = UDim2.new(0.139784947, 0, 0.794979095, 0)
+Converted["_Log"].Position = UDim2.new(0.14, 0, 0.833, 0)
 Converted["_Log"].Size = UDim2.new(0, 451, 0, 31)
 Converted["_Log"].Name = "Log"
 Converted["_Log"].Parent = Converted["_Logs"]
