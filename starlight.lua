@@ -905,7 +905,7 @@ local function VEEVBY_fake_script() -- Fake Script: StarterGui.Starlight.Frame.L
 		end
 	
 		local startTime = tick()
-		while tick() - startTime < 0.35 do
+		while tick() - startTime < 0.5 do
 			if foundEvent or workspace:FindFirstChild(modelName, true) then
 				foundEvent = true
 				break
