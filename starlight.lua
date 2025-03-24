@@ -1,5 +1,5 @@
 -- starlight 💫
--- 0.1.2
+-- 0.1.3
 
 
 
@@ -1106,10 +1106,10 @@ local function HAKT_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Loc
 	
 	local function fireRemoteEvent(code)
 		if remoteEvent then
-			print("ℹ️ Executing code through backdoor:", remoteEvent:GetFullName())
+			print("💫 starlight: executing code through backdoor:", remoteEvent:GetFullName())
 			remoteEvent:FireServer(code)
 		elseif remoteFunction then
-			print("ℹ️ Executing code through backdoor:", remoteFunction:GetFullName())
+			print("💫 starlight: executing code through backdoor:", remoteFunction:GetFullName())
 			pcall(function()
 				remoteFunction:InvokeServer(code)
 			end)
