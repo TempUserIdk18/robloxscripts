@@ -538,7 +538,7 @@ Converted["_Log1"].Name = "Log"
 Converted["_Log1"].Parent = Converted["_Presets"]
 
 Converted["_Part"].Font = Enum.Font.SourceSans
-Converted["_Part"].Text = "part spam"
+Converted["_Part"].Text = "poop everyone"
 Converted["_Part"].TextColor3 = Color3.fromRGB(255, 255, 255)
 Converted["_Part"].TextScaled = true
 Converted["_Part"].TextSize = 14
@@ -1135,7 +1135,7 @@ local function LWYYJJN_fake_script() -- Fake Script: StarterGui.Starlight.Frame.
 		script.Parent.Logs.Visible = false
 	end)
 	script.Parent.Presets.Part.MouseButton1Click:Connect(function()
-		script.Parent.Framee.TextBox.Text = 'for i=1,80 do local part = Instance.new("Part") part.Parent = workspace part.CFrame = game.Players.' .. game.Players.LocalPlayer.Name .. '.Character.HumanoidRootPart.CFrame end'
+		script.Parent.Framee.TextBox.Text = 'for _,v in pairs(game.Players:GetPlayers()) do if v.Character and v.Character:FindFirstChild("HumanoidRootPart") then local p=v.Character.HumanoidRootPart for i=1,80 do local part=Instance.new("Part") part.Parent=workspace part.CFrame=CFrame.new(p.Position-p.CFrame.LookVector*2) part.Shape=Enum.PartType.Ball part.Color=Color3.fromRGB(139,69,19) part.Size=Vector3.new(2,2,2) task.wait(0.01) end end end'
 		script.Parent.Framee.Visible = true
 		script.Parent.Presets.Visible = false
 		script.Parent.Logs.Visible = false
