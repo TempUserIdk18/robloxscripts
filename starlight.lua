@@ -1148,13 +1148,11 @@ local function MHMOY_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Lo
 	})
 	script.Parent.scan.MouseButton1Click:Connect(function()
 		script.Parent.scan.Visible = false
-                task.wait(0.8)
+        script.Parent.Check.Visible = true
+        
+        task.wait(0.8)
 		task.spawn(findRemote)
-	end)
-	script.Parent.Framee.Execute.MouseButton1Click:Connect(function()
-		fireRemoteEvent(script.Parent.Framee.TextBox.Text)
-	end)
-	repeat task.wait() until FinishedFound or remoteEvent or remoteFunction
+        	repeat task.wait() until FinishedFound or remoteEvent or remoteFunction
 	
 	repeat task.wait() until FinishedFound
 	if remoteEvent or remoteFunction then
@@ -1172,6 +1170,11 @@ local function MHMOY_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Lo
 		script.Parent.Check.Text = "backdoor not found!"
 		script.Parent.stat.ImageColor3 = Color3.fromRGB(226, 69, 69)
 	end
+	end)
+	script.Parent.Framee.Execute.MouseButton1Click:Connect(function()
+		fireRemoteEvent(script.Parent.Framee.TextBox.Text)
+	end)
+
 end
 local function TSJS_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Logs.LocalScript
     local script = Instance.new("LocalScript")
