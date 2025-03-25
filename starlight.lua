@@ -242,7 +242,7 @@ Converted["_UIStroke"].Color = Color3.fromRGB(89.00000229477882, 89.000002294778
 Converted["_UIStroke"].Thickness = 0.699999988079071
 Converted["_UIStroke"].Parent = Converted["_Frame"]
 
-Converted["_ImageLabel"].Image = "rbxassetid://132550072420612"
+Converted["_ImageLabel"].Image = "rbxassetid://107516259508402"
 Converted["_ImageLabel"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 Converted["_ImageLabel"].BackgroundTransparency = 1
 Converted["_ImageLabel"].BorderColor3 = Color3.fromRGB(0, 0, 0)
