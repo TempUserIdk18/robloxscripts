@@ -1215,7 +1215,7 @@ local function LWYYJJN_fake_script() -- Fake Script: StarterGui.Starlight.Frame.
 	
 	game.StarterGui:SetCore("SendNotification",{
 		Title = "💫 starlight",
-		Text = "discord server: https://discord.gg/d6d3SdJBAz",
+		Text = "discord server: https://discord.gg/kVwm5tHswg",
 		Duration = 12
 	})
 	script.Parent.Framee.scan.MouseButton1Click:Connect(function()
