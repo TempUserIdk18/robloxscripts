@@ -1,15 +1,14 @@
 -- perfect replication of HD Admin's fly --
 
 
--- Ultimate Flying Script v4.0
--- By DevKing | Smooth, Fast, Responsive Flight
+-- HD Flying Script v4.0
 
 local Players = game:GetService("Players")
 local UserInputService = game:GetService("UserInputService")
 local RunService = game:GetService("RunService")
 local ContextActionService = game:GetService("ContextActionService")
 
--- **CONFIGURATION** (Adjust these!)
+-- **CONFIGURATION**
 local FLY_KEY = Enum.KeyCode.F          -- Toggle flight key
 local BASE_SPEED = 50                   -- Normal speed
 local BOOST_SPEED = 100                 -- Speed when holding Shift
