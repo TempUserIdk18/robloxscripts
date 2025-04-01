@@ -72,6 +72,7 @@ textBox.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
 textBox.TextColor3 = Color3.fromRGB(255, 255, 255)
 textBox.PlaceholderColor3 = Color3.fromRGB(180, 180, 180)
 textBox.PlaceholderText = "Enter Username"
+textBox.Text = ""
 textBox.ClearTextOnFocus = false
 textBox.TextXAlignment = Enum.TextXAlignment.Center
 textBox.Parent = frame
