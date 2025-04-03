@@ -8,27 +8,40 @@ local oldcf
 
 -- Function to handle ban block deletion
 local function onDescendantAdded(descendant)
-    if descendant.Name:find("Banned") then
+    if descendant.Name:lower():find("banned") then
         task.wait(0.3)
-        descendant:Destroy()
-        print("Ban bypassed")
+        if descendant then
+            descendant:Destroy()
+            print("Ban bypassed: " .. descendant.Name)
+        end
     end
 end
 
--- Save position on death
+-- Save position before death
 player.CharacterAdded:Connect(function(character)
-    character:WaitForChild("Humanoid").Died:Connect(function()
-        oldcf = character.HumanoidRootPart.CFrame
-    end)
+    local humanoid = character:WaitForChild("Humanoid", 5)
+    local rootPart = character:WaitForChild("HumanoidRootPart", 5)
+
+    if humanoid and rootPart then
+        humanoid.Died:Connect(function()
+            oldcf = rootPart.CFrame
+        end)
+    end
 end)
 
 -- Teleport back after respawn
 player.CharacterAdded:Connect(function(character)
-    task.wait(0.5) -- Small delay to make sure the character fully loads
-    if oldcf then
-        character:WaitForChild("HumanoidRootPart").CFrame = oldcf
+    task.wait(0.5) -- Small delay for loading
+    local rootPart = character:WaitForChild("HumanoidRootPart", 5)
+    if oldcf and rootPart then
+        rootPart.CFrame = oldcf
         print("Teleported back to saved position")
     end
+end)
+
+-- Reset oldcf when character resets
+player.CharacterRemoving:Connect(function()
+    oldcf = nil
 end)
 
 -- Check existing objects for ban blocks
