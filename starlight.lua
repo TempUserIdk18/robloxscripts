@@ -1323,7 +1323,7 @@ local function CXGRFXR_fake_script() -- Fake Script: StarterGui.Starlight.Frame.
 	
 	game.StarterGui:SetCore("SendNotification",{
 		Title = "💫 starlight",
-		Text = "discord server: https://discord.gg/d6d3SdJBAz",
+		Text = "discord server: https://discord.gg/sCwubxMJ9z",
 		Duration = 12
 	})
 	local scanning = false
