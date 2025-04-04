@@ -285,7 +285,7 @@ local Converted = {
 }
 
 -- Properties:
-
+local UserInputService = game:GetService("UserInputService")
 Converted["_Starlight"].DisplayOrder = 999
 Converted["_Starlight"].IgnoreGuiInset = true
 Converted["_Starlight"].ScreenInsets = Enum.ScreenInsets.DeviceSafeInsets
@@ -296,7 +296,8 @@ Converted["_Starlight"].Parent = game:GetService("CoreGui")
 Converted["_Frame"].BackgroundColor3 = Color3.fromRGB(12.000000234693289, 12.000000234693289, 12.000000234693289)
 Converted["_Frame"].BorderColor3 = Color3.fromRGB(0, 0, 0)
 Converted["_Frame"].BorderSizePixel = 0
-Converted["_Frame"].Position = UDim2.new(0.253646672, 0, 0.293450892, 0)
+local isMobile = game:GetService("UserInputService").TouchEnabled
+Converted["_Frame"].Position = isMobile and UDim2.new(0.1, 0, 0.1, 0) or UDim2.new(0.253646672, 0, 0.293450892, 0)
 Converted["_Frame"].Size = UDim2.new(0, 558, 0, 306)
 Converted["_Frame"].Parent = Converted["_Starlight"]
 
@@ -448,7 +449,9 @@ Converted["_Execute"].Position = UDim2.new(0.117992006, 0, 0.772467852, 0)
 Converted["_Execute"].Size = UDim2.new(0, 42, 0, 42)
 Converted["_Execute"].Name = "Execute"
 Converted["_Execute"].Parent = Converted["_Framee"]
-
+local function isMobile()
+    return UserInputService.TouchEnabled and not UserInputService.MouseEnabled
+end
 Converted["_UICorner4"].CornerRadius = UDim.new(0, 6)
 Converted["_UICorner4"].Parent = Converted["_Execute"]
 
