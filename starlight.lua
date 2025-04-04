@@ -1,5 +1,5 @@
 -- starlight 💫
--- 0.1.7
+-- 0.1.71
 
 
 
@@ -373,7 +373,7 @@ Converted["_Framee"].BorderColor3 = Color3.fromRGB(0, 0, 0)
 Converted["_Framee"].BorderSizePixel = 0
 Converted["_Framee"].Position = UDim2.new(0, 0, 0.21895425, 0)
 Converted["_Framee"].Size = UDim2.new(0, 558, 0, 239)
-Converted["_Framee"].Visible = false
+Converted["_Framee"].Visible = true
 Converted["_Framee"].Name = "Framee"
 Converted["_Framee"].Parent = Converted["_Frame"]
 
@@ -650,7 +650,7 @@ Converted["_Sidebar"].BorderColor3 = Color3.fromRGB(0, 0, 0)
 Converted["_Sidebar"].BorderSizePixel = 0
 Converted["_Sidebar"].Position = UDim2.new(0, 0, 0.279668063, 0)
 Converted["_Sidebar"].Size = UDim2.new(0, 65, 0, 156)
-Converted["_Sidebar"].Visible = false
+Converted["_Sidebar"].Visible = true
 Converted["_Sidebar"].Name = "Sidebar"
 Converted["_Sidebar"].Parent = Converted["_Frame"]
 
@@ -799,6 +799,7 @@ Converted["_Verify"].BorderSizePixel = 0
 Converted["_Verify"].Position = UDim2.new(0, 0, 0.21895425, 0)
 Converted["_Verify"].Size = UDim2.new(0, 558, 0, 239)
 Converted["_Verify"].Name = "Verify"
+Converted["_Verify"].Visible = false
 Converted["_Verify"].Parent = Converted["_Frame"]
 
 Converted["_Verify1"].Font = Enum.Font.Ubuntu
