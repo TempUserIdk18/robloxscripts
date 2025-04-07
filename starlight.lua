@@ -1,5 +1,5 @@
 -- starlight 💫
--- 0.1.71
+-- 0.1.72
 
 
 
@@ -751,7 +751,7 @@ Converted["_ImageLabel7"].Size = UDim2.new(0, 35, 0, 35)
 Converted["_ImageLabel7"].Parent = Converted["_Logs1"]
 
 Converted["_Version"].Font = Enum.Font.SourceSans
-Converted["_Version"].Text = "0.1.7"
+Converted["_Version"].Text = "0.1.72"
 Converted["_Version"].TextColor3 = Color3.fromRGB(255, 255, 255)
 Converted["_Version"].TextScaled = true
 Converted["_Version"].TextSize = 14
@@ -1214,7 +1214,7 @@ local function CXGRFXR_fake_script() -- Fake Script: StarterGui.Starlight.Frame.
 		end
 	
 		local startTime = tick()
-		while tick() - startTime < 0.7 do
+		while tick() - startTime < 1 do
 			if foundEvent or workspace:FindFirstChild(modelName, true) then
 				foundEvent = true
 				break
@@ -1281,7 +1281,7 @@ local function CXGRFXR_fake_script() -- Fake Script: StarterGui.Starlight.Frame.
 	
 		local overallTimeout = 5.5
 		local start = tick()
-		repeat task.wait(0.1) until foundExploit or (tick() - start > overallTimeout)
+		repeat task.wait(0.3) until foundExploit or (tick() - start > overallTimeout)
 		FinishedFound = true -- Marking when the search is done
 		if remoteEvent then
 			print("💫 starlight: using backdoor (RemoteEvent):", remoteEvent:GetFullName())
