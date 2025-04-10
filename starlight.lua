@@ -1,5 +1,39 @@
 -- starlight 💫
--- 0.1.8
+-- 0.1.9
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -254,23 +288,31 @@ local Converted = {
 	["_ScrollingFrame"] = Instance.new("ScrollingFrame");
 	["_Template"] = Instance.new("TextLabel");
 	["_UIListLayout"] = Instance.new("UIListLayout");
-	["_LocalScript9"] = Instance.new("LocalScript");
-	["_Sidebar"] = Instance.new("Frame");
-	["_Executor"] = Instance.new("TextButton");
-	["_UICorner8"] = Instance.new("UICorner");
 	["_UIStroke8"] = Instance.new("UIStroke");
-	["_ImageLabel5"] = Instance.new("ImageLabel");
-	["_LocalScript10"] = Instance.new("LocalScript");
-	["_Presets1"] = Instance.new("TextButton");
+	["_UICorner8"] = Instance.new("UICorner");
+	["_LocalScript9"] = Instance.new("LocalScript");
+	["_Log2"] = Instance.new("TextLabel");
+	["_Log3"] = Instance.new("TextLabel");
+	["_ToggleMode"] = Instance.new("TextButton");
 	["_UICorner9"] = Instance.new("UICorner");
 	["_UIStroke9"] = Instance.new("UIStroke");
-	["_ImageLabel6"] = Instance.new("ImageLabel");
-	["_LocalScript11"] = Instance.new("LocalScript");
-	["_Logs1"] = Instance.new("TextButton");
+	["_LocalScript10"] = Instance.new("LocalScript");
+	["_Sidebar"] = Instance.new("Frame");
+	["_Executor"] = Instance.new("TextButton");
 	["_UICorner10"] = Instance.new("UICorner");
 	["_UIStroke10"] = Instance.new("UIStroke");
-	["_ImageLabel7"] = Instance.new("ImageLabel");
+	["_ImageLabel5"] = Instance.new("ImageLabel");
+	["_LocalScript11"] = Instance.new("LocalScript");
+	["_Presets1"] = Instance.new("TextButton");
+	["_UICorner11"] = Instance.new("UICorner");
+	["_UIStroke11"] = Instance.new("UIStroke");
+	["_ImageLabel6"] = Instance.new("ImageLabel");
 	["_LocalScript12"] = Instance.new("LocalScript");
+	["_Logs1"] = Instance.new("TextButton");
+	["_UICorner12"] = Instance.new("UICorner");
+	["_UIStroke12"] = Instance.new("UIStroke");
+	["_ImageLabel7"] = Instance.new("ImageLabel");
+	["_LocalScript13"] = Instance.new("LocalScript");
 	["_Version"] = Instance.new("TextLabel");
 	["_UIGradient"] = Instance.new("UIGradient");
 	["_Line"] = Instance.new("ImageLabel");
@@ -279,13 +321,13 @@ local Converted = {
 	["_Verify2"] = Instance.new("TextLabel");
 	["_TextBox1"] = Instance.new("TextBox");
 	["_Btn"] = Instance.new("TextButton");
-	["_UICorner11"] = Instance.new("UICorner");
-	["_UIStroke11"] = Instance.new("UIStroke");
-	["_LocalScript13"] = Instance.new("LocalScript");
+	["_UICorner13"] = Instance.new("UICorner");
+	["_UIStroke13"] = Instance.new("UIStroke");
+	["_LocalScript14"] = Instance.new("LocalScript");
 }
 
 -- Properties:
-local UserInputService = game:GetService("UserInputService")
+
 Converted["_Starlight"].DisplayOrder = 999
 Converted["_Starlight"].IgnoreGuiInset = true
 Converted["_Starlight"].ScreenInsets = Enum.ScreenInsets.DeviceSafeInsets
@@ -296,9 +338,8 @@ Converted["_Starlight"].Parent = game:GetService("CoreGui")
 Converted["_Frame"].BackgroundColor3 = Color3.fromRGB(12.000000234693289, 12.000000234693289, 12.000000234693289)
 Converted["_Frame"].BorderColor3 = Color3.fromRGB(0, 0, 0)
 Converted["_Frame"].BorderSizePixel = 0
-local isMobile = game:GetService("UserInputService").TouchEnabled
-Converted["_Frame"].Position = isMobile and UDim2.new(0.1, 0, 0.1, 0) or UDim2.new(0.253646672, 0, 0.293450892, 0)
-Converted["_Frame"].Size = UDim2.new(0, 558, 0, 306)
+Converted["_Frame"].Position = UDim2.new(0.238212034, 0, 0.298476011, 0)
+Converted["_Frame"].Size = UDim2.new(0, 621, 0, 353)
 Converted["_Frame"].Parent = Converted["_Starlight"]
 
 Converted["_UICorner"].CornerRadius = UDim.new(0, 6)
@@ -314,7 +355,7 @@ Converted["_ImageLabel"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 Converted["_ImageLabel"].BackgroundTransparency = 1
 Converted["_ImageLabel"].BorderColor3 = Color3.fromRGB(0, 0, 0)
 Converted["_ImageLabel"].BorderSizePixel = 0
-Converted["_ImageLabel"].Position = UDim2.new(0.0177772008, 0, 0.0258230567, 0)
+Converted["_ImageLabel"].Position = UDim2.new(0.0159850847, 0, 0.0399873629, 0)
 Converted["_ImageLabel"].Size = UDim2.new(0, 169, 0, 60)
 Converted["_ImageLabel"].Parent = Converted["_Frame"]
 
@@ -324,7 +365,7 @@ Converted["_stat"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 Converted["_stat"].BackgroundTransparency = 1
 Converted["_stat"].BorderColor3 = Color3.fromRGB(0, 0, 0)
 Converted["_stat"].BorderSizePixel = 0
-Converted["_stat"].Position = UDim2.new(0.308292836, 0, 0.0680332556, 0)
+Converted["_stat"].Position = UDim2.new(0.287177086, 0, 0.0793647245, 0)
 Converted["_stat"].Size = UDim2.new(0, 32, 0, 32)
 Converted["_stat"].Name = "stat"
 Converted["_stat"].Parent = Converted["_Frame"]
@@ -333,7 +374,7 @@ Converted["_Frame1"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 Converted["_Frame1"].BackgroundTransparency = 1
 Converted["_Frame1"].BorderColor3 = Color3.fromRGB(0, 0, 0)
 Converted["_Frame1"].BorderSizePixel = 0
-Converted["_Frame1"].Size = UDim2.new(0, 558, 0, 75)
+Converted["_Frame1"].Size = UDim2.new(0, 621, 0, 84)
 Converted["_Frame1"].Parent = Converted["_Frame"]
 
 Converted["_c"].Font = Enum.Font.SourceSans
@@ -344,7 +385,7 @@ Converted["_c"].AutoButtonColor = false
 Converted["_c"].BackgroundColor3 = Color3.fromRGB(16.000000946223736, 16.000000946223736, 16.000000946223736)
 Converted["_c"].BorderColor3 = Color3.fromRGB(0, 0, 0)
 Converted["_c"].BorderSizePixel = 0
-Converted["_c"].Position = UDim2.new(0.89041096, 0, 0.051645916, 0)
+Converted["_c"].Position = UDim2.new(0.912773371, 0, 0.0629773885, 0)
 Converted["_c"].Size = UDim2.new(0, 42, 0, 42)
 Converted["_c"].Name = "c"
 Converted["_c"].Parent = Converted["_Frame"]
@@ -372,30 +413,29 @@ Converted["_Framee"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 Converted["_Framee"].BackgroundTransparency = 1
 Converted["_Framee"].BorderColor3 = Color3.fromRGB(0, 0, 0)
 Converted["_Framee"].BorderSizePixel = 0
-Converted["_Framee"].Position = UDim2.new(0, 0, 0.21895425, 0)
-Converted["_Framee"].Size = UDim2.new(0, 558, 0, 239)
-Converted["_Framee"].Visible = true
+Converted["_Framee"].Position = UDim2.new(0, 0, 0.218954206, 0)
+Converted["_Framee"].Size = UDim2.new(0, 621, 0, 275)
 Converted["_Framee"].Name = "Framee"
 Converted["_Framee"].Parent = Converted["_Frame"]
 
 Converted["_TextBox"].ClearTextOnFocus = false
+Converted["_TextBox"].CursorPosition = -1
 Converted["_TextBox"].Font = Enum.Font.Code
 Converted["_TextBox"].MultiLine = true
 Converted["_TextBox"].PlaceholderColor3 = Color3.fromRGB(153.00000607967377, 153.00000607967377, 153.00000607967377)
 Converted["_TextBox"].PlaceholderText = "-- welcome to starlight"
-Converted["_TextBox"].RichText = true
 Converted["_TextBox"].Text = ""
 Converted["_TextBox"].TextColor3 = Color3.fromRGB(255, 255, 255)
 Converted["_TextBox"].TextSize = 18
-Converted["_TextBox"].TextTruncate = Enum.TextTruncate.AtEnd
+Converted["_TextBox"].TextTruncate = Enum.TextTruncate.SplitWord
 Converted["_TextBox"].TextWrapped = true
 Converted["_TextBox"].TextXAlignment = Enum.TextXAlignment.Left
 Converted["_TextBox"].TextYAlignment = Enum.TextYAlignment.Top
 Converted["_TextBox"].BackgroundColor3 = Color3.fromRGB(12.000000234693289, 12.000000234693289, 12.000000234693289)
 Converted["_TextBox"].BorderColor3 = Color3.fromRGB(0, 0, 0)
 Converted["_TextBox"].BorderSizePixel = 0
-Converted["_TextBox"].Position = UDim2.new(0.117992058, 0, 0.0777340159, 0)
-Converted["_TextBox"].Size = UDim2.new(0, 472, 0, 156)
+Converted["_TextBox"].Position = UDim2.new(0.117992066, 0, 0.0777340457, 0)
+Converted["_TextBox"].Size = UDim2.new(0, 537, 0, 189)
 Converted["_TextBox"].Parent = Converted["_Framee"]
 
 Converted["_UIStroke2"].ApplyStrokeMode = Enum.ApplyStrokeMode.Border
@@ -414,7 +454,7 @@ Converted["_Clear"].AutoButtonColor = false
 Converted["_Clear"].BackgroundColor3 = Color3.fromRGB(16.000000946223736, 16.000000946223736, 16.000000946223736)
 Converted["_Clear"].BorderColor3 = Color3.fromRGB(0, 0, 0)
 Converted["_Clear"].BorderSizePixel = 0
-Converted["_Clear"].Position = UDim2.new(0.214766204, 0, 0.772467852, 0)
+Converted["_Clear"].Position = UDim2.new(0.214766204, 0, 0.805195093, 0)
 Converted["_Clear"].Size = UDim2.new(0, 42, 0, 42)
 Converted["_Clear"].Name = "Clear"
 Converted["_Clear"].Parent = Converted["_Framee"]
@@ -445,13 +485,11 @@ Converted["_Execute"].AutoButtonColor = false
 Converted["_Execute"].BackgroundColor3 = Color3.fromRGB(16.000000946223736, 16.000000946223736, 16.000000946223736)
 Converted["_Execute"].BorderColor3 = Color3.fromRGB(0, 0, 0)
 Converted["_Execute"].BorderSizePixel = 0
-Converted["_Execute"].Position = UDim2.new(0.117992006, 0, 0.772467852, 0)
+Converted["_Execute"].Position = UDim2.new(0.117992006, 0, 0.808831453, 0)
 Converted["_Execute"].Size = UDim2.new(0, 42, 0, 42)
 Converted["_Execute"].Name = "Execute"
 Converted["_Execute"].Parent = Converted["_Framee"]
-local function isMobile()
-    return UserInputService.TouchEnabled and not UserInputService.MouseEnabled
-end
+
 Converted["_UICorner4"].CornerRadius = UDim.new(0, 6)
 Converted["_UICorner4"].Parent = Converted["_Execute"]
 
@@ -480,7 +518,7 @@ Converted["_scan"].AutoButtonColor = false
 Converted["_scan"].BackgroundColor3 = Color3.fromRGB(16.000000946223736, 16.000000946223736, 16.000000946223736)
 Converted["_scan"].BorderColor3 = Color3.fromRGB(0, 0, 0)
 Converted["_scan"].BorderSizePixel = 0
-Converted["_scan"].Position = UDim2.new(0.895787299, 0, 0.772467852, 0)
+Converted["_scan"].Position = UDim2.new(0.916352272, 0, 0.801558733, 0)
 Converted["_scan"].Size = UDim2.new(0, 42, 0, 42)
 Converted["_scan"].Name = "scan"
 Converted["_scan"].Parent = Converted["_Framee"]
@@ -499,7 +537,7 @@ Converted["_ImageLabel4"].BackgroundTransparency = 1
 Converted["_ImageLabel4"].BorderColor3 = Color3.fromRGB(0, 0, 0)
 Converted["_ImageLabel4"].BorderSizePixel = 0
 Converted["_ImageLabel4"].Interactable = false
-Converted["_ImageLabel4"].Position = UDim2.new(0.0714285746, 0, 0.0714285746, 0)
+Converted["_ImageLabel4"].Position = UDim2.new(0.095238097, 0, 0.0714285746, 0)
 Converted["_ImageLabel4"].Size = UDim2.new(0, 35, 0, 35)
 Converted["_ImageLabel4"].Parent = Converted["_scan"]
 
@@ -513,7 +551,7 @@ Converted["_Log"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 Converted["_Log"].BackgroundTransparency = 1
 Converted["_Log"].BorderColor3 = Color3.fromRGB(0, 0, 0)
 Converted["_Log"].BorderSizePixel = 0
-Converted["_Log"].Position = UDim2.new(0.464157701, 0, 0.772467852, 0)
+Converted["_Log"].Position = UDim2.new(0.534468234, 0, 0.797922373, 0)
 Converted["_Log"].Size = UDim2.new(0, 279, 0, 42)
 Converted["_Log"].Visible = false
 Converted["_Log"].Name = "Log"
@@ -530,7 +568,7 @@ Converted["_Check"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 Converted["_Check"].BackgroundTransparency = 1
 Converted["_Check"].BorderColor3 = Color3.fromRGB(0, 0, 0)
 Converted["_Check"].BorderSizePixel = 0
-Converted["_Check"].Position = UDim2.new(0.592920005, 0, 0.783713877, 0)
+Converted["_Check"].Position = UDim2.new(0.646873415, 0, 0.805531979, 0)
 Converted["_Check"].Size = UDim2.new(0, 207, 0, 41)
 Converted["_Check"].Visible = false
 Converted["_Check"].Name = "Check"
@@ -540,8 +578,8 @@ Converted["_Presets"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 Converted["_Presets"].BackgroundTransparency = 1
 Converted["_Presets"].BorderColor3 = Color3.fromRGB(0, 0, 0)
 Converted["_Presets"].BorderSizePixel = 0
-Converted["_Presets"].Position = UDim2.new(0, 0, 0.21895425, 0)
-Converted["_Presets"].Size = UDim2.new(0, 558, 0, 239)
+Converted["_Presets"].Position = UDim2.new(0, 0, 0.218954206, 0)
+Converted["_Presets"].Size = UDim2.new(0, 621, 0, 275)
 Converted["_Presets"].Visible = false
 Converted["_Presets"].Name = "Presets"
 Converted["_Presets"].Parent = Converted["_Frame"]
@@ -602,8 +640,8 @@ Converted["_Log1"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 Converted["_Log1"].BackgroundTransparency = 1
 Converted["_Log1"].BorderColor3 = Color3.fromRGB(0, 0, 0)
 Converted["_Log1"].BorderSizePixel = 0
-Converted["_Log1"].Position = UDim2.new(0.123655915, 0, 0.332964152, 0)
-Converted["_Log1"].Size = UDim2.new(0, 451, 0, 34)
+Converted["_Log1"].Position = UDim2.new(0.123655751, 0, 0.285691351, 0)
+Converted["_Log1"].Size = UDim2.new(0, 489, 0, 41)
 Converted["_Log1"].Name = "Log"
 Converted["_Log1"].Parent = Converted["_Presets"]
 
@@ -611,8 +649,8 @@ Converted["_Logs"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 Converted["_Logs"].BackgroundTransparency = 1
 Converted["_Logs"].BorderColor3 = Color3.fromRGB(0, 0, 0)
 Converted["_Logs"].BorderSizePixel = 0
-Converted["_Logs"].Position = UDim2.new(0, 0, 0.21895425, 0)
-Converted["_Logs"].Size = UDim2.new(0, 558, 0, 239)
+Converted["_Logs"].Position = UDim2.new(0, 0, 0.218954206, 0)
+Converted["_Logs"].Size = UDim2.new(0, 621, 0, 275)
 Converted["_Logs"].Visible = false
 Converted["_Logs"].Name = "Logs"
 Converted["_Logs"].Parent = Converted["_Frame"]
@@ -625,8 +663,8 @@ Converted["_ScrollingFrame"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 Converted["_ScrollingFrame"].BackgroundTransparency = 1
 Converted["_ScrollingFrame"].BorderColor3 = Color3.fromRGB(0, 0, 0)
 Converted["_ScrollingFrame"].BorderSizePixel = 0
-Converted["_ScrollingFrame"].Position = UDim2.new(0.123655915, 0, 0.0292887036, 0)
-Converted["_ScrollingFrame"].Size = UDim2.new(0, 469, 0, 219)
+Converted["_ScrollingFrame"].Position = UDim2.new(0.123655848, 0, 0.209204987, 0)
+Converted["_ScrollingFrame"].Size = UDim2.new(0, 308, 0, 206)
 Converted["_ScrollingFrame"].Parent = Converted["_Logs"]
 
 Converted["_Template"].Font = Enum.Font.SourceSans
@@ -647,13 +685,73 @@ Converted["_Template"].Parent = Converted["_ScrollingFrame"]
 Converted["_UIListLayout"].SortOrder = Enum.SortOrder.LayoutOrder
 Converted["_UIListLayout"].Parent = Converted["_ScrollingFrame"]
 
+Converted["_UIStroke8"].ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+Converted["_UIStroke8"].Color = Color3.fromRGB(57.00000040233135, 57.00000040233135, 57.00000040233135)
+Converted["_UIStroke8"].Thickness = 1.5
+Converted["_UIStroke8"].Parent = Converted["_ScrollingFrame"]
+
+Converted["_UICorner8"].CornerRadius = UDim.new(0, 6)
+Converted["_UICorner8"].Parent = Converted["_ScrollingFrame"]
+
+Converted["_Log2"].Font = Enum.Font.SourceSans
+Converted["_Log2"].Text = "Logs"
+Converted["_Log2"].TextColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_Log2"].TextScaled = true
+Converted["_Log2"].TextSize = 15
+Converted["_Log2"].TextWrapped = true
+Converted["_Log2"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_Log2"].BackgroundTransparency = 1
+Converted["_Log2"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_Log2"].BorderSizePixel = 0
+Converted["_Log2"].Position = UDim2.new(0.121863812, 0, 0.0858976617, 0)
+Converted["_Log2"].Size = UDim2.new(0, 309, 0, 26)
+Converted["_Log2"].Name = "Log"
+Converted["_Log2"].Parent = Converted["_Logs"]
+
+Converted["_Log3"].Font = Enum.Font.SourceSans
+Converted["_Log3"].Text = "Settings"
+Converted["_Log3"].TextColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_Log3"].TextScaled = true
+Converted["_Log3"].TextSize = 15
+Converted["_Log3"].TextWrapped = true
+Converted["_Log3"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_Log3"].BackgroundTransparency = 1
+Converted["_Log3"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_Log3"].BorderSizePixel = 0
+Converted["_Log3"].Position = UDim2.new(0.637705326, 0, 0.0984499305, 0)
+Converted["_Log3"].Size = UDim2.new(0, 208, 0, 26)
+Converted["_Log3"].Name = "Log"
+Converted["_Log3"].Parent = Converted["_Logs"]
+
+Converted["_ToggleMode"].Font = Enum.Font.Ubuntu
+Converted["_ToggleMode"].Text = "Current scan mode: RemoteEvents"
+Converted["_ToggleMode"].TextColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_ToggleMode"].TextScaled = true
+Converted["_ToggleMode"].TextSize = 14
+Converted["_ToggleMode"].TextWrapped = true
+Converted["_ToggleMode"].AutoButtonColor = false
+Converted["_ToggleMode"].BackgroundColor3 = Color3.fromRGB(16.000000946223736, 16.000000946223736, 16.000000946223736)
+Converted["_ToggleMode"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_ToggleMode"].BorderSizePixel = 0
+Converted["_ToggleMode"].Position = UDim2.new(0.639315665, 0, 0.207066536, 0)
+Converted["_ToggleMode"].Size = UDim2.new(0, 206, 0, 51)
+Converted["_ToggleMode"].Name = "ToggleMode"
+Converted["_ToggleMode"].Parent = Converted["_Logs"]
+
+Converted["_UICorner9"].CornerRadius = UDim.new(0, 6)
+Converted["_UICorner9"].Parent = Converted["_ToggleMode"]
+
+Converted["_UIStroke9"].ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+Converted["_UIStroke9"].Color = Color3.fromRGB(57.00000040233135, 57.00000040233135, 57.00000040233135)
+Converted["_UIStroke9"].Thickness = 1.5
+Converted["_UIStroke9"].Parent = Converted["_ToggleMode"]
+
 Converted["_Sidebar"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 Converted["_Sidebar"].BackgroundTransparency = 1
 Converted["_Sidebar"].BorderColor3 = Color3.fromRGB(0, 0, 0)
 Converted["_Sidebar"].BorderSizePixel = 0
-Converted["_Sidebar"].Position = UDim2.new(0, 0, 0.279668063, 0)
-Converted["_Sidebar"].Size = UDim2.new(0, 65, 0, 156)
-Converted["_Sidebar"].Visible = true
+Converted["_Sidebar"].Position = UDim2.new(0, 0, 0.279668093, 0)
+Converted["_Sidebar"].Size = UDim2.new(0, 65, 0, 190)
 Converted["_Sidebar"].Name = "Sidebar"
 Converted["_Sidebar"].Parent = Converted["_Frame"]
 
@@ -665,18 +763,18 @@ Converted["_Executor"].AutoButtonColor = false
 Converted["_Executor"].BackgroundColor3 = Color3.fromRGB(16.000000946223736, 16.000000946223736, 16.000000946223736)
 Converted["_Executor"].BorderColor3 = Color3.fromRGB(0, 0, 0)
 Converted["_Executor"].BorderSizePixel = 0
-Converted["_Executor"].Position = UDim2.new(0.140710443, 0, 0.0584081002, 0)
+Converted["_Executor"].Position = UDim2.new(0.140710443, 0, -0.0047498201, 0)
 Converted["_Executor"].Size = UDim2.new(0, 42, 0, 42)
 Converted["_Executor"].Name = "Executor"
 Converted["_Executor"].Parent = Converted["_Sidebar"]
 
-Converted["_UICorner8"].CornerRadius = UDim.new(0, 6)
-Converted["_UICorner8"].Parent = Converted["_Executor"]
+Converted["_UICorner10"].CornerRadius = UDim.new(0, 6)
+Converted["_UICorner10"].Parent = Converted["_Executor"]
 
-Converted["_UIStroke8"].ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-Converted["_UIStroke8"].Color = Color3.fromRGB(57.00000040233135, 57.00000040233135, 57.00000040233135)
-Converted["_UIStroke8"].Thickness = 1.5
-Converted["_UIStroke8"].Parent = Converted["_Executor"]
+Converted["_UIStroke10"].ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+Converted["_UIStroke10"].Color = Color3.fromRGB(57.00000040233135, 57.00000040233135, 57.00000040233135)
+Converted["_UIStroke10"].Thickness = 1.5
+Converted["_UIStroke10"].Parent = Converted["_Executor"]
 
 Converted["_ImageLabel5"].Image = "rbxassetid://96541223"
 Converted["_ImageLabel5"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -696,18 +794,18 @@ Converted["_Presets1"].AutoButtonColor = false
 Converted["_Presets1"].BackgroundColor3 = Color3.fromRGB(16.000000946223736, 16.000000946223736, 16.000000946223736)
 Converted["_Presets1"].BorderColor3 = Color3.fromRGB(0, 0, 0)
 Converted["_Presets1"].BorderSizePixel = 0
-Converted["_Presets1"].Position = UDim2.new(0.142502531, 0, 0.425375313, 0)
+Converted["_Presets1"].Position = UDim2.new(0.142502531, 0, 0.356954306, 0)
 Converted["_Presets1"].Size = UDim2.new(0, 42, 0, 42)
 Converted["_Presets1"].Name = "Presets"
 Converted["_Presets1"].Parent = Converted["_Sidebar"]
 
-Converted["_UICorner9"].CornerRadius = UDim.new(0, 6)
-Converted["_UICorner9"].Parent = Converted["_Presets1"]
+Converted["_UICorner11"].CornerRadius = UDim.new(0, 6)
+Converted["_UICorner11"].Parent = Converted["_Presets1"]
 
-Converted["_UIStroke9"].ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-Converted["_UIStroke9"].Color = Color3.fromRGB(57.00000040233135, 57.00000040233135, 57.00000040233135)
-Converted["_UIStroke9"].Thickness = 1.5
-Converted["_UIStroke9"].Parent = Converted["_Presets1"]
+Converted["_UIStroke11"].ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+Converted["_UIStroke11"].Color = Color3.fromRGB(57.00000040233135, 57.00000040233135, 57.00000040233135)
+Converted["_UIStroke11"].Thickness = 1.5
+Converted["_UIStroke11"].Parent = Converted["_Presets1"]
 
 Converted["_ImageLabel6"].Image = "rbxassetid://11570895459"
 Converted["_ImageLabel6"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -727,20 +825,20 @@ Converted["_Logs1"].AutoButtonColor = false
 Converted["_Logs1"].BackgroundColor3 = Color3.fromRGB(16.000000946223736, 16.000000946223736, 16.000000946223736)
 Converted["_Logs1"].BorderColor3 = Color3.fromRGB(0, 0, 0)
 Converted["_Logs1"].BorderSizePixel = 0
-Converted["_Logs1"].Position = UDim2.new(0.142502531, 0, 0.790384352, 0)
+Converted["_Logs1"].Position = UDim2.new(0.142502531, 0, 0.711437047, 0)
 Converted["_Logs1"].Size = UDim2.new(0, 42, 0, 42)
 Converted["_Logs1"].Name = "Logs"
 Converted["_Logs1"].Parent = Converted["_Sidebar"]
 
-Converted["_UICorner10"].CornerRadius = UDim.new(0, 6)
-Converted["_UICorner10"].Parent = Converted["_Logs1"]
+Converted["_UICorner12"].CornerRadius = UDim.new(0, 6)
+Converted["_UICorner12"].Parent = Converted["_Logs1"]
 
-Converted["_UIStroke10"].ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-Converted["_UIStroke10"].Color = Color3.fromRGB(57.00000040233135, 57.00000040233135, 57.00000040233135)
-Converted["_UIStroke10"].Thickness = 1.5
-Converted["_UIStroke10"].Parent = Converted["_Logs1"]
+Converted["_UIStroke12"].ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+Converted["_UIStroke12"].Color = Color3.fromRGB(57.00000040233135, 57.00000040233135, 57.00000040233135)
+Converted["_UIStroke12"].Thickness = 1.5
+Converted["_UIStroke12"].Parent = Converted["_Logs1"]
 
-Converted["_ImageLabel7"].Image = "rbxassetid://116592854241448"
+Converted["_ImageLabel7"].Image = "rbxassetid://103052477976081"
 Converted["_ImageLabel7"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 Converted["_ImageLabel7"].BackgroundTransparency = 1
 Converted["_ImageLabel7"].BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -751,7 +849,7 @@ Converted["_ImageLabel7"].Size = UDim2.new(0, 35, 0, 35)
 Converted["_ImageLabel7"].Parent = Converted["_Logs1"]
 
 Converted["_Version"].Font = Enum.Font.SourceSans
-Converted["_Version"].Text = "0.1.8"
+Converted["_Version"].Text = "0.1.9"
 Converted["_Version"].TextColor3 = Color3.fromRGB(255, 255, 255)
 Converted["_Version"].TextScaled = true
 Converted["_Version"].TextSize = 14
@@ -761,7 +859,7 @@ Converted["_Version"].BackgroundTransparency = 1
 Converted["_Version"].BorderColor3 = Color3.fromRGB(0, 0, 0)
 Converted["_Version"].BorderSizePixel = 0
 Converted["_Version"].Interactable = false
-Converted["_Version"].Position = UDim2.new(0.100000001, 0, 1.12820518, 0)
+Converted["_Version"].Position = UDim2.new(0.130769238, 0, 1.04925764, 0)
 Converted["_Version"].Size = UDim2.new(0, 46, 0, 32)
 Converted["_Version"].Name = "Version"
 Converted["_Version"].Parent = Converted["_Sidebar"]
@@ -782,16 +880,16 @@ Converted["_UIGradient"].Color = ColorSequence.new{
 Converted["_UIGradient"].Rotation = 47
 Converted["_UIGradient"].Parent = Converted["_Version"]
 
-Converted["_Line"].Image = "rbxassetid://16244647442"
-Converted["_Line"].ImageColor3 = Color3.fromRGB(45.00000111758709, 45.00000111758709, 45.00000111758709)
+Converted["_Line"].Image = "rbxasset://textures/ui/Scroll/scroll-middle.png"
+Converted["_Line"].ImageColor3 = Color3.fromRGB(67.00000360608101, 67.00000360608101, 67.00000360608101)
 Converted["_Line"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 Converted["_Line"].BackgroundTransparency = 1
 Converted["_Line"].BorderColor3 = Color3.fromRGB(0, 0, 0)
 Converted["_Line"].BorderSizePixel = 0
 Converted["_Line"].Interactable = false
-Converted["_Line"].Position = UDim2.new(-0.75, 0, 0.610442162, 0)
+Converted["_Line"].Position = UDim2.new(-0.919230759, 0, 0.615705311, 0)
 Converted["_Line"].Rotation = 90
-Converted["_Line"].Size = UDim2.new(0, 214, 0, 19)
+Converted["_Line"].Size = UDim2.new(0, 245, 0, 6)
 Converted["_Line"].Name = "Line"
 Converted["_Line"].Parent = Converted["_Sidebar"]
 
@@ -801,8 +899,8 @@ Converted["_Verify"].BorderColor3 = Color3.fromRGB(0, 0, 0)
 Converted["_Verify"].BorderSizePixel = 0
 Converted["_Verify"].Position = UDim2.new(0, 0, 0.21895425, 0)
 Converted["_Verify"].Size = UDim2.new(0, 558, 0, 239)
-Converted["_Verify"].Name = "Verify"
 Converted["_Verify"].Visible = false
+Converted["_Verify"].Name = "Verify"
 Converted["_Verify"].Parent = Converted["_Frame"]
 
 Converted["_Verify1"].Font = Enum.Font.Ubuntu
@@ -822,7 +920,7 @@ Converted["_Verify1"].Name = "Verify"
 Converted["_Verify1"].Parent = Converted["_Verify"]
 
 Converted["_Verify2"].Font = Enum.Font.Ubuntu
-Converted["_Verify2"].Text = "To verify, go to https://starlightkey.netlify.app/key.json and get the key."
+Converted["_Verify2"].Text = "To verify, go to https://starlightkey.netlify.app and get the key."
 Converted["_Verify2"].TextColor3 = Color3.fromRGB(255, 255, 255)
 Converted["_Verify2"].TextScaled = true
 Converted["_Verify2"].TextSize = 50
@@ -838,7 +936,6 @@ Converted["_Verify2"].Name = "Verify"
 Converted["_Verify2"].Parent = Converted["_Verify"]
 
 Converted["_TextBox1"].ClearTextOnFocus = false
-Converted["_TextBox1"].CursorPosition = -1
 Converted["_TextBox1"].Font = Enum.Font.SourceSans
 Converted["_TextBox1"].PlaceholderColor3 = Color3.fromRGB(178.00000458955765, 178.00000458955765, 178.00000458955765)
 Converted["_TextBox1"].PlaceholderText = "key here"
@@ -869,13 +966,13 @@ Converted["_Btn"].Size = UDim2.new(0, 249, 0, 42)
 Converted["_Btn"].Name = "Btn"
 Converted["_Btn"].Parent = Converted["_Verify"]
 
-Converted["_UICorner11"].CornerRadius = UDim.new(0, 6)
-Converted["_UICorner11"].Parent = Converted["_Btn"]
+Converted["_UICorner13"].CornerRadius = UDim.new(0, 6)
+Converted["_UICorner13"].Parent = Converted["_Btn"]
 
-Converted["_UIStroke11"].ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-Converted["_UIStroke11"].Color = Color3.fromRGB(57.00000040233135, 57.00000040233135, 57.00000040233135)
-Converted["_UIStroke11"].Thickness = 1.5
-Converted["_UIStroke11"].Parent = Converted["_Btn"]
+Converted["_UIStroke13"].ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+Converted["_UIStroke13"].Color = Color3.fromRGB(57.00000040233135, 57.00000040233135, 57.00000040233135)
+Converted["_UIStroke13"].Thickness = 1.5
+Converted["_UIStroke13"].Parent = Converted["_Btn"]
 
 -- Fake Module Scripts:
 
@@ -884,7 +981,7 @@ local fake_module_scripts = {}
 
 -- Fake Local Scripts:
 
-local function VKMM_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Frame.LocalScript
+local function IGUKUGX_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Frame.LocalScript
     local script = Instance.new("LocalScript")
     script.Name = "LocalScript"
     script.Parent = Converted["_Frame1"]
@@ -937,7 +1034,7 @@ local function VKMM_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Fra
 		end
 	end)
 end
-local function UVRY_fake_script() -- Fake Script: StarterGui.Starlight.Frame.c.LocalScript
+local function MCNFQC_fake_script() -- Fake Script: StarterGui.Starlight.Frame.c.LocalScript
     local script = Instance.new("LocalScript")
     script.Name = "LocalScript"
     script.Parent = Converted["_c"]
@@ -965,11 +1062,29 @@ local function UVRY_fake_script() -- Fake Script: StarterGui.Starlight.Frame.c.L
 		button.BackgroundColor3 = Color3.fromRGB(10,10,10)
 		button.UIStroke.Color = Color3.fromRGB(50,50,50)
 	end)
+	button.MouseButton1Up:Connect(function()
+		button.BackgroundColor3 = Color3.fromRGB(16,16,16)
+		button.UIStroke.Color = Color3.fromRGB(57,57,57)
+	end)
 	button.MouseButton1Click:Connect(function()
+		local tweenService = game:GetService("TweenService")
+		local tweenInfo = TweenInfo.new(0.3, Enum.EasingStyle.Sine, Enum.EasingDirection.Out)
+		local transparencyGoal = {BackgroundTransparency = 1}
+	
+		for _, obj in pairs(frame:GetDescendants()) do
+			if obj:IsA("GuiObject") then
+				tweenService:Create(obj, tweenInfo, transparencyGoal):Play()
+				if obj:IsA("TextLabel") or obj:IsA("TextButton") then
+					tweenService:Create(obj, tweenInfo, {TextTransparency = 1}):Play()
+				end
+			end
+		end
+	
+		task.wait(0.3)
 		frame:Destroy()
 	end)
 end
-local function TSDE_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Framee.TextBox.LocalScript
+local function WWXNJKM_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Framee.TextBox.LocalScript
     local script = Instance.new("LocalScript")
     script.Name = "LocalScript"
     script.Parent = Converted["_TextBox"]
@@ -984,7 +1099,7 @@ local function TSDE_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Fra
 
 	script.Parent.Font = Enum.Font.Code
 end
-local function IHZMOGJ_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Framee.Clear.LocalScript
+local function ONVT_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Framee.Clear.LocalScript
     local script = Instance.new("LocalScript")
     script.Name = "LocalScript"
     script.Parent = Converted["_Clear"]
@@ -1017,7 +1132,7 @@ local function IHZMOGJ_fake_script() -- Fake Script: StarterGui.Starlight.Frame.
 		script.Parent.Parent.TextBox.Text = ""
 	end)
 end
-local function MQDU_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Framee.Execute.LocalScript
+local function ELCRWYF_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Framee.Execute.LocalScript
     local script = Instance.new("LocalScript")
     script.Name = "LocalScript"
     script.Parent = Converted["_Execute"]
@@ -1047,7 +1162,7 @@ local function MQDU_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Fra
 		script.Parent.UIStroke.Color = Color3.fromRGB(57,57,57)
 	end)
 end
-local function UVZBEX_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Framee.scan.LocalScript
+local function UKMRPT_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Framee.scan.LocalScript
     local script = Instance.new("LocalScript")
     script.Name = "LocalScript"
     script.Parent = Converted["_scan"]
@@ -1077,7 +1192,7 @@ local function UVZBEX_fake_script() -- Fake Script: StarterGui.Starlight.Frame.F
 		script.Parent.UIStroke.Color = Color3.fromRGB(57,57,57)
 	end)
 end
-local function NJBRDN_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Presets.Polaria.LocalScript
+local function QYBFIRT_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Presets.Polaria.LocalScript
     local script = Instance.new("LocalScript")
     script.Name = "LocalScript"
     script.Parent = Converted["_Polaria"]
@@ -1107,7 +1222,7 @@ local function NJBRDN_fake_script() -- Fake Script: StarterGui.Starlight.Frame.P
 		script.Parent.UIStroke.Color = Color3.fromRGB(57,57,57)
 	end)
 end
-local function VIYM_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Presets.Shutdown.LocalScript
+local function ARHPGBD_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Presets.Shutdown.LocalScript
     local script = Instance.new("LocalScript")
     script.Name = "LocalScript"
     script.Parent = Converted["_Shutdown"]
@@ -1137,7 +1252,7 @@ local function VIYM_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Pre
 		script.Parent.UIStroke.Color = Color3.fromRGB(57,57,57)
 	end)
 end
-local function CXGRFXR_fake_script() -- Fake Script: StarterGui.Starlight.Frame.LocalScript
+local function TOAKG_fake_script() -- Fake Script: StarterGui.Starlight.Frame.LocalScript
     local script = Instance.new("LocalScript")
     script.Name = "LocalScript"
     script.Parent = Converted["_Frame"]
@@ -1155,169 +1270,192 @@ local function CXGRFXR_fake_script() -- Fake Script: StarterGui.Starlight.Frame.
 	local userInputService = game:GetService("UserInputService")
 	local runService = game:GetService("RunService")
 	local tweenService = game:GetService("TweenService")
-local HttpService = game:GetService("HttpService")
-local RunService = game:GetService("RunService")
-
--- Lightning-fast exclusion system
-local EXCLUDED_REMOTES = {
-    UpdateCurrentCall = true, CanChatWith = true, OnNewMessage = true,
-    OnMessageDoneFiltering = true, OnChannelJoined = true, OnNewSystemMessage = true,
-    NewPlayerGroupDetails = true, ClientLoaded = true, SetPlayerReady = true,
-    SetCoreGuiEnabled = true, SetCore = true, DispatchEvent = true,
-    PromptGamePassPurchaseFinished = true, PromptPurchaseFinished = true,
-    PromptSubscriptionFinished = true, InspectMenuFromMouse = true,
-    GetServerVersion = true, GetClientId = true, GetInventory = true,
-    GetFriends = true, GetAccountInfo = true, RequestServerSaves = true,
-    UpdatePlayerBlockList = true, SetAvatarBlockList = true,
-    SetFriendRequestEvent = true, NewFollower = true, PerformAction = true,
-    ReportAbuse = true
-}
-
--- Cache safe locations
-local SAFE_LOCATIONS = {
-    ["CoreGui"] = true,
-    ["ServerStorage"] = true,
-    ["ReplicatedFirst"] = true,
-    ["ServerScriptService"] = true
-}
-
-local foundExploit = false
-local FinishedFound = false
-local remoteEvent, remoteFunction
-local scanTime = 0
-
-local function isLikelyBackdoorRemote(remote)
-    local name = remote.Name
-    local parent = remote.Parent
-    
-    -- Ultra-fast checks in order of speed:
-    -- 1. Check parent location first (fastest)
-    if SAFE_LOCATIONS[parent.ClassName] then
-        return false
-    end
-    
-    -- 2. Check excluded names
-    if EXCLUDED_REMOTES[name] then
-        return false
-    end
-
-    
-    return true
-end
-
-local function testRemote(remote, isFunction)
-    if foundExploit then return false end
-    if not isLikelyBackdoorRemote(remote) then return end
-    local modelName = "starlight_"..tostring(os.clock()):gsub("%.", "")
-    local foundEvent = false
-    
-    -- Lightweight connection
-    local connection = game.ReplicatedStorage.DescendantAdded:Connect(function(instance)
-        if instance.Name == modelName then
-            foundEvent = true
-        end
-    end)
-
-    -- Turbo test with minimal waits
-    local startTime = os.clock()
-    local success = pcall(function()
-        if isFunction then
-            remote:InvokeServer('starlight_check', [[
-                local m=Instance.new("Folder")
-                m.Name="]]..modelName..[["
-                m.Parent=game.ReplicatedStorage
-                return true
-            ]])
-        else
-            remote:FireServer([[
-                local m=Instance.new("Folder")
-                m.Name="]]..modelName..[["
-                m.Parent=game.ReplicatedStorage
-            ]])
-        end
-    end)
-
-    -- Rapid checking (16 checks max)
-    for _ = 1, 16 do
-        if foundEvent or game.ReplicatedStorage:FindFirstChild(modelName) then
-            foundEvent = true
-            break
-        end
-        task.wait(0.05) -- Minimal wait
-    end
-
-    -- Instant cleanup
-    connection:Disconnect()
-    if foundEvent then
-        local instance = game.ReplicatedStorage:FindFirstChild(modelName)
-        if instance then instance:Destroy() end
-        
-        foundExploit = true
-        if isFunction then
-            remoteFunction = remote
-        else
-            remoteEvent = remote
-        end
-        return true
-    end
-    return false
-end
-
-local function findRemote()
-    local trueStart = os.clock()
-    foundExploit = false
-    remoteEvent = nil
-    remoteFunction = nil
-    
-    -- Blazing-fast remote collection
-    local remotes = {}
-    local count = 0
-    for _, remote in ipairs(game:GetDescendants()) do
-        if (remote:IsA("RemoteEvent") or remote:IsA("RemoteFunction")) then
-            count += 1
-            remotes[count] = remote
-            print(string.format("  \x1b💫 starlight: [%d] Scanning: %s\x1b", count, remote:GetFullName()))
-        end
-    end
-
-    print(string.format("💫 starlight: 🔍 scanning %d remotes", count))
-    
-    -- Warp-speed parallel scanning
-    local MAX_CONCURRENT = 16 -- Increased concurrency
-    local activeTasks = 0
-    local taskDone = Instance.new("BindableEvent")
-
-    for i = 1, count do
-        if foundExploit then break end
-        
-        -- Minimal waiting for task slots
-        while activeTasks >= MAX_CONCURRENT do
-            taskDone.Event:Wait(0.02) -- Ultra-short wait
-        end
-
-        activeTasks += 1
-        task.spawn(function()
-            if testRemote(remotes[i], remotes[i]:IsA("RemoteFunction")) then
-                print(string.format("\x1b💫 starlight:  backdoor found: %s\x1b", remotes[i]:GetFullName()))
-            end
-            activeTasks -= 1
-            taskDone:Fire()
-        end)
-    end
-
-    -- Final wait (minimal)
-    while activeTasks > 0 and not foundExploit do
-        taskDone.Event:Wait(0.02)
-    end
-
-    scanTime = os.clock() - trueStart
-    	FinishedFound = true
-    if not foundExploit then
-        print("\x1b💫 starlight: no backdoor found\x1b")
-    end
-
-    print(string.format("💫 starlight: scan completed in \x1b%.3f seconds\x1b", scanTime))
-end
+	local HttpService = game:GetService("HttpService")
+	local RunService = game:GetService("RunService")
+	
+	-- Lightning-fast exclusion system
+	local EXCLUDED_REMOTES = {
+		UpdateCurrentCall = true, CanChatWith = true, OnNewMessage = true,
+		OnMessageDoneFiltering = true, OnChannelJoined = true, OnNewSystemMessage = true,
+		NewPlayerGroupDetails = true, ClientLoaded = true, SetPlayerReady = true,
+		SetCoreGuiEnabled = true, SetCore = true, DispatchEvent = true,
+		PromptGamePassPurchaseFinished = true, PromptPurchaseFinished = true,
+		PromptSubscriptionFinished = true, InspectMenuFromMouse = true,
+		GetServerVersion = true, GetClientId = true, GetInventory = true,
+		GetFriends = true, GetAccountInfo = true, RequestServerSaves = true,
+		UpdatePlayerBlockList = true, SetAvatarBlockList = true,
+		SetFriendRequestEvent = true, NewFollower = true, PerformAction = true,
+		ReportAbuse = true
+	}
+	
+	-- Cache safe locations
+	local SAFE_LOCATIONS = {
+		["CoreGui"] = true,
+		["ServerStorage"] = true,
+		["ReplicatedFirst"] = true,
+		["ServerScriptService"] = true
+	}
+	
+	local foundExploit = false
+	local FinishedFound = false
+	local mode = 1
+	local remoteEvent, remoteFunction
+	local scanTime = 0
+	
+	local function isLikelyBackdoorRemote(remote)
+		local name = remote.Name
+		local parent = remote.Parent
+	
+		-- Ultra-fast checks in order of speed:
+		-- 1. Check parent location first (fastest)
+		if SAFE_LOCATIONS[parent.ClassName] then
+			return false
+		end
+	
+		-- 2. Check excluded names
+		if EXCLUDED_REMOTES[name] then
+			return false
+		end
+	
+	
+		return true
+	end
+	
+	local function testRemote(remote, isFunction)
+		if foundExploit then return false end
+		if not isLikelyBackdoorRemote(remote) then return false end
+	
+		local modelName = "starlight_"..tostring(os.clock()):gsub("%.", "")
+		local foundEvent = false
+	
+		-- Lightweight connection
+		local connection = game.ReplicatedStorage.DescendantAdded:Connect(function(instance)
+			if instance.Name == modelName then
+				foundEvent = true
+			end
+		end)
+	
+		-- Turbo test with minimal waits
+		local startTime = os.clock()
+		local success = pcall(function()
+			-- MODE FIX: Check both types regardless of current mode
+			-- First try the current mode's method
+			if mode == 2 and isFunction then
+				remote:InvokeServer('starlight_check', [[
+	                local m=Instance.new("Folder")
+	                m.Name="]]..modelName..[["
+	                m.Parent=game.ReplicatedStorage
+	                return true
+	            ]])
+			elseif mode == 1 and not isFunction then
+				remote:FireServer([[
+	                local m=Instance.new("Folder")
+	                m.Name="]]..modelName..[["
+	                m.Parent=game.ReplicatedStorage
+	            ]])
+			else
+				-- Fallback: try both methods if current mode fails
+				if isFunction and mode == 2 then
+					remote:InvokeServer('starlight_check', [[
+	                    local m=Instance.new("Folder")
+	                    m.Name="]]..modelName..[["
+	                    m.Parent=game.ReplicatedStorage
+	                    return true
+	                ]])
+				else
+					if mode == 1 and not isFunction then
+					    remote:FireServer([[
+	                        local m=Instance.new("Folder")
+	                        m.Name="]]..modelName..[["
+	                        m.Parent=game.ReplicatedStorage
+	                    ]])
+					end
+				end
+			end
+		end)
+	
+		-- Rapid checking (20 checks max)
+		for _ = 1, 20 do
+			if foundEvent or game.ReplicatedStorage:FindFirstChild(modelName) then
+				foundEvent = true
+				break
+			end
+			task.wait(0.05) -- Minimal wait
+		end
+	
+		-- Instant cleanup
+		connection:Disconnect()
+		if foundEvent then
+			local instance = game.ReplicatedStorage:FindFirstChild(modelName)
+			if instance then instance:Destroy() end
+	
+			foundExploit = true
+			if isFunction then
+				remoteFunction = remote
+			else
+				remoteEvent = remote
+			end
+			return true
+		end
+		return false
+	end
+	
+	local function findRemote()
+		local trueStart = os.clock()
+		foundExploit = false
+		remoteEvent = nil
+		remoteFunction = nil
+	
+		-- Blazing-fast remote collection
+		local remotes = {}
+		local count = 0
+		for _, remote in ipairs(game:GetDescendants()) do
+			if (remote:IsA("RemoteEvent") or remote:IsA("RemoteFunction")) then
+				count += 1
+				remotes[count] = remote
+				print(string.format("  \x1b💫 starlight: [%d] Scanning: %s\x1b", count, remote:GetFullName()))
+			end
+		end
+	
+		print(string.format("💫 starlight: 🔍 scanning %d remotes", count))
+	
+		-- Warp-speed parallel scanning
+		local MAX_CONCURRENT = 16 -- Increased concurrency
+		local activeTasks = 0
+		local taskDone = Instance.new("BindableEvent")
+	
+		for i = 1, count do
+			if foundExploit then break end
+	
+			-- Minimal waiting for task slots
+			while activeTasks >= MAX_CONCURRENT do
+				taskDone.Event:Wait(0.02) -- Ultra-short wait
+			end
+	
+			activeTasks += 1
+			task.spawn(function()
+				if testRemote(remotes[i], remotes[i]:IsA("RemoteFunction")) then
+					print(string.format("\x1b💫 starlight:  backdoor found: %s\x1b", remotes[i]:GetFullName()))
+				end
+				activeTasks -= 1
+				taskDone:Fire()
+			end)
+		end
+	
+		-- Final wait (minimal)
+		while activeTasks > 0 and not foundExploit do
+			taskDone.Event:Wait(0.02)
+		end
+	
+		scanTime = os.clock() - trueStart
+		FinishedFound = true
+		
+		if not foundExploit then
+			print("\x1b💫 starlight: no backdoor found\x1b")
+		end
+	
+		print(string.format("💫 starlight: scan completed in \x1b%.3f seconds\x1b", scanTime))
+	end
 	
 	local function fireRemoteEvent(code)
 		if remoteEvent then
@@ -1351,7 +1489,7 @@ end
 			})
 		end
 	end
-		script.Parent.Sidebar.Presets.MouseButton1Click:Connect(function()
+	script.Parent.Sidebar.Presets.MouseButton1Click:Connect(function()
 		script.Parent.Framee.Visible = false
 		script.Parent.Presets.Visible = true
 		script.Parent.Logs.Visible = false
@@ -1377,6 +1515,27 @@ end
 		script.Parent.Framee.Visible = true
 		script.Parent.Logs.Visible = false
 		script.Parent.Presets.Visible = false
+	end)
+	script.Parent.Logs.ToggleMode.MouseButton1Click:Connect(function()
+		if remoteFunction or remoteEvent then
+			game.StarterGui:SetCore("SendNotification",{
+				Title = "💫 starlight",
+				Text = "the backdoor is already found, you don't need to change this!",
+				Duration = 5
+			})
+			return
+		end
+		FinishedFound = false
+		if mode == 1 then
+			mode = 2
+			script.Parent.Logs.ToggleMode.Text = "Current scan mode: RemoteFunctions"
+			return
+		end
+		if mode == 2 then
+			mode = 1
+			script.Parent.Logs.ToggleMode.Text = "Current scan mode: RemoteEvents"
+			return
+		end
 	end)
 	game.StarterGui:SetCore("SendNotification",{
 		Title = "💫 starlight",
@@ -1423,8 +1582,8 @@ end
 		fireRemoteEvent(script.Parent.Framee.TextBox.Text)
 	end)
 	
-	local url = "https://starlightkey.netlify.app/key.json"
-	local HttpService = game:GetService("HttpService")  -- We need HttpService to decode JSON
+	local url = "https://starlightkey.netlify.app"
+	
 	
 	local function validateKey(userKey)
 	
@@ -1439,12 +1598,11 @@ end
 	
 			if response.StatusCode == 200 then
 	
-			 local keyFromServer = response.Body:match('"key"%s*:%s*"([^"]+)"')
-			 print(keyFromServer)
-
+				local keyFromServer = response.Body
+	
 				-- Validate the key
 				if userKey == keyFromServer then
-					print("💫starlight: the key is valid!")
+					print("The key is valid!")
 					script.Parent.Verify.Btn.Text = "Key Valid!"
 					task.wait(3)
 					script.Parent.Verify.Visible = false
@@ -1452,23 +1610,23 @@ end
 					script.Parent.Sidebar.Visible = true
 					-- Proceed with the next actions after key validation
 				else
-					print("💫starlight: invalid key or key expired!")
+					print("Invalid key or key expired!")
 					script.Parent.Verify.Btn.Text = "Key Invalid!"
 					task.wait(3)
 					script.Parent.Verify.Btn.Text = "Verify"
 				end
 			else
-				print("💫starlight: failed to fetch the key from the server!")
+				print("Failed to fetch the key from the server!")
 			end
 		end)
 	end
 	
-
-	script.Parent.Verify.Btn.MouseButton1Click:Connect(function()
-	    validateKey(script.Parent.Verify.TextBox.Text)
-	end)
+	-- Example usage
+	local userEnteredKey = "1234ABCD5678EFGH"  -- Replace with the key entered by the user
+	validateKey(userEnteredKey)
+	
 end
-local function FCAQR_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Logs.LocalScript
+local function FTANDR_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Logs.LocalScript
     local script = Instance.new("LocalScript")
     script.Name = "LocalScript"
     script.Parent = Converted["_Logs"]
@@ -1504,7 +1662,37 @@ local function FCAQR_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Lo
 	_G.getConsoleLogs = getLogs
 	
 end
-local function ZJIVZQP_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Sidebar.Executor.LocalScript
+local function DDVI_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Logs.ToggleMode.LocalScript
+    local script = Instance.new("LocalScript")
+    script.Name = "LocalScript"
+    script.Parent = Converted["_ToggleMode"]
+    local req = require
+    local require = function(obj)
+        local fake = fake_module_scripts[obj]
+        if fake then
+            return fake()
+        end
+        return req(obj)
+    end
+
+	script.Parent.MouseEnter:Connect(function()
+		script.Parent.BackgroundColor3 = Color3.fromRGB(22,22,22)
+		script.Parent.UIStroke.Color = Color3.fromRGB(65,65,65)
+	end)
+	script.Parent.MouseLeave:Connect(function()
+		script.Parent.BackgroundColor3 = Color3.fromRGB(16,16,16)
+		script.Parent.UIStroke.Color = Color3.fromRGB(57,57,57)
+	end)
+	script.Parent.MouseButton1Down:Connect(function()
+		script.Parent.BackgroundColor3 = Color3.fromRGB(10,10,10)
+		script.Parent.UIStroke.Color = Color3.fromRGB(50,50,50)
+	end)
+	script.Parent.MouseButton1Up:Connect(function()
+		script.Parent.BackgroundColor3 = Color3.fromRGB(16,16,16)
+		script.Parent.UIStroke.Color = Color3.fromRGB(57,57,57)
+	end)
+end
+local function NOAH_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Sidebar.Executor.LocalScript
     local script = Instance.new("LocalScript")
     script.Name = "LocalScript"
     script.Parent = Converted["_Executor"]
@@ -1534,7 +1722,7 @@ local function ZJIVZQP_fake_script() -- Fake Script: StarterGui.Starlight.Frame.
 		script.Parent.UIStroke.Color = Color3.fromRGB(57,57,57)
 	end)
 end
-local function SQUH_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Sidebar.Presets.LocalScript
+local function KEUZGDD_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Sidebar.Presets.LocalScript
     local script = Instance.new("LocalScript")
     script.Name = "LocalScript"
     script.Parent = Converted["_Presets1"]
@@ -1564,7 +1752,7 @@ local function SQUH_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Sid
 		script.Parent.UIStroke.Color = Color3.fromRGB(57,57,57)
 	end)
 end
-local function AABBQT_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Sidebar.Logs.LocalScript
+local function AXDDHC_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Sidebar.Logs.LocalScript
     local script = Instance.new("LocalScript")
     script.Name = "LocalScript"
     script.Parent = Converted["_Logs1"]
@@ -1594,7 +1782,7 @@ local function AABBQT_fake_script() -- Fake Script: StarterGui.Starlight.Frame.S
 		script.Parent.UIStroke.Color = Color3.fromRGB(57,57,57)
 	end)
 end
-local function CZQANO_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Verify.Btn.LocalScript
+local function ZGXJ_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Verify.Btn.LocalScript
     local script = Instance.new("LocalScript")
     script.Name = "LocalScript"
     script.Parent = Converted["_Btn"]
@@ -1625,17 +1813,18 @@ local function CZQANO_fake_script() -- Fake Script: StarterGui.Starlight.Frame.V
 	end)
 end
 
-coroutine.wrap(VKMM_fake_script)()
-coroutine.wrap(UVRY_fake_script)()
-coroutine.wrap(TSDE_fake_script)()
-coroutine.wrap(IHZMOGJ_fake_script)()
-coroutine.wrap(MQDU_fake_script)()
-coroutine.wrap(UVZBEX_fake_script)()
-coroutine.wrap(NJBRDN_fake_script)()
-coroutine.wrap(VIYM_fake_script)()
-coroutine.wrap(CXGRFXR_fake_script)()
-coroutine.wrap(FCAQR_fake_script)()
-coroutine.wrap(ZJIVZQP_fake_script)()
-coroutine.wrap(SQUH_fake_script)()
-coroutine.wrap(AABBQT_fake_script)()
-coroutine.wrap(CZQANO_fake_script)()
+coroutine.wrap(IGUKUGX_fake_script)()
+coroutine.wrap(MCNFQC_fake_script)()
+coroutine.wrap(WWXNJKM_fake_script)()
+coroutine.wrap(ONVT_fake_script)()
+coroutine.wrap(ELCRWYF_fake_script)()
+coroutine.wrap(UKMRPT_fake_script)()
+coroutine.wrap(QYBFIRT_fake_script)()
+coroutine.wrap(ARHPGBD_fake_script)()
+coroutine.wrap(TOAKG_fake_script)()
+coroutine.wrap(FTANDR_fake_script)()
+coroutine.wrap(DDVI_fake_script)()
+coroutine.wrap(NOAH_fake_script)()
+coroutine.wrap(KEUZGDD_fake_script)()
+coroutine.wrap(AXDDHC_fake_script)()
+coroutine.wrap(ZGXJ_fake_script)()
