@@ -1,5 +1,5 @@
 -- starlight 💫
--- 0.2.2
+-- 0.2.21
 
 
 
@@ -415,7 +415,7 @@ Converted["_Frame1"].BorderSizePixel = 0
 Converted["_Frame1"].Size = UDim2.new(0, 621, 0, 84)
 Converted["_Frame1"].Parent = Converted["_Frame"]
 
-Converted["_c"].Font = Enum.Font.SourceSans
+Converted["_c"].Font = Enum.Font.Gotham
 Converted["_c"].Text = ""
 Converted["_c"].TextColor3 = Color3.fromRGB(0, 0, 0)
 Converted["_c"].TextSize = 14
@@ -483,7 +483,7 @@ Converted["_UIStroke2"].Parent = Converted["_TextBox"]
 Converted["_UICorner2"].CornerRadius = UDim.new(0, 6)
 Converted["_UICorner2"].Parent = Converted["_TextBox"]
 
-Converted["_Clear"].Font = Enum.Font.SourceSans
+Converted["_Clear"].Font = Enum.Font.Gotham
 Converted["_Clear"].Text = ""
 Converted["_Clear"].TextColor3 = Color3.fromRGB(0, 0, 0)
 Converted["_Clear"].TextSize = 14
@@ -514,7 +514,7 @@ Converted["_ImageLabel2"].Position = UDim2.new(0.0714285746, 0, 0.0714285746, 0)
 Converted["_ImageLabel2"].Size = UDim2.new(0, 35, 0, 35)
 Converted["_ImageLabel2"].Parent = Converted["_Clear"]
 
-Converted["_Execute"].Font = Enum.Font.SourceSans
+Converted["_Execute"].Font = Enum.Font.Gotham
 Converted["_Execute"].Text = ""
 Converted["_Execute"].TextColor3 = Color3.fromRGB(0, 0, 0)
 Converted["_Execute"].TextSize = 14
@@ -546,7 +546,7 @@ Converted["_ImageLabel3"].Rotation = 90
 Converted["_ImageLabel3"].Size = UDim2.new(0, 35, 0, 35)
 Converted["_ImageLabel3"].Parent = Converted["_Execute"]
 
-Converted["_scan"].Font = Enum.Font.Ubuntu
+Converted["_scan"].Font = Enum.Font.Gotham
 Converted["_scan"].Text = ""
 Converted["_scan"].TextColor3 = Color3.fromRGB(255, 255, 255)
 Converted["_scan"].TextSize = 30
@@ -578,7 +578,7 @@ Converted["_ImageLabel4"].Position = UDim2.new(0.095238097, 0, 0.0714285746, 0)
 Converted["_ImageLabel4"].Size = UDim2.new(0, 35, 0, 35)
 Converted["_ImageLabel4"].Parent = Converted["_scan"]
 
-Converted["_Log"].Font = Enum.Font.SourceSans
+Converted["_Log"].Font = Enum.Font.Gotham
 Converted["_Log"].Text = "backdoor: none"
 Converted["_Log"].TextColor3 = Color3.fromRGB(255, 255, 255)
 Converted["_Log"].TextScaled = true
@@ -594,7 +594,7 @@ Converted["_Log"].Visible = false
 Converted["_Log"].Name = "Log"
 Converted["_Log"].Parent = Converted["_Framee"]
 
-Converted["_Check"].Font = Enum.Font.Ubuntu
+Converted["_Check"].Font = Enum.Font.Gotham
 Converted["_Check"].Text = "scanning for backdoor..."
 Converted["_Check"].TextColor3 = Color3.fromRGB(255, 255, 255)
 Converted["_Check"].TextScaled = true
@@ -611,7 +611,7 @@ Converted["_Check"].Visible = false
 Converted["_Check"].Name = "Check"
 Converted["_Check"].Parent = Converted["_Framee"]
 
-Converted["_rsix"].Font = Enum.Font.Ubuntu
+Converted["_rsix"].Font = Enum.Font.Gotham
 Converted["_rsix"].Text = "R6"
 Converted["_rsix"].TextColor3 = Color3.fromRGB(255, 255, 255)
 Converted["_rsix"].TextSize = 30
@@ -654,7 +654,7 @@ Converted["_Presets"].Visible = false
 Converted["_Presets"].Name = "Presets"
 Converted["_Presets"].Parent = Converted["_Frame"]
 
-Converted["_Polaria"].Font = Enum.Font.SourceSans
+Converted["_Polaria"].Font = Enum.Font.Gotham
 Converted["_Polaria"].Text = "Polaria"
 Converted["_Polaria"].TextColor3 = Color3.fromRGB(255, 255, 255)
 Converted["_Polaria"].TextScaled = true
@@ -677,7 +677,7 @@ Converted["_UIStroke7"].Color = Color3.fromRGB(57.00000040233135, 57.00000040233
 Converted["_UIStroke7"].Thickness = 1.5
 Converted["_UIStroke7"].Parent = Converted["_Polaria"]
 
-Converted["_Shutdown"].Font = Enum.Font.SourceSans
+Converted["_Shutdown"].Font = Enum.Font.Gotham
 Converted["_Shutdown"].Text = "Shutdown"
 Converted["_Shutdown"].TextColor3 = Color3.fromRGB(255, 255, 255)
 Converted["_Shutdown"].TextScaled = true
@@ -700,7 +700,7 @@ Converted["_UIStroke8"].Color = Color3.fromRGB(57.00000040233135, 57.00000040233
 Converted["_UIStroke8"].Thickness = 1.5
 Converted["_UIStroke8"].Parent = Converted["_Shutdown"]
 
-Converted["_Log1"].Font = Enum.Font.SourceSans
+Converted["_Log1"].Font = Enum.Font.Gotham
 Converted["_Log1"].Text = "more scripts soon! suggest your script ideas in the server's #general!"
 Converted["_Log1"].TextColor3 = Color3.fromRGB(255, 255, 255)
 Converted["_Log1"].TextScaled = true
@@ -715,7 +715,7 @@ Converted["_Log1"].Size = UDim2.new(0, 532, 0, 40)
 Converted["_Log1"].Name = "Log"
 Converted["_Log1"].Parent = Converted["_Presets"]
 
-Converted["_Trash"].Font = Enum.Font.SourceSans
+Converted["_Trash"].Font = Enum.Font.Gotham
 Converted["_Trash"].Text = "Trash Hub"
 Converted["_Trash"].TextColor3 = Color3.fromRGB(255, 255, 255)
 Converted["_Trash"].TextScaled = true
@@ -738,7 +738,7 @@ Converted["_UIStroke9"].Color = Color3.fromRGB(57.00000040233135, 57.00000040233
 Converted["_UIStroke9"].Thickness = 1.5
 Converted["_UIStroke9"].Parent = Converted["_Trash"]
 
-Converted["_Sledge"].Font = Enum.Font.SourceSans
+Converted["_Sledge"].Font = Enum.Font.Gotham
 Converted["_Sledge"].Text = "Sledge Hammer"
 Converted["_Sledge"].TextColor3 = Color3.fromRGB(255, 255, 255)
 Converted["_Sledge"].TextScaled = true
@@ -761,7 +761,7 @@ Converted["_UIStroke10"].Color = Color3.fromRGB(57.00000040233135, 57.0000004023
 Converted["_UIStroke10"].Thickness = 1.5
 Converted["_UIStroke10"].Parent = Converted["_Sledge"]
 
-Converted["_Star"].Font = Enum.Font.SourceSans
+Converted["_Star"].Font = Enum.Font.Gotham
 Converted["_Star"].Text = "starlight hint"
 Converted["_Star"].TextColor3 = Color3.fromRGB(255, 255, 255)
 Converted["_Star"].TextScaled = true
@@ -784,7 +784,7 @@ Converted["_UIStroke11"].Color = Color3.fromRGB(57.00000040233135, 57.0000004023
 Converted["_UIStroke11"].Thickness = 1.5
 Converted["_UIStroke11"].Parent = Converted["_Star"]
 
-Converted["_CFour"].Font = Enum.Font.SourceSans
+Converted["_CFour"].Font = Enum.Font.Gotham
 Converted["_CFour"].Text = "C4"
 Converted["_CFour"].TextColor3 = Color3.fromRGB(255, 255, 255)
 Converted["_CFour"].TextScaled = true
@@ -829,7 +829,7 @@ Converted["_ScrollingFrame"].Position = UDim2.new(0.123655848, 0, 0.209204987, 0
 Converted["_ScrollingFrame"].Size = UDim2.new(0, 308, 0, 206)
 Converted["_ScrollingFrame"].Parent = Converted["_Logs"]
 
-Converted["_Template"].Font = Enum.Font.SourceSans
+Converted["_Template"].Font = Enum.Font.Gotham
 Converted["_Template"].Text = "💫starlight: Welcome to the Logs!"
 Converted["_Template"].TextColor3 = Color3.fromRGB(255, 255, 255)
 Converted["_Template"].TextSize = 20
@@ -855,7 +855,7 @@ Converted["_UIStroke13"].Parent = Converted["_ScrollingFrame"]
 Converted["_UICorner13"].CornerRadius = UDim.new(0, 6)
 Converted["_UICorner13"].Parent = Converted["_ScrollingFrame"]
 
-Converted["_Log2"].Font = Enum.Font.SourceSans
+Converted["_Log2"].Font = Enum.Font.Gotham
 Converted["_Log2"].Text = "Logs"
 Converted["_Log2"].TextColor3 = Color3.fromRGB(255, 255, 255)
 Converted["_Log2"].TextScaled = true
@@ -870,7 +870,7 @@ Converted["_Log2"].Size = UDim2.new(0, 309, 0, 26)
 Converted["_Log2"].Name = "Log"
 Converted["_Log2"].Parent = Converted["_Logs"]
 
-Converted["_Log3"].Font = Enum.Font.SourceSans
+Converted["_Log3"].Font = Enum.Font.Gotham
 Converted["_Log3"].Text = "Settings"
 Converted["_Log3"].TextColor3 = Color3.fromRGB(255, 255, 255)
 Converted["_Log3"].TextScaled = true
@@ -885,7 +885,7 @@ Converted["_Log3"].Size = UDim2.new(0, 208, 0, 26)
 Converted["_Log3"].Name = "Log"
 Converted["_Log3"].Parent = Converted["_Logs"]
 
-Converted["_ToggleMode"].Font = Enum.Font.Ubuntu
+Converted["_ToggleMode"].Font = Enum.Font.Gotham
 Converted["_ToggleMode"].Text = "Current scan mode: RemoteEvents"
 Converted["_ToggleMode"].TextColor3 = Color3.fromRGB(255, 255, 255)
 Converted["_ToggleMode"].TextScaled = true
@@ -917,7 +917,7 @@ Converted["_Sidebar"].Size = UDim2.new(0, 65, 0, 190)
 Converted["_Sidebar"].Name = "Sidebar"
 Converted["_Sidebar"].Parent = Converted["_Frame"]
 
-Converted["_Executor"].Font = Enum.Font.SourceSans
+Converted["_Executor"].Font = Enum.Font.Gotham
 Converted["_Executor"].Text = ""
 Converted["_Executor"].TextColor3 = Color3.fromRGB(0, 0, 0)
 Converted["_Executor"].TextSize = 14
@@ -948,7 +948,7 @@ Converted["_ImageLabel6"].Position = UDim2.new(0.0714285746, 0, 0.0714285746, 0)
 Converted["_ImageLabel6"].Size = UDim2.new(0, 35, 0, 35)
 Converted["_ImageLabel6"].Parent = Converted["_Executor"]
 
-Converted["_Presets1"].Font = Enum.Font.SourceSans
+Converted["_Presets1"].Font = Enum.Font.Gotham
 Converted["_Presets1"].Text = ""
 Converted["_Presets1"].TextColor3 = Color3.fromRGB(0, 0, 0)
 Converted["_Presets1"].TextSize = 14
@@ -979,7 +979,7 @@ Converted["_ImageLabel7"].Position = UDim2.new(0.0714285746, 0, 0.0714285746, 0)
 Converted["_ImageLabel7"].Size = UDim2.new(0, 35, 0, 35)
 Converted["_ImageLabel7"].Parent = Converted["_Presets1"]
 
-Converted["_Logs1"].Font = Enum.Font.SourceSans
+Converted["_Logs1"].Font = Enum.Font.Gotham
 Converted["_Logs1"].Text = ""
 Converted["_Logs1"].TextColor3 = Color3.fromRGB(0, 0, 0)
 Converted["_Logs1"].TextSize = 14
@@ -1010,7 +1010,7 @@ Converted["_ImageLabel8"].Position = UDim2.new(0.0714285746, 0, 0.0714285746, 0)
 Converted["_ImageLabel8"].Size = UDim2.new(0, 35, 0, 35)
 Converted["_ImageLabel8"].Parent = Converted["_Logs1"]
 
-Converted["_Version"].Font = Enum.Font.SourceSans
+Converted["_Version"].Font = Enum.Font.Gotham
 Converted["_Version"].Text = "0.2.2"
 Converted["_Version"].TextColor3 = Color3.fromRGB(255, 255, 255)
 Converted["_Version"].TextScaled = true
@@ -1064,7 +1064,7 @@ Converted["_Verify"].Visible = false
 Converted["_Verify"].Name = "Verify"
 Converted["_Verify"].Parent = Converted["_Frame"]
 
-Converted["_Verify1"].Font = Enum.Font.Ubuntu
+Converted["_Verify1"].Font = Enum.Font.Gotham
 Converted["_Verify1"].Text = "Starlight - Verification"
 Converted["_Verify1"].TextColor3 = Color3.fromRGB(255, 255, 255)
 Converted["_Verify1"].TextScaled = true
@@ -1080,7 +1080,7 @@ Converted["_Verify1"].Size = UDim2.new(0, 558, 0, 41)
 Converted["_Verify1"].Name = "Verify"
 Converted["_Verify1"].Parent = Converted["_Verify"]
 
-Converted["_Verify2"].Font = Enum.Font.Ubuntu
+Converted["_Verify2"].Font = Enum.Font.Gotham
 Converted["_Verify2"].Text = "To verify, go to https://starlightkey.netlify.app and get the key."
 Converted["_Verify2"].TextColor3 = Color3.fromRGB(255, 255, 255)
 Converted["_Verify2"].TextScaled = true
@@ -1097,7 +1097,7 @@ Converted["_Verify2"].Name = "Verify"
 Converted["_Verify2"].Parent = Converted["_Verify"]
 
 Converted["_TextBox1"].ClearTextOnFocus = false
-Converted["_TextBox1"].Font = Enum.Font.SourceSans
+Converted["_TextBox1"].Font = Enum.Font.Gotham
 Converted["_TextBox1"].PlaceholderColor3 = Color3.fromRGB(178.00000458955765, 178.00000458955765, 178.00000458955765)
 Converted["_TextBox1"].PlaceholderText = "key here"
 Converted["_TextBox1"].Text = ""
@@ -1111,7 +1111,7 @@ Converted["_TextBox1"].Position = UDim2.new(0.275985658, 0, 0.456066936, 0)
 Converted["_TextBox1"].Size = UDim2.new(0, 250, 0, 50)
 Converted["_TextBox1"].Parent = Converted["_Verify"]
 
-Converted["_Btn"].Font = Enum.Font.SourceSans
+Converted["_Btn"].Font = Enum.Font.Gotham
 Converted["_Btn"].Text = "Verify"
 Converted["_Btn"].TextColor3 = Color3.fromRGB(255, 255, 255)
 Converted["_Btn"].TextScaled = true
@@ -1135,7 +1135,7 @@ Converted["_UIStroke18"].Color = Color3.fromRGB(57.00000040233135, 57.0000004023
 Converted["_UIStroke18"].Thickness = 1.5
 Converted["_UIStroke18"].Parent = Converted["_Btn"]
 
-Converted["_m"].Font = Enum.Font.SourceSans
+Converted["_m"].Font = Enum.Font.Gotham
 Converted["_m"].Text = ""
 Converted["_m"].TextColor3 = Color3.fromRGB(0, 0, 0)
 Converted["_m"].TextSize = 14
@@ -1167,7 +1167,7 @@ Converted["_ImageLabel9"].Position = UDim2.new(0.0714285746, 0, 0.0714285746, 0)
 Converted["_ImageLabel9"].Size = UDim2.new(0, 35, 0, 35)
 Converted["_ImageLabel9"].Parent = Converted["_m"]
 
-Converted["_str"].Font = Enum.Font.Ubuntu
+Converted["_str"].Font = Enum.Font.Gotham
 Converted["_str"].Text = "starlight"
 Converted["_str"].TextColor3 = Color3.fromRGB(255, 255, 255)
 Converted["_str"].TextScaled = true
