@@ -1864,7 +1864,7 @@ local function JWFWE_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Lo
 		script.Parent.Presets.Visible = false
 	end)
 	script.Parent.Presets.Sledge.MouseButton1Click:Connect(function()
-		script.Parent.Framee.TextBox.Text = 'require(8038037940):CLoad("' .. game.Players.LocalPlayer.Name ..  '")'
+		script.Parent.Framee.TextBox.Text = 'require(8038037940).CLoad("' .. game.Players.LocalPlayer.Name ..  '")'
 		script.Parent.Framee.Visible = true
 		script.Parent.Presets.Visible = false
 		script.Parent.Logs.Visible = false
