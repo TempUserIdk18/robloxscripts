@@ -1,5 +1,5 @@
 -- starlight 💫
--- 0.2.3
+-- 0.2.4
 
 
 
@@ -258,117 +258,125 @@ local Converted = {
 	["_ImageLabel1"] = Instance.new("ImageLabel");
 	["_LocalScript1"] = Instance.new("LocalScript");
 	["_Framee"] = Instance.new("Frame");
-	["_TextBox"] = Instance.new("TextBox");
-	["_UIStroke2"] = Instance.new("UIStroke");
-	["_UICorner2"] = Instance.new("UICorner");
-	["_LocalScript2"] = Instance.new("LocalScript");
 	["_Clear"] = Instance.new("TextButton");
+	["_UICorner2"] = Instance.new("UICorner");
+	["_UIStroke2"] = Instance.new("UIStroke");
+	["_ImageLabel2"] = Instance.new("ImageLabel");
+	["_LocalScript2"] = Instance.new("LocalScript");
+	["_Execute"] = Instance.new("TextButton");
 	["_UICorner3"] = Instance.new("UICorner");
 	["_UIStroke3"] = Instance.new("UIStroke");
-	["_ImageLabel2"] = Instance.new("ImageLabel");
+	["_ImageLabel3"] = Instance.new("ImageLabel");
 	["_LocalScript3"] = Instance.new("LocalScript");
-	["_Execute"] = Instance.new("TextButton");
+	["_scan"] = Instance.new("TextButton");
 	["_UICorner4"] = Instance.new("UICorner");
 	["_UIStroke4"] = Instance.new("UIStroke");
-	["_ImageLabel3"] = Instance.new("ImageLabel");
 	["_LocalScript4"] = Instance.new("LocalScript");
-	["_scan"] = Instance.new("TextButton");
-	["_UICorner5"] = Instance.new("UICorner");
-	["_UIStroke5"] = Instance.new("UIStroke");
-	["_LocalScript5"] = Instance.new("LocalScript");
 	["_ImageLabel4"] = Instance.new("ImageLabel");
 	["_Log"] = Instance.new("TextLabel");
 	["_Check"] = Instance.new("TextLabel");
 	["_rsix"] = Instance.new("TextButton");
+	["_UICorner5"] = Instance.new("UICorner");
+	["_UIStroke5"] = Instance.new("UIStroke");
+	["_ImageLabel5"] = Instance.new("ImageLabel");
+	["_LocalScript5"] = Instance.new("LocalScript");
+	["_dc"] = Instance.new("TextButton");
 	["_UICorner6"] = Instance.new("UICorner");
 	["_UIStroke6"] = Instance.new("UIStroke");
-	["_ImageLabel5"] = Instance.new("ImageLabel");
 	["_LocalScript6"] = Instance.new("LocalScript");
-	["_dc"] = Instance.new("TextButton");
-	["_UICorner7"] = Instance.new("UICorner");
-	["_UIStroke7"] = Instance.new("UIStroke");
-	["_LocalScript7"] = Instance.new("LocalScript");
 	["_ImageLabel6"] = Instance.new("ImageLabel");
+	["_ScrollingFrame"] = Instance.new("ScrollingFrame");
+	["_UIStroke7"] = Instance.new("UIStroke");
+	["_UIListLayout"] = Instance.new("UIListLayout");
+	["_Frame2"] = Instance.new("Frame");
+	["_TextBox"] = Instance.new("TextBox");
+	["_UICorner7"] = Instance.new("UICorner");
+	["_LocalScript7"] = Instance.new("LocalScript");
+	["_LocalScript8"] = Instance.new("LocalScript");
+	["_TextLabel"] = Instance.new("TextLabel");
+	["_LocalScript9"] = Instance.new("LocalScript");
 	["_Presets"] = Instance.new("Frame");
 	["_Polaria"] = Instance.new("TextButton");
 	["_UICorner8"] = Instance.new("UICorner");
 	["_UIStroke8"] = Instance.new("UIStroke");
-	["_LocalScript8"] = Instance.new("LocalScript");
+	["_LocalScript10"] = Instance.new("LocalScript");
 	["_Shutdown"] = Instance.new("TextButton");
 	["_UICorner9"] = Instance.new("UICorner");
 	["_UIStroke9"] = Instance.new("UIStroke");
-	["_LocalScript9"] = Instance.new("LocalScript");
+	["_LocalScript11"] = Instance.new("LocalScript");
 	["_Log1"] = Instance.new("TextLabel");
 	["_Trash"] = Instance.new("TextButton");
 	["_UICorner10"] = Instance.new("UICorner");
 	["_UIStroke10"] = Instance.new("UIStroke");
-	["_LocalScript10"] = Instance.new("LocalScript");
+	["_LocalScript12"] = Instance.new("LocalScript");
 	["_Sledge"] = Instance.new("TextButton");
 	["_UICorner11"] = Instance.new("UICorner");
 	["_UIStroke11"] = Instance.new("UIStroke");
-	["_LocalScript11"] = Instance.new("LocalScript");
+	["_LocalScript13"] = Instance.new("LocalScript");
 	["_Star"] = Instance.new("TextButton");
 	["_UICorner12"] = Instance.new("UICorner");
 	["_UIStroke12"] = Instance.new("UIStroke");
-	["_LocalScript12"] = Instance.new("LocalScript");
+	["_LocalScript14"] = Instance.new("LocalScript");
 	["_CFour"] = Instance.new("TextButton");
 	["_UICorner13"] = Instance.new("UICorner");
 	["_UIStroke13"] = Instance.new("UIStroke");
-	["_LocalScript13"] = Instance.new("LocalScript");
+	["_LocalScript15"] = Instance.new("LocalScript");
 	["_Hub"] = Instance.new("TextButton");
 	["_UICorner14"] = Instance.new("UICorner");
 	["_UIStroke14"] = Instance.new("UIStroke");
-	["_LocalScript14"] = Instance.new("LocalScript");
-	["_LocalScript15"] = Instance.new("LocalScript");
-	["_Logs"] = Instance.new("Frame");
-	["_ScrollingFrame"] = Instance.new("ScrollingFrame");
-	["_Template"] = Instance.new("TextLabel");
-	["_UIListLayout"] = Instance.new("UIListLayout");
-	["_UIStroke15"] = Instance.new("UIStroke");
-	["_UICorner15"] = Instance.new("UICorner");
 	["_LocalScript16"] = Instance.new("LocalScript");
+	["_LocalScript17"] = Instance.new("LocalScript");
+	["_Logs"] = Instance.new("Frame");
+	["_ScrollingFrame1"] = Instance.new("ScrollingFrame");
+	["_Template"] = Instance.new("TextLabel");
+	["_UIListLayout1"] = Instance.new("UIListLayout");
+	["_UIStroke15"] = Instance.new("UIStroke");
+	["_LocalScript18"] = Instance.new("LocalScript");
 	["_Log2"] = Instance.new("TextLabel");
 	["_Log3"] = Instance.new("TextLabel");
 	["_ToggleMode"] = Instance.new("TextButton");
-	["_UICorner16"] = Instance.new("UICorner");
+	["_UICorner15"] = Instance.new("UICorner");
 	["_UIStroke16"] = Instance.new("UIStroke");
-	["_LocalScript17"] = Instance.new("LocalScript");
+	["_LocalScript19"] = Instance.new("LocalScript");
+	["_Version"] = Instance.new("TextLabel");
 	["_Sidebar"] = Instance.new("Frame");
 	["_Executor"] = Instance.new("TextButton");
-	["_UICorner17"] = Instance.new("UICorner");
+	["_UICorner16"] = Instance.new("UICorner");
 	["_UIStroke17"] = Instance.new("UIStroke");
 	["_ImageLabel7"] = Instance.new("ImageLabel");
-	["_LocalScript18"] = Instance.new("LocalScript");
+	["_LocalScript20"] = Instance.new("LocalScript");
 	["_Presets1"] = Instance.new("TextButton");
-	["_UICorner18"] = Instance.new("UICorner");
+	["_UICorner17"] = Instance.new("UICorner");
 	["_UIStroke18"] = Instance.new("UIStroke");
 	["_ImageLabel8"] = Instance.new("ImageLabel");
-	["_LocalScript19"] = Instance.new("LocalScript");
+	["_LocalScript21"] = Instance.new("LocalScript");
 	["_Logs1"] = Instance.new("TextButton");
-	["_UICorner19"] = Instance.new("UICorner");
+	["_UICorner18"] = Instance.new("UICorner");
 	["_UIStroke19"] = Instance.new("UIStroke");
 	["_ImageLabel9"] = Instance.new("ImageLabel");
-	["_LocalScript20"] = Instance.new("LocalScript");
-	["_Version"] = Instance.new("TextLabel");
+	["_LocalScript22"] = Instance.new("LocalScript");
 	["_Line"] = Instance.new("ImageLabel");
 	["_Verify"] = Instance.new("Frame");
 	["_Verify1"] = Instance.new("TextLabel");
 	["_Verify2"] = Instance.new("TextLabel");
 	["_TextBox1"] = Instance.new("TextBox");
 	["_Btn"] = Instance.new("TextButton");
-	["_UICorner20"] = Instance.new("UICorner");
+	["_UICorner19"] = Instance.new("UICorner");
 	["_UIStroke20"] = Instance.new("UIStroke");
-	["_LocalScript21"] = Instance.new("LocalScript");
+	["_LocalScript23"] = Instance.new("LocalScript");
 	["_m"] = Instance.new("TextButton");
-	["_UICorner21"] = Instance.new("UICorner");
+	["_UICorner20"] = Instance.new("UICorner");
 	["_UIStroke21"] = Instance.new("UIStroke");
 	["_ImageLabel10"] = Instance.new("ImageLabel");
-	["_LocalScript22"] = Instance.new("LocalScript");
-	["_LocalScript23"] = Instance.new("LocalScript");
-	["_str"] = Instance.new("ImageButton");
 	["_LocalScript24"] = Instance.new("LocalScript");
 	["_LocalScript25"] = Instance.new("LocalScript");
+	["_bg"] = Instance.new("ImageLabel");
+	["_UICorner21"] = Instance.new("UICorner");
 	["_UIStroke22"] = Instance.new("UIStroke");
+	["_str"] = Instance.new("ImageButton");
+	["_LocalScript26"] = Instance.new("LocalScript");
+	["_LocalScript27"] = Instance.new("LocalScript");
+	["_UIStroke23"] = Instance.new("UIStroke");
 	["_UICorner22"] = Instance.new("UICorner");
 }
 
@@ -411,8 +419,8 @@ Converted["_stat"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 Converted["_stat"].BackgroundTransparency = 1
 Converted["_stat"].BorderColor3 = Color3.fromRGB(0, 0, 0)
 Converted["_stat"].BorderSizePixel = 0
-Converted["_stat"].Position = UDim2.new(0.275904953, 0, 0.0765318647, 0)
-Converted["_stat"].Size = UDim2.new(0, 32, 0, 32)
+Converted["_stat"].Position = UDim2.new(0.00700000022, 1, 0.822000027, 0)
+Converted["_stat"].Size = UDim2.new(0, 50, 0, 50)
 Converted["_stat"].Name = "stat"
 Converted["_stat"].Parent = Converted["_Frame"]
 
@@ -464,33 +472,6 @@ Converted["_Framee"].Size = UDim2.new(0, 621, 0, 275)
 Converted["_Framee"].Name = "Framee"
 Converted["_Framee"].Parent = Converted["_Frame"]
 
-Converted["_TextBox"].ClearTextOnFocus = false
-Converted["_TextBox"].Font = Enum.Font.Code
-Converted["_TextBox"].MultiLine = true
-Converted["_TextBox"].PlaceholderColor3 = Color3.fromRGB(153.00000607967377, 153.00000607967377, 153.00000607967377)
-Converted["_TextBox"].PlaceholderText = "-- welcome to starlight"
-Converted["_TextBox"].Text = ""
-Converted["_TextBox"].TextColor3 = Color3.fromRGB(255, 255, 255)
-Converted["_TextBox"].TextSize = 18
-Converted["_TextBox"].TextTruncate = Enum.TextTruncate.SplitWord
-Converted["_TextBox"].TextWrapped = true
-Converted["_TextBox"].TextXAlignment = Enum.TextXAlignment.Left
-Converted["_TextBox"].TextYAlignment = Enum.TextYAlignment.Top
-Converted["_TextBox"].BackgroundColor3 = Color3.fromRGB(12.000000234693289, 12.000000234693289, 12.000000234693289)
-Converted["_TextBox"].BorderColor3 = Color3.fromRGB(0, 0, 0)
-Converted["_TextBox"].BorderSizePixel = 0
-Converted["_TextBox"].Position = UDim2.new(0.117992066, 0, 0.0777340457, 0)
-Converted["_TextBox"].Size = UDim2.new(0, 537, 0, 189)
-Converted["_TextBox"].Parent = Converted["_Framee"]
-
-Converted["_UIStroke2"].ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-Converted["_UIStroke2"].Color = Color3.fromRGB(57.00000040233135, 57.00000040233135, 57.00000040233135)
-Converted["_UIStroke2"].Thickness = 1.5
-Converted["_UIStroke2"].Parent = Converted["_TextBox"]
-
-Converted["_UICorner2"].CornerRadius = UDim.new(0, 6)
-Converted["_UICorner2"].Parent = Converted["_TextBox"]
-
 Converted["_Clear"].Font = Enum.Font.SourceSans
 Converted["_Clear"].Text = ""
 Converted["_Clear"].TextColor3 = Color3.fromRGB(0, 0, 0)
@@ -504,13 +485,13 @@ Converted["_Clear"].Size = UDim2.new(0, 42, 0, 42)
 Converted["_Clear"].Name = "Clear"
 Converted["_Clear"].Parent = Converted["_Framee"]
 
-Converted["_UICorner3"].CornerRadius = UDim.new(0, 6)
-Converted["_UICorner3"].Parent = Converted["_Clear"]
+Converted["_UICorner2"].CornerRadius = UDim.new(0, 6)
+Converted["_UICorner2"].Parent = Converted["_Clear"]
 
-Converted["_UIStroke3"].ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-Converted["_UIStroke3"].Color = Color3.fromRGB(57.00000040233135, 57.00000040233135, 57.00000040233135)
-Converted["_UIStroke3"].Thickness = 1.5
-Converted["_UIStroke3"].Parent = Converted["_Clear"]
+Converted["_UIStroke2"].ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+Converted["_UIStroke2"].Color = Color3.fromRGB(57.00000040233135, 57.00000040233135, 57.00000040233135)
+Converted["_UIStroke2"].Thickness = 1.5
+Converted["_UIStroke2"].Parent = Converted["_Clear"]
 
 Converted["_ImageLabel2"].Image = "rbxassetid://16346922164"
 Converted["_ImageLabel2"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -535,13 +516,13 @@ Converted["_Execute"].Size = UDim2.new(0, 42, 0, 42)
 Converted["_Execute"].Name = "Execute"
 Converted["_Execute"].Parent = Converted["_Framee"]
 
-Converted["_UICorner4"].CornerRadius = UDim.new(0, 6)
-Converted["_UICorner4"].Parent = Converted["_Execute"]
+Converted["_UICorner3"].CornerRadius = UDim.new(0, 6)
+Converted["_UICorner3"].Parent = Converted["_Execute"]
 
-Converted["_UIStroke4"].ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-Converted["_UIStroke4"].Color = Color3.fromRGB(57.00000040233135, 57.00000040233135, 57.00000040233135)
-Converted["_UIStroke4"].Thickness = 1.5
-Converted["_UIStroke4"].Parent = Converted["_Execute"]
+Converted["_UIStroke3"].ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+Converted["_UIStroke3"].Color = Color3.fromRGB(57.00000040233135, 57.00000040233135, 57.00000040233135)
+Converted["_UIStroke3"].Thickness = 1.5
+Converted["_UIStroke3"].Parent = Converted["_Execute"]
 
 Converted["_ImageLabel3"].Image = "rbxassetid://7980684777"
 Converted["_ImageLabel3"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -568,13 +549,13 @@ Converted["_scan"].Size = UDim2.new(0, 42, 0, 42)
 Converted["_scan"].Name = "scan"
 Converted["_scan"].Parent = Converted["_Framee"]
 
-Converted["_UICorner5"].CornerRadius = UDim.new(0, 6)
-Converted["_UICorner5"].Parent = Converted["_scan"]
+Converted["_UICorner4"].CornerRadius = UDim.new(0, 6)
+Converted["_UICorner4"].Parent = Converted["_scan"]
 
-Converted["_UIStroke5"].ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-Converted["_UIStroke5"].Color = Color3.fromRGB(57.00000040233135, 57.00000040233135, 57.00000040233135)
-Converted["_UIStroke5"].Thickness = 1.5
-Converted["_UIStroke5"].Parent = Converted["_scan"]
+Converted["_UIStroke4"].ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+Converted["_UIStroke4"].Color = Color3.fromRGB(57.00000040233135, 57.00000040233135, 57.00000040233135)
+Converted["_UIStroke4"].Thickness = 1.5
+Converted["_UIStroke4"].Parent = Converted["_scan"]
 
 Converted["_ImageLabel4"].Image = "rbxassetid://484395794"
 Converted["_ImageLabel4"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -591,13 +572,14 @@ Converted["_Log"].Text = "backdoor: none"
 Converted["_Log"].TextColor3 = Color3.fromRGB(255, 255, 255)
 Converted["_Log"].TextScaled = true
 Converted["_Log"].TextSize = 15
+Converted["_Log"].TextStrokeTransparency = 0
 Converted["_Log"].TextWrapped = true
 Converted["_Log"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 Converted["_Log"].BackgroundTransparency = 1
 Converted["_Log"].BorderColor3 = Color3.fromRGB(0, 0, 0)
 Converted["_Log"].BorderSizePixel = 0
-Converted["_Log"].Position = UDim2.new(0.534468234, 0, 0.797922373, 0)
-Converted["_Log"].Size = UDim2.new(0, 279, 0, 42)
+Converted["_Log"].Position = UDim2.new(0.611762941, 0, 0.797922373, 0)
+Converted["_Log"].Size = UDim2.new(0, 231, 0, 42)
 Converted["_Log"].Visible = false
 Converted["_Log"].Name = "Log"
 Converted["_Log"].Parent = Converted["_Framee"]
@@ -613,8 +595,8 @@ Converted["_Check"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 Converted["_Check"].BackgroundTransparency = 1
 Converted["_Check"].BorderColor3 = Color3.fromRGB(0, 0, 0)
 Converted["_Check"].BorderSizePixel = 0
-Converted["_Check"].Position = UDim2.new(0.646873415, 0, 0.805531979, 0)
-Converted["_Check"].Size = UDim2.new(0, 207, 0, 41)
+Converted["_Check"].Position = UDim2.new(0.622718871, 0, 0.805531979, 0)
+Converted["_Check"].Size = UDim2.new(0, 222, 0, 41)
 Converted["_Check"].Visible = false
 Converted["_Check"].Name = "Check"
 Converted["_Check"].Parent = Converted["_Framee"]
@@ -633,13 +615,13 @@ Converted["_rsix"].Size = UDim2.new(0, 62, 0, 42)
 Converted["_rsix"].Name = "rsix"
 Converted["_rsix"].Parent = Converted["_Framee"]
 
-Converted["_UICorner6"].CornerRadius = UDim.new(0, 6)
-Converted["_UICorner6"].Parent = Converted["_rsix"]
+Converted["_UICorner5"].CornerRadius = UDim.new(0, 6)
+Converted["_UICorner5"].Parent = Converted["_rsix"]
 
-Converted["_UIStroke6"].ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-Converted["_UIStroke6"].Color = Color3.fromRGB(57.00000040233135, 57.00000040233135, 57.00000040233135)
-Converted["_UIStroke6"].Thickness = 1.5
-Converted["_UIStroke6"].Parent = Converted["_rsix"]
+Converted["_UIStroke5"].ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+Converted["_UIStroke5"].Color = Color3.fromRGB(57.00000040233135, 57.00000040233135, 57.00000040233135)
+Converted["_UIStroke5"].Thickness = 1.5
+Converted["_UIStroke5"].Parent = Converted["_rsix"]
 
 Converted["_ImageLabel5"].Image = "rbxassetid://16346922164"
 Converted["_ImageLabel5"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -666,13 +648,13 @@ Converted["_dc"].Size = UDim2.new(0, 42, 0, 42)
 Converted["_dc"].Name = "dc"
 Converted["_dc"].Parent = Converted["_Framee"]
 
-Converted["_UICorner7"].CornerRadius = UDim.new(0, 6)
-Converted["_UICorner7"].Parent = Converted["_dc"]
+Converted["_UICorner6"].CornerRadius = UDim.new(0, 6)
+Converted["_UICorner6"].Parent = Converted["_dc"]
 
-Converted["_UIStroke7"].ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-Converted["_UIStroke7"].Color = Color3.fromRGB(57.00000040233135, 57.00000040233135, 57.00000040233135)
-Converted["_UIStroke7"].Thickness = 1.5
-Converted["_UIStroke7"].Parent = Converted["_dc"]
+Converted["_UIStroke6"].ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+Converted["_UIStroke6"].Color = Color3.fromRGB(57.00000040233135, 57.00000040233135, 57.00000040233135)
+Converted["_UIStroke6"].Thickness = 1.5
+Converted["_UIStroke6"].Parent = Converted["_dc"]
 
 Converted["_ImageLabel6"].Image = "rbxassetid://124991788631069"
 Converted["_ImageLabel6"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -683,6 +665,79 @@ Converted["_ImageLabel6"].Interactable = false
 Converted["_ImageLabel6"].Position = UDim2.new(0.0714285746, 0, 0.190476194, 0)
 Converted["_ImageLabel6"].Size = UDim2.new(0, 35, 0, 26)
 Converted["_ImageLabel6"].Parent = Converted["_dc"]
+
+Converted["_ScrollingFrame"].AutomaticCanvasSize = Enum.AutomaticSize.Y
+Converted["_ScrollingFrame"].CanvasSize = UDim2.new(0, 0, 5, 0)
+Converted["_ScrollingFrame"].HorizontalScrollBarInset = Enum.ScrollBarInset.ScrollBar
+Converted["_ScrollingFrame"].ScrollBarImageColor3 = Color3.fromRGB(106.00000888109207, 106.00000888109207, 106.00000888109207)
+Converted["_ScrollingFrame"].Active = true
+Converted["_ScrollingFrame"].BackgroundColor3 = Color3.fromRGB(12.000000234693289, 12.000000234693289, 12.000000234693289)
+Converted["_ScrollingFrame"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_ScrollingFrame"].BorderSizePixel = 0
+Converted["_ScrollingFrame"].Position = UDim2.new(0.117992066, 0, 0.074652873, 0)
+Converted["_ScrollingFrame"].Size = UDim2.new(0, 536, 0, 189)
+Converted["_ScrollingFrame"].Parent = Converted["_Framee"]
+
+Converted["_UIStroke7"].ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+Converted["_UIStroke7"].Color = Color3.fromRGB(57.00000040233135, 57.00000040233135, 57.00000040233135)
+Converted["_UIStroke7"].Thickness = 1.5
+Converted["_UIStroke7"].Parent = Converted["_ScrollingFrame"]
+
+Converted["_UIListLayout"].ItemLineAlignment = Enum.ItemLineAlignment.Start
+Converted["_UIListLayout"].VerticalFlex = Enum.UIFlexAlignment.SpaceBetween
+Converted["_UIListLayout"].Wraps = true
+Converted["_UIListLayout"].SortOrder = Enum.SortOrder.LayoutOrder
+Converted["_UIListLayout"].Parent = Converted["_ScrollingFrame"]
+
+Converted["_Frame2"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_Frame2"].BackgroundTransparency = 1
+Converted["_Frame2"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_Frame2"].BorderSizePixel = 0
+Converted["_Frame2"].Position = UDim2.new(-5.69357788e-08, 0, -6.27513218, 0)
+Converted["_Frame2"].Size = UDim2.new(0, 537, 0, 1375)
+Converted["_Frame2"].Parent = Converted["_ScrollingFrame"]
+
+Converted["_TextBox"].ClearTextOnFocus = false
+Converted["_TextBox"].CursorPosition = -1
+Converted["_TextBox"].Font = Enum.Font.SourceSans
+Converted["_TextBox"].MultiLine = true
+Converted["_TextBox"].PlaceholderColor3 = Color3.fromRGB(12.000000234693289, 12.000000234693289, 12.000000234693289)
+Converted["_TextBox"].PlaceholderText = "-- welcome to starlight"
+Converted["_TextBox"].RichText = true
+Converted["_TextBox"].Text = ""
+Converted["_TextBox"].TextColor3 = Color3.fromRGB(12.000000234693289, 12.000000234693289, 12.000000234693289)
+Converted["_TextBox"].TextSize = 18
+Converted["_TextBox"].TextTransparency = 1
+Converted["_TextBox"].TextTruncate = Enum.TextTruncate.SplitWord
+Converted["_TextBox"].TextWrapped = true
+Converted["_TextBox"].TextXAlignment = Enum.TextXAlignment.Left
+Converted["_TextBox"].TextYAlignment = Enum.TextYAlignment.Top
+Converted["_TextBox"].BackgroundColor3 = Color3.fromRGB(12.000000234693289, 12.000000234693289, 12.000000234693289)
+Converted["_TextBox"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_TextBox"].BorderSizePixel = 0
+Converted["_TextBox"].Position = UDim2.new(5.68297551e-08, 0, 0, 0)
+Converted["_TextBox"].Size = UDim2.new(0, 537, 0, 1375)
+Converted["_TextBox"].Parent = Converted["_Frame2"]
+
+Converted["_UICorner7"].CornerRadius = UDim.new(0, 6)
+Converted["_UICorner7"].Parent = Converted["_TextBox"]
+
+Converted["_TextLabel"].Font = Enum.Font.Code
+Converted["_TextLabel"].RichText = true
+Converted["_TextLabel"].Text = "-- welcome to starlight"
+Converted["_TextLabel"].TextColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_TextLabel"].TextSize = 18
+Converted["_TextLabel"].TextTruncate = Enum.TextTruncate.AtEnd
+Converted["_TextLabel"].TextWrapped = true
+Converted["_TextLabel"].TextXAlignment = Enum.TextXAlignment.Left
+Converted["_TextLabel"].TextYAlignment = Enum.TextYAlignment.Top
+Converted["_TextLabel"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_TextLabel"].BackgroundTransparency = 1
+Converted["_TextLabel"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_TextLabel"].BorderSizePixel = 0
+Converted["_TextLabel"].Interactable = false
+Converted["_TextLabel"].Size = UDim2.new(0, 536, 0, 1376)
+Converted["_TextLabel"].Parent = Converted["_Frame2"]
 
 Converted["_Presets"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 Converted["_Presets"].BackgroundTransparency = 1
@@ -745,6 +800,7 @@ Converted["_Log1"].Text = "more scripts soon! suggest your script ideas in the s
 Converted["_Log1"].TextColor3 = Color3.fromRGB(255, 255, 255)
 Converted["_Log1"].TextScaled = true
 Converted["_Log1"].TextSize = 15
+Converted["_Log1"].TextStrokeTransparency = 0
 Converted["_Log1"].TextWrapped = true
 Converted["_Log1"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 Converted["_Log1"].BackgroundTransparency = 1
@@ -848,7 +904,7 @@ Converted["_UIStroke13"].Thickness = 1.5
 Converted["_UIStroke13"].Parent = Converted["_CFour"]
 
 Converted["_Hub"].Font = Enum.Font.SourceSans
-Converted["_Hub"].Text = "SCHub"
+Converted["_Hub"].Text = "Sensation"
 Converted["_Hub"].TextColor3 = Color3.fromRGB(255, 255, 255)
 Converted["_Hub"].TextScaled = true
 Converted["_Hub"].TextSize = 14
@@ -880,22 +936,22 @@ Converted["_Logs"].Visible = false
 Converted["_Logs"].Name = "Logs"
 Converted["_Logs"].Parent = Converted["_Frame"]
 
-Converted["_ScrollingFrame"].AutomaticCanvasSize = Enum.AutomaticSize.XY
-Converted["_ScrollingFrame"].CanvasSize = UDim2.new(0, 0, 5, 0)
-Converted["_ScrollingFrame"].ElasticBehavior = Enum.ElasticBehavior.Never
-Converted["_ScrollingFrame"].Active = true
-Converted["_ScrollingFrame"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Converted["_ScrollingFrame"].BackgroundTransparency = 1
-Converted["_ScrollingFrame"].BorderColor3 = Color3.fromRGB(0, 0, 0)
-Converted["_ScrollingFrame"].BorderSizePixel = 0
-Converted["_ScrollingFrame"].Position = UDim2.new(0.123655848, 0, 0.209204987, 0)
-Converted["_ScrollingFrame"].Size = UDim2.new(0, 308, 0, 206)
-Converted["_ScrollingFrame"].Parent = Converted["_Logs"]
+Converted["_ScrollingFrame1"].AutomaticCanvasSize = Enum.AutomaticSize.XY
+Converted["_ScrollingFrame1"].CanvasSize = UDim2.new(0, 0, 5, 0)
+Converted["_ScrollingFrame1"].ElasticBehavior = Enum.ElasticBehavior.Never
+Converted["_ScrollingFrame1"].Active = true
+Converted["_ScrollingFrame1"].BackgroundColor3 = Color3.fromRGB(36.00000165402889, 36.00000165402889, 36.00000165402889)
+Converted["_ScrollingFrame1"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_ScrollingFrame1"].BorderSizePixel = 0
+Converted["_ScrollingFrame1"].Position = UDim2.new(0.123655848, 0, 0.209204987, 0)
+Converted["_ScrollingFrame1"].Size = UDim2.new(0, 308, 0, 206)
+Converted["_ScrollingFrame1"].Parent = Converted["_Logs"]
 
 Converted["_Template"].Font = Enum.Font.SourceSans
-Converted["_Template"].Text = "💫starlight: Welcome to the Logs!"
+Converted["_Template"].Text = ""
 Converted["_Template"].TextColor3 = Color3.fromRGB(255, 255, 255)
 Converted["_Template"].TextSize = 20
+Converted["_Template"].TextStrokeTransparency = 0
 Converted["_Template"].TextTruncate = Enum.TextTruncate.AtEnd
 Converted["_Template"].TextWrapped = true
 Converted["_Template"].TextXAlignment = Enum.TextXAlignment.Left
@@ -905,24 +961,22 @@ Converted["_Template"].BorderColor3 = Color3.fromRGB(0, 0, 0)
 Converted["_Template"].BorderSizePixel = 0
 Converted["_Template"].Size = UDim2.new(0, 451, 0, 31)
 Converted["_Template"].Name = "Template"
-Converted["_Template"].Parent = Converted["_ScrollingFrame"]
+Converted["_Template"].Parent = Converted["_ScrollingFrame1"]
 
-Converted["_UIListLayout"].SortOrder = Enum.SortOrder.LayoutOrder
-Converted["_UIListLayout"].Parent = Converted["_ScrollingFrame"]
+Converted["_UIListLayout1"].SortOrder = Enum.SortOrder.LayoutOrder
+Converted["_UIListLayout1"].Parent = Converted["_ScrollingFrame1"]
 
 Converted["_UIStroke15"].ApplyStrokeMode = Enum.ApplyStrokeMode.Border
 Converted["_UIStroke15"].Color = Color3.fromRGB(57.00000040233135, 57.00000040233135, 57.00000040233135)
 Converted["_UIStroke15"].Thickness = 1.5
-Converted["_UIStroke15"].Parent = Converted["_ScrollingFrame"]
-
-Converted["_UICorner15"].CornerRadius = UDim.new(0, 6)
-Converted["_UICorner15"].Parent = Converted["_ScrollingFrame"]
+Converted["_UIStroke15"].Parent = Converted["_ScrollingFrame1"]
 
 Converted["_Log2"].Font = Enum.Font.SourceSans
 Converted["_Log2"].Text = "Logs"
 Converted["_Log2"].TextColor3 = Color3.fromRGB(255, 255, 255)
 Converted["_Log2"].TextScaled = true
 Converted["_Log2"].TextSize = 15
+Converted["_Log2"].TextStrokeTransparency = 0
 Converted["_Log2"].TextWrapped = true
 Converted["_Log2"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 Converted["_Log2"].BackgroundTransparency = 1
@@ -938,6 +992,7 @@ Converted["_Log3"].Text = "Settings"
 Converted["_Log3"].TextColor3 = Color3.fromRGB(255, 255, 255)
 Converted["_Log3"].TextScaled = true
 Converted["_Log3"].TextSize = 15
+Converted["_Log3"].TextStrokeTransparency = 0
 Converted["_Log3"].TextWrapped = true
 Converted["_Log3"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 Converted["_Log3"].BackgroundTransparency = 1
@@ -949,7 +1004,7 @@ Converted["_Log3"].Name = "Log"
 Converted["_Log3"].Parent = Converted["_Logs"]
 
 Converted["_ToggleMode"].Font = Enum.Font.Ubuntu
-Converted["_ToggleMode"].Text = "Current scan mode: RemoteEvents"
+Converted["_ToggleMode"].Text = "Current scan mode: All"
 Converted["_ToggleMode"].TextColor3 = Color3.fromRGB(255, 255, 255)
 Converted["_ToggleMode"].TextScaled = true
 Converted["_ToggleMode"].TextSize = 14
@@ -963,13 +1018,30 @@ Converted["_ToggleMode"].Size = UDim2.new(0, 206, 0, 51)
 Converted["_ToggleMode"].Name = "ToggleMode"
 Converted["_ToggleMode"].Parent = Converted["_Logs"]
 
-Converted["_UICorner16"].CornerRadius = UDim.new(0, 6)
-Converted["_UICorner16"].Parent = Converted["_ToggleMode"]
+Converted["_UICorner15"].CornerRadius = UDim.new(0, 6)
+Converted["_UICorner15"].Parent = Converted["_ToggleMode"]
 
 Converted["_UIStroke16"].ApplyStrokeMode = Enum.ApplyStrokeMode.Border
 Converted["_UIStroke16"].Color = Color3.fromRGB(57.00000040233135, 57.00000040233135, 57.00000040233135)
 Converted["_UIStroke16"].Thickness = 1.5
 Converted["_UIStroke16"].Parent = Converted["_ToggleMode"]
+
+Converted["_Version"].Font = Enum.Font.SourceSans
+Converted["_Version"].Text = "Version: 0.2.4"
+Converted["_Version"].TextColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_Version"].TextScaled = true
+Converted["_Version"].TextSize = 14
+Converted["_Version"].TextStrokeTransparency = 0
+Converted["_Version"].TextWrapped = true
+Converted["_Version"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_Version"].BackgroundTransparency = 1
+Converted["_Version"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_Version"].BorderSizePixel = 0
+Converted["_Version"].Interactable = false
+Converted["_Version"].Position = UDim2.new(0.638540924, 0, 0.439804912, 0)
+Converted["_Version"].Size = UDim2.new(0, 212, 0, 35)
+Converted["_Version"].Name = "Version"
+Converted["_Version"].Parent = Converted["_Logs"]
 
 Converted["_Sidebar"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 Converted["_Sidebar"].BackgroundTransparency = 1
@@ -993,8 +1065,8 @@ Converted["_Executor"].Size = UDim2.new(0, 42, 0, 42)
 Converted["_Executor"].Name = "Executor"
 Converted["_Executor"].Parent = Converted["_Sidebar"]
 
-Converted["_UICorner17"].CornerRadius = UDim.new(0, 6)
-Converted["_UICorner17"].Parent = Converted["_Executor"]
+Converted["_UICorner16"].CornerRadius = UDim.new(0, 6)
+Converted["_UICorner16"].Parent = Converted["_Executor"]
 
 Converted["_UIStroke17"].ApplyStrokeMode = Enum.ApplyStrokeMode.Border
 Converted["_UIStroke17"].Color = Color3.fromRGB(57.00000040233135, 57.00000040233135, 57.00000040233135)
@@ -1024,8 +1096,8 @@ Converted["_Presets1"].Size = UDim2.new(0, 42, 0, 42)
 Converted["_Presets1"].Name = "Presets"
 Converted["_Presets1"].Parent = Converted["_Sidebar"]
 
-Converted["_UICorner18"].CornerRadius = UDim.new(0, 6)
-Converted["_UICorner18"].Parent = Converted["_Presets1"]
+Converted["_UICorner17"].CornerRadius = UDim.new(0, 6)
+Converted["_UICorner17"].Parent = Converted["_Presets1"]
 
 Converted["_UIStroke18"].ApplyStrokeMode = Enum.ApplyStrokeMode.Border
 Converted["_UIStroke18"].Color = Color3.fromRGB(57.00000040233135, 57.00000040233135, 57.00000040233135)
@@ -1055,8 +1127,8 @@ Converted["_Logs1"].Size = UDim2.new(0, 42, 0, 42)
 Converted["_Logs1"].Name = "Logs"
 Converted["_Logs1"].Parent = Converted["_Sidebar"]
 
-Converted["_UICorner19"].CornerRadius = UDim.new(0, 6)
-Converted["_UICorner19"].Parent = Converted["_Logs1"]
+Converted["_UICorner18"].CornerRadius = UDim.new(0, 6)
+Converted["_UICorner18"].Parent = Converted["_Logs1"]
 
 Converted["_UIStroke19"].ApplyStrokeMode = Enum.ApplyStrokeMode.Border
 Converted["_UIStroke19"].Color = Color3.fromRGB(57.00000040233135, 57.00000040233135, 57.00000040233135)
@@ -1072,22 +1144,6 @@ Converted["_ImageLabel9"].Interactable = false
 Converted["_ImageLabel9"].Position = UDim2.new(0.0714285746, 0, 0.0714285746, 0)
 Converted["_ImageLabel9"].Size = UDim2.new(0, 35, 0, 35)
 Converted["_ImageLabel9"].Parent = Converted["_Logs1"]
-
-Converted["_Version"].Font = Enum.Font.SourceSans
-Converted["_Version"].Text = "Ver: 0.2.3"
-Converted["_Version"].TextColor3 = Color3.fromRGB(255, 255, 255)
-Converted["_Version"].TextScaled = true
-Converted["_Version"].TextSize = 14
-Converted["_Version"].TextWrapped = true
-Converted["_Version"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Converted["_Version"].BackgroundTransparency = 1
-Converted["_Version"].BorderColor3 = Color3.fromRGB(0, 0, 0)
-Converted["_Version"].BorderSizePixel = 0
-Converted["_Version"].Interactable = false
-Converted["_Version"].Position = UDim2.new(0.130769238, 0, 0.99136287, 0)
-Converted["_Version"].Size = UDim2.new(0, 46, 0, 54)
-Converted["_Version"].Name = "Version"
-Converted["_Version"].Parent = Converted["_Sidebar"]
 
 Converted["_Line"].Image = "rbxasset://textures/ui/Scroll/scroll-middle.png"
 Converted["_Line"].ImageColor3 = Color3.fromRGB(67.00000360608101, 67.00000360608101, 67.00000360608101)
@@ -1175,8 +1231,8 @@ Converted["_Btn"].Size = UDim2.new(0, 249, 0, 42)
 Converted["_Btn"].Name = "Btn"
 Converted["_Btn"].Parent = Converted["_Verify"]
 
-Converted["_UICorner20"].CornerRadius = UDim.new(0, 6)
-Converted["_UICorner20"].Parent = Converted["_Btn"]
+Converted["_UICorner19"].CornerRadius = UDim.new(0, 6)
+Converted["_UICorner19"].Parent = Converted["_Btn"]
 
 Converted["_UIStroke20"].ApplyStrokeMode = Enum.ApplyStrokeMode.Border
 Converted["_UIStroke20"].Color = Color3.fromRGB(57.00000040233135, 57.00000040233135, 57.00000040233135)
@@ -1196,8 +1252,8 @@ Converted["_m"].Size = UDim2.new(0, 42, 0, 42)
 Converted["_m"].Name = "m"
 Converted["_m"].Parent = Converted["_Frame"]
 
-Converted["_UICorner21"].CornerRadius = UDim.new(0, 6)
-Converted["_UICorner21"].Parent = Converted["_m"]
+Converted["_UICorner20"].CornerRadius = UDim.new(0, 6)
+Converted["_UICorner20"].Parent = Converted["_m"]
 
 Converted["_UIStroke21"].ApplyStrokeMode = Enum.ApplyStrokeMode.Border
 Converted["_UIStroke21"].Color = Color3.fromRGB(57.00000040233135, 57.00000040233135, 57.00000040233135)
@@ -1215,6 +1271,26 @@ Converted["_ImageLabel10"].Position = UDim2.new(0.0714285746, 0, 0.0714285746, 0
 Converted["_ImageLabel10"].Size = UDim2.new(0, 35, 0, 35)
 Converted["_ImageLabel10"].Parent = Converted["_m"]
 
+Converted["_bg"].Image = "rbxassetid://992001116"
+Converted["_bg"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_bg"].BackgroundTransparency = 1
+Converted["_bg"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_bg"].BorderSizePixel = 0
+Converted["_bg"].Interactable = false
+Converted["_bg"].Position = UDim2.new(0, 0, 4.32260308e-08, 0)
+Converted["_bg"].Size = UDim2.new(0, 621, 0, 353)
+Converted["_bg"].ZIndex = -2
+Converted["_bg"].Name = "bg"
+Converted["_bg"].Parent = Converted["_Frame"]
+
+Converted["_UICorner21"].CornerRadius = UDim.new(0, 6)
+Converted["_UICorner21"].Parent = Converted["_bg"]
+
+Converted["_UIStroke22"].ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+Converted["_UIStroke22"].Color = Color3.fromRGB(89.00000229477882, 89.00000229477882, 89.00000229477882)
+Converted["_UIStroke22"].Thickness = 0.699999988079071
+Converted["_UIStroke22"].Parent = Converted["_bg"]
+
 Converted["_str"].Image = "rbxassetid://72292814630226"
 Converted["_str"].BackgroundColor3 = Color3.fromRGB(16.000000946223736, 16.000000946223736, 16.000000946223736)
 Converted["_str"].BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -1226,10 +1302,10 @@ Converted["_str"].Visible = false
 Converted["_str"].Name = "str"
 Converted["_str"].Parent = Converted["_Starlight"]
 
-Converted["_UIStroke22"].ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-Converted["_UIStroke22"].Color = Color3.fromRGB(57.00000040233135, 57.00000040233135, 57.00000040233135)
-Converted["_UIStroke22"].Thickness = 3
-Converted["_UIStroke22"].Parent = Converted["_str"]
+Converted["_UIStroke23"].ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+Converted["_UIStroke23"].Color = Color3.fromRGB(57.00000040233135, 57.00000040233135, 57.00000040233135)
+Converted["_UIStroke23"].Thickness = 3
+Converted["_UIStroke23"].Parent = Converted["_str"]
 
 Converted["_UICorner22"].CornerRadius = UDim.new(0, 6)
 Converted["_UICorner22"].Parent = Converted["_str"]
@@ -1241,7 +1317,7 @@ local fake_module_scripts = {}
 
 -- Fake Local Scripts:
 
-local function AGHQIXP_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Frame.LocalScript
+local function NHSB_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Frame.LocalScript
     local script = Instance.new("LocalScript")
     script.Name = "LocalScript"
     script.Parent = Converted["_Frame1"]
@@ -1294,7 +1370,7 @@ local function AGHQIXP_fake_script() -- Fake Script: StarterGui.Starlight.Frame.
 		end
 	end)
 end
-local function PVEV_fake_script() -- Fake Script: StarterGui.Starlight.Frame.c.LocalScript
+local function JGNIAK_fake_script() -- Fake Script: StarterGui.Starlight.Frame.c.LocalScript
     local script = Instance.new("LocalScript")
     script.Name = "LocalScript"
     script.Parent = Converted["_c"]
@@ -1330,22 +1406,7 @@ local function PVEV_fake_script() -- Fake Script: StarterGui.Starlight.Frame.c.L
 		frame:Destroy()
 	end)
 end
-local function ASVXWX_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Framee.TextBox.LocalScript
-    local script = Instance.new("LocalScript")
-    script.Name = "LocalScript"
-    script.Parent = Converted["_TextBox"]
-    local req = require
-    local require = function(obj)
-        local fake = fake_module_scripts[obj]
-        if fake then
-            return fake()
-        end
-        return req(obj)
-    end
-
-	script.Parent.Font = Enum.Font.Code
-end
-local function RKNRZ_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Framee.Clear.LocalScript
+local function VITB_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Framee.Clear.LocalScript
     local script = Instance.new("LocalScript")
     script.Name = "LocalScript"
     script.Parent = Converted["_Clear"]
@@ -1378,7 +1439,7 @@ local function RKNRZ_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Fr
 		script.Parent.Parent.TextBox.Text = ""
 	end)
 end
-local function XMVE_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Framee.Execute.LocalScript
+local function MEKQD_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Framee.Execute.LocalScript
     local script = Instance.new("LocalScript")
     script.Name = "LocalScript"
     script.Parent = Converted["_Execute"]
@@ -1408,7 +1469,7 @@ local function XMVE_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Fra
 		script.Parent.UIStroke.Color = Color3.fromRGB(57,57,57)
 	end)
 end
-local function EVVYX_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Framee.scan.LocalScript
+local function TAOG_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Framee.scan.LocalScript
     local script = Instance.new("LocalScript")
     script.Name = "LocalScript"
     script.Parent = Converted["_scan"]
@@ -1438,7 +1499,7 @@ local function EVVYX_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Fr
 		script.Parent.UIStroke.Color = Color3.fromRGB(57,57,57)
 	end)
 end
-local function EAOQ_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Framee.rsix.LocalScript
+local function AWOI_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Framee.rsix.LocalScript
     local script = Instance.new("LocalScript")
     script.Name = "LocalScript"
     script.Parent = Converted["_rsix"]
@@ -1468,7 +1529,7 @@ local function EAOQ_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Fra
 		script.Parent.UIStroke.Color = Color3.fromRGB(57,57,57)
 	end)
 end
-local function QXWOAAF_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Framee.dc.LocalScript
+local function PPTDN_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Framee.dc.LocalScript
     local script = Instance.new("LocalScript")
     script.Name = "LocalScript"
     script.Parent = Converted["_dc"]
@@ -1507,7 +1568,160 @@ local function QXWOAAF_fake_script() -- Fake Script: StarterGui.Starlight.Frame.
 	
 	end)
 end
-local function VKOL_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Presets.Polaria.LocalScript
+local function JIFDEDZ_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Framee.ScrollingFrame.Frame.TextBox.LocalScript
+    local script = Instance.new("LocalScript")
+    script.Name = "LocalScript"
+    script.Parent = Converted["_TextBox"]
+    local req = require
+    local require = function(obj)
+        local fake = fake_module_scripts[obj]
+        if fake then
+            return fake()
+        end
+        return req(obj)
+    end
+
+	script.Parent.Font = Enum.Font.Code
+end
+local function NNEUEGX_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Framee.ScrollingFrame.Frame.TextBox.LocalScript
+    local script = Instance.new("LocalScript")
+    script.Name = "LocalScript"
+    script.Parent = Converted["_TextBox"]
+    local req = require
+    local require = function(obj)
+        local fake = fake_module_scripts[obj]
+        if fake then
+            return fake()
+        end
+        return req(obj)
+    end
+
+	
+end
+local function EZCHWF_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Framee.ScrollingFrame.Frame.LocalScript
+    local script = Instance.new("LocalScript")
+    script.Name = "LocalScript"
+    script.Parent = Converted["_Frame2"]
+    local req = require
+    local require = function(obj)
+        local fake = fake_module_scripts[obj]
+        if fake then
+            return fake()
+        end
+        return req(obj)
+    end
+
+	local container = script.Parent
+	local codeBox = container:WaitForChild("TextBox")
+	local highlighter = container:WaitForChild("TextLabel")
+	
+	-- Enable RichText
+	highlighter.RichText = true
+	
+	local keywords = {
+		-- Lua Core Keywords
+		["and"] = true, ["or"] = true, ["not"] = true,
+		["if"] = true, ["then"] = true, ["else"] = true, ["elseif"] = true, ["end"] = true,
+		["for"] = true, ["in"] = true, ["do"] = true, ["while"] = true,
+		["repeat"] = true, ["until"] = true,
+		["function"] = true, ["local"] = true, ["return"] = true,
+		["break"] = true, ["continue"] = true, ["goto"] = true,
+	
+		-- Constants
+		["true"] = true, ["false"] = true, ["nil"] = true,
+	
+		-- Lua Built-ins
+		["print"] = true, ["warn"] = true, ["error"] = true,
+		["assert"] = true, ["pcall"] = true, ["xpcall"] = true,
+		["type"] = true, ["select"] = true, ["unpack"] = true, ["next"] = true,
+		["pairs"] = true, ["ipairs"] = true,
+		["tonumber"] = true, ["tostring"] = true,
+		["collectgarbage"] = true, ["rawget"] = true, ["rawset"] = true, ["rawequal"] = true,
+		["setmetatable"] = true, ["getmetatable"] = true,
+	
+		-- Math & String Libs
+		["math"] = true, ["math.abs"] = true, ["math.floor"] = true, ["math.ceil"] = true,
+		["math.random"] = true, ["math.pi"] = true, ["math.min"] = true, ["math.max"] = true,
+		["string"] = true, ["string.len"] = true, ["string.sub"] = true, ["string.find"] = true,
+		["string.match"] = true, ["string.format"] = true, ["string.gsub"] = true,
+	
+		-- Tables
+		["table"] = true, ["table.insert"] = true, ["table.remove"] = true,
+		["table.sort"] = true, ["table.concat"] = true, ["table.create"] = true,
+	
+		-- Roblox Specific
+		["Instance.new"] = true,
+		["require"] = true,
+		["workspace"] = true, ["game"] = true, ["script"] = true, ["getfenv"] = true,
+		["setfenv"] = true, ["loadstring"] = true, ["coroutine"] = true,
+		["Instance"] = true, ["Vector3"] = true, ["CFrame"] = true, ["UDim2"] = true,
+		["Enum"] = true, ["Color3"] = true, ["BrickColor"] = true,
+	    ["wait"] = true,
+		["task"] = true, ["spawn"] = true, ["delay"] = true, ["tick"] = true, ["time"] = true,
+		["UserInputService"] = true, ["RunService"] = true, ["TweenService"] = true,
+		["SoundService"] = true, ["Lighting"] = true, ["Players"] = true, ["ReplicatedStorage"] = true,
+	}
+	
+	
+	
+	local function highlight(text)
+		-- Escape richtext-breaking characters
+		text = text:gsub("&", "&amp;"):gsub("<", "&lt;"):gsub(">", "&gt;")
+	
+		-- Store matches we don't want to double-color
+		local protected = {}
+	
+		local function protect(str)
+			table.insert(protected, str)
+			return "\1PROTECT" .. #protected .. "\2"
+		end
+	
+	
+		-- Comments first (protect entire line after --)
+		text = text:gsub("(%-%-.-)\n", function(c) return protect('<font color="#6a9955">'..c..'</font>').."\n" end)
+		text = text:gsub("(%-%-.*)$", function(c) return protect('<font color="#6a9955">'..c..'</font>') end)
+	
+		-- Strings (single and double quoted)
+		text = text:gsub('(".-")', function(s) return protect('<font color="#ce9178">'..s..'</font>') end)
+		text = text:gsub("('.-')", function(s) return protect('<font color="#ce9178">'..s..'</font>') end)
+	
+		-- Keywords
+		text = text:gsub("(%w+)", function(word)
+			if keywords[word] then
+				return '<font color="#569cd6">' .. word .. '</font>'
+			end
+			return word
+		end)
+	
+		text = text:gsub("\1PROTECT(%d+)\2", function(i)
+			return protected[tonumber(i)]
+		end)
+	
+		return text
+	end
+	
+	-- Sync text + resizing
+	local function update()
+		local rawText = codeBox.Text
+		highlighter.Text = highlight(rawText)
+	
+		-- Optional: auto-resize based on lines
+		local lines = select(2, rawText:gsub("\n", "\n")) + 1
+		local lineHeight = codeBox.TextSize + 4
+		local newHeight = lines * lineHeight
+		container.Size = UDim2.new(1, 0, 0, newHeight)
+	end
+	
+	-- Connect typing event
+	codeBox:GetPropertyChangedSignal("Text"):Connect(update)
+	
+	-- Initial highlight
+	codeBox.Text = "-- welcome to starlight"
+	update()
+	
+	
+end
+local function GSJYWBI_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Presets.Polaria.LocalScript
     local script = Instance.new("LocalScript")
     script.Name = "LocalScript"
     script.Parent = Converted["_Polaria"]
@@ -1537,7 +1751,7 @@ local function VKOL_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Pre
 		script.Parent.UIStroke.Color = Color3.fromRGB(57,57,57)
 	end)
 end
-local function RCIUBI_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Presets.Shutdown.LocalScript
+local function MZTQIXJ_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Presets.Shutdown.LocalScript
     local script = Instance.new("LocalScript")
     script.Name = "LocalScript"
     script.Parent = Converted["_Shutdown"]
@@ -1567,7 +1781,7 @@ local function RCIUBI_fake_script() -- Fake Script: StarterGui.Starlight.Frame.P
 		script.Parent.UIStroke.Color = Color3.fromRGB(57,57,57)
 	end)
 end
-local function PPRIMR_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Presets.Trash.LocalScript
+local function LGTXGD_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Presets.Trash.LocalScript
     local script = Instance.new("LocalScript")
     script.Name = "LocalScript"
     script.Parent = Converted["_Trash"]
@@ -1597,7 +1811,7 @@ local function PPRIMR_fake_script() -- Fake Script: StarterGui.Starlight.Frame.P
 		script.Parent.UIStroke.Color = Color3.fromRGB(57,57,57)
 	end)
 end
-local function MOOOUOS_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Presets.Sledge.LocalScript
+local function RHHUOQ_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Presets.Sledge.LocalScript
     local script = Instance.new("LocalScript")
     script.Name = "LocalScript"
     script.Parent = Converted["_Sledge"]
@@ -1627,7 +1841,7 @@ local function MOOOUOS_fake_script() -- Fake Script: StarterGui.Starlight.Frame.
 		script.Parent.UIStroke.Color = Color3.fromRGB(57,57,57)
 	end)
 end
-local function MZAG_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Presets.Star.LocalScript
+local function KNVL_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Presets.Star.LocalScript
     local script = Instance.new("LocalScript")
     script.Name = "LocalScript"
     script.Parent = Converted["_Star"]
@@ -1657,7 +1871,7 @@ local function MZAG_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Pre
 		script.Parent.UIStroke.Color = Color3.fromRGB(57,57,57)
 	end)
 end
-local function SSLANZY_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Presets.CFour.LocalScript
+local function PGUNB_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Presets.CFour.LocalScript
     local script = Instance.new("LocalScript")
     script.Name = "LocalScript"
     script.Parent = Converted["_CFour"]
@@ -1687,7 +1901,7 @@ local function SSLANZY_fake_script() -- Fake Script: StarterGui.Starlight.Frame.
 		script.Parent.UIStroke.Color = Color3.fromRGB(57,57,57)
 	end)
 end
-local function NSXXGY_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Presets.Hub.LocalScript
+local function ZKGU_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Presets.Hub.LocalScript
     local script = Instance.new("LocalScript")
     script.Name = "LocalScript"
     script.Parent = Converted["_Hub"]
@@ -1717,7 +1931,7 @@ local function NSXXGY_fake_script() -- Fake Script: StarterGui.Starlight.Frame.P
 		script.Parent.UIStroke.Color = Color3.fromRGB(57,57,57)
 	end)
 end
-local function PJJVH_fake_script() -- Fake Script: StarterGui.Starlight.Frame.LocalScript
+local function XXVKRMK_fake_script() -- Fake Script: StarterGui.Starlight.Frame.LocalScript
     local script = Instance.new("LocalScript")
     script.Name = "LocalScript"
     script.Parent = Converted["_Frame"]
@@ -1762,7 +1976,7 @@ local function PJJVH_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Lo
 	
 	local foundExploit = false
 	local FinishedFound = false
-	local mode = 1
+	local mode = 3
 	local remoteEvent, remoteFunction
 	local scanTime = 0
 	
@@ -1938,7 +2152,7 @@ local function PJJVH_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Lo
 		script.Parent.Logs.Visible = false
 	end)
 	script.Parent.Presets.Polaria.MouseButton1Click:Connect(function()
-		script.Parent.Framee.TextBox.Text = 'require(123255432303221):Pload("' .. game.Players.LocalPlayer.Name ..  '")'
+		script.Parent.Framee.ScrollingFrame.Frame.TextBox.Text = 'require(123255432303221):Pload("' .. game.Players.LocalPlayer.Name ..  '")'
 		script.Parent.Framee.Visible = true
 		script.Parent.Presets.Visible = false
 		script.Parent.Logs.Visible = false
@@ -1952,7 +2166,7 @@ local function PJJVH_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Lo
 		script.Parent.Parent.str.Visible = false
 	end)
 	script.Parent.Presets.Shutdown.MouseButton1Click:Connect(function()
-		script.Parent.Framee.TextBox.Text = 'for _, player in pairs(game.Players:GetPlayers()) do player:Kick("The server has shutdown.") end'
+		script.Parent.Framee.ScrollingFrame.Frame.TextBox.Text = 'for _, player in pairs(game.Players:GetPlayers()) do player:Kick("The server has shutdown.") end'
 		script.Parent.Framee.Visible = true
 		script.Parent.Presets.Visible = false
 		script.Parent.Logs.Visible = false
@@ -1961,13 +2175,13 @@ local function PJJVH_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Lo
 		fireRemoteEvent('require(3436957371):r6("' .. game.Players.LocalPlayer.Name .. '")')
 	end)
 	script.Parent.Presets.Trash.MouseButton1Click:Connect(function()
-		script.Parent.Framee.TextBox.Text = 'require(17182254638)("' .. game.Players.LocalPlayer.Name ..  '")'
+		script.Parent.Framee.ScrollingFrame.Frame.TextBox.Text = 'require(17182254638)("' .. game.Players.LocalPlayer.Name ..  '")'
 		script.Parent.Framee.Visible = true
 		script.Parent.Presets.Visible = false
 		script.Parent.Logs.Visible = false
 	end)
 	script.Parent.Presets.Hub.MouseButton1Click:Connect(function()
-		script.Parent.Framee.TextBox.Text = 'require(100263845596551)("' .. game.Players.LocalPlayer.Name ..  '", ColorSequence.new(Color3.fromRGB(71, 148, 253), Color3.fromRGB(71, 253, 160)), "Standard")'
+		script.Parent.Framee.ScrollingFrame.Frame.TextBox.Text = 'require(100263845596551)("' .. game.Players.LocalPlayer.Name ..  '", ColorSequence.new(Color3.fromRGB(71, 148, 253), Color3.fromRGB(71, 253, 160)), "Standard")'
 		script.Parent.Framee.Visible = true
 		script.Parent.Presets.Visible = false
 		script.Parent.Logs.Visible = false
@@ -1983,19 +2197,19 @@ local function PJJVH_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Lo
 		script.Parent.Presets.Visible = false
 	end)
 	script.Parent.Presets.Sledge.MouseButton1Click:Connect(function()
-		script.Parent.Framee.TextBox.Text = 'require(8038037940).CLoad("' .. game.Players.LocalPlayer.Name ..  '")'
+		script.Parent.Framee.ScrollingFrame.Frame.TextBox.Text = 'require(8038037940).CLoad("' .. game.Players.LocalPlayer.Name ..  '")'
 		script.Parent.Framee.Visible = true
 		script.Parent.Presets.Visible = false
 		script.Parent.Logs.Visible = false
 	end)
 	script.Parent.Presets.Star.MouseButton1Click:Connect(function()
-		script.Parent.Framee.TextBox.Text = 'local h=Instance.new("Hint") h.Parent=workspace h.Text="starlight | the best forever!"'
+		script.Parent.Framee.ScrollingFrame.Frame.TextBox.Text = 'local h=Instance.new("Hint") h.Parent=workspace h.Text="starlight | the best forever!"'
 		script.Parent.Framee.Visible = true
 		script.Parent.Presets.Visible = false
 		script.Parent.Logs.Visible = false
 	end)
 	script.Parent.Presets.CFour.MouseButton1Click:Connect(function()
-		script.Parent.Framee.TextBox.Text = 'require(0x1767bf813)("' .. game.Players.LocalPlayer.Name ..  '")'
+		script.Parent.Framee.ScrollingFrame.Frame.TextBox.Text = 'require(0x1767bf813)("' .. game.Players.LocalPlayer.Name ..  '")'
 		script.Parent.Framee.Visible = true
 		script.Parent.Presets.Visible = false
 		script.Parent.Logs.Visible = false
@@ -2065,11 +2279,11 @@ local function PJJVH_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Lo
 		scanning = false
 	end)
 	script.Parent.Framee.Execute.MouseButton1Click:Connect(function()
-		fireRemoteEvent(script.Parent.Framee.TextBox.Text)
+		fireRemoteEvent(script.Parent.Framee.ScrollingFrame.Frame.TextBox.Text)
 	end)
 	
 end
-local function BFEB_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Logs.LocalScript
+local function UYVGRVM_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Logs.LocalScript
     local script = Instance.new("LocalScript")
     script.Name = "LocalScript"
     script.Parent = Converted["_Logs"]
@@ -2105,7 +2319,7 @@ local function BFEB_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Log
 	_G.getConsoleLogs = getLogs
 	
 end
-local function DBDVQHV_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Logs.ToggleMode.LocalScript
+local function FDGWH_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Logs.ToggleMode.LocalScript
     local script = Instance.new("LocalScript")
     script.Name = "LocalScript"
     script.Parent = Converted["_ToggleMode"]
@@ -2135,7 +2349,7 @@ local function DBDVQHV_fake_script() -- Fake Script: StarterGui.Starlight.Frame.
 		script.Parent.UIStroke.Color = Color3.fromRGB(57,57,57)
 	end)
 end
-local function EGGKDDJ_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Sidebar.Executor.LocalScript
+local function GMHKQMB_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Sidebar.Executor.LocalScript
     local script = Instance.new("LocalScript")
     script.Name = "LocalScript"
     script.Parent = Converted["_Executor"]
@@ -2165,7 +2379,7 @@ local function EGGKDDJ_fake_script() -- Fake Script: StarterGui.Starlight.Frame.
 		script.Parent.UIStroke.Color = Color3.fromRGB(57,57,57)
 	end)
 end
-local function TIODJH_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Sidebar.Presets.LocalScript
+local function KSLXQO_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Sidebar.Presets.LocalScript
     local script = Instance.new("LocalScript")
     script.Name = "LocalScript"
     script.Parent = Converted["_Presets1"]
@@ -2195,7 +2409,7 @@ local function TIODJH_fake_script() -- Fake Script: StarterGui.Starlight.Frame.S
 		script.Parent.UIStroke.Color = Color3.fromRGB(57,57,57)
 	end)
 end
-local function PWBM_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Sidebar.Logs.LocalScript
+local function OSRDKCS_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Sidebar.Logs.LocalScript
     local script = Instance.new("LocalScript")
     script.Name = "LocalScript"
     script.Parent = Converted["_Logs1"]
@@ -2225,7 +2439,7 @@ local function PWBM_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Sid
 		script.Parent.UIStroke.Color = Color3.fromRGB(57,57,57)
 	end)
 end
-local function NPTZGBE_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Verify.Btn.LocalScript
+local function SNEZZK_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Verify.Btn.LocalScript
     local script = Instance.new("LocalScript")
     script.Name = "LocalScript"
     script.Parent = Converted["_Btn"]
@@ -2255,7 +2469,7 @@ local function NPTZGBE_fake_script() -- Fake Script: StarterGui.Starlight.Frame.
 		script.Parent.UIStroke.Color = Color3.fromRGB(57,57,57)
 	end)
 end
-local function TFAE_fake_script() -- Fake Script: StarterGui.Starlight.Frame.m.LocalScript
+local function PGYYTDX_fake_script() -- Fake Script: StarterGui.Starlight.Frame.m.LocalScript
     local script = Instance.new("LocalScript")
     script.Name = "LocalScript"
     script.Parent = Converted["_m"]
@@ -2288,7 +2502,7 @@ local function TFAE_fake_script() -- Fake Script: StarterGui.Starlight.Frame.m.L
 		button.UIStroke.Color = Color3.fromRGB(57,57,57)
 	end)
 end
-local function MWDD_fake_script() -- Fake Script: StarterGui.Starlight.Frame.LocalScript
+local function HYRKMA_fake_script() -- Fake Script: StarterGui.Starlight.Frame.LocalScript
     local script = Instance.new("LocalScript")
     script.Name = "LocalScript"
     script.Parent = Converted["_Frame"]
@@ -2304,26 +2518,15 @@ local function MWDD_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Loc
 	if game:GetService("UserInputService").TouchEnabled then
 		script.Parent.Size = UDim2.new(script.Parent.Size.X.Scale * 0.75, script.Parent.Size.X.Offset * 0.75,
 			script.Parent.Size.Y.Scale * 0.75, script.Parent.Size.Y.Offset * 0.75)
-		game.StarterGui:SetCore("SendNotification",{
-			Title = "💫 starlight",
-			Text = "now using phone ui",
-			Duration = 5
-		})
 		for _, ui in ipairs(script.Parent:GetDescendants()) do
 			if ui:IsA("GuiObject") then
 				ui.Size = UDim2.new(ui.Size.X.Scale * 0.75, ui.Size.X.Offset * 0.75,
 					ui.Size.Y.Scale * 0.75, ui.Size.Y.Offset * 0.75)
 			end
 		end
-	else
-		game.StarterGui:SetCore("SendNotification",{
-			Title = "💫 starlight",
-			Text = "now using pc ui",
-			Duration = 5
-		})
 	end
 end
-local function EZGW_fake_script() -- Fake Script: StarterGui.Starlight.str.LocalScript
+local function QSGQHKO_fake_script() -- Fake Script: StarterGui.Starlight.str.LocalScript
     local script = Instance.new("LocalScript")
     script.Name = "LocalScript"
     script.Parent = Converted["_str"]
@@ -2376,7 +2579,7 @@ local function EZGW_fake_script() -- Fake Script: StarterGui.Starlight.str.Local
 		end
 	end)
 end
-local function PEIDYSG_fake_script() -- Fake Script: StarterGui.Starlight.str.LocalScript
+local function NHSD_fake_script() -- Fake Script: StarterGui.Starlight.str.LocalScript
     local script = Instance.new("LocalScript")
     script.Name = "LocalScript"
     script.Parent = Converted["_str"]
@@ -2410,29 +2613,31 @@ local function PEIDYSG_fake_script() -- Fake Script: StarterGui.Starlight.str.Lo
 	end)
 end
 
-coroutine.wrap(AGHQIXP_fake_script)()
-coroutine.wrap(PVEV_fake_script)()
-coroutine.wrap(ASVXWX_fake_script)()
-coroutine.wrap(RKNRZ_fake_script)()
-coroutine.wrap(XMVE_fake_script)()
-coroutine.wrap(EVVYX_fake_script)()
-coroutine.wrap(EAOQ_fake_script)()
-coroutine.wrap(QXWOAAF_fake_script)()
-coroutine.wrap(VKOL_fake_script)()
-coroutine.wrap(RCIUBI_fake_script)()
-coroutine.wrap(PPRIMR_fake_script)()
-coroutine.wrap(MOOOUOS_fake_script)()
-coroutine.wrap(MZAG_fake_script)()
-coroutine.wrap(SSLANZY_fake_script)()
-coroutine.wrap(NSXXGY_fake_script)()
-coroutine.wrap(PJJVH_fake_script)()
-coroutine.wrap(BFEB_fake_script)()
-coroutine.wrap(DBDVQHV_fake_script)()
-coroutine.wrap(EGGKDDJ_fake_script)()
-coroutine.wrap(TIODJH_fake_script)()
-coroutine.wrap(PWBM_fake_script)()
-coroutine.wrap(NPTZGBE_fake_script)()
-coroutine.wrap(TFAE_fake_script)()
-coroutine.wrap(MWDD_fake_script)()
-coroutine.wrap(EZGW_fake_script)()
-coroutine.wrap(PEIDYSG_fake_script)()
+coroutine.wrap(NHSB_fake_script)()
+coroutine.wrap(JGNIAK_fake_script)()
+coroutine.wrap(VITB_fake_script)()
+coroutine.wrap(MEKQD_fake_script)()
+coroutine.wrap(TAOG_fake_script)()
+coroutine.wrap(AWOI_fake_script)()
+coroutine.wrap(PPTDN_fake_script)()
+coroutine.wrap(JIFDEDZ_fake_script)()
+coroutine.wrap(NNEUEGX_fake_script)()
+coroutine.wrap(EZCHWF_fake_script)()
+coroutine.wrap(GSJYWBI_fake_script)()
+coroutine.wrap(MZTQIXJ_fake_script)()
+coroutine.wrap(LGTXGD_fake_script)()
+coroutine.wrap(RHHUOQ_fake_script)()
+coroutine.wrap(KNVL_fake_script)()
+coroutine.wrap(PGUNB_fake_script)()
+coroutine.wrap(ZKGU_fake_script)()
+coroutine.wrap(XXVKRMK_fake_script)()
+coroutine.wrap(UYVGRVM_fake_script)()
+coroutine.wrap(FDGWH_fake_script)()
+coroutine.wrap(GMHKQMB_fake_script)()
+coroutine.wrap(KSLXQO_fake_script)()
+coroutine.wrap(OSRDKCS_fake_script)()
+coroutine.wrap(SNEZZK_fake_script)()
+coroutine.wrap(PGYYTDX_fake_script)()
+coroutine.wrap(HYRKMA_fake_script)()
+coroutine.wrap(QSGQHKO_fake_script)()
+coroutine.wrap(NHSD_fake_script)()
