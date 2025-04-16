@@ -2181,7 +2181,7 @@ local function XXVKRMK_fake_script() -- Fake Script: StarterGui.Starlight.Frame.
 		script.Parent.Logs.Visible = false
 	end)
 	script.Parent.Presets.Hub.MouseButton1Click:Connect(function()
-		script.Parent.Framee.ScrollingFrame.Frame.TextBox.Text = 'require(100263845596551)("' .. game.Players.LocalPlayer.Name ..  '", ColorSequence.new(Color3.fromRGB(71, 148, 253), Color3.fromRGB(71, 253, 160)), "Standard")'
+		script.Parent.Framee.ScrollingFrame.Frame.TextBox.Text = '-- removed till the next update'
 		script.Parent.Framee.Visible = true
 		script.Parent.Presets.Visible = false
 		script.Parent.Logs.Visible = false
