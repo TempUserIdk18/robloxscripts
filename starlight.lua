@@ -325,36 +325,35 @@ local Converted = {
 	["_UICorner14"] = Instance.new("UICorner");
 	["_UIStroke14"] = Instance.new("UIStroke");
 	["_LocalScript16"] = Instance.new("LocalScript");
-	["_LocalScript17"] = Instance.new("LocalScript");
 	["_Logs"] = Instance.new("Frame");
 	["_ScrollingFrame1"] = Instance.new("ScrollingFrame");
 	["_Template"] = Instance.new("TextLabel");
 	["_UIListLayout1"] = Instance.new("UIListLayout");
 	["_UIStroke15"] = Instance.new("UIStroke");
-	["_LocalScript18"] = Instance.new("LocalScript");
+	["_LocalScript17"] = Instance.new("LocalScript");
 	["_Log2"] = Instance.new("TextLabel");
 	["_Log3"] = Instance.new("TextLabel");
 	["_ToggleMode"] = Instance.new("TextButton");
 	["_UICorner15"] = Instance.new("UICorner");
 	["_UIStroke16"] = Instance.new("UIStroke");
-	["_LocalScript19"] = Instance.new("LocalScript");
+	["_LocalScript18"] = Instance.new("LocalScript");
 	["_Version"] = Instance.new("TextLabel");
 	["_Sidebar"] = Instance.new("Frame");
 	["_Executor"] = Instance.new("TextButton");
 	["_UICorner16"] = Instance.new("UICorner");
 	["_UIStroke17"] = Instance.new("UIStroke");
 	["_ImageLabel7"] = Instance.new("ImageLabel");
-	["_LocalScript20"] = Instance.new("LocalScript");
+	["_LocalScript19"] = Instance.new("LocalScript");
 	["_Presets1"] = Instance.new("TextButton");
 	["_UICorner17"] = Instance.new("UICorner");
 	["_UIStroke18"] = Instance.new("UIStroke");
 	["_ImageLabel8"] = Instance.new("ImageLabel");
-	["_LocalScript21"] = Instance.new("LocalScript");
+	["_LocalScript20"] = Instance.new("LocalScript");
 	["_Logs1"] = Instance.new("TextButton");
 	["_UICorner18"] = Instance.new("UICorner");
 	["_UIStroke19"] = Instance.new("UIStroke");
 	["_ImageLabel9"] = Instance.new("ImageLabel");
-	["_LocalScript22"] = Instance.new("LocalScript");
+	["_LocalScript21"] = Instance.new("LocalScript");
 	["_Line"] = Instance.new("ImageLabel");
 	["_Verify"] = Instance.new("Frame");
 	["_Verify1"] = Instance.new("TextLabel");
@@ -363,16 +362,17 @@ local Converted = {
 	["_Btn"] = Instance.new("TextButton");
 	["_UICorner19"] = Instance.new("UICorner");
 	["_UIStroke20"] = Instance.new("UIStroke");
-	["_LocalScript23"] = Instance.new("LocalScript");
+	["_LocalScript22"] = Instance.new("LocalScript");
 	["_m"] = Instance.new("TextButton");
 	["_UICorner20"] = Instance.new("UICorner");
 	["_UIStroke21"] = Instance.new("UIStroke");
 	["_ImageLabel10"] = Instance.new("ImageLabel");
+	["_LocalScript23"] = Instance.new("LocalScript");
 	["_LocalScript24"] = Instance.new("LocalScript");
-	["_LocalScript25"] = Instance.new("LocalScript");
 	["_bg"] = Instance.new("ImageLabel");
 	["_UICorner21"] = Instance.new("UICorner");
 	["_UIStroke22"] = Instance.new("UIStroke");
+	["_LocalScript25"] = Instance.new("LocalScript");
 	["_str"] = Instance.new("ImageButton");
 	["_LocalScript26"] = Instance.new("LocalScript");
 	["_LocalScript27"] = Instance.new("LocalScript");
@@ -387,7 +387,7 @@ Converted["_Starlight"].IgnoreGuiInset = true
 Converted["_Starlight"].ScreenInsets = Enum.ScreenInsets.DeviceSafeInsets
 Converted["_Starlight"].ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 Converted["_Starlight"].Name = "Starlight"
-Converted["_Starlight"].Parent = game:GetService("CoreGui")
+Converted["_Starlight"].Parent = game.ServerStorage
 
 Converted["_Frame"].BackgroundColor3 = Color3.fromRGB(12.000000234693289, 12.000000234693289, 12.000000234693289)
 Converted["_Frame"].BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -698,7 +698,6 @@ Converted["_Frame2"].Size = UDim2.new(0, 537, 0, 1375)
 Converted["_Frame2"].Parent = Converted["_ScrollingFrame"]
 
 Converted["_TextBox"].ClearTextOnFocus = false
-Converted["_TextBox"].CursorPosition = -1
 Converted["_TextBox"].Font = Enum.Font.SourceSans
 Converted["_TextBox"].MultiLine = true
 Converted["_TextBox"].PlaceholderColor3 = Color3.fromRGB(12.000000234693289, 12.000000234693289, 12.000000234693289)
@@ -1317,7 +1316,7 @@ local fake_module_scripts = {}
 
 -- Fake Local Scripts:
 
-local function NHSB_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Frame.LocalScript
+local function RDOLTR_fake_script() -- Fake Script: ServerStorage.Starlight.Frame.Frame.LocalScript
     local script = Instance.new("LocalScript")
     script.Name = "LocalScript"
     script.Parent = Converted["_Frame1"]
@@ -1370,7 +1369,7 @@ local function NHSB_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Fra
 		end
 	end)
 end
-local function JGNIAK_fake_script() -- Fake Script: StarterGui.Starlight.Frame.c.LocalScript
+local function FZRE_fake_script() -- Fake Script: ServerStorage.Starlight.Frame.c.LocalScript
     local script = Instance.new("LocalScript")
     script.Name = "LocalScript"
     script.Parent = Converted["_c"]
@@ -1406,7 +1405,7 @@ local function JGNIAK_fake_script() -- Fake Script: StarterGui.Starlight.Frame.c
 		frame:Destroy()
 	end)
 end
-local function VITB_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Framee.Clear.LocalScript
+local function ANTYK_fake_script() -- Fake Script: ServerStorage.Starlight.Frame.Framee.Clear.LocalScript
     local script = Instance.new("LocalScript")
     script.Name = "LocalScript"
     script.Parent = Converted["_Clear"]
@@ -1436,10 +1435,10 @@ local function VITB_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Fra
 		script.Parent.UIStroke.Color = Color3.fromRGB(57,57,57)
 	end)
 	script.Parent.MouseButton1Click:Connect(function()
-		script.Parent.Parent.TextBox.Text = ""
+		script.Parent.Parent.ScrollingFrame.Frame.TextBox.Text = ""
 	end)
 end
-local function MEKQD_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Framee.Execute.LocalScript
+local function GMVZGLX_fake_script() -- Fake Script: ServerStorage.Starlight.Frame.Framee.Execute.LocalScript
     local script = Instance.new("LocalScript")
     script.Name = "LocalScript"
     script.Parent = Converted["_Execute"]
@@ -1469,7 +1468,7 @@ local function MEKQD_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Fr
 		script.Parent.UIStroke.Color = Color3.fromRGB(57,57,57)
 	end)
 end
-local function TAOG_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Framee.scan.LocalScript
+local function AAFUU_fake_script() -- Fake Script: ServerStorage.Starlight.Frame.Framee.scan.LocalScript
     local script = Instance.new("LocalScript")
     script.Name = "LocalScript"
     script.Parent = Converted["_scan"]
@@ -1499,7 +1498,7 @@ local function TAOG_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Fra
 		script.Parent.UIStroke.Color = Color3.fromRGB(57,57,57)
 	end)
 end
-local function AWOI_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Framee.rsix.LocalScript
+local function CSHAO_fake_script() -- Fake Script: ServerStorage.Starlight.Frame.Framee.rsix.LocalScript
     local script = Instance.new("LocalScript")
     script.Name = "LocalScript"
     script.Parent = Converted["_rsix"]
@@ -1529,7 +1528,7 @@ local function AWOI_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Fra
 		script.Parent.UIStroke.Color = Color3.fromRGB(57,57,57)
 	end)
 end
-local function PPTDN_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Framee.dc.LocalScript
+local function QRBX_fake_script() -- Fake Script: ServerStorage.Starlight.Frame.Framee.dc.LocalScript
     local script = Instance.new("LocalScript")
     script.Name = "LocalScript"
     script.Parent = Converted["_dc"]
@@ -1568,7 +1567,7 @@ local function PPTDN_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Fr
 	
 	end)
 end
-local function JIFDEDZ_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Framee.ScrollingFrame.Frame.TextBox.LocalScript
+local function LVAPLB_fake_script() -- Fake Script: ServerStorage.Starlight.Frame.Framee.ScrollingFrame.Frame.TextBox.LocalScript
     local script = Instance.new("LocalScript")
     script.Name = "LocalScript"
     script.Parent = Converted["_TextBox"]
@@ -1583,7 +1582,7 @@ local function JIFDEDZ_fake_script() -- Fake Script: StarterGui.Starlight.Frame.
 
 	script.Parent.Font = Enum.Font.Code
 end
-local function NNEUEGX_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Framee.ScrollingFrame.Frame.TextBox.LocalScript
+local function OIQAQ_fake_script() -- Fake Script: ServerStorage.Starlight.Frame.Framee.ScrollingFrame.Frame.TextBox.LocalScript
     local script = Instance.new("LocalScript")
     script.Name = "LocalScript"
     script.Parent = Converted["_TextBox"]
@@ -1598,7 +1597,7 @@ local function NNEUEGX_fake_script() -- Fake Script: StarterGui.Starlight.Frame.
 
 	
 end
-local function EZCHWF_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Framee.ScrollingFrame.Frame.LocalScript
+local function TOXSGC_fake_script() -- Fake Script: ServerStorage.Starlight.Frame.Framee.ScrollingFrame.Frame.LocalScript
     local script = Instance.new("LocalScript")
     script.Name = "LocalScript"
     script.Parent = Converted["_Frame2"]
@@ -1721,7 +1720,7 @@ local function EZCHWF_fake_script() -- Fake Script: StarterGui.Starlight.Frame.F
 	
 	
 end
-local function GSJYWBI_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Presets.Polaria.LocalScript
+local function LMAQM_fake_script() -- Fake Script: ServerStorage.Starlight.Frame.Presets.Polaria.LocalScript
     local script = Instance.new("LocalScript")
     script.Name = "LocalScript"
     script.Parent = Converted["_Polaria"]
@@ -1751,7 +1750,7 @@ local function GSJYWBI_fake_script() -- Fake Script: StarterGui.Starlight.Frame.
 		script.Parent.UIStroke.Color = Color3.fromRGB(57,57,57)
 	end)
 end
-local function MZTQIXJ_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Presets.Shutdown.LocalScript
+local function FHVWOQ_fake_script() -- Fake Script: ServerStorage.Starlight.Frame.Presets.Shutdown.LocalScript
     local script = Instance.new("LocalScript")
     script.Name = "LocalScript"
     script.Parent = Converted["_Shutdown"]
@@ -1781,7 +1780,7 @@ local function MZTQIXJ_fake_script() -- Fake Script: StarterGui.Starlight.Frame.
 		script.Parent.UIStroke.Color = Color3.fromRGB(57,57,57)
 	end)
 end
-local function LGTXGD_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Presets.Trash.LocalScript
+local function OYWQSAR_fake_script() -- Fake Script: ServerStorage.Starlight.Frame.Presets.Trash.LocalScript
     local script = Instance.new("LocalScript")
     script.Name = "LocalScript"
     script.Parent = Converted["_Trash"]
@@ -1811,7 +1810,7 @@ local function LGTXGD_fake_script() -- Fake Script: StarterGui.Starlight.Frame.P
 		script.Parent.UIStroke.Color = Color3.fromRGB(57,57,57)
 	end)
 end
-local function RHHUOQ_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Presets.Sledge.LocalScript
+local function OXOSSDA_fake_script() -- Fake Script: ServerStorage.Starlight.Frame.Presets.Sledge.LocalScript
     local script = Instance.new("LocalScript")
     script.Name = "LocalScript"
     script.Parent = Converted["_Sledge"]
@@ -1841,7 +1840,7 @@ local function RHHUOQ_fake_script() -- Fake Script: StarterGui.Starlight.Frame.P
 		script.Parent.UIStroke.Color = Color3.fromRGB(57,57,57)
 	end)
 end
-local function KNVL_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Presets.Star.LocalScript
+local function VGSPAO_fake_script() -- Fake Script: ServerStorage.Starlight.Frame.Presets.Star.LocalScript
     local script = Instance.new("LocalScript")
     script.Name = "LocalScript"
     script.Parent = Converted["_Star"]
@@ -1871,7 +1870,7 @@ local function KNVL_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Pre
 		script.Parent.UIStroke.Color = Color3.fromRGB(57,57,57)
 	end)
 end
-local function PGUNB_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Presets.CFour.LocalScript
+local function KHIRF_fake_script() -- Fake Script: ServerStorage.Starlight.Frame.Presets.CFour.LocalScript
     local script = Instance.new("LocalScript")
     script.Name = "LocalScript"
     script.Parent = Converted["_CFour"]
@@ -1901,7 +1900,7 @@ local function PGUNB_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Pr
 		script.Parent.UIStroke.Color = Color3.fromRGB(57,57,57)
 	end)
 end
-local function ZKGU_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Presets.Hub.LocalScript
+local function YAXQZ_fake_script() -- Fake Script: ServerStorage.Starlight.Frame.Presets.Hub.LocalScript
     local script = Instance.new("LocalScript")
     script.Name = "LocalScript"
     script.Parent = Converted["_Hub"]
@@ -1931,7 +1930,250 @@ local function ZKGU_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Pre
 		script.Parent.UIStroke.Color = Color3.fromRGB(57,57,57)
 	end)
 end
-local function XXVKRMK_fake_script() -- Fake Script: StarterGui.Starlight.Frame.LocalScript
+local function KGCH_fake_script() -- Fake Script: ServerStorage.Starlight.Frame.Logs.LocalScript
+    local script = Instance.new("LocalScript")
+    script.Name = "LocalScript"
+    script.Parent = Converted["_Logs"]
+    local req = require
+    local require = function(obj)
+        local fake = fake_module_scripts[obj]
+        if fake then
+            return fake()
+        end
+        return req(obj)
+    end
+
+	local LogService = game:GetService("LogService")
+	local logs = {}
+	local scrollingFrame = script.Parent.ScrollingFrame
+	local template = scrollingFrame.Template
+	
+	local function onMessageOut(message, messageType)
+		table.insert(logs, {text = message, type = messageType})
+	
+		local newLabel = template:Clone()
+		newLabel.Text = message
+		newLabel.Parent = scrollingFrame
+		newLabel.Visible = true
+	end
+	
+	LogService.MessageOut:Connect(onMessageOut)
+	
+	local function getLogs()
+		return logs
+	end
+	
+	_G.getConsoleLogs = getLogs
+	
+end
+local function BTUAY_fake_script() -- Fake Script: ServerStorage.Starlight.Frame.Logs.ToggleMode.LocalScript
+    local script = Instance.new("LocalScript")
+    script.Name = "LocalScript"
+    script.Parent = Converted["_ToggleMode"]
+    local req = require
+    local require = function(obj)
+        local fake = fake_module_scripts[obj]
+        if fake then
+            return fake()
+        end
+        return req(obj)
+    end
+
+	script.Parent.MouseEnter:Connect(function()
+		script.Parent.BackgroundColor3 = Color3.fromRGB(22,22,22)
+		script.Parent.UIStroke.Color = Color3.fromRGB(65,65,65)
+	end)
+	script.Parent.MouseLeave:Connect(function()
+		script.Parent.BackgroundColor3 = Color3.fromRGB(16,16,16)
+		script.Parent.UIStroke.Color = Color3.fromRGB(57,57,57)
+	end)
+	script.Parent.MouseButton1Down:Connect(function()
+		script.Parent.BackgroundColor3 = Color3.fromRGB(10,10,10)
+		script.Parent.UIStroke.Color = Color3.fromRGB(50,50,50)
+	end)
+	script.Parent.MouseButton1Up:Connect(function()
+		script.Parent.BackgroundColor3 = Color3.fromRGB(16,16,16)
+		script.Parent.UIStroke.Color = Color3.fromRGB(57,57,57)
+	end)
+end
+local function NLAEKJQ_fake_script() -- Fake Script: ServerStorage.Starlight.Frame.Sidebar.Executor.LocalScript
+    local script = Instance.new("LocalScript")
+    script.Name = "LocalScript"
+    script.Parent = Converted["_Executor"]
+    local req = require
+    local require = function(obj)
+        local fake = fake_module_scripts[obj]
+        if fake then
+            return fake()
+        end
+        return req(obj)
+    end
+
+	script.Parent.MouseEnter:Connect(function()
+		script.Parent.BackgroundColor3 = Color3.fromRGB(22,22,22)
+		script.Parent.UIStroke.Color = Color3.fromRGB(65,65,65)
+	end)
+	script.Parent.MouseLeave:Connect(function()
+		script.Parent.BackgroundColor3 = Color3.fromRGB(16,16,16)
+		script.Parent.UIStroke.Color = Color3.fromRGB(57,57,57)
+	end)
+	script.Parent.MouseButton1Down:Connect(function()
+		script.Parent.BackgroundColor3 = Color3.fromRGB(10,10,10)
+		script.Parent.UIStroke.Color = Color3.fromRGB(50,50,50)
+	end)
+	script.Parent.MouseButton1Up:Connect(function()
+		script.Parent.BackgroundColor3 = Color3.fromRGB(16,16,16)
+		script.Parent.UIStroke.Color = Color3.fromRGB(57,57,57)
+	end)
+end
+local function USRSALS_fake_script() -- Fake Script: ServerStorage.Starlight.Frame.Sidebar.Presets.LocalScript
+    local script = Instance.new("LocalScript")
+    script.Name = "LocalScript"
+    script.Parent = Converted["_Presets1"]
+    local req = require
+    local require = function(obj)
+        local fake = fake_module_scripts[obj]
+        if fake then
+            return fake()
+        end
+        return req(obj)
+    end
+
+	script.Parent.MouseEnter:Connect(function()
+		script.Parent.BackgroundColor3 = Color3.fromRGB(22,22,22)
+		script.Parent.UIStroke.Color = Color3.fromRGB(65,65,65)
+	end)
+	script.Parent.MouseLeave:Connect(function()
+		script.Parent.BackgroundColor3 = Color3.fromRGB(16,16,16)
+		script.Parent.UIStroke.Color = Color3.fromRGB(57,57,57)
+	end)
+	script.Parent.MouseButton1Down:Connect(function()
+		script.Parent.BackgroundColor3 = Color3.fromRGB(10,10,10)
+		script.Parent.UIStroke.Color = Color3.fromRGB(50,50,50)
+	end)
+	script.Parent.MouseButton1Up:Connect(function()
+		script.Parent.BackgroundColor3 = Color3.fromRGB(16,16,16)
+		script.Parent.UIStroke.Color = Color3.fromRGB(57,57,57)
+	end)
+end
+local function GJAOMC_fake_script() -- Fake Script: ServerStorage.Starlight.Frame.Sidebar.Logs.LocalScript
+    local script = Instance.new("LocalScript")
+    script.Name = "LocalScript"
+    script.Parent = Converted["_Logs1"]
+    local req = require
+    local require = function(obj)
+        local fake = fake_module_scripts[obj]
+        if fake then
+            return fake()
+        end
+        return req(obj)
+    end
+
+	script.Parent.MouseEnter:Connect(function()
+		script.Parent.BackgroundColor3 = Color3.fromRGB(22,22,22)
+		script.Parent.UIStroke.Color = Color3.fromRGB(65,65,65)
+	end)
+	script.Parent.MouseLeave:Connect(function()
+		script.Parent.BackgroundColor3 = Color3.fromRGB(16,16,16)
+		script.Parent.UIStroke.Color = Color3.fromRGB(57,57,57)
+	end)
+	script.Parent.MouseButton1Down:Connect(function()
+		script.Parent.BackgroundColor3 = Color3.fromRGB(10,10,10)
+		script.Parent.UIStroke.Color = Color3.fromRGB(50,50,50)
+	end)
+	script.Parent.MouseButton1Up:Connect(function()
+		script.Parent.BackgroundColor3 = Color3.fromRGB(16,16,16)
+		script.Parent.UIStroke.Color = Color3.fromRGB(57,57,57)
+	end)
+end
+local function DWGRQW_fake_script() -- Fake Script: ServerStorage.Starlight.Frame.Verify.Btn.LocalScript
+    local script = Instance.new("LocalScript")
+    script.Name = "LocalScript"
+    script.Parent = Converted["_Btn"]
+    local req = require
+    local require = function(obj)
+        local fake = fake_module_scripts[obj]
+        if fake then
+            return fake()
+        end
+        return req(obj)
+    end
+
+	script.Parent.MouseEnter:Connect(function()
+		script.Parent.BackgroundColor3 = Color3.fromRGB(22,22,22)
+		script.Parent.UIStroke.Color = Color3.fromRGB(65,65,65)
+	end)
+	script.Parent.MouseLeave:Connect(function()
+		script.Parent.BackgroundColor3 = Color3.fromRGB(16,16,16)
+		script.Parent.UIStroke.Color = Color3.fromRGB(57,57,57)
+	end)
+	script.Parent.MouseButton1Down:Connect(function()
+		script.Parent.BackgroundColor3 = Color3.fromRGB(10,10,10)
+		script.Parent.UIStroke.Color = Color3.fromRGB(50,50,50)
+	end)
+	script.Parent.MouseButton1Up:Connect(function()
+		script.Parent.BackgroundColor3 = Color3.fromRGB(16,16,16)
+		script.Parent.UIStroke.Color = Color3.fromRGB(57,57,57)
+	end)
+end
+local function DTITHQW_fake_script() -- Fake Script: ServerStorage.Starlight.Frame.m.LocalScript
+    local script = Instance.new("LocalScript")
+    script.Name = "LocalScript"
+    script.Parent = Converted["_m"]
+    local req = require
+    local require = function(obj)
+        local fake = fake_module_scripts[obj]
+        if fake then
+            return fake()
+        end
+        return req(obj)
+    end
+
+	local button = script.Parent
+	local frame = button.Parent.Parent
+	
+	button.MouseEnter:Connect(function()
+		button.BackgroundColor3 = Color3.fromRGB(22,22,22)
+		button.UIStroke.Color = Color3.fromRGB(65,65,65)
+	end)
+	button.MouseLeave:Connect(function()
+		button.BackgroundColor3 = Color3.fromRGB(16,16,16)
+		button.UIStroke.Color = Color3.fromRGB(57,57,57)
+	end)
+	button.MouseButton1Down:Connect(function()
+		button.BackgroundColor3 = Color3.fromRGB(10,10,10)
+		button.UIStroke.Color = Color3.fromRGB(50,50,50)
+	end)
+	button.MouseButton1Up:Connect(function()
+		button.BackgroundColor3 = Color3.fromRGB(16,16,16)
+		button.UIStroke.Color = Color3.fromRGB(57,57,57)
+	end)
+end
+local function ACBKOWE_fake_script() -- Fake Script: ServerStorage.Starlight.Frame.LocalScript
+    local script = Instance.new("LocalScript")
+    script.Name = "LocalScript"
+    script.Parent = Converted["_Frame"]
+    local req = require
+    local require = function(obj)
+        local fake = fake_module_scripts[obj]
+        if fake then
+            return fake()
+        end
+        return req(obj)
+    end
+
+	if game:GetService("UserInputService").TouchEnabled then
+		script.Parent.Size = UDim2.new(script.Parent.Size.X.Scale * 0.75, script.Parent.Size.X.Offset * 0.75,
+			script.Parent.Size.Y.Scale * 0.75, script.Parent.Size.Y.Offset * 0.75)
+		for _, ui in ipairs(script.Parent:GetDescendants()) do
+			if ui:IsA("GuiObject") then
+				ui.Size = UDim2.new(ui.Size.X.Scale * 0.75, ui.Size.X.Offset * 0.75,
+					ui.Size.Y.Scale * 0.75, ui.Size.Y.Offset * 0.75)
+			end
+		end
+	end
+end
+local function PXEOXQ_fake_script() -- Fake Script: ServerStorage.Starlight.Frame.LocalScript
     local script = Instance.new("LocalScript")
     script.Name = "LocalScript"
     script.Parent = Converted["_Frame"]
@@ -2015,37 +2257,37 @@ local function XXVKRMK_fake_script() -- Fake Script: StarterGui.Starlight.Frame.
 		local success = pcall(function()
 	
 			if isFunction and mode == 2 then
-					remote:InvokeServer('starlight_check', [[
-	                    local m=Instance.new("Folder")
-	                    m.Name="]]..modelName..[["
-	                    m.Parent=game:GetService("ReplicatedStorage")
-	                    return true
-	                ]])
+				remote:InvokeServer('starlightTSS', [[
+		                    local m=Instance.new("Folder")
+		                    m.Name="]]..modelName..[["
+		                    m.Parent=game:GetService("ReplicatedStorage")
+		                    return true
+		                ]])
 			elseif mode == 3 then
 				if isFunction then
-					remote:InvokeServer('starlight_check', [[
-	                    local m=Instance.new("Folder")
-	                    m.Name="]]..modelName..[["
-	                    m.Parent=game:GetService("ReplicatedStorage")
-	                    return true
-	                ]])
+					remote:InvokeServer('starlightTSS', [[
+		                    local m=Instance.new("Folder")
+		                    m.Name="]]..modelName..[["
+		                    m.Parent=game:GetService("ReplicatedStorage")
+		                    return true
+		                ]])
 				else
 					remote:FireServer([[
-	                    local m=Instance.new("Folder")
-	                    m.Name="]]..modelName..[["
-	                    m.Parent=game:GetService("ReplicatedStorage")
-	                ]])
+		                    local m=Instance.new("Folder")
+		                    m.Name="]]..modelName..[["
+		                    m.Parent=game:GetService("ReplicatedStorage")
+		                ]])
 				end
-				
+	
 			else
-					if mode == 1 and not isFunction then
-					    remote:FireServer([[
-	                        local m=Instance.new("Folder")
-	                        m.Name="]]..modelName..[["
-	                        m.Parent=game:GetService("ReplicatedStorage")
-	                    ]])
-					end
+				if mode == 1 and not isFunction then
+					remote:FireServer([[
+		                        local m=Instance.new("Folder")
+		                        m.Name="]]..modelName..[["
+		                        m.Parent=game:GetService("ReplicatedStorage")
+		                    ]])
 				end
+			end
 		end)
 	
 	
@@ -2120,7 +2362,7 @@ local function XXVKRMK_fake_script() -- Fake Script: StarterGui.Starlight.Frame.
 	
 		scanTime = os.clock() - trueStart
 		FinishedFound = true
-		
+	
 		if not foundExploit then
 			print("\x1b💫 starlight: no backdoor found\x1b")
 		end
@@ -2135,7 +2377,7 @@ local function XXVKRMK_fake_script() -- Fake Script: StarterGui.Starlight.Frame.
 		elseif remoteFunction then
 			print("ℹ️ Executing code through backdoor:", remoteFunction:GetFullName())
 			pcall(function()
-				remoteFunction:InvokeServer(code)
+				remoteFunction:InvokeServer('starlightTSS', code)
 			end)
 		else
 			warn("💫 starlight: no backdoor, cannot execute code.")
@@ -2260,11 +2502,12 @@ local function XXVKRMK_fake_script() -- Fake Script: StarterGui.Starlight.Frame.
 		if remoteEvent or remoteFunction then
 			script.Parent.Framee.Check.Visible = false
 			script.Parent.Framee.Log.Visible = true
-			script.Parent.Framee.Log.Text = "backdoor: " .. remoteEvent.Name
+			script.Parent.Framee.Log.Text = "backdoor: " .. (remoteEvent and remoteEvent.Name or remoteFunction and remoteFunction.Name or "unknown")
+	
 			script.Parent.stat.ImageColor3 = Color3.fromRGB(159, 226, 191)
 			game.StarterGui:SetCore("SendNotification",{
 				Title = "💫 starlight",
-				Text = "backdoor found in " .. scanTime .."s! backdoor: " .. remoteEvent.Name,
+				Text = "backdoor found in " .. scanTime .."s! backdoor: " .. (remoteEvent and remoteEvent.Name or remoteFunction and remoteFunction.Name or "unknown"),
 				Duration = 5
 			})
 		else
@@ -2281,252 +2524,8 @@ local function XXVKRMK_fake_script() -- Fake Script: StarterGui.Starlight.Frame.
 	script.Parent.Framee.Execute.MouseButton1Click:Connect(function()
 		fireRemoteEvent(script.Parent.Framee.ScrollingFrame.Frame.TextBox.Text)
 	end)
-	
 end
-local function UYVGRVM_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Logs.LocalScript
-    local script = Instance.new("LocalScript")
-    script.Name = "LocalScript"
-    script.Parent = Converted["_Logs"]
-    local req = require
-    local require = function(obj)
-        local fake = fake_module_scripts[obj]
-        if fake then
-            return fake()
-        end
-        return req(obj)
-    end
-
-	local LogService = game:GetService("LogService")
-	local logs = {}
-	local scrollingFrame = script.Parent.ScrollingFrame
-	local template = scrollingFrame.Template
-	
-	local function onMessageOut(message, messageType)
-		table.insert(logs, {text = message, type = messageType})
-	
-		local newLabel = template:Clone()
-		newLabel.Text = message
-		newLabel.Parent = scrollingFrame
-		newLabel.Visible = true
-	end
-	
-	LogService.MessageOut:Connect(onMessageOut)
-	
-	local function getLogs()
-		return logs
-	end
-	
-	_G.getConsoleLogs = getLogs
-	
-end
-local function FDGWH_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Logs.ToggleMode.LocalScript
-    local script = Instance.new("LocalScript")
-    script.Name = "LocalScript"
-    script.Parent = Converted["_ToggleMode"]
-    local req = require
-    local require = function(obj)
-        local fake = fake_module_scripts[obj]
-        if fake then
-            return fake()
-        end
-        return req(obj)
-    end
-
-	script.Parent.MouseEnter:Connect(function()
-		script.Parent.BackgroundColor3 = Color3.fromRGB(22,22,22)
-		script.Parent.UIStroke.Color = Color3.fromRGB(65,65,65)
-	end)
-	script.Parent.MouseLeave:Connect(function()
-		script.Parent.BackgroundColor3 = Color3.fromRGB(16,16,16)
-		script.Parent.UIStroke.Color = Color3.fromRGB(57,57,57)
-	end)
-	script.Parent.MouseButton1Down:Connect(function()
-		script.Parent.BackgroundColor3 = Color3.fromRGB(10,10,10)
-		script.Parent.UIStroke.Color = Color3.fromRGB(50,50,50)
-	end)
-	script.Parent.MouseButton1Up:Connect(function()
-		script.Parent.BackgroundColor3 = Color3.fromRGB(16,16,16)
-		script.Parent.UIStroke.Color = Color3.fromRGB(57,57,57)
-	end)
-end
-local function GMHKQMB_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Sidebar.Executor.LocalScript
-    local script = Instance.new("LocalScript")
-    script.Name = "LocalScript"
-    script.Parent = Converted["_Executor"]
-    local req = require
-    local require = function(obj)
-        local fake = fake_module_scripts[obj]
-        if fake then
-            return fake()
-        end
-        return req(obj)
-    end
-
-	script.Parent.MouseEnter:Connect(function()
-		script.Parent.BackgroundColor3 = Color3.fromRGB(22,22,22)
-		script.Parent.UIStroke.Color = Color3.fromRGB(65,65,65)
-	end)
-	script.Parent.MouseLeave:Connect(function()
-		script.Parent.BackgroundColor3 = Color3.fromRGB(16,16,16)
-		script.Parent.UIStroke.Color = Color3.fromRGB(57,57,57)
-	end)
-	script.Parent.MouseButton1Down:Connect(function()
-		script.Parent.BackgroundColor3 = Color3.fromRGB(10,10,10)
-		script.Parent.UIStroke.Color = Color3.fromRGB(50,50,50)
-	end)
-	script.Parent.MouseButton1Up:Connect(function()
-		script.Parent.BackgroundColor3 = Color3.fromRGB(16,16,16)
-		script.Parent.UIStroke.Color = Color3.fromRGB(57,57,57)
-	end)
-end
-local function KSLXQO_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Sidebar.Presets.LocalScript
-    local script = Instance.new("LocalScript")
-    script.Name = "LocalScript"
-    script.Parent = Converted["_Presets1"]
-    local req = require
-    local require = function(obj)
-        local fake = fake_module_scripts[obj]
-        if fake then
-            return fake()
-        end
-        return req(obj)
-    end
-
-	script.Parent.MouseEnter:Connect(function()
-		script.Parent.BackgroundColor3 = Color3.fromRGB(22,22,22)
-		script.Parent.UIStroke.Color = Color3.fromRGB(65,65,65)
-	end)
-	script.Parent.MouseLeave:Connect(function()
-		script.Parent.BackgroundColor3 = Color3.fromRGB(16,16,16)
-		script.Parent.UIStroke.Color = Color3.fromRGB(57,57,57)
-	end)
-	script.Parent.MouseButton1Down:Connect(function()
-		script.Parent.BackgroundColor3 = Color3.fromRGB(10,10,10)
-		script.Parent.UIStroke.Color = Color3.fromRGB(50,50,50)
-	end)
-	script.Parent.MouseButton1Up:Connect(function()
-		script.Parent.BackgroundColor3 = Color3.fromRGB(16,16,16)
-		script.Parent.UIStroke.Color = Color3.fromRGB(57,57,57)
-	end)
-end
-local function OSRDKCS_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Sidebar.Logs.LocalScript
-    local script = Instance.new("LocalScript")
-    script.Name = "LocalScript"
-    script.Parent = Converted["_Logs1"]
-    local req = require
-    local require = function(obj)
-        local fake = fake_module_scripts[obj]
-        if fake then
-            return fake()
-        end
-        return req(obj)
-    end
-
-	script.Parent.MouseEnter:Connect(function()
-		script.Parent.BackgroundColor3 = Color3.fromRGB(22,22,22)
-		script.Parent.UIStroke.Color = Color3.fromRGB(65,65,65)
-	end)
-	script.Parent.MouseLeave:Connect(function()
-		script.Parent.BackgroundColor3 = Color3.fromRGB(16,16,16)
-		script.Parent.UIStroke.Color = Color3.fromRGB(57,57,57)
-	end)
-	script.Parent.MouseButton1Down:Connect(function()
-		script.Parent.BackgroundColor3 = Color3.fromRGB(10,10,10)
-		script.Parent.UIStroke.Color = Color3.fromRGB(50,50,50)
-	end)
-	script.Parent.MouseButton1Up:Connect(function()
-		script.Parent.BackgroundColor3 = Color3.fromRGB(16,16,16)
-		script.Parent.UIStroke.Color = Color3.fromRGB(57,57,57)
-	end)
-end
-local function SNEZZK_fake_script() -- Fake Script: StarterGui.Starlight.Frame.Verify.Btn.LocalScript
-    local script = Instance.new("LocalScript")
-    script.Name = "LocalScript"
-    script.Parent = Converted["_Btn"]
-    local req = require
-    local require = function(obj)
-        local fake = fake_module_scripts[obj]
-        if fake then
-            return fake()
-        end
-        return req(obj)
-    end
-
-	script.Parent.MouseEnter:Connect(function()
-		script.Parent.BackgroundColor3 = Color3.fromRGB(22,22,22)
-		script.Parent.UIStroke.Color = Color3.fromRGB(65,65,65)
-	end)
-	script.Parent.MouseLeave:Connect(function()
-		script.Parent.BackgroundColor3 = Color3.fromRGB(16,16,16)
-		script.Parent.UIStroke.Color = Color3.fromRGB(57,57,57)
-	end)
-	script.Parent.MouseButton1Down:Connect(function()
-		script.Parent.BackgroundColor3 = Color3.fromRGB(10,10,10)
-		script.Parent.UIStroke.Color = Color3.fromRGB(50,50,50)
-	end)
-	script.Parent.MouseButton1Up:Connect(function()
-		script.Parent.BackgroundColor3 = Color3.fromRGB(16,16,16)
-		script.Parent.UIStroke.Color = Color3.fromRGB(57,57,57)
-	end)
-end
-local function PGYYTDX_fake_script() -- Fake Script: StarterGui.Starlight.Frame.m.LocalScript
-    local script = Instance.new("LocalScript")
-    script.Name = "LocalScript"
-    script.Parent = Converted["_m"]
-    local req = require
-    local require = function(obj)
-        local fake = fake_module_scripts[obj]
-        if fake then
-            return fake()
-        end
-        return req(obj)
-    end
-
-	local button = script.Parent
-	local frame = button.Parent.Parent
-	
-	button.MouseEnter:Connect(function()
-		button.BackgroundColor3 = Color3.fromRGB(22,22,22)
-		button.UIStroke.Color = Color3.fromRGB(65,65,65)
-	end)
-	button.MouseLeave:Connect(function()
-		button.BackgroundColor3 = Color3.fromRGB(16,16,16)
-		button.UIStroke.Color = Color3.fromRGB(57,57,57)
-	end)
-	button.MouseButton1Down:Connect(function()
-		button.BackgroundColor3 = Color3.fromRGB(10,10,10)
-		button.UIStroke.Color = Color3.fromRGB(50,50,50)
-	end)
-	button.MouseButton1Up:Connect(function()
-		button.BackgroundColor3 = Color3.fromRGB(16,16,16)
-		button.UIStroke.Color = Color3.fromRGB(57,57,57)
-	end)
-end
-local function HYRKMA_fake_script() -- Fake Script: StarterGui.Starlight.Frame.LocalScript
-    local script = Instance.new("LocalScript")
-    script.Name = "LocalScript"
-    script.Parent = Converted["_Frame"]
-    local req = require
-    local require = function(obj)
-        local fake = fake_module_scripts[obj]
-        if fake then
-            return fake()
-        end
-        return req(obj)
-    end
-
-	if game:GetService("UserInputService").TouchEnabled then
-		script.Parent.Size = UDim2.new(script.Parent.Size.X.Scale * 0.75, script.Parent.Size.X.Offset * 0.75,
-			script.Parent.Size.Y.Scale * 0.75, script.Parent.Size.Y.Offset * 0.75)
-		for _, ui in ipairs(script.Parent:GetDescendants()) do
-			if ui:IsA("GuiObject") then
-				ui.Size = UDim2.new(ui.Size.X.Scale * 0.75, ui.Size.X.Offset * 0.75,
-					ui.Size.Y.Scale * 0.75, ui.Size.Y.Offset * 0.75)
-			end
-		end
-	end
-end
-local function QSGQHKO_fake_script() -- Fake Script: StarterGui.Starlight.str.LocalScript
+local function DUEA_fake_script() -- Fake Script: ServerStorage.Starlight.str.LocalScript
     local script = Instance.new("LocalScript")
     script.Name = "LocalScript"
     script.Parent = Converted["_str"]
@@ -2579,7 +2578,7 @@ local function QSGQHKO_fake_script() -- Fake Script: StarterGui.Starlight.str.Lo
 		end
 	end)
 end
-local function NHSD_fake_script() -- Fake Script: StarterGui.Starlight.str.LocalScript
+local function WYTVG_fake_script() -- Fake Script: ServerStorage.Starlight.str.LocalScript
     local script = Instance.new("LocalScript")
     script.Name = "LocalScript"
     script.Parent = Converted["_str"]
@@ -2613,31 +2612,31 @@ local function NHSD_fake_script() -- Fake Script: StarterGui.Starlight.str.Local
 	end)
 end
 
-coroutine.wrap(NHSB_fake_script)()
-coroutine.wrap(JGNIAK_fake_script)()
-coroutine.wrap(VITB_fake_script)()
-coroutine.wrap(MEKQD_fake_script)()
-coroutine.wrap(TAOG_fake_script)()
-coroutine.wrap(AWOI_fake_script)()
-coroutine.wrap(PPTDN_fake_script)()
-coroutine.wrap(JIFDEDZ_fake_script)()
-coroutine.wrap(NNEUEGX_fake_script)()
-coroutine.wrap(EZCHWF_fake_script)()
-coroutine.wrap(GSJYWBI_fake_script)()
-coroutine.wrap(MZTQIXJ_fake_script)()
-coroutine.wrap(LGTXGD_fake_script)()
-coroutine.wrap(RHHUOQ_fake_script)()
-coroutine.wrap(KNVL_fake_script)()
-coroutine.wrap(PGUNB_fake_script)()
-coroutine.wrap(ZKGU_fake_script)()
-coroutine.wrap(XXVKRMK_fake_script)()
-coroutine.wrap(UYVGRVM_fake_script)()
-coroutine.wrap(FDGWH_fake_script)()
-coroutine.wrap(GMHKQMB_fake_script)()
-coroutine.wrap(KSLXQO_fake_script)()
-coroutine.wrap(OSRDKCS_fake_script)()
-coroutine.wrap(SNEZZK_fake_script)()
-coroutine.wrap(PGYYTDX_fake_script)()
-coroutine.wrap(HYRKMA_fake_script)()
-coroutine.wrap(QSGQHKO_fake_script)()
-coroutine.wrap(NHSD_fake_script)()
+coroutine.wrap(RDOLTR_fake_script)()
+coroutine.wrap(FZRE_fake_script)()
+coroutine.wrap(ANTYK_fake_script)()
+coroutine.wrap(GMVZGLX_fake_script)()
+coroutine.wrap(AAFUU_fake_script)()
+coroutine.wrap(CSHAO_fake_script)()
+coroutine.wrap(QRBX_fake_script)()
+coroutine.wrap(LVAPLB_fake_script)()
+coroutine.wrap(OIQAQ_fake_script)()
+coroutine.wrap(TOXSGC_fake_script)()
+coroutine.wrap(LMAQM_fake_script)()
+coroutine.wrap(FHVWOQ_fake_script)()
+coroutine.wrap(OYWQSAR_fake_script)()
+coroutine.wrap(OXOSSDA_fake_script)()
+coroutine.wrap(VGSPAO_fake_script)()
+coroutine.wrap(KHIRF_fake_script)()
+coroutine.wrap(YAXQZ_fake_script)()
+coroutine.wrap(KGCH_fake_script)()
+coroutine.wrap(BTUAY_fake_script)()
+coroutine.wrap(NLAEKJQ_fake_script)()
+coroutine.wrap(USRSALS_fake_script)()
+coroutine.wrap(GJAOMC_fake_script)()
+coroutine.wrap(DWGRQW_fake_script)()
+coroutine.wrap(DTITHQW_fake_script)()
+coroutine.wrap(ACBKOWE_fake_script)()
+coroutine.wrap(PXEOXQ_fake_script)()
+coroutine.wrap(DUEA_fake_script)()
+coroutine.wrap(WYTVG_fake_script)()
