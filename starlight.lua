@@ -387,7 +387,7 @@ Converted["_Starlight"].IgnoreGuiInset = true
 Converted["_Starlight"].ScreenInsets = Enum.ScreenInsets.DeviceSafeInsets
 Converted["_Starlight"].ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 Converted["_Starlight"].Name = "Starlight"
-Converted["_Starlight"].Parent = game.ServerStorage
+Converted["_Starlight"].Parent = game:GetService("CoreGui")
 
 Converted["_Frame"].BackgroundColor3 = Color3.fromRGB(12.000000234693289, 12.000000234693289, 12.000000234693289)
 Converted["_Frame"].BorderColor3 = Color3.fromRGB(0, 0, 0)
