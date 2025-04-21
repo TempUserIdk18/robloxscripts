@@ -135,7 +135,6 @@ Converted["_IsVerif"].Parent = Converted["_Frame"]
 Converted["_UICorner4"].Parent = Converted["_IsVerif"]
 
 Converted["_ImageLabel"].Image = "rbxassetid://114119543693280"
-Converted["_ImageLabel"].ImageContent = Content
 Converted["_ImageLabel"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 Converted["_ImageLabel"].BackgroundTransparency = 1
 Converted["_ImageLabel"].BorderColor3 = Color3.fromRGB(0, 0, 0)
