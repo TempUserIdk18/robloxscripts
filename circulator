@@ -1,0 +1,478 @@
+local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+local UserInputService = game:GetService("UserInputService")
+local SoundService = game:GetService("SoundService")
+local CoreGui = game:GetService("CoreGui")
+local HttpService = game:GetService("HttpService")
+local Workspace = game:GetService("Workspace")
+local TweenService = game:GetService("TweenService")
+
+local LocalPlayer = Players.LocalPlayer
+
+-- Sound Effects
+local function playSound(soundId)
+    local sound = Instance.new("Sound")
+    sound.SoundId = "rbxassetid://" .. soundId
+    sound.Parent = SoundService
+    sound:Play()
+    sound.Ended:Connect(function()
+        sound:Destroy()
+    end)
+end
+
+-- GUI Creation
+local ScreenGui = Instance.new("ScreenGui")
+ScreenGui.Name = "CirclerrV2GUI"
+ScreenGui.ResetOnSpawn = false
+ScreenGui.Parent = CoreGui
+
+local MainFrame = Instance.new("Frame")
+MainFrame.Size = UDim2.new(0, 350, 0, 300)
+MainFrame.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+MainFrame.Position = UDim2.new(0.5, -175, 0.5, -200)
+MainFrame.BorderSizePixel = 0
+MainFrame.Parent = ScreenGui
+MainFrame.BackgroundTransparency = 0.1
+
+local UIGradient = Instance.new("UIGradient")
+UIGradient.Color = ColorSequence.new({
+    ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 50, 50)),
+    ColorSequenceKeypoint.new(1, Color3.fromRGB(255, 150, 50))
+})
+UIGradient.Rotation = 45
+UIGradient.Parent = MainFrame
+
+local UICorner = Instance.new("UICorner")
+UICorner.CornerRadius = UDim.new(0, 15)
+UICorner.Parent = MainFrame
+
+local Title = Instance.new("TextLabel")
+Title.Size = UDim2.new(1, 0, 0, 50)
+Title.BackgroundColor3 = Color3.fromRGB(10, 10, 10)
+Title.BackgroundTransparency=1
+Title.Text = "circulator v2"
+Title.TextColor3 = Color3.fromRGB(255, 255, 255)
+Title.Font = Enum.Font.GothamBlack
+Title.TextSize = 24
+Title.Parent = MainFrame
+
+local TitleCorner = Instance.new("UICorner")
+TitleCorner.CornerRadius = UDim.new(0, 15)
+TitleCorner.Parent = Title
+
+-- Configuration
+local config = {
+    radius = 50,
+    height = 100,
+    rotationSpeed = 10,
+    attractionStrength = 1000,
+    maxSpeed = 60,
+    highlightEnabled = true,
+    wallWidth = 25,
+    spacing = 0.1
+}
+
+-- Save/Load Config
+local function saveConfig()
+    pcall(function()
+        local configStr = HttpService:JSONEncode(config)
+        writefile("CirclerrV2.txt", configStr)
+    end)
+end
+
+local function loadConfig()
+    pcall(function()
+        if isfile("CirclerrV2.txt") then
+            local configStr = readfile("CirclerrV2.txt")
+            config = HttpService:JSONDecode(configStr)
+        end
+    end)
+end
+loadConfig()
+
+-- Create Control UI
+local function createControl(name, positionY, color, labelText, configKey, minVal, maxVal)
+    local frame = Instance.new("Frame")
+    frame.Size = UDim2.new(0.9, 0, 0, 50)
+    frame.Position = UDim2.new(0.05, 0, positionY, 0)
+    frame.BackgroundTransparency = 1
+    frame.Parent = MainFrame
+
+    local DecreaseButton = Instance.new("TextButton")
+    DecreaseButton.Size = UDim2.new(0.2, 0, 0, 40)
+    DecreaseButton.Position = UDim2.new(0, 0, 0, 5)
+    DecreaseButton.Text = "-"
+    DecreaseButton.BackgroundColor3 = color
+    DecreaseButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+    DecreaseButton.Font = Enum.Font.GothamBold
+    DecreaseButton.TextSize = 20
+    DecreaseButton.Parent = frame
+    local decCorner = Instance.new("UICorner")
+    decCorner.CornerRadius = UDim.new(0, 8)
+    decCorner.Parent = DecreaseButton
+
+    local IncreaseButton = Instance.new("TextButton")
+    IncreaseButton.Size = UDim2.new(0.2, 0, 0, 40)
+    IncreaseButton.Position = UDim2.new(0.8, 0, 0, 5)
+    IncreaseButton.Text = "+"
+    IncreaseButton.BackgroundColor3 = color
+    IncreaseButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+    IncreaseButton.Font = Enum.Font.GothamBold
+    IncreaseButton.TextSize = 20
+    IncreaseButton.Parent = frame
+    local incCorner = Instance.new("UICorner")
+    incCorner.CornerRadius = UDim.new(0, 8)
+    incCorner.Parent = IncreaseButton
+
+    local Display = Instance.new("TextLabel")
+    Display.Size = UDim2.new(0.4, 0, 0, 40)
+    Display.Position = UDim2.new(0.3, 0, 0, 5)
+    Display.Text = labelText .. ": " .. config[configKey]
+    Display.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+    Display.TextColor3 = Color3.fromRGB(255, 255, 255)
+    Display.Font = Enum.Font.Gotham
+    Display.TextSize = 16
+    Display.Parent = frame
+    local dispCorner = Instance.new("UICorner")
+    dispCorner.CornerRadius = UDim.new(0, 8)
+    dispCorner.Parent = Display
+
+    local function updateValue(newValue)
+        config[configKey] = math.clamp(newValue, minVal, maxVal)
+        Display.Text = labelText .. ": " .. config[configKey]
+        saveConfig()
+        playSound("12221967")
+    end
+
+    DecreaseButton.MouseButton1Click:Connect(function()
+        updateValue(config[configKey] - 10)
+    end)
+
+    IncreaseButton.MouseButton1Click:Connect(function()
+        updateValue(config[configKey] + 10)
+    end)
+end
+
+-- Toggle Buttons
+local ToggleButton = Instance.new("TextButton")
+ToggleButton.Size = UDim2.new(0.4, 0, 0, 40)
+ToggleButton.Position = UDim2.new(0.05, 0, 0.15, 0)
+ToggleButton.Text = "circulate"
+ToggleButton.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+ToggleButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+ToggleButton.Font = Enum.Font.GothamBold
+ToggleButton.TextSize = 18
+ToggleButton.Parent = MainFrame
+local toggleCorner = Instance.new("UICorner")
+toggleCorner.CornerRadius = UDim.new(0, 10)
+toggleCorner.Parent = ToggleButton
+
+local NoFallButton = Instance.new("TextButton")
+NoFallButton.Size = UDim2.new(0.4, 0, 0, 40)
+NoFallButton.Position = UDim2.new(0.55, 0, 0.15, 0)
+NoFallButton.Text = "No Fall Damage"
+NoFallButton.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+NoFallButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+NoFallButton.Font = Enum.Font.GothamBold
+NoFallButton.TextSize = 18
+NoFallButton.Parent = MainFrame
+local noFallCorner = Instance.new("UICorner")
+noFallCorner.CornerRadius = UDim.new(0, 10)
+noFallCorner.Parent = NoFallButton
+
+-- Minimize Button
+local MinimizeButton = Instance.new("TextButton")
+MinimizeButton.Size = UDim2.new(0, 30, 0, 30)
+MinimizeButton.Position = UDim2.new(1, -40, 0, 10)
+MinimizeButton.Text = "-"
+MinimizeButton.BackgroundColor3 = Color3.fromRGB(200, 200, 200)
+MinimizeButton.TextColor3 = Color3.fromRGB(0, 0, 0)
+MinimizeButton.Font = Enum.Font.GothamBold
+MinimizeButton.TextSize = 20
+MinimizeButton.Parent = MainFrame
+local minimizeCorner = Instance.new("UICorner")
+minimizeCorner.CornerRadius = UDim.new(0, 8)
+minimizeCorner.Parent = MinimizeButton
+
+-- Draggable GUI
+local dragging, dragInput, dragStart, startPos
+local function update(input)
+    local delta = input.Position - dragStart
+    MainFrame.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+end
+
+MainFrame.InputBegan:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+        dragging = true
+        dragStart = input.Position
+        startPos = MainFrame.Position
+        input.Changed:Connect(function()
+            if input.UserInputState == Enum.UserInputState.End then
+                dragging = false
+            end
+        end)
+    end
+end)
+
+MainFrame.InputChanged:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+        dragInput = input
+    end
+end)
+
+UserInputService.InputChanged:Connect(function(input)
+    if input == dragInput and dragging then
+        update(input)
+    end
+end)
+
+-- Minimize Functionality
+local minimized = false
+MinimizeButton.MouseButton1Click:Connect(function()
+    minimized = not minimized
+    local targetSize = minimized and UDim2.new(0, 350, 0, 50) or UDim2.new(0, 350, 0, 300)
+    TweenService:Create(MainFrame, TweenInfo.new(0.3, Enum.EasingStyle.Quad), {Size = targetSize}):Play()
+    MinimizeButton.Text = minimized and "+" or "-"
+    for _, child in pairs(MainFrame:GetChildren()) do
+        if child:IsA("GuiObject") and child ~= Title and child ~= MinimizeButton then
+            child.Visible = not minimized
+        end
+    end
+    playSound("12221967")
+end)
+
+-- Create Controls
+createControl("Radius", 0.30, Color3.fromRGB(200, 50, 50), "Radius", "radius", 10, 1000)
+createControl("Height", 0.45, Color3.fromRGB(50, 200, 50), "Height", "height", 10, 1000)
+createControl("Speed", 0.60, Color3.fromRGB(50, 50, 200), "Speed", "rotationSpeed", 1, 100)
+createControl("Strength", 0.75, Color3.fromRGB(200, 200, 50), "Strength", "attractionStrength", 100, 5000)
+
+-- Network Setup
+local Network = getgenv().Network or {
+    BaseParts = {},
+    Velocity = Vector3.new(0, 0, 0)
+}
+getgenv().Network = Network
+
+Network.RetainPart = function(part)
+    if part:IsA("BasePart") and part:IsDescendantOf(Workspace) then
+        table.insert(Network.BaseParts, part)
+        part.CustomPhysicalProperties = PhysicalProperties.new(0.001, 0.1, 0.1, 0.1, 0.1)
+        part.CanCollide = true
+        if config.highlightEnabled then
+            local highlight = Instance.new("Highlight")
+            highlight.FillColor = Color3.fromRGB(255, 100, 100)
+            highlight.OutlineColor = Color3.fromRGB(255, 255, 255)
+            highlight.FillTransparency = 0.5
+            highlight.Parent = part
+        end
+    end
+end
+
+local function EnablePartControl()
+    LocalPlayer.ReplicationFocus = Workspace
+    RunService.Heartbeat:Connect(function()
+        pcall(function()
+            sethiddenproperty(LocalPlayer, "SimulationRadius", math.huge)
+            for _, part in pairs(Network.BaseParts) do
+                if part:IsDescendantOf(Workspace) and not table.find(parts, part) then
+                    part.Velocity = Vector3.zero
+                end
+            end
+        end)
+    end)
+end
+EnablePartControl()
+
+-- Wall Logic
+local ringPartsEnabled = false
+local noFallEnabled = false
+local parts = {}
+local targetPositions = {}
+local lastRootCFrame = nil
+local wallOffset = Vector3.new(0, 3, 5)
+local stopDistance = 0.2
+local damping = 0.9
+local maxParts = 250
+local updateThreshold = 0.1
+
+local character = LocalPlayer.Character or LocalPlayer.CharacterAdded:Wait()
+local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+
+local Folder = Instance.new("Folder")
+Folder.Parent = Workspace
+local Part = Instance.new("Part")
+Part.Parent = Folder
+Part.Anchored = false
+Part.CanCollide = false
+Part.Transparency = 1
+local Attachment1 = Instance.new("Attachment")
+Attachment1.Parent = Part
+
+local function RetainPart(part)
+    if part:IsA("BasePart") and not part.Anchored and part:IsDescendantOf(Workspace) then
+        if part.Parent == LocalPlayer.Character or part:IsDescendantOf(LocalPlayer.Character) then
+            return false
+        end
+        part.CustomPhysicalProperties = PhysicalProperties.new(0.001, 0.001, 0.001, 0.001, 0.001)
+        part.CanCollide = true
+        return true
+    end
+    return false
+end
+
+local function updateTargetPositions()
+    local root = LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
+    if not root then return end
+
+    if lastRootCFrame then
+        local posDelta = (root.Position - lastRootCFrame.Position).Magnitude
+        local angleDelta = math.acos(math.clamp(root.CFrame.LookVector:Dot(lastRootCFrame.LookVector), -1, 1))
+        if posDelta < updateThreshold and angleDelta < math.rad(5) then
+            return
+        end
+    end
+    lastRootCFrame = root.CFrame
+
+    targetPositions = {}
+    local forward = root.CFrame.LookVector
+    local right = root.CFrame.RightVector
+    local up = Vector3.new(0, 1, 0)
+    local center = root.Position + (forward * wallOffset.Z) + (up * config.height)
+
+    local i = 0
+    for _, part in pairs(parts) do
+        if i >= maxParts then break end
+        if part and part:IsA("BasePart") and part:IsDescendantOf(Workspace) and not part.Anchored then
+            local row = math.floor(i / config.wallWidth)
+            local col = i % config.wallWidth
+            local offset = (right * col * config.spacing) - (right * ((config.wallWidth - 1) / 2 * config.spacing)) + (up * row * config.spacing)
+            local targetPos = center + offset
+            targetPositions[part] = targetPos
+            i += 1
+        end
+    end
+end
+
+local function addPart(part)
+    if RetainPart(part) then
+        if not table.find(parts, part) then
+            table.insert(parts, part)
+            Network.RetainPart(part)
+            part.Velocity = Vector3.zero
+            lastRootCFrame = nil
+            updateTargetPositions()
+        end
+    end
+end
+
+local function removePart(part)
+    local index = table.find(parts, part)
+    if index then
+        table.remove(parts, index)
+        targetPositions[part] = nil
+        lastRootCFrame = nil
+        updateTargetPositions()
+    end
+end
+
+for _, part in pairs(Workspace:GetDescendants()) do
+    addPart(part)
+end
+
+Workspace.DescendantAdded:Connect(addPart)
+Workspace.DescendantRemoving:Connect(removePart)
+
+RunService.Heartbeat:Connect(function()
+    if not ringPartsEnabled then
+        for _, part in pairs(parts) do
+            if part:IsA("BasePart") then
+                part.Velocity = Vector3.zero
+            end
+        end
+        targetPositions = {}
+        return
+    end
+
+    updateTargetPositions()
+
+    for part, targetPos in pairs(targetPositions) do
+        if part and part:IsA("BasePart") and part:IsDescendantOf(Workspace) and not part.Anchored then
+            local dir = targetPos - part.Position
+            local dist = dir.Magnitude
+            if dist > stopDistance then
+                local speed = math.clamp(dist * 6, 10, config.maxSpeed)
+                part.Velocity = (dir.Unit * speed + part.Velocity * damping) * 0.5
+            else
+                part.Velocity = Vector3.zero
+            end
+        else
+            removePart(part)
+        end
+    end
+end)
+
+-- No Fall Damage (Original Implementation)
+local noFallConnections = {}
+
+local function setupNoFallDamage(chr)
+    if not chr then return end
+    local root = chr:WaitForChild("HumanoidRootPart")
+    
+    if root then
+        local con = RunService.Heartbeat:Connect(function()
+            if not root.Parent then
+                con:Disconnect()
+                noFallConnections[chr] = nil
+                return
+            end
+            
+            if noFallEnabled then
+                local oldvel = root.AssemblyLinearVelocity
+                root.AssemblyLinearVelocity = Vector3.zero
+                RunService.RenderStepped:Wait()
+                root.AssemblyLinearVelocity = oldvel
+            end
+        end)
+        noFallConnections[chr] = con
+    end
+end
+
+if LocalPlayer.Character then
+    setupNoFallDamage(LocalPlayer.Character)
+end
+LocalPlayer.CharacterAdded:Connect(setupNoFallDamage)
+
+-- Button Functionality
+ToggleButton.MouseButton1Click:Connect(function()
+    ringPartsEnabled = not ringPartsEnabled
+    ToggleButton.BackgroundColor3 = ringPartsEnabled and Color3.fromRGB(50, 205, 50) or Color3.fromRGB(255, 0, 0)
+    lastRootCFrame = nil
+    updateTargetPositions()
+    playSound("12221967")
+end)
+
+NoFallButton.MouseButton1Click:Connect(function()
+    noFallEnabled = not noFallEnabled
+    NoFallButton.BackgroundColor3 = noFallEnabled and Color3.fromRGB(50, 205, 50) or Color3.fromRGB(255, 0, 0)
+    playSound("12221967")
+end)
+
+-- Keybind Support
+UserInputService.InputBegan:Connect(function(input, gameProcessed)
+    if gameProcessed then return end
+    if input.KeyCode == Enum.KeyCode.R then
+        ringPartsEnabled = not ringPartsEnabled
+        ToggleButton.BackgroundColor3 = ringPartsEnabled and Color3.fromRGB(50, 205, 50) or Color3.fromRGB(255, 0, 0)
+        lastRootCFrame = nil
+        updateTargetPositions()
+        playSound("12221967")
+    elseif input.KeyCode == Enum.KeyCode.F then
+        noFallEnabled = not noFallEnabled
+        NoFallButton.BackgroundColor3 = noFallEnabled and Color3.fromRGB(50, 205, 50) or Color3.fromRGB(255, 0, 0)
+        playSound("12221967")
+    end
+end)
+
+-- Initial Sound
+playSound("2865227271")
