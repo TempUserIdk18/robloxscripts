@@ -710,7 +710,7 @@ Converted["_Frame2"].Size = UDim2.new(0, 537, 0, 1375)
 Converted["_Frame2"].Parent = Converted["_ScrollingFrame"]
 
 Converted["_TextBox"].ClearTextOnFocus = false
-Converted["_TextBox"].Font = Enum.Font.SourceSans
+Converted["_TextBox"].FontFace = Font.fromId(16658246179)
 Converted["_TextBox"].MultiLine = true
 Converted["_TextBox"].PlaceholderColor3 = Color3.fromRGB(12.000000234693289, 12.000000234693289, 12.000000234693289)
 Converted["_TextBox"].RichText = true
@@ -732,7 +732,7 @@ Converted["_TextBox"].Parent = Converted["_Frame2"]
 Converted["_UICorner7"].CornerRadius = UDim.new(0, 6)
 Converted["_UICorner7"].Parent = Converted["_TextBox"]
 
-Converted["_TextLabel"].Font = Enum.Font.Code
+Converted["_TextLabel"].FontFace = Font.fromId(16658246179)
 Converted["_TextLabel"].RichText = true
 Converted["_TextLabel"].Text = "-- welcome to starlight"
 Converted["_TextLabel"].TextColor3 = Color3.fromRGB(255, 255, 255)
