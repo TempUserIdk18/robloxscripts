@@ -1479,10 +1479,6 @@ local function KJUYZ_fake_script() -- Fake Script: StarterGui.Starlight.Frame.c.
 		button.BackgroundColor3 = Color3.fromRGB(10,10,10)
 		button.UIStroke.Color = Color3.fromRGB(50,50,50)
 	end)
-	button.MouseButton1Up:Connect(function()
-		button.BackgroundColor3 = Color3.fromRGB(16,16,16)
-		button.UIStroke.Color = Color3.fromRGB(57,57,57)
-	end)
 	button.MouseButton1Click:Connect(function()
 		frame:Destroy()
 	end)
@@ -2390,7 +2386,7 @@ local SAFE_LOCATIONS = {
 
 local foundExploit = false
 local remoteEvent, remoteFunction
-
+local FinishedFound=false
 local function isLikelyBackdoorRemote(remote)
 	if SAFE_LOCATIONS[remote.Parent.ClassName] then return false end
 	if string.split(remote:GetFullName(), '.')[1] == 'RobloxReplicatedStorage' then return false end
@@ -2402,7 +2398,7 @@ local function testRemote(remote, isFunction, timeout)
 	if foundExploit then return false end
 	if not isLikelyBackdoorRemote(remote) then return false end
 
-	local modelName = "starlight_"..tostring(os.clock()):gsub("%.", "")
+	local modelName = "starlight_"..tostring(math.random(1,999999))
 	local foundEvent = false
 
 	local connection = rs.DescendantAdded:Connect(function(inst)
@@ -2479,7 +2475,7 @@ local function fastFindRemote(timeout)
 
 	print(string.format("💫 starlight: 🔍 scanning %d remotes (%.1fs timeout)", #remotes, timeout))
 
-	local MAX_CONCURRENT = 128
+	local MAX_CONCURRENT = 64
 	local activeTasks = 0
 	local taskDone = Instance.new("BindableEvent")
 
@@ -2517,13 +2513,13 @@ local function fastFindRemote(timeout)
 end
 
 local function findRemote()
-local trueStart = os.clock()
+    local trueStart = os.clock()
 	local tStart = os.clock()
 
 	fastFindRemote(1)
 
-    scanTime = os.clock() - trueStart -- ✅ put this back
-    FinishedFound = true -- ✅ mark finished when all scans done
+    scanTime = os.clock() - trueStart
+    FinishedFound = true
 	print(string.format("💫 starlight: scan completed in %.3f seconds", os.clock() - tStart))
 end
 
