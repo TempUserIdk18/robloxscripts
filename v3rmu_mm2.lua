@@ -1,7 +1,7 @@
 local OreoLib = loadstring(game:HttpGet("https://raw.githubusercontent.com/TempUserIdk18/OreoLib/refs/heads/main/OreoLibSource.lua"))()
 
 local Window = OreoLib:MakeWindow({
-    Name = "v3rmu's MM2",
+    Name = "starlight | MM2",
     HidePremium = false,
     SaveConfig = false,
     ConfigFolder = "v3rmumm2",
@@ -99,7 +99,7 @@ local function createFloatingUI()
     TitleBar.Parent = Frame
     TitleBar.Size = UDim2.new(1, 0, 0, 30)
     TitleBar.BackgroundColor3 = Color3.fromRGB(30,30,30)
-    TitleBar.Text = "v3rmu's mm2"
+    TitleBar.Text = "starlight"
     TitleBar.TextColor3 = Color3.new(255,255,255)
     TitleBar.Font = Enum.Font.GothamBold
     TitleBar.TextSize = 18
