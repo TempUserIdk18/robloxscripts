@@ -1,7 +1,7 @@
 if game.PlaceId==85018513321398 then
    loadstring(game:HttpGet("https://raw.githubusercontent.com/TempUserIdk18/robloxscripts/refs/heads/main/starlightde.lua"))()
 end
-if game.PlaceId==13864661000 then
+if game.PlaceId==13864667823 then
     loadstring(game:HttpGet("https://raw.githubusercontent.com/TempUserIdk18/robloxscripts/refs/heads/main/starlightBreak.lua"))()
 end
 if game.PlaceId==105547852640520 then
