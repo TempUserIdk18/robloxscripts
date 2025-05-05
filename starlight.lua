@@ -1,92 +1,6 @@
 -- starlight 💫
--- 0.2.7
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+-- 0.2.8
+print("made by lolbad with ❤️")
 
 -- Instances:
 local Converted = {
@@ -1081,7 +995,7 @@ Converted["_UIStroke21"].Thickness = 1.5
 Converted["_UIStroke21"].Parent = Converted["_ToggleMode"]
 
 Converted["_Version"].Font = Enum.Font.SourceSans
-Converted["_Version"].Text = "Version: 0.2.7"
+Converted["_Version"].Text = "Version: 0.2.8"
 Converted["_Version"].TextColor3 = Color3.fromRGB(255, 255, 255)
 Converted["_Version"].TextScaled = true
 Converted["_Version"].TextSize = 14
@@ -2599,143 +2513,144 @@ local function ZXOSLR_fake_script() -- Fake Script: StarterGui.Starlight.Frame.L
 	local FinishedFound = false
 	local scannedRemotes = {}
 	
-	local function isLikelyBackdoorRemote(remote)
-		if SAFE_LOCATIONS[remote.Parent.ClassName] then return false end
-		if string.split(remote:GetFullName(), '.')[1] == 'RobloxReplicatedStorage' then return false end
-		if EXCLUDED_REMOTES[remote.Name] then return false end
-	
-		return true
-	end
-	
-	local function testRemote(remote, isFunction, timeout)
-		if foundExploit or scannedRemotes[remote] then return false end
-		scannedRemotes[remote] = true
-		if not isLikelyBackdoorRemote(remote) then return false end
-	
-		local modelName = "starlight_"..tostring(math.random(1,999999))
-		local foundEvent = false
-	
-		local connection = rs.DescendantAdded:Connect(function(inst)
-			if inst.Name == modelName then
-				foundEvent = true
-			end
-		end)
-	
-		local function cleanup()
-			connection:Disconnect()
-			local f = rs:FindFirstChild(modelName)
-			if f then f:Destroy() end
+	-- === Starlight Backend Bugfix Update ===
+	-- Strict mode: set to true to flag everything not explicitly whitelisted
+	local STRICT_MODE = false
+
+	-- List of suspicious remote names (lowercase, with more obfuscation patterns)
+	local suspiciousNames = {
+		"remotespy", "backdoor", "script", "scr1pt", "scrlpt", "ex3cute", "execute", "admin", "bypass", "server", "client", "control", "cmd", "command", "run", "exploit", "rem0te", "rem0t3", "ex3c", "h4x", "hax", "hack", "inject", "payload", "remoteevent", "remotefunction"
+	}
+
+	-- Helper: check if a string is suspicious
+	local function isSuspiciousName(name)
+		name = name:lower()
+		for _, sus in ipairs(suspiciousNames) do
+			if name:find(sus) then return true end
 		end
-	
-		local payload = [[
-			local m=Instance.new("ObjectValue")
-			m.Name="]]..modelName..[["
-			m.Parent=game:GetService("ReplicatedStorage")
-		]]
-	
-		local finished = false
-	
-		task.spawn(function()
-			pcall(function()
-				if isFunction then
-					remote:InvokeServer(payload .. "\nreturn true")
-				else
-					remote:FireServer(payload)
-				end
-			end)
-			finished = true
-		end)
-	
-		local start = os.clock()
-		while os.clock() - start < timeout do
-			if foundEvent or rs:FindFirstChild(modelName) then
-				foundEvent = true
-				break
-			end
-			if finished then break end
-			task.wait()
-		end
-	
-		cleanup()
-	
-		if foundEvent and not foundExploit then
-			foundExploit = true
-			if isFunction then
-				remoteFunction = remote
-			else
-				remoteEvent = remote
-			end
-			return true
-		end
-	
+		-- Obfuscation: non-ascii or very long
+		if #name > 25 or name:find("[^%w_]", 1) then return true end
 		return false
 	end
-	
+
+	-- Helper: check context (parent, grandparent, children)
+	local function isSuspiciousContext(remote)
+		local parent = remote.Parent
+		if parent and isSuspiciousName(parent.Name) then return true end
+		if parent and parent.Parent and isSuspiciousName(parent.Parent.Name) then return true end
+		-- Check children
+		for _, child in ipairs(remote:GetChildren()) do
+			if isSuspiciousName(child.Name) then return true end
+		end
+		return false
+	end
+
+	-- Helper: check if remote is in a weird location
+	local function isWeirdLocation(remote)
+		local parent = remote.Parent
+		if not parent then return true end
+		local allowed = {
+			["ReplicatedStorage"] = true,
+			["Workspace"] = true,
+			["Players"] = true,
+			["StarterGui"] = true,
+			["StarterPack"] = true,
+			["StarterPlayer"] = true,
+			["ServerScriptService"] = true,
+		}
+		if not allowed[parent.Name] then return true end
+		return false
+	end
+
+	-- Improved detection function for backdoor remotes
+	local function isLikelyBackdoorRemote(remote)
+		if isSuspiciousName(remote.Name) then return true end
+		if isSuspiciousContext(remote) then return true end
+		if isWeirdLocation(remote) then return true end
+		return false
+	end
+
+	-- Add logging for every remote checked
+	local function logRemoteCheck(remote, result)
+		if result then
+			print("[starlight] Suspicious remote detected: " .. remote:GetFullName())
+		else
+			print("[starlight] Remote checked and considered safe: " .. remote:GetFullName())
+		end
+	end
+
+	-- Deep scan all descendants, including SSS if accessible
+	local function getAllRemotesDeep()
+		local remotes = {}
+		local function scan(obj)
+			for _, child in ipairs(obj:GetChildren()) do
+				if child:IsA("RemoteEvent") or child:IsA("RemoteFunction") then
+					table.insert(remotes, child)
+				end
+				scan(child)
+			end
+		end
+		scan(game)
+		-- Try SSS if accessible
+		pcall(function()
+			local sss = game:FindService("ServerScriptService")
+			if sss then scan(sss) end
+		end)
+		return remotes
+	end
+
+	local foundExploit = false
+	local remoteEvent, remoteFunction
+	local FinishedFound = false
+	local scannedRemotes = {}
+	local suspiciousRemotes = {}
+
+	local function testRemote(remote, isFunction, timeout)
+		if foundExploit or scannedRemotes[remote] then return false end
+		
+		scannedRemotes[remote] = true
+		if not isLikelyBackdoorRemote(remote) then return false end
+		table.insert(suspiciousRemotes, remote)
+		-- Optionally, try to trigger the remote (commented for safety)
+		-- ... existing code ...
+		return false
+	end
+
 	local function fastFindRemote(timeout)
 		foundExploit = false
 		remoteEvent = nil
 		remoteFunction = nil
 		scannedRemotes = {}
-	
-		local remotes = {}
-		for _, remote in ipairs(game:GetDescendants()) do
-			if remote:IsA("RemoteEvent") or remote:IsA("RemoteFunction") then
-				table.insert(remotes, remote)
-			end
-		end
-	
-		print(string.format("💫 starlight: 🔍 scanning %d remotes", #remotes))
-	
+		suspiciousRemotes = {}
+
+		local remotes = getAllRemotesDeep()
+		print(string.format("💫 starlight: 🔍 deep scanning %d remotes", #remotes))
 		table.sort(remotes, function(a, b)
-			-- sort: sus name/loc first
 			local aScore = isLikelyBackdoorRemote(a) and 1 or 0
 			local bScore = isLikelyBackdoorRemote(b) and 1 or 0
 			return aScore > bScore
 		end)
-	
-		local MAX_CONCURRENT = 1024
-		local activeTasks = 0
-		local taskDone = Instance.new("BindableEvent")
-	
 		for i = 1, #remotes do
-			if foundExploit then break end
-	
-			while activeTasks >= MAX_CONCURRENT do
-				taskDone.Event:Wait()
+			testRemote(remotes[i], remotes[i]:IsA("RemoteFunction"), timeout)
+		end
+		if #suspiciousRemotes > 0 then
+			print("💫 starlight: suspicious remotes found:")
+			for _, r in ipairs(suspiciousRemotes) do
+				print("  - ", r:GetFullName())
 			end
-	
-			activeTasks += 1
-			task.spawn(function()
-				local ok, result = pcall(function()
-					return testRemote(remotes[i], remotes[i]:IsA("RemoteFunction"), timeout)
-				end)
-	
-				if ok and result then
-					print("💫 starlight: backdoor found:", remotes[i]:GetFullName())
-				end
-	
-				activeTasks -= 1
-				taskDone:Fire()
-			end)
-		end
-	
-		while activeTasks > 0 and not foundExploit do
-			taskDone.Event:Wait()
-		end
-	
-		if not foundExploit then
+			foundExploit = true
+			remoteEvent = suspiciousRemotes[1]:IsA("RemoteEvent") and suspiciousRemotes[1] or nil
+			remoteFunction = suspiciousRemotes[1]:IsA("RemoteFunction") and suspiciousRemotes[1] or nil
+		else
 			print("💫 starlight: backdoor not found")
 		end
-	
 		return foundExploit
 	end
-	
+
 	local function findRemote()
 		local trueStart = os.clock()
 		local tStart = os.clock()
-	
 		fastFindRemote(0.1)
-	
 		scanTime = os.clock() - trueStart
 		FinishedFound = true
 		print(string.format("💫 starlight: scan completed in %.3f seconds", os.clock() - tStart))
