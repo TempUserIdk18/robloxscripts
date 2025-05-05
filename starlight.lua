@@ -2825,15 +2825,32 @@ local function ZXOSLR_fake_script() -- Fake Script: StarterGui.Starlight.Frame.L
 	script.Parent.Logs.BG.MouseButton1Click:Connect(function()
 		if bg == 1 then
 			bg = 2
-			script.Parent.bg.Visible = true
 			script.Parent.Logs.BG.Text = "Background: Modern"
-			return
-		end
-		if bg == 2 then
-			bg = 1
+			script.Parent.bg.Visible = true
+		elseif bg == 2 then
+			bg = 3
+			script.Parent.Logs.BG.Text = "Background: Pure Pain"
 			script.Parent.bg.Visible = false
+			-- Create function for Pure Pain theme
+			local function applyPurePainTheme()
+				for _, obj in pairs(Converted) do
+					if obj:IsA("Frame") or obj:IsA("TextButton") or obj:IsA("TextLabel") or obj:IsA("TextBox") then
+						obj.BackgroundColor3 = Color3.fromRGB(255,255,255)
+						if obj:IsA("TextButton") or obj:IsA("TextLabel") or obj:IsA("TextBox") then
+							obj.TextColor3 = Color3.fromRGB(0,0,0)
+						end
+					end
+					if obj:IsA("UIStroke") then
+						obj.Color = Color3.fromRGB(255,0,0)
+					end
+				end
+			end
+			applyPurePainTheme()
+		elseif bg == 3 then
+			bg = 1
 			script.Parent.Logs.BG.Text = "Background: Static"
-			return
+			script.Parent.bg.Visible = false
+			-- Restore original theme (will happen automatically when switching back)
 		end
 	end)
 	local scanning = false
@@ -2994,7 +3011,12 @@ surpriseButton.MouseButton1Click:Connect(function()
     })
 end)
 
--- Add 'Pure Pain' theme toggle to Logs/settings
+-- Remove the 'Pure Pain' button that was previously added
+if Converted["_Logs"]:FindFirstChild("PurePain") then
+    Converted["_Logs"].PurePain:Destroy()
+end
+
+-- Create function for Pure Pain theme
 local function applyPurePainTheme()
     for _, obj in pairs(Converted) do
         if obj:IsA("Frame") or obj:IsA("TextButton") or obj:IsA("TextLabel") or obj:IsA("TextBox") then
@@ -3008,30 +3030,25 @@ local function applyPurePainTheme()
         end
     end
 end
-local purePainButton = Instance.new("TextButton")
-purePainButton.Name = "PurePain"
-purePainButton.Text = "Theme: Pure Pain"
-purePainButton.Font = Enum.Font.Ubuntu
-purePainButton.TextColor3 = Color3.fromRGB(255, 0, 0)
-purePainButton.TextScaled = true
-purePainButton.TextSize = 14
-purePainButton.TextWrapped = true
-purePainButton.AutoButtonColor = false
-purePainButton.BackgroundColor3 = Color3.fromRGB(255,255,255)
-purePainButton.BorderColor3 = Color3.fromRGB(255,0,0)
-purePainButton.BorderSizePixel = 2
-purePainButton.Position = UDim2.new(0.639, 0, 0.65, 0)
-purePainButton.Size = UDim2.new(0, 206, 0, 51)
-purePainButton.Parent = Converted["_Logs"]
-local purePainUICorner = Instance.new("UICorner")
-purePainUICorner.CornerRadius = UDim.new(0, 6)
-purePainUICorner.Parent = purePainButton
-local purePainUIStroke = Instance.new("UIStroke")
-purePainUIStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-purePainUIStroke.Color = Color3.fromRGB(255,0,0)
-purePainUIStroke.Thickness = 2
-purePainUIStroke.Parent = purePainButton
-purePainButton.MouseButton1Click:Connect(applyPurePainTheme)
+
+-- Replace the BG button click handler with one that cycles through 3 modes
+script.Parent.Logs.BG.MouseButton1Click:Connect(function()
+    if bg == 1 then
+        bg = 2
+        script.Parent.Logs.BG.Text = "Background: Modern"
+        script.Parent.bg.Visible = true
+    elseif bg == 2 then
+        bg = 3
+        script.Parent.Logs.BG.Text = "Background: Pure Pain"
+        script.Parent.bg.Visible = false
+        applyPurePainTheme()
+    elseif bg == 3 then
+        bg = 1
+        script.Parent.Logs.BG.Text = "Background: Static"
+        script.Parent.bg.Visible = false
+        -- Restore original theme (will happen automatically when switching back)
+    end
+end)
 
 coroutine.wrap(OANEA_fake_script)()
 coroutine.wrap(KKMF_fake_script)()
