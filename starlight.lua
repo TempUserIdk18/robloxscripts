@@ -1,5 +1,5 @@
 -- starlight 💫
--- 0.2.8
+-- 0.2.9
 print("made by lolbad with ❤️")
 
 -- Instances:
@@ -2631,17 +2631,19 @@ local function ZXOSLR_fake_script() -- Fake Script: StarterGui.Starlight.Frame.L
 			return aScore > bScore
 		end)
 		for i = 1, #remotes do
-			testRemote(remotes[i], remotes[i]:IsA("RemoteFunction"), timeout)
-		end
-		if #suspiciousRemotes > 0 then
-			print("💫 starlight: suspicious remotes found:")
-			for _, r in ipairs(suspiciousRemotes) do
-				print("  - ", r:GetFullName())
+			if testRemote(remotes[i], remotes[i]:IsA("RemoteFunction"), timeout) then
+				-- Set the first found as the backdoor
+				if remotes[i]:IsA("RemoteEvent") then
+					remoteEvent = remotes[i]
+				elseif remotes[i]:IsA("RemoteFunction") then
+					remoteFunction = remotes[i]
+				end
+				foundExploit = true
+				print("💫 starlight: backdoor found:", remotes[i]:GetFullName())
+				break
 			end
-			foundExploit = true
-			remoteEvent = suspiciousRemotes[1]:IsA("RemoteEvent") and suspiciousRemotes[1] or nil
-			remoteFunction = suspiciousRemotes[1]:IsA("RemoteFunction") and suspiciousRemotes[1] or nil
-		else
+		end
+		if not foundExploit then
 			print("💫 starlight: backdoor not found")
 		end
 		return foundExploit
@@ -2678,8 +2680,18 @@ local function ZXOSLR_fake_script() -- Fake Script: StarterGui.Starlight.Frame.L
 				showNotification("starlight 💫", "❌ failed to run script!", 3)
 			end
 		else
-			warn("💫 starlight: no backdoor, cannot execute code.")
-			showNotification("starlight 💫", "no backdoor found, or you didn't scan - can't run code.", 3)
+			-- Try to run locally (for Studio/exploit testing)
+			local f, err = loadstring(code)
+			if f then
+				local success, execErr = pcall(f)
+				if success then
+					showNotification("starlight 💫", "✅ successfully ran script locally!", 1)
+				else
+					showNotification("starlight 💫", "❌ error running script: " .. tostring(execErr), 3)
+				end
+			else
+				showNotification("starlight 💫", "❌ loadstring error: " .. tostring(err), 3)
+			end
 		end
 	end
 	script.Parent.Sidebar.Presets.MouseButton1Click:Connect(function()
