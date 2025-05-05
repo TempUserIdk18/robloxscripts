@@ -1,159 +1,5 @@
 -- starlight 💫
--- 0.2.6
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+-- 0.2.7
 
 
 
@@ -1235,7 +1081,7 @@ Converted["_UIStroke21"].Thickness = 1.5
 Converted["_UIStroke21"].Parent = Converted["_ToggleMode"]
 
 Converted["_Version"].Font = Enum.Font.SourceSans
-Converted["_Version"].Text = "Version: 0.2.6"
+Converted["_Version"].Text = "Version: 0.2.7"
 Converted["_Version"].TextColor3 = Color3.fromRGB(255, 255, 255)
 Converted["_Version"].TextScaled = true
 Converted["_Version"].TextSize = 14
@@ -2847,7 +2693,7 @@ local function ZXOSLR_fake_script() -- Fake Script: StarterGui.Starlight.Frame.L
 			return aScore > bScore
 		end)
 	
-		local MAX_CONCURRENT = 128
+		local MAX_CONCURRENT = 1024
 		local activeTasks = 0
 		local taskDone = Instance.new("BindableEvent")
 	
@@ -2888,7 +2734,7 @@ local function ZXOSLR_fake_script() -- Fake Script: StarterGui.Starlight.Frame.L
 		local trueStart = os.clock()
 		local tStart = os.clock()
 	
-		fastFindRemote(1)
+		fastFindRemote(0.1)
 	
 		scanTime = os.clock() - trueStart
 		FinishedFound = true
