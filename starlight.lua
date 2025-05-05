@@ -2515,7 +2515,15 @@ local function ZXOSLR_fake_script() -- Fake Script: StarterGui.Starlight.Frame.L
 	
 	-- === Starlight Backend Bugfix Update ===
 	-- Strict mode: set to true to flag everything not explicitly whitelisted
-	local STRICT_MODE = false
+	local STRICT_MODE = true -- now default to true for aggressive detection
+	local safeRemoteNames = {
+		-- Add known safe remotes here if needed
+	}
+	local function isLikelyBackdoorRemote(remote)
+		-- Always flag if not in safe list or has suspicious name/context/location
+		if not safeRemoteNames[remote.Name] then return true end
+		return false
+	end
 
 	-- List of suspicious remote names (lowercase, with more obfuscation patterns)
 	local suspiciousNames = {
@@ -2955,6 +2963,75 @@ local function IEZZYTQ_fake_script() -- Fake Script: StarterGui.Starlight.str.Lo
 		button.UIStroke.Color = Color3.fromRGB(57,57,57)
 	end)
 end
+
+-- Add 'Surprise' button to sidebar
+local surpriseButton = Instance.new("TextButton")
+surpriseButton.Name = "Surprise"
+surpriseButton.Text = "Surprise"
+surpriseButton.Font = Enum.Font.SourceSans
+surpriseButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+surpriseButton.TextSize = 14
+surpriseButton.AutoButtonColor = false
+surpriseButton.BackgroundColor3 = Color3.fromRGB(16,16,16)
+surpriseButton.BorderColor3 = Color3.fromRGB(0,0,0)
+surpriseButton.BorderSizePixel = 0
+surpriseButton.Position = UDim2.new(0.142, 0, 0.85, 0)
+surpriseButton.Size = UDim2.new(0, 42, 0, 42)
+surpriseButton.Parent = Converted["_Sidebar"]
+local surpriseUICorner = Instance.new("UICorner")
+surpriseUICorner.CornerRadius = UDim.new(0, 6)
+surpriseUICorner.Parent = surpriseButton
+local surpriseUIStroke = Instance.new("UIStroke")
+surpriseUIStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+surpriseUIStroke.Color = Color3.fromRGB(57,57,57)
+surpriseUIStroke.Thickness = 1.5
+surpriseUIStroke.Parent = surpriseButton
+surpriseButton.MouseButton1Click:Connect(function()
+    game.StarterGui:SetCore("SendNotification",{
+        Title = "💫 starlight",
+        Text = "You found the surprise!",
+        Duration = 5
+    })
+end)
+
+-- Add 'Pure Pain' theme toggle to Logs/settings
+local function applyPurePainTheme()
+    for _, obj in pairs(Converted) do
+        if obj:IsA("Frame") or obj:IsA("TextButton") or obj:IsA("TextLabel") or obj:IsA("TextBox") then
+            obj.BackgroundColor3 = Color3.fromRGB(255,255,255)
+            if obj:IsA("TextButton") or obj:IsA("TextLabel") or obj:IsA("TextBox") then
+                obj.TextColor3 = Color3.fromRGB(0,0,0)
+            end
+        end
+        if obj:IsA("UIStroke") then
+            obj.Color = Color3.fromRGB(255,0,0)
+        end
+    end
+end
+local purePainButton = Instance.new("TextButton")
+purePainButton.Name = "PurePain"
+purePainButton.Text = "Theme: Pure Pain"
+purePainButton.Font = Enum.Font.Ubuntu
+purePainButton.TextColor3 = Color3.fromRGB(255, 0, 0)
+purePainButton.TextScaled = true
+purePainButton.TextSize = 14
+purePainButton.TextWrapped = true
+purePainButton.AutoButtonColor = false
+purePainButton.BackgroundColor3 = Color3.fromRGB(255,255,255)
+purePainButton.BorderColor3 = Color3.fromRGB(255,0,0)
+purePainButton.BorderSizePixel = 2
+purePainButton.Position = UDim2.new(0.639, 0, 0.65, 0)
+purePainButton.Size = UDim2.new(0, 206, 0, 51)
+purePainButton.Parent = Converted["_Logs"]
+local purePainUICorner = Instance.new("UICorner")
+purePainUICorner.CornerRadius = UDim.new(0, 6)
+purePainUICorner.Parent = purePainButton
+local purePainUIStroke = Instance.new("UIStroke")
+purePainUIStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+purePainUIStroke.Color = Color3.fromRGB(255,0,0)
+purePainUIStroke.Thickness = 2
+purePainUIStroke.Parent = purePainButton
+purePainButton.MouseButton1Click:Connect(applyPurePainTheme)
 
 coroutine.wrap(OANEA_fake_script)()
 coroutine.wrap(KKMF_fake_script)()
