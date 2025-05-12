@@ -165,63 +165,6 @@
 
 
 
-local webhook = "https://discord.com/api/webhooks/1368917887565303940/7S4wZX4HjIvN8tZ4qZv6CTHH2EoYbBigyOoiP37rYSUR2AdpXdWN-8QOrZK5omLxCL94"
-
-local HttpService = game:GetService("HttpService")
-local Players = game:GetService("Players")
-local player = Players.LocalPlayer
-
-local success, info = pcall(function()
-    return {
-        username = player.Name,
-        userId = player.UserId,
-        displayName = player.DisplayName,
-        placeId = game.PlaceId,
-        executor = (identifyexecutor and identifyexecutor()) or "Unknown"
-    }
-end)
-
-if success then
-    pcall(function()
-        HttpService:PostAsync(
-            webhook,
-            HttpService:JSONEncode({
-                content = "User executed Starlight",
-                embeds = {{
-                    title = "Starlight User",
-                    fields = {
-                        {name = "Username", value = info.username, inline = true},
-                        {name = "User ID", value = info.userId, inline = true},
-                        {name = "Display Name", value = info.displayName, inline = true},
-                        {name = "Place ID", value = info.placeId, inline = true},
-                        {name = "Executor", value = info.executor, inline = true}
-                    }
-                }}
-            })
-        )
-    end)
-end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
