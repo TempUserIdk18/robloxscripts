@@ -2963,31 +2963,39 @@ local function ZXOSLR_fake_script() -- Fake Script: StarterGui.Starlight.Frame.L
 	end
 	
 	local function fireRemoteEvent(code)
-		if remoteEvent then
-			print("ℹ️ executing code through backdoor:", remoteEvent:GetFullName())
-			local success = pcall(function()
-				remoteEvent:FireServer(code)
-			end)
-			if success then
-				showNotification("starlight 💫", "✅ successfully ran script!", 1)
-			else
-				showNotification("starlight 💫", "❌ failed to run script!", 3)
-			end
-		elseif remoteFunction then
-			print("ℹ️ executing code through backdoor:", remoteFunction:GetFullName())
-			local success, result = pcall(function()
-				return remoteFunction:InvokeServer(code)
-			end)
-			if success then
-				showNotification("starlight 💫", "✅ successfully ran script!", 1)
-			else
-				showNotification("starlight 💫", "❌ failed to run script!", 3)
-			end
+	local client = game.Players.LocalPlayer
+
+	local wrappedCode = string.format([[
+		local client = game:GetService("Players"):FindFirstChild("%s")
+		%s
+	]], client.Name, code)
+
+	if remoteEvent then
+		print("ℹ️ executing code through backdoor:", remoteEvent:GetFullName())
+		local success = pcall(function()
+			remoteEvent:FireServer(wrappedCode)
+		end)
+		if success then
+			showNotification("starlight 💫", "✅ successfully ran script!", 1)
 		else
-			warn("💫 starlight: no backdoor, cannot execute code.")
-			showNotification("starlight 💫", "no backdoor found, or you didn't scan - can't run code.", 3)
+			showNotification("starlight 💫", "❌ failed to run script!", 3)
 		end
+	elseif remoteFunction then
+		print("ℹ️ executing code through backdoor:", remoteFunction:GetFullName())
+		local success, result = pcall(function()
+			return remoteFunction:InvokeServer(wrappedCode)
+		end)
+		if success then
+			showNotification("starlight 💫", "✅ successfully ran script!", 1)
+		else
+			showNotification("starlight 💫", "❌ failed to run script!", 3)
+		end
+	else
+		warn("💫 starlight: no backdoor, cannot execute code.")
+		showNotification("starlight 💫", "no backdoor found, or you didn't scan - can't run code.", 3)
 	end
+end
+
 	script.Parent.Sidebar.Presets.MouseButton1Click:Connect(function()
 		script.Parent.Framee.Visible = false
 		script.Parent.Presets.Visible = true
