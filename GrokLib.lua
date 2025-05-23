@@ -5,7 +5,7 @@ local player = Players.LocalPlayer
 local UILib = {}
 UILib.__index = UILib
 
-
+-- Initialize the library
 function UILib.new()
     local self = setmetatable({}, UILib)
     self.Windows = {}
