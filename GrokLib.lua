@@ -75,7 +75,7 @@ function UILib:NewWindow(titleText)
     titleLabel.Position = UDim2.new(0, 10, 0, 0)
     titleLabel.BackgroundTransparency = 1
     titleLabel.Text = titleText
-    titleLabel.Font = Enum.Font.SourceSansPro
+    titleLabel.Font = Enum.Font.SourceSansBold
     titleLabel.TextSize = 20
     titleLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
     titleLabel.TextXAlignment = Enum.TextXAlignment.Left
@@ -89,7 +89,7 @@ function UILib:NewWindow(titleText)
     window.CloseBtn.BackgroundTransparency = 0.3
     window.CloseBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
     window.CloseBtn.Text = "×"
-    window.CloseBtn.Font = Enum.Font.SourceSansPro
+    window.CloseBtn.Font = Enum.Font.SourceSansBold
     window.CloseBtn.TextSize = 22
     window.CloseBtn.Parent = window.Title
     local closeCorner = Instance.new("UICorner")
@@ -190,7 +190,7 @@ function UILib:Notify(title, content, duration, bgColor, borderColor)
     titleLabel.Position = UDim2.new(0, 10, 0, 10)
     titleLabel.BackgroundTransparency = 1
     titleLabel.Text = title or "Notification"
-    titleLabel.Font = Enum.Font.SourceSansPro
+    titleLabel.Font = Enum.Font.SourceSansBold
     titleLabel.TextSize = 18
     titleLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
     titleLabel.TextXAlignment = Enum.TextXAlignment.Left
@@ -202,7 +202,7 @@ function UILib:Notify(title, content, duration, bgColor, borderColor)
     contentLabel.Position = UDim2.new(0, 10, 0, 35)
     contentLabel.BackgroundTransparency = 1
     contentLabel.Text = content or ""
-    contentLabel.Font = Enum.Font.SourceSansPro
+    contentLabel.Font = Enum.Font.SourceSans
     contentLabel.TextSize = 14
     contentLabel.TextColor3 = Color3.fromRGB(200, 200, 200)
     contentLabel.TextXAlignment = Enum.TextXAlignment.Left
@@ -241,7 +241,7 @@ function UILib:CreateLabel(text, textColor)
     label.Size = UDim2.new(0, 310, 0, 30)
     label.BackgroundTransparency = 1
     label.Text = text
-    label.Font = Enum.Font.SourceSansPro
+    label.Font = Enum.Font.SourceSans
     label.TextSize = 16
     label.TextColor3 = textColor or Color3.fromRGB(255, 255, 255)
     label.TextXAlignment = Enum.TextXAlignment.Left
@@ -264,7 +264,7 @@ function UILib:CreateButton(text, callback)
     btn.BackgroundTransparency = 0.3
     btn.TextColor3 = Color3.fromRGB(255, 255, 255)
     btn.Text = text
-    btn.Font = Enum.Font.SourceSansPro
+    btn.Font = Enum.Font.SourceSansBold
     btn.TextSize = 16
     btn.AutoButtonColor = false
     btn.Parent = self.Scroll
@@ -321,7 +321,7 @@ function UILib:CreateTextbox(placeholder, callback, numbersOnly)
     box.PlaceholderText = placeholder
     box.PlaceholderColor3 = Color3.fromRGB(150, 150, 150)
     box.Text = ""
-    box.Font = Enum.Font.SourceSansPro
+    box.Font = Enum.Font.SourceSans
     box.TextSize = 16
     box.ClearTextOnFocus = false
     box.Parent = self.Scroll
@@ -359,7 +359,7 @@ function UILib:CreateTextbox(placeholder, callback, numbersOnly)
     box.FocusLost:Connect(function(enterPressed)
         if enterPressed then
             callback(box.Text)
-        end
+        end)
     end)
     return box
 end
@@ -375,7 +375,7 @@ function UILib:CreateCheckbox(text, callback)
     label.Size = UDim2.new(0, 250, 1, 0)
     label.BackgroundTransparency = 1
     label.Text = text
-    label.Font = Enum.Font.SourceSansPro
+    label.Font = Enum.Font.SourceSans
     label.TextSize = 16
     label.TextColor3 = Color3.fromRGB(255, 255, 255)
     label.TextXAlignment = Enum.TextXAlignment.Left
